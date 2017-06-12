@@ -1,6 +1,6 @@
 $(document).ready(function(){
     
-    //resizing map-image - na razie raz, po zaladowaniu strony
+    //resizing map-image -  raz, po zaladowaniu strony
     
 
     var ImageMap = function (map) {
@@ -8,7 +8,7 @@ $(document).ready(function(){
                 areas = map.getElementsByTagName('area'),
                 len = areas.length,
                 coords = [],
-                previousWidth = 2780;  
+                previousWidth = 2690;  
             console.log(areas);
             for (n = 0; n < len; n++) {
                 coords[n] = areas[n].coords.split(',');
@@ -32,38 +32,26 @@ $(document).ready(function(){
     imageMap.resize();
 
     
-    //map
+    // podpiecie biblioteki maplight
     
     jQuery('#island_img').maphilight();
 
 
     
     $('#island_img').maphilight({ 
-        stroke: true, 
+        stroke: false, 
         strokeColor: 'ffffff',
-        strokeWidth: 1,
+        strokeWidth: 0,
         fillColor: '009DDF', 
         fillOpacity: 0.3 
     });
     
     
-    /*
-    mozna wstawic w area:
-    
-    data-maphilight='{"strokeColor":"0000ff","strokeWidth":5,"fillColor":"00ff00","fillOpacity":0.6}'>
-    
-    http://jsfiddle.net/k67gq/6/
-    
-    
-    */
+   //eventy na najechanie mysza i zjechanie
 
     
    var areas = $('area');
 
-    
-    
-    
-    
     
     areas.on('mouseenter', function(event){
        event.preventDefault();

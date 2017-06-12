@@ -356,7 +356,7 @@
 		groupBy: false,
 		wrapClass: true,
 		// plenty of shadow:
-		shadow: false,
+		shadow: true,
 		shadowX: 0,
 		shadowY: 0,
 		shadowRadius: 6,
