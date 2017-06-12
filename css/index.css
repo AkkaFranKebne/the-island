@@ -1,0 +1,56 @@
+
+* {
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightblue;
+    position: relative;
+}
+
+
+
+#hamburger {
+    position: fixed;
+    height: 8vw;
+    width: 8vw;
+    margin-top: 10px;
+    margin-left: 25px;
+    
+}
+h1{
+    font-size: 9vw;
+    text-align: center;
+    color: #4490b0;
+    margin: 12px;
+}
+
+
+
+main{
+    width: 100vw;
+    padding-left: 15vw;
+}
+
+
+.grpelem {
+    display:inline;
+    float:left;
+    position:absolute;
+}
+
+
+.grpelem img {
+    height: auto;
+    width: 70vw;
+}
+
+
+
+
+
+
+
+
