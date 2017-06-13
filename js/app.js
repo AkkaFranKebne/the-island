@@ -1,5 +1,52 @@
 $(document).ready(function(){
     
+    // preloader
+    /*
+    var main = $('main');
+    main.hide();
+    
+    
+    $(window).on("load", function() {
+            //mozna zamienic na  https://github.com/desandro/imagesloaded
+		setTimeout(function() {
+			  $('body').removeClass('loading');
+              main.fadeIn();			  
+		}, 800);
+	});
+    */
+    
+    // mryganie ma poczatek
+   
+    var partsofIsland = $('.grpelem');
+    console.log(partsofIsland);
+
+    
+    
+        function noticeMe(ele, delay){
+        setTimeout(function(){ele.removeClass('hidden')}, delay);
+        setTimeout(function(){ele.addClass('exposed')}, delay);
+        ele.delay(delay).animate({
+                opacity: 1    
+        },1000).animate({
+                opacity: 0.8
+        },1000, function(){
+            ele.removeClass('exposed');
+            ele.addClass('hidden');
+        });
+    };
+    
+    
+    
+    noticeMe(partsofIsland.eq(2), 1000);
+    noticeMe(partsofIsland.eq(3), 1100);
+    noticeMe(partsofIsland.eq(5), 1200);
+    noticeMe(partsofIsland.eq(6), 1300);
+    noticeMe(partsofIsland.eq(4), 1500);
+
+    
+    
+    
+    
     //resizing map-image -  raz, po zaladowaniu strony
     
 

@@ -1,0 +1,79 @@
+
+* {
+    padding:0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.exposed {
+    visibility: visible;
+    z-index: 999;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+body {
+    background-color: lightblue;
+    position: relative;
+    height: 100vh;
+    &.loading {
+        background-image: url('../images/ico_loading.gif');
+        background-repeat:  no-repeat;
+        background-position: center;
+    }
+    #hamburger {
+        position: fixed;
+        height: 30px;
+        width: 30px;
+        margin-top: 30px;
+        margin-left: 45px;
+    }
+    #logo {
+        position: fixed;
+        height: auto;
+        width: 300px;
+        margin-top: 30px;
+        margin-left: 40vw;
+    }
+    main{
+        width: 100vw;
+        padding-left: 15vw;
+        padding-top: 25vh;
+    }
+    .grpelem {
+        opacity: 0.8;
+        display:inline;
+        float:left;
+        position:absolute;
+        img {
+            height: auto;
+            width: 70vw;
+        } 
+        &#island_img {
+            z-index: 99;
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
