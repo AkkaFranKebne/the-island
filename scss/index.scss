@@ -18,10 +18,39 @@ body {
     background-color: lightblue;
     position: relative;
     height: 100vh;
+    background-repeat:  no-repeat;
+    
+    
     &.loading {
-        background-image: url('../images/ico_loading.gif');
-        background-repeat:  no-repeat;
+        background-image: url('../images/loading_pigs.gif');
         background-position: center;
+    }
+    &#eventy{
+        background-image: url(../images/eventyt.png);
+        background-position: -1000px -500px;
+        background-size: 2822px 1647px;
+        
+    }
+    &#sm{
+        background-image: url(../images/wyspa%20www.png);
+        background-position: 170px 100px;
+        background-size: 2822px 1647px;
+    }
+    &#www{
+        background-image: url(../images/wyspa%20www.png);
+        background-position: -350px 250px;
+        background-size: 2822px 1647px;
+
+    }
+    &#kreacja{
+        background-image: url(../images/wyspa%20www.png);
+        background-position: -1800px  100px;
+        background-size: 2822px 1647px;
+    }
+    &#newbiz{
+        background-image: url(../images/wyspa%20www.png);
+        background-position: 700px -600px;
+        background-size: 2822px 1647px;
     }
     #hamburger {
         position: fixed;
@@ -36,6 +65,15 @@ body {
         width: 300px;
         margin-top: 30px;
         margin-left: 40vw;
+    }
+    #close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 20px;
+        width: 20px;
+        margin-top: 35px;
+        margin-right: 45px;
     }
     main{
         width: 100vw;
