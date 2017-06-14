@@ -2,6 +2,8 @@ $(document).ready(function(){
     
     /*dylematy
     
+    zastanowic sie, czy potrzebne sa w ogole obrazki w kawalkach
+    
     jak naprawde czekac na zaladowanie sie obrazkow - nie dluzej, nie krocej? sprawdz https://github.com/desandro/imagesloaded
     
     jak trzymac obrazki na czas sesji aby nie ladcowaly sie w czasie kolejnych przeladowan strony? ajax? local storage?
@@ -11,6 +13,10 @@ $(document).ready(function(){
     co ze starszymi przegladarkami
     
     problem po przeniesieniu na serwer
+    
+    jak polepszyc wydajnosc strony
+    
+    powtarzajace sie elementy strony - umiescic w pho?
     
     */
     
@@ -108,11 +114,12 @@ $(document).ready(function(){
         setTimeout(function(){ele.data('maphilight', { alwaysOn: false }).trigger('alwaysOn.maphilight')}, delay2);
     };
     
-    noticeMyArea(areas.eq(3), 4000, 4100);
-    noticeMyArea(areas.eq(4), 4100, 4200);
-    noticeMyArea(areas.eq(0), 4200, 4300);
-    noticeMyArea(areas.eq(1), 4300, 4400);
-    noticeMyArea(areas.eq(2), 4400, 4500);
+    noticeMyArea(areas.eq(3), 4000, 4400);
+    noticeMyArea(areas.eq(4), 4100, 4500);
+    noticeMyArea(areas.eq(0), 4200, 4600);
+    noticeMyArea(areas.eq(1), 4300, 4700);
+    noticeMyArea(areas.eq(2), 4400, 4800);
+    noticeMyArea(areas.eq(3), 4500, 4900);
  
     // animacja obrazkow w tle---------------------
    
@@ -120,14 +127,14 @@ $(document).ready(function(){
     //console.log(partsofIsland);
 
 
-    
+    /*  //do uzycia, jesli zdecydujemy sie bawic opacity 
         function noticeMe(ele, delay){
         setTimeout(function(){ele.removeClass('hidden')}, delay);
         setTimeout(function(){ele.addClass('exposed')}, delay);
         ele.delay(delay).animate({
-                opacity: 1
+                //opacity: 1
         },300).animate({
-                opacity: 0.8
+                //opacity: 0.8
         },200, function(){
             ele.removeClass('exposed');
             ele.addClass('hidden');
@@ -139,7 +146,7 @@ $(document).ready(function(){
     noticeMe(partsofIsland.eq(6), 4200);
     noticeMe(partsofIsland.eq(4), 4300);
     noticeMe(partsofIsland.eq(2), 4400);
-
+*/
     
     
    //eventy na najechanie mysza i zjechanie - nie sa potrzebne, biblioteka robi je domyslnie
@@ -166,33 +173,53 @@ $(document).ready(function(){
    areas.on('click', function(event){
        //event.preventDefault();
        var linkString = $(this).attr('href');
-       console.log(linkString);
        var title = $(this).attr('title');
-       console.log(title);
        var relatedPartOfIsland; 
+       
        partsofIsland.each(function(index, ele){
-           //console.log($(this).attr('id'));
          if ($(this).attr('id') === title) {
             relatedPartOfIsland = $(this);    
          }     
        });
        
-       //windowWidth = ($(window).innerWidth())*1.5;  
-       //windowHeight = ($(window).innerHeight())*1.5; 
-       //console.log(windowHeight);
-       //console.log(windowWidth);
-       console.log(relatedPartOfIsland);
+       var left = "";
+       var top = "";
+       
+       if (title === "newbiz"){
+           left = "700";
+           top = "-600";
+       }
+       else if (title === "eventy"){
+           left = "-1000";
+           top = "-500";
+       } 
+       else if (title === "kreacja"){
+           left = "-1800";
+           top = "100";
+       }
+       else if (title === "www"){
+           left = "-350";
+           top = "250";
+       }
+       else if (title === "sm"){
+           left = "170";
+           top = "100";
+       }
+           
+       $('#island').addClass('hidden');    
+
        relatedPartOfIsland
            .removeClass('hidden')
            .addClass('exposed');
        relatedPartOfIsland.find('img')
+           .attr('src', 'images/wyspa%20www.png')
            .css({
-               "position":"absolute"
+               "position":"fixed"
            })
-           .delay(100)
+           .delay(200)
            .animate({
-               left: "-550", // test dla www - 350
-               top: "120", //test dla www 250 //skad te roznice?
+               left: left,
+               top: top,
                height: '1647px',
                width: '2822px'
            },2000);
@@ -202,7 +229,7 @@ $(document).ready(function(){
         
          //ustawianie opoznionego przeladowania stronny
          function timeout() {
-            setTimeout(reloadPage, 2100);
+            setTimeout(reloadPage, 2300);
          }  
          
          
