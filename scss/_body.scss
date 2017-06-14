@@ -1,0 +1,133 @@
+
+@import 'variables';
+@import 'mixins';
+@import 'functions';
+@import 'maps';
+
+   /* General background */
+body {
+    background-color: $backgroundColor;
+    position: relative;
+    height: 100vh;
+    background-repeat: no-repeat;  
+    /* Preloading on main page */
+    &.loading,  {
+        background-image: $loadingImage;
+        background-position: center;
+    }
+    /* Backgrounds of subpages */
+    @each $subpage in eventy, sm, www, kreacja, newbiz{
+        &##{$subpage} {
+            background-image: $islandImage;
+            background-size: $backgroundSize;
+            background-position: map-get($islandBackgroundPosition, $subpage);
+        }
+    }
+    /* Opacity for side navigation menu */
+    #menuOpacity {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        transition: background-color .5s;
+        z-index: -3;
+    }
+    /* The side navigation menu */
+   .sidenav {
+        height: 100%; 
+        width: 0px; 
+        position: fixed; 
+        top: 0;
+        left: 0;
+        background-color: $menuColor; 
+        overflow-x: hidden; 
+        padding-top: 30px; 
+        transition: 0.5s; 
+        z-index: 1; 
+        a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 30px;
+            height: 50px;
+            color: $secondaryColor;
+            display: block;
+            transition: 0.3s
+        }
+        a:hover, a:focus{
+                color: $primaryColor;
+        }
+    /* Menu icon hamburger */
+    #hamburger {
+        z-index: 2; 
+        position: fixed;
+        height: 30px;
+        width: 30px;
+        margin-left: 45px;
+        display: inline-block;
+        cursor: pointer;
+        .bar1, .bar2, .bar3 {
+            width: 30px;
+            height: 5px;
+            background-color: $primaryColor;
+            margin: 6px 0;
+            transition: 0.4s;
+            }
+    /* Transforming icon hamburger to X */ 
+        @include barsToX();
+     } 
+   }
+    /* Logo */    
+    .container {
+      max-width: 300px;
+      margin: auto;
+        #logo {
+            height: auto;
+            width: 300px;
+            margin-top: 30px;
+        }        
+    }
+    /* X sign at subpages */  
+    #close {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 20px;
+        width: 20px;
+        margin-top: 35px;
+        margin-right: 45px;
+         .bar1, .bar2, .bar3 {
+            width: 30px;
+            height: 5px;
+            background-color: $primaryColor;
+            margin: 6px 0;
+            transition: 0.4s;
+            }
+        @include barsToX2();
+    }
+    /* The whole island */ 
+    main{
+        width: 100vw;
+        padding-left: 15vw;
+    }
+    /* Hidden separate parts of the island */ 
+    .grpelem {
+        opacity: 1;
+        display:inline;
+        float:left;
+        position:absolute;
+        overflow: hidden;
+        img {
+            height: auto;
+            width: 70vw;
+        } 
+        &#island_img {
+            z-index: 99;
+        }
+    }
+    /* Footer */ 
+    #copy {
+        color: $secondaryColor;
+        position: fixed;
+        bottom: 10px;
+        right: 10px;
+    }
+}

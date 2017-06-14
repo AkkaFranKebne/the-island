@@ -2,8 +2,7 @@ $(document).ready(function(){
     
     /*dylematy
     
-    zastanowic sie, czy potrzebne sa w ogole obrazki w kawalkach
-    
+   
     jak naprawde czekac na zaladowanie sie obrazkow - nie dluzej, nie krocej? sprawdz https://github.com/desandro/imagesloaded
     
     jak trzymac obrazki na czas sesji aby nie ladcowaly sie w czasie kolejnych przeladowan strony? ajax? local storage?
@@ -16,18 +15,20 @@ $(document).ready(function(){
     
     jak polepszyc wydajnosc strony
     
-    powtarzajace sie elementy strony - umiescic w pho?
+    
+    zastanowic sie, czy potrzebne sa w ogole obrazki w kawalkach
     
     */
     
     /* obczaic
+    przepisac funkcje na jquery
     animacja css przy toggle class - patrz przyklad hamburger
     */
     
     
-    //----------------------start-------
+    //----------------------start--------------------
     
-    // preloader-------------------------------------
+    // ---------preloader--gif-----------------------
     
     var main = $('main');
     main.addClass('hidden');
@@ -44,7 +45,7 @@ $(document).ready(function(){
 });
      */   
     
-    //hamburger mousever
+    // ----hamburger menu mouseover actions------------
      var hamburger = $('#hamburger');
     
     hamburger.on('mouseenter', function(event){
@@ -56,7 +57,7 @@ $(document).ready(function(){
     });
     
     
-     //hamburger onclick-------------------------------
+     // ----hamburger menu onclick actions------------
     
 
     hamburger.on('click', function(){
@@ -69,15 +70,15 @@ $(document).ready(function(){
         }
         else if ($(this).parent().css("width") === '250px') {
             $(this).parent().css("width", "0px");
-            $('#menuOpacity').css("background-color", "transparent").css("z-index", "initial");;
+            $('#menuOpacity').css("background-color", "transparent").css("z-index", "-3");;
         }
        
     });
     
     
-    //resizing map-image -  raz, po zaladowaniu strony - przepisac na jquery
+    // ----resizing map image - once during downloading the website------------
     
-
+    //rewrite to jquery maybe?
     var ImageMap = function (map) {
             var n,
                 areas = map.getElementsByTagName('area'),
@@ -107,7 +108,7 @@ $(document).ready(function(){
     imageMap.resize();
 
     
-    // podpiecie biblioteki maplight-----------------
+    //------map areas on hover: maplight library ---------------------------
     
     //jQuery('#island_img').maphilight();
 
@@ -129,7 +130,7 @@ $(document).ready(function(){
     });
     
     
-    //animacja poczatkowa areas z mapy
+    //--map areas animation on start ---------------------
         
     //$("area").eq(0).data('maphilight', { alwaysOn: true }).trigger('alwaysOn.maphilight');
 
@@ -147,13 +148,13 @@ $(document).ready(function(){
     noticeMyArea(areas.eq(2), 4400, 4800);
     noticeMyArea(areas.eq(3), 4500, 4900);
  
-    // animacja obrazkow w tle---------------------
+    //--hidden island parts  animation on start ---------------------
    
     var partsofIsland = $('.grpelem');
     //console.log(partsofIsland);
 
 
-    /*  //do uzycia, jesli zdecydujemy sie bawic opacity 
+    /*  
         function noticeMe(ele, delay){
         setTimeout(function(){ele.removeClass('hidden')}, delay);
         setTimeout(function(){ele.addClass('exposed')}, delay);
@@ -175,39 +176,21 @@ $(document).ready(function(){
 */
     
     
-   //eventy na najechanie mysza i zjechanie - nie sa potrzebne, biblioteka robi je domyslnie
-
-
-    /*
-    areas.on('mouseenter', function(event){
-       event.preventDefault();
-       console.log("mouseenter");
-        $(this).maphilight();
-    });
-    
-    
-        
-    areas.on('mouseleave', function(event){
-       event.preventDefault();
-       console.log("mouseleave");
-   });
-   
-     */
-    
- //click w obszar ----------------------------------
+ //--------map areas clicks actions------------------------
     
    areas.on('click', function(event){
-       //event.preventDefault();
+       //links to subpages
        var linkString = $(this).attr('href');
+       //titles of areas
        var title = $(this).attr('title');
+       //related parts of the island
        var relatedPartOfIsland; 
-       
        partsofIsland.each(function(index, ele){
          if ($(this).attr('id') === title) {
             relatedPartOfIsland = $(this);    
          }     
        });
-       
+       //position of the image for the further animation. the numbers are the position of the background image at the subpage
        var left = "";
        var top = "";
        
@@ -231,53 +214,45 @@ $(document).ready(function(){
            left = "170";
            top = "100";
        }
-           
+       
+       //hiding the whole island image 
        $('#island').addClass('hidden');    
-
+       
+       //showing the partial image 
        relatedPartOfIsland
            .removeClass('hidden')
            .addClass('exposed');
+       //and changing it to the whole island image - is it not stupid actually? 
        relatedPartOfIsland.find('img')
            .attr('src', 'images/wyspa%20www.png')
+       //giving it the position - see above if-else
            .css({
                "position":"fixed"
            })
            .delay(200)
+       //extending the image to the proportion of the background at the subpage
            .animate({
                left: left,
                top: top,
                height: '1647px',
                width: '2822px'
            },2000);
+       //setting the delayed rerirect  - see function below
         timeout();
         return false;
          
-        
-         //ustawianie opoznionego przeladowania stronny
-         function timeout() {
+
+         function timeout() { //setting the delayed reload
             setTimeout(reloadPage, 2300);
          }  
-         
-         
-         
-          function reloadPage() {
+           
+          function reloadPage() { //setting links
             location.href = linkString;
           }
 
-       // dodac dla wszystkich elementow w oparciu o background position  - jak?
-       //dodac overflow hidden
-       //jak przejsc z wycinanego obrazka do pelnego ? dolozyc go trzeba jeszcze na tej stronie
-       //czy ukrywac reszte wyspy?
-       //dodac przekierowanie na strone
    });
    
    
-  
-   
-   
-   
-  
-    
 
  //-------------------end----------------------------   
 });
