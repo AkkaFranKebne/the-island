@@ -70,10 +70,17 @@ $(document).ready(function(){
         }
         else if ($(this).parent().css("width") === '250px') {
             $(this).parent().css("width", "0px");
-            $('#menuOpacity').css("background-color", "transparent").css("z-index", "-3");;
+            $('#menuOpacity').css("background-color", "transparent").css("z-index", "-3");
         }
        
     });
+    
+    // ----opacity in menu onclick actions------------
+    
+    $('#menuOpacity').on('click', function(){
+        $(this).css("background-color", "transparent").css("z-index", "-3");
+        hamburger.toggleClass('change').parent().css("width", "0px");
+    })
     
     
     // ----resizing map image - once during downloading the website------------

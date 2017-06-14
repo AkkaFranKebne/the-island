@@ -103,12 +103,12 @@ body {
             }
         @include barsToX2();
     }
-    /* The whole island */ 
+    /* The  island */ 
     main{
         width: 100vw;
         padding-left: 15vw;
     }
-    /* Hidden separate parts of the island */ 
+    /* The whole island +  separate parts of the island */ 
     .grpelem {
         opacity: 1;
         display:inline;
@@ -119,6 +119,7 @@ body {
             height: auto;
             width: 70vw;
         } 
+        //the whole island
         &#island_img {
             z-index: 99;
         }
