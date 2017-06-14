@@ -8,6 +8,7 @@
 .exposed {
     visibility: visible;
     z-index: 999;
+
 }
 
 .hidden {
@@ -21,34 +22,34 @@ body {
     background-repeat:  no-repeat;
     
     
-    &.loading {
+    
+    &.loading,  {
         background-image: url('../images/loading_pigs.gif');
         background-position: center;
     }
-    &#eventy{
-        background-image: url(../images/eventyt.png);
+    &#eventy, &#sm, &#www, &#kreacja, &#newbiz {
+        background-image: url(../images/wyspa%20www.png);
+        
+    }
+    &#eventy {
         background-position: -1000px -500px;
         background-size: 2822px 1647px;
         
     }
     &#sm{
-        background-image: url(../images/wyspa%20www.png);
         background-position: 170px 100px;
         background-size: 2822px 1647px;
     }
     &#www{
-        background-image: url(../images/wyspa%20www.png);
         background-position: -350px 250px;
         background-size: 2822px 1647px;
 
     }
     &#kreacja{
-        background-image: url(../images/wyspa%20www.png);
         background-position: -1800px  100px;
         background-size: 2822px 1647px;
     }
     &#newbiz{
-        background-image: url(../images/wyspa%20www.png);
         background-position: 700px -600px;
         background-size: 2822px 1647px;
     }
@@ -58,14 +59,43 @@ body {
         width: 30px;
         margin-top: 30px;
         margin-left: 45px;
+        display: inline-block;
+        cursor: pointer;
+        .bar1, .bar2, .bar3 {
+            width: 30px;
+            height: 5px;
+            background-color: cadetblue;
+            margin: 6px 0;
+            transition: 0.4s;
+            }
+        /* Rotate first bar */
+        &.change .bar1 {
+            -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+            transform: rotate(-45deg) translate(-9px, 6px) ;
+        }
+
+        /* Fade out the second bar */
+        &.change .bar2 {
+            opacity: 0;
+        }
+
+        /* Rotate last bar */
+        &.change .bar3 {
+            -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+            transform: rotate(45deg) translate(-8px, -8px) ;
+        }
     }
-    #logo {
-        position: fixed;
-        height: auto;
-        width: 300px;
-        margin-top: 30px;
-        margin-left: 40vw;
+    
+    .container {
+      max-width: 300px;
+      margin: auto;
+        #logo {
+            height: auto;
+            width: 300px;
+            margin-top: 30px;
+        }        
     }
+
     #close {
         position: absolute;
         top: 0;
@@ -74,17 +104,36 @@ body {
         width: 20px;
         margin-top: 35px;
         margin-right: 45px;
+         .bar1, .bar2, .bar3 {
+            width: 30px;
+            height: 5px;
+            background-color: cadetblue;
+            margin: 6px 0;
+            transition: 0.4s;
+            }
+        .bar1 {
+            -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
+            transform: rotate(-45deg) translate(-9px, 6px) ;
+        }
+        .bar2 {
+            opacity: 0;
+        }
+        .bar3 {
+            -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
+            transform: rotate(45deg) translate(-8px, -8px) ;
+        }
     }
     main{
         width: 100vw;
         padding-left: 15vw;
-        padding-top: 25vh;
     }
     .grpelem {
         opacity: 0.8;
         display:inline;
         float:left;
         position:absolute;
+        overflow: hidden;
+        border: 1px solid yellow;
         img {
             height: auto;
             width: 70vw;
@@ -94,6 +143,7 @@ body {
         }
     }
 }
+
 
 
 
