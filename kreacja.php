@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html  lang="pl-PL">
  <head>
-<title>WWW</title>
+<title>KREACJA</title>
      <?php include 'elements_meta.php';?>
 </head>
  <body id = "kreacja">
