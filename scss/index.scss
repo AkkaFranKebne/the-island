@@ -53,11 +53,44 @@ body {
         background-position: 700px -600px;
         background-size: 2822px 1647px;
     }
+    /* The side navigation menu */
+    
+    #menuOpacity {
+        position: fixed;
+        height: 100vh;
+        width: 100vw;
+        transition: background-color .5s;
+    }
+   .sidenav {
+        height: 100%; 
+        width: 0px; 
+        position: fixed; 
+        z-index: 1; 
+        top: 0;
+        left: 0;
+        background-color: black; 
+        overflow-x: hidden; 
+        padding-top: 30px; 
+        transition: 0.5s; 
+
+        a {
+            padding: 8px 8px 8px 32px;
+            text-decoration: none;
+            font-size: 30px;
+            height: 50px;
+            color: white;
+            display: block;
+            transition: 0.3s
+        }
+        a:hover, a:focus{
+                color: cadetblue;
+        }
     #hamburger {
+        z-index: 2; 
         position: fixed;
         height: 30px;
         width: 30px;
-        margin-top: 30px;
+        //margin-top: 30px;
         margin-left: 45px;
         display: inline-block;
         cursor: pointer;
@@ -84,7 +117,12 @@ body {
             -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
             transform: rotate(45deg) translate(-8px, -8px) ;
         }
+
     }
+
+    
+    }
+
     
     .container {
       max-width: 300px;
@@ -142,6 +180,12 @@ body {
         }
     }
 }
+
+
+
+
+
+
 
 
 

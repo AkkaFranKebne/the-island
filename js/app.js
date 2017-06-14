@@ -43,11 +43,35 @@ $(document).ready(function(){
               main.removeClass('hidden');
 });
      */   
+    
+    //hamburger mousever
+     var hamburger = $('#hamburger');
+    
+    hamburger.on('mouseenter', function(event){
+        $(this).children().css('background-color', 'white');
+    });
+    
+    hamburger.on('mouseleave', function(event){
+        $(this).children().css('background-color', 'cadetblue');
+    });
+    
+    
      //hamburger onclick-------------------------------
     
-    var hamburger = $('#hamburger');
+
     hamburger.on('click', function(){
        $(this).toggleClass('change'); 
+        console.log($(this).parent().css("width"));
+        if ($(this).parent().css("width") === '0px') {
+            $(this).parent().css("width", "250px");
+            $('#menuOpacity').css("background-color", "rgba(0,0,0,0.4)").css("z-index", "1");
+            
+        }
+        else if ($(this).parent().css("width") === '250px') {
+            $(this).parent().css("width", "0px");
+            $('#menuOpacity').css("background-color", "transparent").css("z-index", "initial");;
+        }
+       
     });
     
     
