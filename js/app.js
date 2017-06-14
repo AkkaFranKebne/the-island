@@ -31,16 +31,18 @@ $(document).ready(function(){
     
     var main = $('main');
     main.addClass('hidden');
-    
-    
-    $(window).on("load", function() {
+ 
 		setTimeout(function() {
 			  $('body').removeClass('loading');
               main.removeClass('hidden');			  
 		}, 3300);
-	});
     
-        
+    /*
+    $('body').imagesLoaded( function() {
+            $('body').removeClass('loading');
+              main.removeClass('hidden');
+});
+     */   
      //hamburger onclick-------------------------------
     
     var hamburger = $('#hamburger');
