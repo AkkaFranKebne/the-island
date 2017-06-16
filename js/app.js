@@ -1,30 +1,33 @@
 $(document).ready(function(){
     
-    /*dylematy
     
-   
+     /* to do
+     -zastanowic sie, czy potrzebne sa w ogole obrazki w kawalkach - tak, inaczej nie dziala zmiana rozmiaru ...
+    -zrobic animacje odwrotna
+    -mryganie na poczatek - jak zrobic tylko raz w sesji? php?
+    -przepisac funkcje na jquery
+    -animacja css przy toggle class - patrz przyklad hamburger
+    - przekazywanie wymiarow get i post?
+    - krzyzyk na hover  white
+    */
+    
+    
+    /*dylematy
+    jak wycentrowac w poziomie wyspe?
     jak naprawde czekac na zaladowanie sie obrazkow - nie dluzej, nie krocej? sprawdz https://github.com/desandro/imagesloaded
     
     jak trzymac obrazki na czas sesji aby nie ladcowaly sie w czasie kolejnych przeladowan strony? ajax? local storage?
     
-    mryganie na poczatek - jak zrobic tylko raz w sesji? php?
+    
     
     co ze starszymi przegladarkami
     
     problem po przeniesieniu na serwer
     
     jak polepszyc wydajnosc strony
-    
-    
-    zastanowic sie, czy potrzebne sa w ogole obrazki w kawalkach
-    
     */
     
-    /* obczaic
-    przepisac funkcje na jquery
-    animacja css przy toggle class - patrz przyklad hamburger
-    */
-    
+   
     
     //----------------------start--------------------
     
@@ -82,6 +85,35 @@ $(document).ready(function(){
         hamburger.toggleClass('change').parent().css("width", "0px");
     })
     
+    
+        //----click in x on subpagess header action ------------------------------------------------
+   /*
+   $('#close').on('click', function(event){
+       $(this).parent().parent().parent()
+           .css({
+                "transition": "2s",
+                "transform-origin": "1000 1000",
+                "background-size": "70vw auto",
+                "background-position": "center" //do dokonczenia - jak uwspolnic z wyspa. jak wycentrowac wyspe optymalnie?
+           //do dokonczenia - zrobic animacje css transform
+           });
+       //setting the delayed rerirect  - see function below
+            timeout();
+        return false;
+         
+
+         function timeout() { //setting the delayed reload
+            //setTimeout(reloadPage, 2300);
+         }  
+           
+          function reloadPage() { //setting links
+            location.href = 'index.php';
+          }
+          
+
+   });
+    
+    */
     
     // ----resizing map image - once during downloading the website------------
     
@@ -227,10 +259,13 @@ $(document).ready(function(){
        
        //showing the partial image 
        relatedPartOfIsland
+       //$('#island')<---------------------------tak nie dziala
            .removeClass('hidden')
            .addClass('exposed');
-       //and changing it to the whole island image - is it not stupid actually? 
-       relatedPartOfIsland.find('img')
+       //and changing it to the whole island image 
+       relatedPartOfIsland
+       //$('#island')<---------------------------tak nie dziala: mapa pilnuje rozmiaru?
+           .find('img')
            .attr('src', 'images/wyspa%20www.png')
        //giving it the position - see above if-else
            .css({
@@ -245,7 +280,7 @@ $(document).ready(function(){
                width: '2822px'
            },2000);
        //setting the delayed rerirect  - see function below
-        timeout();
+            timeout();
         return false;
          
 
@@ -258,8 +293,8 @@ $(document).ready(function(){
           }
 
    });
-   
-   
+    
+
 
  //-------------------end----------------------------   
 });

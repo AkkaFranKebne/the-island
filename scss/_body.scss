@@ -52,6 +52,9 @@ body {
             display: block;
             transition: 0.3s
         }
+       a:first-of-type{
+           margin-top: 80px;
+       }
         a:hover, a:focus{
                 color: $primaryColor;
         }
@@ -112,7 +115,7 @@ body {
     .grpelem {
         opacity: 1;
         display:inline;
-        float:left;
+        padding-top: 18px;
         position:absolute;
         overflow: hidden;
         img {

@@ -4,10 +4,6 @@
               <div class="bar2"></div>
               <div class="bar3"></div>
         </div>
-              <br>
-              <br>
-              <br>
-              <br>
               <a href="index.php">MAIN</a>
               <a href="sm.php">SM</a>
               <a href="newbiz.php">NEWBIZ</a>
