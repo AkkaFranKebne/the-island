@@ -1,13 +1,22 @@
+<?php
+session_start();
+if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
+
+
+?>
+
 <!DOCTYPE html>
 <html  lang="pl-PL">
  <head>
 <title>MAIN</title>
      <?php include 'elements_meta.php';?>
 </head>
- <body class='loading'>
+ <body   <?php  if ($_SESSION["seen_intro"]==0) {echo "class='loading'";}  ?>>
+     
     <div id="menuOpacity"> </div> 
+     
     <?php include 'elements_nav_main.php';?>
-    <main>
+    <main <?php  if ($_SESSION["seen_intro"]==0) {echo "class='hidden'"; $_SESSION["seen_intro"]=1; }  ?>  >
         <?php include 'elements_map.php';?>
         <?php include 'elements_island_parts.php';?>
   </main>

@@ -2,29 +2,24 @@ $(document).ready(function(){
     
     
      /* to do
-     -zastanowic sie, czy potrzebne sa w ogole obrazki w kawalkach - tak, inaczej nie dziala zmiana rozmiaru ...
+     
+    - krzyzyk na hover  white
     -zrobic animacje odwrotna
     -mryganie na poczatek - jak zrobic tylko raz w sesji? php?
-    -przepisac funkcje na jquery
-    -animacja css przy toggle class - patrz przyklad hamburger
+    -przepisac funkcje przeliczajaca mape na jquery
     - przekazywanie wymiarow get i post?
-    - krzyzyk na hover  white
+    - sprawdzic dla starszych przegladarek
+    - media query dla mobilnych
     */
     
     
-    /*dylematy
-    jak wycentrowac w poziomie wyspe?
-    jak naprawde czekac na zaladowanie sie obrazkow - nie dluzej, nie krocej? sprawdz https://github.com/desandro/imagesloaded
+    /*dylematy na warsztaty:
+    >wydaje sie, ze nie sa potrzebne sa w ogole obrazki w kawalkach - ale inaczej nie dziala zmiana rozmiaru 
+    >jak wycentrowac w poziomie wyspe?
+    >jak trzymac obrazki na czas sesji aby nie ladcowaly sie w czasie kolejnych przeladowan strony? ajax? local storage?
+    > problem po przeniesieniu na serwer. jak polepszyc wydajnosc strony?
     
-    jak trzymac obrazki na czas sesji aby nie ladcowaly sie w czasie kolejnych przeladowan strony? ajax? local storage?
     
-    
-    
-    co ze starszymi przegladarkami
-    
-    problem po przeniesieniu na serwer
-    
-    jak polepszyc wydajnosc strony
     */
     
    
@@ -34,13 +29,22 @@ $(document).ready(function(){
     // ---------preloader--gif-----------------------
     
     var main = $('main');
-    main.addClass('hidden');
- 
-		setTimeout(function() {
-			  $('body').removeClass('loading');
-              main.removeClass('hidden');			  
-		}, 3300);
+    var body = $('body');
+    //main.addClass('hidden');//przeniesione do php, warunek sesji
     
+    if (body.hasClass('loading')){  //tylko przy sesji = 0
+       		setTimeout(function() {
+			  body.removeClass('loading');
+              main.removeClass('hidden');
+                noticeMyArea(areas.eq(3), 4000, 4400);
+                noticeMyArea(areas.eq(4), 4100, 4500);
+                noticeMyArea(areas.eq(0), 4200, 4600);
+                noticeMyArea(areas.eq(1), 4300, 4700);
+                noticeMyArea(areas.eq(2), 4400, 4800);
+                noticeMyArea(areas.eq(3), 4500, 4900);
+		}, 4000); 
+    }
+  
     /*
     $('body').imagesLoaded( function() {
             $('body').removeClass('loading');
@@ -87,7 +91,9 @@ $(document).ready(function(){
     
     
         //----click in x on subpagess header action ------------------------------------------------
+    
    /*
+   nie bawic sie tym w ten sposob tylk przeslac get, jak bedzie get to strona startowa ma wygladac jak koniec swojej animacji
    $('#close').on('click', function(event){
        $(this).parent().parent().parent()
            .css({
@@ -176,16 +182,10 @@ $(document).ready(function(){
        var areas = $('area');
     
         function noticeMyArea(ele, delay1, delay2){
-        setTimeout(function(){ele.data('maphilight', { alwaysOn: true }).trigger('alwaysOn.maphilight')}, delay1);
-        setTimeout(function(){ele.data('maphilight', { alwaysOn: false }).trigger('alwaysOn.maphilight')}, delay2);
+            setTimeout(function(){ele.data('maphilight', { alwaysOn: true }).trigger('alwaysOn.maphilight')}, delay1);
+            setTimeout(function(){ele.data('maphilight', { alwaysOn: false }).trigger('alwaysOn.maphilight')}, delay2);
     };
     
-    noticeMyArea(areas.eq(3), 4000, 4400);
-    noticeMyArea(areas.eq(4), 4100, 4500);
-    noticeMyArea(areas.eq(0), 4200, 4600);
-    noticeMyArea(areas.eq(1), 4300, 4700);
-    noticeMyArea(areas.eq(2), 4400, 4800);
-    noticeMyArea(areas.eq(3), 4500, 4900);
  
     //--hidden island parts  animation on start ---------------------
    

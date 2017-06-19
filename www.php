@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION['seen_intro'];
+if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
+?>
+
 <!DOCTYPE html>
 <html  lang="pl-PL">
  <head>
