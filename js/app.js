@@ -348,31 +348,40 @@ $(document).ready(function(){
        });
         
         //console.log(relatedPartOfIsland);
-       
+       console.log(source);
   
-       var left = "";
-       var top = "";
+       var left = 0;
+       var top = 0;
        
        if (source === "newbiz"){
-           left = "700px";
-           top = "-600px";
+           left = 700;
+           top = -600;
        }
        else if (source === "eventy"){
-           left = "-1000px";
-           top = "-500px";
+           left = -1000;
+           top = -500;
        } 
        else if (source === "kreacja"){
-           left = "-1800px";
-           top = "100px";
+           left = -1800;
+           top = 100;
        }
        else if (source === "www"){
-           left = "-350px";
-           top = "250px";
+           left = -350;
+           top = 250;
        }
        else if (source === "sm"){
-           left = "170px";
-           top = "100px";
+           left = 170;
+           top = 100;
        }
+        
+        pixOnVw = window.innerWidth/100;
+        console.log(pixOnVw);
+        
+        
+        newLeft =  15 * pixOnVw; //15 vw padding-left main
+        newTop =  18 + $('nav').height(); //18px padding top #island
+        
+        
     
        //hiding the whole island image 
        $('#island').addClass('hidden');    
@@ -389,7 +398,7 @@ $(document).ready(function(){
            .attr('src', 'images/wyspa%20www.png')
        //giving it the position - see above if-else extending the image to the proportion of the background at the subpage
            .css({
-               //"position":"fixed",
+               "position":"fixed",
                "left": left,
                 "top": top,
                "height": '1647px',
@@ -397,8 +406,8 @@ $(document).ready(function(){
            })
        // comming back to basic view
            .animate({
-               left: 0,
-               top: 0,
+               left: newLeft,
+               top: newTop,
                height: heightPx,
                width: widthPx
            },2000, function (){
@@ -408,7 +417,10 @@ $(document).ready(function(){
                $('#island').removeClass('hidden');
            });
 
-    }
+   
+
+        
+         }
 
  //-------------------end----------------------------   
 });
