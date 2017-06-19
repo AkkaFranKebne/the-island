@@ -110,6 +110,7 @@ body {
     main{
         width: 100vw;
         padding-left: 15vw;
+        position: relative;
     }
     /* The whole island +  separate parts of the island */ 
     .grpelem {
@@ -129,9 +130,10 @@ body {
     }
     /* Footer */ 
     #copy {
+        font-size: 10px;
         color: $secondaryColor;
         position: fixed;
         bottom: 10px;
-        right: 10px;
+        right: 12px;
     }
 }

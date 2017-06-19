@@ -122,7 +122,7 @@ $(document).ready(function(){
     */
     
     // ----resizing map image - once during downloading the website------------
-    
+ if ($('main').children().first().hasClass('grpelem')){
     //rewrite to jquery maybe?
     var ImageMap = function (map) {
             var n,
@@ -151,7 +151,7 @@ $(document).ready(function(){
         },
         imageMap = new ImageMap(document.getElementById('island'));
     imageMap.resize();
-
+}
     
     //------map areas on hover: maplight library ---------------------------
     
@@ -223,6 +223,11 @@ $(document).ready(function(){
        //titles of areas
        var title = $(this).attr('title');
        //related parts of the island
+       
+       
+       /* repetitive code!!! how to make a function??*/
+       
+       
        var relatedPartOfIsland; 
        partsofIsland.each(function(index, ele){
          if ($(this).attr('id') === title) {
@@ -230,6 +235,9 @@ $(document).ready(function(){
          }     
        });
        //position of the image for the further animation. the numbers are the position of the background image at the subpage
+       
+       
+       
        var left = "";
        var top = "";
        
@@ -253,6 +261,10 @@ $(document).ready(function(){
            left = "170";
            top = "100";
        }
+       
+       
+       //choosePartOfTheIsland(title);
+    
        
        //hiding the whole island image 
        $('#island').addClass('hidden');    
@@ -279,6 +291,8 @@ $(document).ready(function(){
                height: '1647px',
                width: '2822px'
            },2000);
+           
+       /* repetitive code!!!*/
        //setting the delayed rerirect  - see function below
             timeout();
         return false;
@@ -294,7 +308,108 @@ $(document).ready(function(){
 
    });
     
+    
+    
+//--------come back to index.php with specific area exposed------------------------
+    
+    //console.log(main.data());
+    //source:"/the-island/eventy.php"
 
+    
+    
+    if (main.attr('data-source')) {
+        
+        var imgHeight = 1098;
+        var imgWidth = 1881;
+        var width = Math.round(window.innerWidth *0.7);
+        var proportion = width/imgWidth;
+        //console.log(proportion);
+        var height = Math.round(imgHeight * proportion); 
+        widthPx = width +'px';
+        heightPx = height +'px';
+        //console.log(widthPx);
+        //console.log(heightPx);
+        
+        var propor
+        //console.log(width);
+         
+       var source = main.data('source');
+       source = source.split("/");
+       source = source[2].split(".");
+       source = source[0];
+       //console.log(source);
+        
+        
+       var relatedPartOfIsland; 
+       partsofIsland.each(function(index, ele){
+         if ($(this).attr('id') === source) {
+            relatedPartOfIsland = $(this);    
+         }     
+       });
+        
+        //console.log(relatedPartOfIsland);
+       
+  
+       var left = "";
+       var top = "";
+       
+       if (source === "newbiz"){
+           left = "700px";
+           top = "-600px";
+       }
+       else if (source === "eventy"){
+           left = "-1000px";
+           top = "-500px";
+       } 
+       else if (source === "kreacja"){
+           left = "-1800px";
+           top = "100px";
+       }
+       else if (source === "www"){
+           left = "-350px";
+           top = "250px";
+       }
+       else if (source === "sm"){
+           left = "170px";
+           top = "100px";
+       }
+    
+       //hiding the whole island image 
+       $('#island').addClass('hidden');    
+       
+       //showing the partial image 
+       relatedPartOfIsland
+       //$('#island')<---------------------------tak nie dziala
+           .removeClass('hidden')
+           .addClass('exposed');
+       //and changing it to the whole island image 
+       relatedPartOfIsland
+       //$('#island')<---------------------------tak nie dziala: mapa pilnuje rozmiaru?
+           .find('img')
+           .attr('src', 'images/wyspa%20www.png')
+       //giving it the position - see above if-else extending the image to the proportion of the background at the subpage
+           .css({
+               //"position":"fixed",
+               "left": left,
+                "top": top,
+               "height": '1647px',
+               "width": '2822px'          
+           })
+       // comming back to basic view
+           .animate({
+               left: 0,
+               top: 0,
+               height: heightPx,
+               width: widthPx
+           },2000, function (){
+               relatedPartOfIsland
+                          .removeClass('exposed')
+                            .addClass('hidden');
+               $('#island').removeClass('hidden');
+           });
+
+    }
 
  //-------------------end----------------------------   
 });
+
