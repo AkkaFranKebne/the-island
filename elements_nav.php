@@ -5,7 +5,7 @@
                  <img class="block" id="logo" src="images/lemonhills.png" alt="" />
             </a>
         </div>
-     <a href="index.php">
+     <a href="index.php?source=<?php echo $_SERVER['SCRIPT_NAME'] ?>">
             <div id="close">
                   <div class="bar1"></div>
                   <div class="bar2"></div>
