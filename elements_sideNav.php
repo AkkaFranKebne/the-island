@@ -1,9 +1,11 @@
-        <div  class="sidenav">
-        <div id="hamburger">
+    <div id="hamburger">
               <div class="bar1"></div>
               <div class="bar2"></div>
               <div class="bar3"></div>
-        </div>
+    </div>   
+
+    <div  class="sidenav">
+
               <a href="index.php">MAIN</a>
               <a href="sm.php">SM</a>
               <a href="newbiz.php">NEWBIZ</a>

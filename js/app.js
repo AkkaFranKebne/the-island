@@ -276,13 +276,13 @@ $(document).ready(function(){
     hamburger.on('click', function(){
        $(this).toggleClass('change'); 
         console.log($(this).parent().css("width"));
-        if ($(this).parent().css("width") === '0px') {
-            $(this).parent().css("width", "250px");
+        if ($(this).parent().find('.sidenav').css("width") === '0px') {
+            $(this).parent().find('.sidenav').css("width", "250px");
             menuOpacity.css("background-color", "rgba(0,0,0,0.4)").css("z-index", "1");
             
         }
-        else if ($(this).parent().css("width") === '250px') {
-            $(this).parent().css("width", "0px");
+        else if ($(this).parent().find('.sidenav').css("width") === '250px') {
+            $(this).parent().find('.sidenav').css("width", "0px");
             menuOpacity.css("background-color", "transparent").css("z-index", "-3");
         }
        
@@ -292,7 +292,7 @@ $(document).ready(function(){
     
     menuOpacity.on('click', function(){
         $(this).css("background-color", "transparent").css("z-index", "-3");
-        hamburger.toggleClass('change').parent().css("width", "0px");
+        hamburger.toggleClass('change').parent().find('.sidenav').css("width", "0px");
     })
     
     

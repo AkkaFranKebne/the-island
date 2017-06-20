@@ -67,12 +67,16 @@ body {
                 color: $primaryColor;
         }
     /* Menu icon hamburger */
+
+   }
+    
     #hamburger {
         z-index: 2; 
         position: fixed;
         height: 30px;
         width: 30px;
         margin-left: 45px;
+        margin-top: 45px;
         display: inline-block;
         cursor: pointer;
         @include mobile {
@@ -88,7 +92,6 @@ body {
     /* Transforming icon hamburger to X */ 
         @include barsToX();
      } 
-   }
     /* Logo */    
     .container {
       max-width: 300px;
@@ -99,7 +102,6 @@ body {
             margin-top: 30px;
             @include mobile {
                 width: 80vw;
-                z-index: 99;
            }
         } 
         
