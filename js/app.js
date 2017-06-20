@@ -1,16 +1,23 @@
-$(document).ready(function(){
-    
+$(document).ready(function(){ 
     
      /* to do
+     - gdzies w toku prac mapa utracila resize on resize - znalezc przyczyne - poczytac dokumentacje bilbioletki
+     -mapa przeliczana na kazdy resize - - poczytac dokumentacje bilbioletki
+     to pwp ten sam problem i jeszcze wplywa na pozycje w niektorych przegladarkach, poprawic!!
      
-    - krzyzyk na hover  white
-    -przepisac funkcje przeliczajaca mape na jquery
-    - w java script funkcje gdzie mozliwe i poukladac go rozsadnie
-    - media query dla mobilnych
-        - sprawdzic dla starszych przegladarek - jest taki element w gulp? minifikacja js i css tyz?
+ 
+     - hamburger niewidoczny na innych przegladarkach: trzeba go wyjac z menu?
+     - cos mryga  w animacji backto 
+    - sprawdzic dla starszych przegladarek - jest taki element w gulp? minifikacja js i css tyz?
         - przegrac na serwer i zobaczyc jak dziala
     */
     
+    /*
+    do zrobienia po dogadaniu z klientem
+    mobile  i dotykowe - na razie zamarkowane - jak ma wygladac?
+    wyglad i mechanika podstron
+    
+    */
     
     /*dylematy na warsztaty:
     >wydaje sie, ze nie sa potrzebne sa w ogole obrazki w kawalkach - ale inaczej nie dziala zmiana rozmiaru  - help
@@ -21,143 +28,32 @@ $(document).ready(function(){
     
     */
     
-   
     
-    //----------------------start--------------------
+    //----------------------VARIABLES-----------------------------------------------------------------------
     
-    // ---------preloader--gif-----------------------
-    
-    var main = $('main');
-    var body = $('body');
-    //main.addClass('hidden');//przeniesione do php, warunek sesji
-    
-    if (body.hasClass('loading')){  //tylko przy sesji = 0
-       		setTimeout(function() {
-			  body.removeClass('loading');
-              main.removeClass('hidden');
-                noticeMyArea(areas.eq(3), 0, 400);
-                noticeMyArea(areas.eq(4), 100, 500);
-                noticeMyArea(areas.eq(0), 200, 600);
-                noticeMyArea(areas.eq(1), 300, 700);
-                noticeMyArea(areas.eq(2), 400, 800);
-                noticeMyArea(areas.eq(3), 500, 900);
-		}, 4000); 
-    }
-  
-    /*
-    $('body').imagesLoaded( function() {
-            $('body').removeClass('loading');
-              main.removeClass('hidden');
-});
-     */   
-    
-    // ----hamburger menu mouseover actions------------
+    //basic//////////
+     var main = $('main');
+     var body = $('body');  
+     var mainPaddingLeftVw = 15;
+     
+    //navigation//////////
+     var nav = $('nav');
      var hamburger = $('#hamburger');
+     var menuOpacity = $('#menuOpacity');
+     var close = $('#close');
     
-    hamburger.on('mouseenter', function(event){
-        $(this).children().css('background-color', 'white');
-    });
-    
-    hamburger.on('mouseleave', function(event){
-        $(this).children().css('background-color', 'cadetblue');
-    });
-    
-    
-     // ----hamburger menu onclick actions------------
-    
-
-    hamburger.on('click', function(){
-       $(this).toggleClass('change'); 
-        console.log($(this).parent().css("width"));
-        if ($(this).parent().css("width") === '0px') {
-            $(this).parent().css("width", "250px");
-            $('#menuOpacity').css("background-color", "rgba(0,0,0,0.4)").css("z-index", "1");
-            
-        }
-        else if ($(this).parent().css("width") === '250px') {
-            $(this).parent().css("width", "0px");
-            $('#menuOpacity').css("background-color", "transparent").css("z-index", "-3");
-        }
-       
-    });
-    
-    // ----opacity in menu onclick actions------------
-    
-    $('#menuOpacity').on('click', function(){
-        $(this).css("background-color", "transparent").css("z-index", "-3");
-        hamburger.toggleClass('change').parent().css("width", "0px");
-    })
-    
-    
-        //----click in x on subpagess header action ------------------------------------------------
-    
-   /*
-   nie bawic sie tym w ten sposob tylk przeslac get, jak bedzie get to strona startowa ma wygladac jak koniec swojej animacji
-   $('#close').on('click', function(event){
-       $(this).parent().parent().parent()
-           .css({
-                "transition": "2s",
-                "transform-origin": "1000 1000",
-                "background-size": "70vw auto",
-                "background-position": "center" //do dokonczenia - jak uwspolnic z wyspa. jak wycentrowac wyspe optymalnie?
-           //do dokonczenia - zrobic animacje css transform
-           });
-       //setting the delayed rerirect  - see function below
-            timeout();
-        return false;
-         
-
-         function timeout() { //setting the delayed reload
-            //setTimeout(reloadPage, 2300);
-         }  
-           
-          function reloadPage() { //setting links
-            location.href = 'index.php';
-          }
-          
-
-   });
-    
-    */
-    
-    // ----resizing map image - once during downloading the website------------
- if ($('main').children().first().hasClass('grpelem')){
-    //rewrite to jquery maybe?
-    var ImageMap = function (map) {
-            var n,
-                areas = map.getElementsByTagName('area'),
-                len = areas.length,
-                coords = [],
-                previousWidth = 2690;  
-            //console.log(areas);
-            for (n = 0; n < len; n++) {
-                coords[n] = areas[n].coords.split(',');
-            }
-            this.resize = function () {
-                var n, m, clen,
-                    x = document.body.clientWidth / previousWidth;
-                for (n = 0; n < len; n++) {
-                    clen = coords[n].length;
-                    for (m = 0; m < clen; m++) {
-                        coords[n][m] *= x;
-                    }
-                    areas[n].coords = coords[n].join(',');
-                }
-                previousWidth = document.body.clientWidth;
-                return true;
-            };
-            window.onresize = this.resize;
-        },
-        imageMap = new ImageMap(document.getElementById('island'));
-    imageMap.resize();
-}
-    
-    //------map areas on hover: maplight library ---------------------------
-    
-    //jQuery('#island_img').maphilight();
+    //island//////////
+    var partsofIsland = $('.grpelem');
+    var grpelemPaddingTopPx = 18;
+    var island = $('#island');
+    var island_img = island.find('#island_img');
+    var imageScale = 0.7;
+    var areas = $('area');
 
     
-    $('#island_img').maphilight({ 
+    //maplight library setup //////////
+    
+    island_img.maphilight({ 
         stroke: false, 
         strokeColor: 'ffffff',
         strokeWidth: 0,
@@ -173,127 +69,293 @@ $(document).ready(function(){
         alwaysOn: false
     });
     
+    //-------------FUNCTIONS--------------------------------------------------------------------------------------------------
     
-    //--map areas animation on start ---------------------
+    //choosing the proper position for every island part//////////
+    var left = 0;
+    var top = 0;
+    function islandPartDisplayParameters(ele){    
+       if (ele === "newbiz"){
+           left = 700;
+           top = -600;
+       }
+       else if (ele === "eventy"){
+           left = -1000;
+           top = -500;
+       } 
+       else if (ele === "kreacja"){
+           left = -1800;
+           top = 100;
+       }
+       else if (ele === "www"){
+           left = -350;
+           top = 250;
+       }
+       else if (ele === "sm"){
+           left = 170;
+           top = 100;
+       }
+    }
+    
+    // finding related part of the island//////////
+      var relatedPartOfIsland; 
+      function findRelatedPartOfTheIsland(identifier){  
+           partsofIsland.each(function(index, ele){
+             if ($(this).attr('id') === identifier) {
+                relatedPartOfIsland = $(this);    
+             }     
+       });               
+    }
+    
+    // recalculating map coordinates //////////
+    
+        function imageMapCalculate(map) {
+        var coordsAll = [];
+        for (var i = 0; i < areas.length; i ++) {
+                //console.log(areas[i].coords);  //in jquery you cannot see "coords" property
+                var thisMapCoords = areas[i].coords.split(','); 
+                coordsAll.push(thisMapCoords);
+            };
+            
+        var previousWidth = 2690; //fixed value
+        var x = $('body').width() / previousWidth;
+        for (var i = 0; i < coordsAll.length; i++){
+               for (var j = 0; j < coordsAll[i].length; j++) {
+                   coordsAll[i][j] *= x;    
+               }
+                areas[i].coords = coordsAll[i].join(',');
+            } 
+        previousWidth = $('body').clientWidth; //for doing it on every resize?
+        return true;  //necesarry?
+        }
+    
+    
+    
+    //showing  preloader on start//////////
+    
+        function showPreloader(){
+        		setTimeout(function() {
+			  body.removeClass('loading');
+              main.removeClass('hidden');
+                noticeMyArea(areas.eq(3), 0, 400);
+                noticeMyArea(areas.eq(4), 100, 500);
+                noticeMyArea(areas.eq(0), 200, 600);
+                noticeMyArea(areas.eq(1), 300, 700);
+                noticeMyArea(areas.eq(2), 400, 800);
+                noticeMyArea(areas.eq(3), 500, 900);
+		}, 4000);        
+    }
+    
+    //map areas animation on start //////////
         
-    //$("area").eq(0).data('maphilight', { alwaysOn: true }).trigger('alwaysOn.maphilight');
-
-       var areas = $('area');
     
-        function noticeMyArea(ele, delay1, delay2){
+     function noticeMyArea(ele, delay1, delay2){
             setTimeout(function(){ele.data('maphilight', { alwaysOn: true }).trigger('alwaysOn.maphilight')}, delay1);
             setTimeout(function(){ele.data('maphilight', { alwaysOn: false }).trigger('alwaysOn.maphilight')}, delay2);
-    };
+    }; 
     
- 
-    //--hidden island parts  animation on start ---------------------
-   
-    var partsofIsland = $('.grpelem');
-    //console.log(partsofIsland);
+    // map areas animation after coming back from subpage//////////
+    
+    function backToStartAnimation(){           
+       // data-source of related part of the island
+       var source = main.data('source');
+       source = source.split("/");
+       source = source[2].split(".");
+       source = source[0];
 
+        // finding related part of the island
+        findRelatedPartOfTheIsland(source);
+        
+        
+        // START position of the image
+        islandPartDisplayParameters(source);
+        
+        //END position of the image 
+        var pixOnVw = window.innerWidth/100;
+        newLeft =  mainPaddingLeftVw * pixOnVw; 
+        newTop =  grpelemPaddingTopPx + nav.height(); 
+        
+        
+        //END size of the img
+        var imgWidth = document.getElementById("island_img").naturalWidth; //1098;  - jak wyjme element jquery nie ma tej property
+        var imgHeight = document.getElementById("island_img").naturalHeight; // 1881;
+        
+        var width = Math.round(window.innerWidth *imageScale); 
+        var proportion = width/imgWidth;
+        var height = Math.round(imgHeight * proportion); 
+        widthPx = width +'px';
+        heightPx = height +'px';
+        
+        
+        //START animation--------------
 
-    /*  
-        function noticeMe(ele, delay){
-        setTimeout(function(){ele.removeClass('hidden')}, delay);
-        setTimeout(function(){ele.addClass('exposed')}, delay);
-        ele.delay(delay).animate({
-                //opacity: 1
-        },300).animate({
-                //opacity: 0.8
-        },200, function(){
-            ele.removeClass('exposed');
-            ele.addClass('hidden');
-        });
-    };
-    
-    noticeMe(partsofIsland.eq(3), 4000);
-    noticeMe(partsofIsland.eq(5), 4100);
-    noticeMe(partsofIsland.eq(6), 4200);
-    noticeMe(partsofIsland.eq(4), 4300);
-    noticeMe(partsofIsland.eq(2), 4400);
-*/
-    
-    
- //--------map areas clicks actions------------------------
-    
-   areas.on('click', function(event){
-       //links to subpages
-       var linkString = $(this).attr('href');
-       //titles of areas
-       var title = $(this).attr('title');
-       //related parts of the island
-       
-       
-       /* repetitive code!!! how to make a function??*/
-       
-       
-       var relatedPartOfIsland; 
-       partsofIsland.each(function(index, ele){
-         if ($(this).attr('id') === title) {
-            relatedPartOfIsland = $(this);    
-         }     
-       });
-       //position of the image for the further animation. the numbers are the position of the background image at the subpage
-       
-       
-       
-       var left = "";
-       var top = "";
-       
-       if (title === "newbiz"){
-           left = "700";
-           top = "-600";
-       }
-       else if (title === "eventy"){
-           left = "-1000";
-           top = "-500";
-       } 
-       else if (title === "kreacja"){
-           left = "-1800";
-           top = "100";
-       }
-       else if (title === "www"){
-           left = "-350";
-           top = "250";
-       }
-       else if (title === "sm"){
-           left = "170";
-           top = "100";
-       }
-       
-       
-       //choosePartOfTheIsland(title);
-    
-       
        //hiding the whole island image 
-       $('#island').addClass('hidden');    
-       
+       island.addClass('hidden');    
        //showing the partial image 
        relatedPartOfIsland
-       //$('#island')<---------------------------tak nie dziala
            .removeClass('hidden')
            .addClass('exposed');
        //and changing it to the whole island image 
        relatedPartOfIsland
-       //$('#island')<---------------------------tak nie dziala: mapa pilnuje rozmiaru?
+           .find('img')
+           .attr('src', 'images/wyspa%20www.png') 
+       //giving START position of an image
+           .css({
+               "position":"fixed",
+               "left": left,
+                "top": top,
+               "height": '1647px',
+               "width": '2822px'          
+           })
+       
+       //END animation---------------
+       //giving END position and END size of an image
+           .animate({
+               left: newLeft,
+               top: newTop,
+               height: heightPx,
+               width: widthPx
+           },2000, function (){
+               relatedPartOfIsland
+                          .removeClass('exposed')
+                            .addClass('hidden');
+               $('#island').removeClass('hidden');
+           });    
+    }
+    
+    
+       
+    //----------------------WWW FLOW--------------------------------------------------------------------------------- 
+    
+    // ---------preloader--gif//////////
+    
+
+    //main.addClass('hidden');//moved to  php session
+    
+    if (body.hasClass('loading')){  //only php session = 0
+            showPreloader()
+    }
+    
+    // ----resizing map image - once during visit//////////
+    
+   if (main.children().first().hasClass('grpelem')){
+            imageMapCalculate(island);     
+    }
+    
+    
+    //--------come back to index.php with specific area exposed//////////
+    
+    
+    if (main.attr('data-source') &&  !body.hasClass('loading')) {
+        backToStartAnimation()
+     }
+    
+    //----------------------EVENTS---------------------------------------------------------------------------------
+    
+    // resizing island and map on window resize//////////
+    
+    $(window).on('resize', function(){
+        //island.css({"width": "70vw"}); nope
+        //imageMapCalculate(island); nope
+    });
+    
+      
+    // ----hamburger menu mouseover//////////
+       
+    hamburger.on('mouseenter', function(event){
+        $(this).children().css('background-color', 'white');
+    });
+    
+    hamburger.on('mouseleave', function(event){
+        $(this).children().css('background-color', 'cadetblue');
+    });
+    
+    
+     // ----hamburger menu onclick//////////
+    
+    hamburger.on('click', function(){
+       $(this).toggleClass('change'); 
+        console.log($(this).parent().css("width"));
+        if ($(this).parent().css("width") === '0px') {
+            $(this).parent().css("width", "250px");
+            menuOpacity.css("background-color", "rgba(0,0,0,0.4)").css("z-index", "1");
+            
+        }
+        else if ($(this).parent().css("width") === '250px') {
+            $(this).parent().css("width", "0px");
+            menuOpacity.css("background-color", "transparent").css("z-index", "-3");
+        }
+       
+    });
+    
+    // ----opacity in menu onclick//////////
+    
+    menuOpacity.on('click', function(){
+        $(this).css("background-color", "transparent").css("z-index", "-3");
+        hamburger.toggleClass('change').parent().css("width", "0px");
+    })
+    
+    
+    //----x close on subpagess mouseover//////////
+     
+    
+    close.on('mouseenter', function(event){
+        $(this).children().css('background-color', 'white');
+    });
+    
+    close.on('mouseleave', function(event){
+        $(this).children().css('background-color', 'cadetblue');
+    });
+    
+     
+    
+ //---map areas clicks actions on main page: exposing specific area//////////
+    
+   areas.on('click', function(event){
+       
+        //titles of related part of the island
+       var title = $(this).attr('title');
+        // finding related part of the island      
+       findRelatedPartOfTheIsland(title);
+       
+       
+       //END  links to subpages
+       var linkString = $(this).attr('href');   
+       // END position of the image 
+       islandPartDisplayParameters(title); 
+       
+
+       
+       //START animation--------------
+  
+       //hiding the whole island image 
+       island.addClass('hidden');       
+       //showing the partial image 
+       relatedPartOfIsland
+           .removeClass('hidden')
+           .addClass('exposed');
+       //and changing it to the whole island image 
+       relatedPartOfIsland
            .find('img')
            .attr('src', 'images/wyspa%20www.png')
-       //giving it the position - see above if-else
+    
+       //END animation--------------
+       //setting the proper position
+       //relatedPartOfIsland
            .css({
                "position":"fixed"
            })
            .delay(200)
        //extending the image to the proportion of the background at the subpage
            .animate({
-               left: left,
-               top: top,
+               left: left.toString(),
+               top: top.toString(),
                height: '1647px',
                width: '2822px'
            },2000);
-           
-       /* repetitive code!!!*/
-       //setting the delayed rerirect  - see function below
+       //redirect
             timeout();
+       //prevent default reload
         return false;
          
 
@@ -307,119 +369,7 @@ $(document).ready(function(){
 
    });
     
-    
-    
-//--------come back to index.php with specific area exposed------------------------
-    
-    //console.log(main.data());
-    //source:"/the-island/eventy.php"
-
-    
-    
-    if (main.attr('data-source') &&  !body.hasClass('loading')) {
-        
-        var imgHeight = 1098;
-        var imgWidth = 1881;
-        var width = Math.round(window.innerWidth *0.7);
-        var proportion = width/imgWidth;
-        //console.log(proportion);
-        var height = Math.round(imgHeight * proportion); 
-        widthPx = width +'px';
-        heightPx = height +'px';
-        //console.log(widthPx);
-        //console.log(heightPx);
-        
-        var propor
-        //console.log(width);
-         
-       var source = main.data('source');
-       source = source.split("/");
-       source = source[2].split(".");
-       source = source[0];
-       //console.log(source);
-        
-        
-       var relatedPartOfIsland; 
-       partsofIsland.each(function(index, ele){
-         if ($(this).attr('id') === source) {
-            relatedPartOfIsland = $(this);    
-         }     
-       });
-        
-        //console.log(relatedPartOfIsland);
-       console.log(source);
   
-       var left = 0;
-       var top = 0;
-       
-       if (source === "newbiz"){
-           left = 700;
-           top = -600;
-       }
-       else if (source === "eventy"){
-           left = -1000;
-           top = -500;
-       } 
-       else if (source === "kreacja"){
-           left = -1800;
-           top = 100;
-       }
-       else if (source === "www"){
-           left = -350;
-           top = 250;
-       }
-       else if (source === "sm"){
-           left = 170;
-           top = 100;
-       }
-        
-        pixOnVw = window.innerWidth/100;
-        console.log(pixOnVw);
-        
-        
-        newLeft =  15 * pixOnVw; //15 vw padding-left main
-        newTop =  18 + $('nav').height(); //18px padding top #island
-        
-        
-    
-       //hiding the whole island image 
-       $('#island').addClass('hidden');    
-       
-       //showing the partial image 
-       relatedPartOfIsland
-       //$('#island')<---------------------------tak nie dziala
-           .removeClass('hidden')
-           .addClass('exposed');
-       //and changing it to the whole island image 
-       relatedPartOfIsland
-       //$('#island')<---------------------------tak nie dziala: mapa pilnuje rozmiaru?
-           .find('img')
-           .attr('src', 'images/wyspa%20www.png')
-       //giving it the position - see above if-else extending the image to the proportion of the background at the subpage
-           .css({
-               "position":"fixed",
-               "left": left,
-                "top": top,
-               "height": '1647px',
-               "width": '2822px'          
-           })
-       // comming back to basic view
-           .animate({
-               left: newLeft,
-               top: newTop,
-               height: heightPx,
-               width: widthPx
-           },2000, function (){
-               relatedPartOfIsland
-                          .removeClass('exposed')
-                            .addClass('hidden');
-               $('#island').removeClass('hidden');
-           });
-
-   
-
-        
-         }
 
  //-------------------end----------------------------   
 });

@@ -34,7 +34,7 @@ body {
     /* The side navigation menu */
    .sidenav {
         height: 100%; 
-        width: 0px; 
+        width: 0px;
         position: fixed; 
         top: 0;
         left: 0;
@@ -43,6 +43,11 @@ body {
         padding-top: 30px; 
         transition: 0.5s; 
         z-index: 1; 
+        @include mobile {
+            padding-top: 50px; 
+            width: 100%;
+            background-color: transparent;
+        }
         a {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
@@ -50,7 +55,10 @@ body {
             height: 50px;
             color: $secondaryColor;
             display: block;
-            transition: 0.3s
+            transition: 0.3s;
+            @include mobile {
+                text-align: center;
+        }
         }
        a:first-of-type{
            margin-top: 80px;
@@ -67,6 +75,9 @@ body {
         margin-left: 45px;
         display: inline-block;
         cursor: pointer;
+        @include mobile {
+            display: none;
+        }
         .bar1, .bar2, .bar3 {
             width: 30px;
             height: 5px;
@@ -86,7 +97,12 @@ body {
             height: auto;
             width: 300px;
             margin-top: 30px;
-        }        
+            @include mobile {
+                width: 80vw;
+                z-index: 99;
+           }
+        } 
+        
     }
     /* X sign at subpages */  
     #close {
@@ -97,6 +113,9 @@ body {
         width: 20px;
         margin-top: 35px;
         margin-right: 45px;
+        @include mobile {
+            display: none;
+        }
          .bar1, .bar2, .bar3 {
             width: 30px;
             height: 5px;
@@ -109,19 +128,25 @@ body {
     /* The  island */ 
     main{
         width: 100vw;
-        padding-left: 15vw;
+        padding-left: $mainPaddingLeftVw;
         position: relative;
+        @include mobile {
+            display: none;
+        }
     }
     /* The whole island +  separate parts of the island */ 
     .grpelem {
         opacity: 1;
         display:inline;
-        padding-top: 18px;
+        padding-top: $grpelemPaddingTopPx;
         position:absolute;
-        overflow: hidden;
+        height: auto;
+        width: $imageScale;
+        //border: 1px solid red;
         img {
             height: auto;
-            width: 70vw;
+            width: $imageScale;
+            //border: 1px solid yellow;
         } 
         //the whole island
         &#island_img {
