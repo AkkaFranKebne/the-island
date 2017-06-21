@@ -1,28 +1,29 @@
 $(document).ready(function(){ 
+    //$(window).on('load', function() // works even worse
     
-     /* to do
+     /* to do:
 
-     - pozycja  w niektorych przegladarkach, poprawic!!
-    
         - przegrac na serwer i zobaczyc jak dziala
-        - potestowac na windows
+        - potestowac na windows 
+        - wyslac opis klientowi
+        - wyslac pytanie do Michala (preload obrazkow)
+
     */
     
-    /* do zrobienia po dogadaniu z klientem
+    /* do zrobienia po dogadaniu z klientem:
     - mobile  i dotykowe - na razie zamarkowane - jak ma wygladac?
     - stare przegladarki i nie majace js - jak ma wygladac?
-    - //na pozniej: wyglad i mechanika podstron
+    - na pozniej: wyglad i mechanika podstron
 
     
     */
     
     /*dylematy na warsztaty:
-    >wydaje sie, ze nie sa potrzebne sa w ogole obrazki w kawalkach - ale inaczej nie dziala zmiana rozmiaru  - help
-    >jak wycentrowac w poziomie wyspe?
-    >jak trzymac obrazki na czas sesji aby nie ladcowaly sie w czasie kolejnych przeladowan strony? ajax? local storage?
-    > problem po przeniesieniu na serwer. jak polepszyc wydajnosc strony?
-    > sprawdzanie dla starszych przegladarek - jest taki element w gulp? minifikacja js i css tyz?
-    > co zrobic z przegladarkami, ktore nie dzialaja i osobami, ktore nie maja js? jak rozpoznawac przegladarke? user-agent php? a moze rozpoznawac lepiej, ze jest blad? 
+
+    - problem po przeniesieniu na serwer. jak polepszyc wydajnosc strony? jak trzymac obrazki na czas sesji aby nie ladowaly sie w czasie kolejnych przeladowan strony? ajax? local storage? 
+    - sprawdzanie dla starszych przegladarek - jest taki element w gulp? minifikacja js i css tyz?
+    - co zrobic z przegladarkami, ktore nie dzialaja i/lub, ktore nie maja js? jak rozpoznawac przegladarke? user-agent php? a moze rozpoznawac lepiej, ze jest blad? 
+    - na wszelki wypadek: jak optymalnie wycentrowac w poziomie div?
     
     
     */
@@ -167,6 +168,7 @@ $(document).ready(function(){
        var source = main.data('source');
        source = source.split("/");
        source = source[2].split(".");
+       //source = source[1].split("."); na prod
        source = source[0];
 
         // finding related part of the island
@@ -246,6 +248,8 @@ $(document).ready(function(){
     }
     
 //----------------------WWW FLOW--------------------------------------------------------------------------------- 
+   
+
     
     // ---------preloader--gif//////////
     
@@ -405,5 +409,6 @@ $(document).ready(function(){
 
 
  //-------------------end----------------------------   
+ //});
 });
 
