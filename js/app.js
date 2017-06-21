@@ -1,21 +1,18 @@
 $(document).ready(function(){ 
     
      /* to do
-     - gdzies w toku prac mapa utracila resize on resize - znalezc przyczyne - poczytac dokumentacje bilbioletki
-     -mapa przeliczana na kazdy resize - - poczytac dokumentacje bilbioletki
-     to pwp ten sam problem i jeszcze wplywa na pozycje w niektorych przegladarkach, poprawic!!
-     
- 
-     - hamburger niewidoczny na innych przegladarkach: trzeba go wyjac z menu?
-     - cos mryga  w animacji backto 
-    - sprawdzic dla starszych przegladarek - jest taki element w gulp? minifikacja js i css tyz?
+
+     - pozycja  w niektorych przegladarkach, poprawic!!
+    
         - przegrac na serwer i zobaczyc jak dziala
+        - potestowac na windows
     */
     
-    /*
-    do zrobienia po dogadaniu z klientem
-    mobile  i dotykowe - na razie zamarkowane - jak ma wygladac?
-    wyglad i mechanika podstron
+    /* do zrobienia po dogadaniu z klientem
+    - mobile  i dotykowe - na razie zamarkowane - jak ma wygladac?
+    - stare przegladarki i nie majace js - jak ma wygladac?
+    - //na pozniej: wyglad i mechanika podstron
+
     
     */
     
@@ -24,12 +21,16 @@ $(document).ready(function(){
     >jak wycentrowac w poziomie wyspe?
     >jak trzymac obrazki na czas sesji aby nie ladcowaly sie w czasie kolejnych przeladowan strony? ajax? local storage?
     > problem po przeniesieniu na serwer. jak polepszyc wydajnosc strony?
+    > sprawdzanie dla starszych przegladarek - jest taki element w gulp? minifikacja js i css tyz?
+    > co zrobic z przegladarkami, ktore nie dzialaja i osobami, ktore nie maja js? jak rozpoznawac przegladarke? user-agent php? a moze rozpoznawac lepiej, ze jest blad? 
     
     
     */
     
+
     
-    //----------------------VARIABLES-----------------------------------------------------------------------
+    
+//----------------------VARIABLES-----------------------------------------------------------------------
     
     //basic//////////
      var main = $('main');
@@ -44,6 +45,7 @@ $(document).ready(function(){
     
     //island//////////
     var partsofIsland = $('.grpelem');
+    var partsofIsland_imgs = $('main').find('img');
     var grpelemPaddingTopPx = 18;
     var island = $('#island');
     var island_img = island.find('#island_img');
@@ -69,7 +71,9 @@ $(document).ready(function(){
         alwaysOn: false
     });
     
-    //-------------FUNCTIONS--------------------------------------------------------------------------------------------------
+
+    
+//-------------FUNCTIONS--------------------------------------------------------------------------------------------------
     
     //choosing the proper position for every island part//////////
     var left = 0;
@@ -156,6 +160,8 @@ $(document).ready(function(){
     
     // map areas animation after coming back from subpage//////////
     
+    // OBS!: there is a need to use extra layer(s), as image with map is not resizeable. For now I used on extra img for each island part - if the client want some extra animation with it. If not, it can be changed for 1 extra image with the whole map (and findrelatedpartoftheisland() function can be removed then)
+    
     function backToStartAnimation(){           
        // data-source of related part of the island
        var source = main.data('source');
@@ -177,7 +183,7 @@ $(document).ready(function(){
         
         
         //END size of the img
-        var imgWidth = document.getElementById("island_img").naturalWidth; //1098;  - jak wyjme element jquery nie ma tej property
+        var imgWidth = document.getElementById("island_img").naturalWidth; //1098;  - need to do it with vanilla js to get this property
         var imgHeight = document.getElementById("island_img").naturalHeight; // 1881;
         
         var width = Math.round(window.innerWidth *imageScale); 
@@ -189,7 +195,7 @@ $(document).ready(function(){
         
         //START animation--------------
 
-       //hiding the whole island image 
+       //hiding the whole island image , just in case it is not hidden after the previous action 
        island.addClass('hidden');    
        //showing the partial image 
        relatedPartOfIsland
@@ -223,9 +229,23 @@ $(document).ready(function(){
            });    
     }
     
-    
+    // fixed size of images for the pageview //////////
+    //(not resizable during window resize - that is how maphihlight work for mapped image, and they need to be the same size as mapped imape, to make the animation run smoothly)
        
-    //----------------------WWW FLOW--------------------------------------------------------------------------------- 
+    function fixedImgSize(){
+        var fixedWidth = Math.round(island.width()) + "px";
+        var fixedHeight = Math.round(island.height()) + "px"; 
+        var fixedWidthImg = Math.round(island_img.width()) + "px";
+        var fixedHeightImg = Math.round(island_img.height()) + "px";
+
+        //partsofIsland.each(function(index, ele){
+            partsofIsland.css({"width": fixedWidth});  
+            partsofIsland.css({"height": fixedHeight});             partsofIsland_imgs.css({"width": fixedWidthImg});  
+            partsofIsland_imgs.css({"height": fixedHeightImg});  
+        //});
+    }
+    
+//----------------------WWW FLOW--------------------------------------------------------------------------------- 
     
     // ---------preloader--gif//////////
     
@@ -236,11 +256,22 @@ $(document).ready(function(){
             showPreloader()
     }
     
-    // ----resizing map image - once during visit//////////
+    // ----resizing map image - once during pageview//////////
     
    if (main.children().first().hasClass('grpelem')){
             imageMapCalculate(island);     
     }
+    
+    // ---- fixing the sizes of images of the island - once during pageview ////////
+    
+    fixedImgSize();
+    
+     //--------entering index.php without specific area exposed//////////
+     //OBS! island needs to be hidden by default not to disturb the  backToStartAnimation();
+    
+    if (!main.attr('data-source')) {
+        island.removeClass('hidden'); 
+     }
     
     
     //--------come back to index.php with specific area exposed//////////
@@ -250,14 +281,8 @@ $(document).ready(function(){
         backToStartAnimation()
      }
     
-    //----------------------EVENTS---------------------------------------------------------------------------------
     
-    // resizing island and map on window resize//////////
-    
-    $(window).on('resize', function(){
-        //island.css({"width": "70vw"}); nope
-        //imageMapCalculate(island); nope
-    });
+//----------------------EVENTS---------------------------------------------------------------------------------
     
       
     // ----hamburger menu mouseover//////////
@@ -324,11 +349,14 @@ $(document).ready(function(){
        // END position of the image 
        islandPartDisplayParameters(title); 
        
-
+       //start position of the image
+       var offsetTop = island.offset().top + grpelemPaddingTopPx;
+       var offsetLeft = island.offset().left;
+       
        
        //START animation--------------
   
-       //hiding the whole island image 
+       //hiding the whole island image , just in case it is not hidden after the previous action
        island.addClass('hidden');       
        //showing the partial image 
        relatedPartOfIsland
@@ -338,6 +366,11 @@ $(document).ready(function(){
        relatedPartOfIsland
            .find('img')
            .attr('src', 'images/wyspa%20www.png')
+                  .css({ //------------------------------fix for Safari
+               "position":"fixed",
+                "left": offsetLeft,
+                "top": offsetTop
+           })
     
        //END animation--------------
        //setting the proper position
@@ -369,7 +402,7 @@ $(document).ready(function(){
 
    });
     
-  
+
 
  //-------------------end----------------------------   
 });
