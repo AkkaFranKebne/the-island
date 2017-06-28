@@ -142,12 +142,12 @@ body {
         display:inline;
         padding-top: $grpelemPaddingTopPx;
         position:absolute;
-        height: auto;
-        width: $imageScale;
+        width: $imageScaledWidth;
+        height: $imageScaledHeight;
         //border: 1px solid red;
         img {
-            height: auto;
-            width: $imageScale;
+            width: $imageScaledWidth;
+            height: $imageScaledHeight;
             //border: 1px solid yellow;
         } 
         //the whole island

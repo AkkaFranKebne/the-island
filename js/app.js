@@ -1,43 +1,12 @@
 $(document).ready(function(){ 
     //$(window).on('load', function() // works even worse
     
-     /* to do:
+    /* do korekty
+        > przesuniete logo lemonhills na podstronach w ie (mimo, ze dalam na stronie glownej niewidoczne X)
+        >obszary wyspy przesuniete lekko w lewo na ie 
 
-        test na WIN7: bledy przegladarek:
-        ff na win 7(najnowszy 23 Jun 2017): 
-        >przy pierwszym otwarciu strony:  div island ma height 0, image w srodku ma height 0 - wszystkie obrazki height 0 , dopiero przy kolejnym odswiezeniu obrazki zaczytuja height
-        > przy powrocie z get na stronie glownej wczytuje mape ale po animacji zmniejszajacej obrazek wczytuje w duzej wersji (jak z poczatku animacji) - nie konczy animacji i pada? timeout? brak komunikatu z konsoli
-        
-        
-        IE z win 7:
-        >przy przejsciu ze strony glownej na  podstrony  zamykanie menu (cos jak na mobilnym) gdy strona jest w pelnym ekranie... wtf... cos z mobina wersja interakcja? to moga byc media query!
-        >zasem tez opacity schodzi z opoznieniem przy przeklikiwaniu menu i jest to widoczne
-        >przy pierwszym zaladowaniu nie pokazuje swinek tylko zwezona wyspe;
-        >obszary wyspy przesuniete lekko w lewo
-        > przesuniete logo lemonhills na podstronach (solution: dac tez x na sg tylko niewidoczny)
-        >bardzo wolno wczytuje tlo na podstronach
-        >nie pokazuje swinek po wyczyszczeniu danych przegladania za to bardzo wolno znow sie laduje
-        
-        komunikaty konsoli:
-        -- kod na tej stronie wlaczyl buforowanie wstecz i do przodu
-        --sec7118: zadanie xmlhttprequest dla http://epn.adledge.com/v15/ wymafa funkcji udostepniania zasobow miedzy roznymi zrodlami
-        --html1300: nastapilo dzialanie nawigacji
-        --html1423: zle sformulowany tag poczatkowy. Atrybuty powinny byc rozdzielone odstepami aiwersz 9 kolumna 123
-        >Chrome: dlugie ladowanie strony (porcjami laduje sie obrazek, tak, ze nie zdaza wczytac animacji)
-        --html1504 nieoczekiwany tag koncowy plik eventy.php wiersz 15 kolumna 4
-        
-        
-        chrome na win 7
-        - brak favicon (jak ja dodac?)
-        - jak znikna swinki obrazek jeszcze sie laduje - nie zdaza pokazac animacji (wydluzyc pokaz swinek? uzaleznic go od zaladowania - jak?) 
-        
-        
-        safari na mac
-        - znow nie pokazuje wyspy: brak wysokosci ?
-        
-        
-        - wyslac pytanie do Michala (preload obrazkow - swinki maja byc az zaladuje sie wszystko, jak to zrobic?)
-
+    
+    
     */
     
     /* do zrobienia po dogadaniu z klientem - wyslany mail z  v.01:
@@ -47,18 +16,6 @@ $(document).ready(function(){
 
     
     */
-    
-    /*dylematy na warsztaty:
-    
-    - problem po przeniesieniu na serwer. jak polepszyc wydajnosc strony? jak trzymac obrazki na czas sesji aby nie ladowaly sie w czasie kolejnych przeladowan strony? ajax? local storage? 
-    - sprawdzanie dla starszych przegladarek - jest taki element w gulp? minifikacja js i css tyz?
-    - co zrobic z przegladarkami, ktore nie dzialaja i/lub, ktore nie maja js? jak rozpoznawac przegladarke? user-agent php? a moze rozpoznawac lepiej, ze jest blad? 
-    - na wszelki wypadek: jak optymalnie wycentrowac w poziomie div?
-    
-    
-    */
-    
-
     
     
 //----------------------VARIABLES-----------------------------------------------------------------------
@@ -78,7 +35,8 @@ $(document).ready(function(){
     var island = $('#island'); //island used with map
     var island_img = island.find('#island_img');
     var wholeisland = $('#wholeisland');   //resizable island
-    var wholeisland_img = island.find('#wholeisland_img'); 
+    var wholeisland_img = wholeisland.find('#wholeisland_img'); 
+    var grpelemPaddingTopPx = 18;
     var imageScale = 0.7;
     var areas = $('area');
 
@@ -161,6 +119,7 @@ $(document).ready(function(){
         		setTimeout(function() {
 			  body.removeClass('loading');
               main.removeClass('hidden');
+              island.removeClass('hidden'); //just in case if it is  hidden
                 noticeMyArea(areas.eq(3), 0, 400);
                 noticeMyArea(areas.eq(4), 100, 500);
                 noticeMyArea(areas.eq(0), 200, 600);
@@ -238,7 +197,6 @@ $(document).ready(function(){
                height: heightPx,
                width: widthPx
            },2000, function (){
-               //relatedPartOfIsland
                 wholeisland //added
                           .removeClass('exposed')
                             .addClass('hidden');
@@ -250,13 +208,15 @@ $(document).ready(function(){
     //(not resizable during window resize - that is how maphihlight work for mapped image, and they need to be the same size as mapped imape, to make the animation run smoothly)
        
     function fixedImgSize(){
+        console.log("island.width():   "+island.width());
+        console.log("island.height():  "+island.height());
         var fixedWidth = Math.round(island.width()) + "px";
         var fixedHeight = Math.round(island.height()) + "px"; 
         var fixedWidthImg = Math.round(island_img.width()) + "px";
         var fixedHeightImg = Math.round(island_img.height()) + "px";
-            wholeisland.css({"width": fixedWidth});  
-            wholeisland.css({"height": fixedHeight});             wholeisland_img.css({"width": fixedWidthImg});  
-            wholeisland_img.css({"height": fixedHeightImg});  
+        wholeisland.css({"width": fixedWidth});  
+        wholeisland.css({"height": fixedHeight});             wholeisland_img.css({"width": fixedWidthImg});  
+        wholeisland_img.css({"height": fixedHeightImg});  
     }
     
 //----------------------WWW FLOW--------------------------------------------------------------------------------- 
