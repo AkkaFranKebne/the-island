@@ -3,14 +3,44 @@ $(document).ready(function(){
     
      /* to do:
 
-        - przegrac na serwer i zobaczyc jak dziala
-        - potestowac na windows 
-        - wyslac opis klientowi
-        - wyslac pytanie do Michala (preload obrazkow)
+        test na WIN7: bledy przegladarek:
+        ff na win 7(najnowszy 23 Jun 2017): 
+        >przy pierwszym otwarciu strony:  div island ma height 0, image w srodku ma height 0 - wszystkie obrazki height 0 , dopiero przy kolejnym odswiezeniu obrazki zaczytuja height
+        > przy powrocie z get na stronie glownej wczytuje mape ale po animacji zmniejszajacej obrazek wczytuje w duzej wersji (jak z poczatku animacji) - nie konczy animacji i pada? timeout? brak komunikatu z konsoli
+        
+        
+        IE z win 7:
+        >przy przejsciu ze strony glownej na  podstrony  zamykanie menu (cos jak na mobilnym) gdy strona jest w pelnym ekranie... wtf... cos z mobina wersja interakcja? to moga byc media query!
+        >zasem tez opacity schodzi z opoznieniem przy przeklikiwaniu menu i jest to widoczne
+        >przy pierwszym zaladowaniu nie pokazuje swinek tylko zwezona wyspe;
+        >obszary wyspy przesuniete lekko w lewo
+        > przesuniete logo lemonhills na podstronach (solution: dac tez x na sg tylko niewidoczny)
+        >bardzo wolno wczytuje tlo na podstronach
+        >nie pokazuje swinek po wyczyszczeniu danych przegladania za to bardzo wolno znow sie laduje
+        
+        komunikaty konsoli:
+        -- kod na tej stronie wlaczyl buforowanie wstecz i do przodu
+        --sec7118: zadanie xmlhttprequest dla http://epn.adledge.com/v15/ wymafa funkcji udostepniania zasobow miedzy roznymi zrodlami
+        --html1300: nastapilo dzialanie nawigacji
+        --html1423: zle sformulowany tag poczatkowy. Atrybuty powinny byc rozdzielone odstepami aiwersz 9 kolumna 123
+        >Chrome: dlugie ladowanie strony (porcjami laduje sie obrazek, tak, ze nie zdaza wczytac animacji)
+        --html1504 nieoczekiwany tag koncowy plik eventy.php wiersz 15 kolumna 4
+        
+        
+        chrome na win 7
+        - brak favicon (jak ja dodac?)
+        - jak znikna swinki obrazek jeszcze sie laduje - nie zdaza pokazac animacji (wydluzyc pokaz swinek? uzaleznic go od zaladowania - jak?) 
+        
+        
+        safari na mac
+        - znow nie pokazuje wyspy: brak wysokosci ?
+        
+        
+        - wyslac pytanie do Michala (preload obrazkow - swinki maja byc az zaladuje sie wszystko, jak to zrobic?)
 
     */
     
-    /* do zrobienia po dogadaniu z klientem:
+    /* do zrobienia po dogadaniu z klientem - wyslany mail z  v.01:
     - mobile  i dotykowe - na razie zamarkowane - jak ma wygladac?
     - stare przegladarki i nie majace js - jak ma wygladac?
     - na pozniej: wyglad i mechanika podstron
@@ -19,7 +49,7 @@ $(document).ready(function(){
     */
     
     /*dylematy na warsztaty:
-
+    
     - problem po przeniesieniu na serwer. jak polepszyc wydajnosc strony? jak trzymac obrazki na czas sesji aby nie ladowaly sie w czasie kolejnych przeladowan strony? ajax? local storage? 
     - sprawdzanie dla starszych przegladarek - jest taki element w gulp? minifikacja js i css tyz?
     - co zrobic z przegladarkami, ktore nie dzialaja i/lub, ktore nie maja js? jak rozpoznawac przegladarke? user-agent php? a moze rozpoznawac lepiej, ze jest blad? 
@@ -45,11 +75,10 @@ $(document).ready(function(){
      var close = $('#close');
     
     //island//////////
-    var partsofIsland = $('.grpelem');
-    var partsofIsland_imgs = $('main').find('img');
-    var grpelemPaddingTopPx = 18;
-    var island = $('#island');
+    var island = $('#island'); //island used with map
     var island_img = island.find('#island_img');
+    var wholeisland = $('#wholeisland');   //resizable island
+    var wholeisland_img = island.find('#wholeisland_img'); 
     var imageScale = 0.7;
     var areas = $('area');
 
@@ -101,17 +130,7 @@ $(document).ready(function(){
            top = 100;
        }
     }
-    
-    // finding related part of the island//////////
-      var relatedPartOfIsland; 
-      function findRelatedPartOfTheIsland(identifier){  
-           partsofIsland.each(function(index, ele){
-             if ($(this).attr('id') === identifier) {
-                relatedPartOfIsland = $(this);    
-             }     
-       });               
-    }
-    
+        
     // recalculating map coordinates //////////
     
         function imageMapCalculate(map) {
@@ -161,19 +180,16 @@ $(document).ready(function(){
     
     // map areas animation after coming back from subpage//////////
     
-    // OBS!: there is a need to use extra layer(s), as image with map is not resizeable. For now I used on extra img for each island part - if the client want some extra animation with it. If not, it can be changed for 1 extra image with the whole map (and findrelatedpartoftheisland() function can be removed then)
+    // OBS!: there is a need to use extra layer, as image with map is not resizeable. 
     
     function backToStartAnimation(){           
        // data-source of related part of the island
        var source = main.data('source');
        source = source.split("/");
        source = source[2].split(".");
-       //source = source[1].split("."); na prod
+       //source = source[1].split("."); for production
        source = source[0];
 
-        // finding related part of the island
-        findRelatedPartOfTheIsland(source);
-        
         
         // START position of the image
         islandPartDisplayParameters(source);
@@ -197,17 +213,15 @@ $(document).ready(function(){
         
         //START animation--------------
 
-       //hiding the whole island image , just in case it is not hidden after the previous action 
+       //hiding the map island image , just in case it is not hidden after the previous action 
        island.addClass('hidden');    
-       //showing the partial image 
-       relatedPartOfIsland
+       //showing the resizable island image 
+        wholeisland 
            .removeClass('hidden')
-           .addClass('exposed');
-       //and changing it to the whole island image 
-       relatedPartOfIsland
-           .find('img')
-           .attr('src', 'images/wyspa%20www.png') 
+           .addClass('exposed'); 
        //giving START position of an image
+        wholeisland //added
+         .find('img')  //not sure if necesarry
            .css({
                "position":"fixed",
                "left": left,
@@ -224,10 +238,11 @@ $(document).ready(function(){
                height: heightPx,
                width: widthPx
            },2000, function (){
-               relatedPartOfIsland
+               //relatedPartOfIsland
+                wholeisland //added
                           .removeClass('exposed')
                             .addClass('hidden');
-               $('#island').removeClass('hidden');
+               island.removeClass('hidden');
            });    
     }
     
@@ -239,12 +254,9 @@ $(document).ready(function(){
         var fixedHeight = Math.round(island.height()) + "px"; 
         var fixedWidthImg = Math.round(island_img.width()) + "px";
         var fixedHeightImg = Math.round(island_img.height()) + "px";
-
-        //partsofIsland.each(function(index, ele){
-            partsofIsland.css({"width": fixedWidth});  
-            partsofIsland.css({"height": fixedHeight});             partsofIsland_imgs.css({"width": fixedWidthImg});  
-            partsofIsland_imgs.css({"height": fixedHeightImg});  
-        //});
+            wholeisland.css({"width": fixedWidth});  
+            wholeisland.css({"height": fixedHeight});             wholeisland_img.css({"width": fixedWidthImg});  
+            wholeisland_img.css({"height": fixedHeightImg});  
     }
     
 //----------------------WWW FLOW--------------------------------------------------------------------------------- 
@@ -344,10 +356,7 @@ $(document).ready(function(){
        
         //titles of related part of the island
        var title = $(this).attr('title');
-        // finding related part of the island      
-       findRelatedPartOfTheIsland(title);
-       
-       
+             
        //END  links to subpages
        var linkString = $(this).attr('href');   
        // END position of the image 
@@ -360,17 +369,15 @@ $(document).ready(function(){
        
        //START animation--------------
   
-       //hiding the whole island image , just in case it is not hidden after the previous action
+       //hiding the whole  map island image , just in case it is not hidden after the previous action
        island.addClass('hidden');       
-       //showing the partial image 
-       relatedPartOfIsland
+       //showing the resizable island image 
+       wholeisland
            .removeClass('hidden')
            .addClass('exposed');
-       //and changing it to the whole island image 
-       relatedPartOfIsland
-           .find('img')
-           .attr('src', 'images/wyspa%20www.png')
-                  .css({ //------------------------------fix for Safari
+       wholeisland
+           .find('img')  //not sure if necesarry
+            .css({ //------------------------------fix for Safari
                "position":"fixed",
                 "left": offsetLeft,
                 "top": offsetTop

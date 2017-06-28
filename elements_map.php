@@ -1,4 +1,4 @@
-        <!--the whole island-->
+        <!--the whole island used for map images (not resizable)-->
       <div class="grpelem hidden" id="island" >
         <img class="block" id="island_img" src="images/wyspa%20www.png" alt="" usemap="#Map"  />
         <map name="Map">
