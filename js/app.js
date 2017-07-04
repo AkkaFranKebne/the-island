@@ -2,9 +2,11 @@ $(document).ready(function () {
     
 
     /* 
-do korekty
+to do
+        > NA SERWERZE NIE DZIALA INTRO?
         > on load img  dla preloadera
-        >domyslna strona statyczna, jak sie zaladuje js to pierwsze co popraosic o dynamiczna
+        > elementy strony newbiz: team + mapa + adres + formularz kontaktowy
+        > domyslna strona statyczna, jak sie zaladuje js to pierwsze co popraosic o dynamiczna
         > problemy z media query -  gulp - link w fb, potem przegladanie can i use
         > przesuniete logo lemonhills na podstronach w ie (mimo, ze dalam na stronie glownej niewidoczne X)
         > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
@@ -15,10 +17,6 @@ do korekty
         > stopka na srodku ekranu w mobilnym
         > logo nie wycentrowane w mobilnym
         
-        
- do zrobienia po dogadaniu z klientem - wyslany mail z  v.01:
-    - stare przegladarki i nie majace js - jak ma wygladac?
-    - mobile i podstrony - po przygotowaniu mechaniki: uwagi dot design od projektanta
 
 testowanie: selenium
     */
