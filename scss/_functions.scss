@@ -1,0 +1,36 @@
+
+// grid
+
+.grid-container {
+    width: 100%;
+    //max-width: 1500px;
+    margin: 0 auto; //centering
+    .row{
+      padding-bottom: 10px;
+      padding-top: 10px;
+      &:before, //clearfix, necesarry for float
+      &:after {
+        content: " ";
+        display: table; 
+        clear: both;
+        }
+      // ustalanie szerokosci kolumn    
+      @for $i from 1 through 12 {
+            .col-#{$i} {
+            width: 8.333333% * $i;
+        }
+        
+      [class*="col-"] {
+            float: left;
+            min-height: 1px;  //not to let empty columns overlap
+            //padding: 12px;
+             @include mobile {
+                 float: none ;
+                 width: 100% ;   
+            }
+            }
+
+        }  
+    }
+         
+}

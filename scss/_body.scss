@@ -4,6 +4,7 @@
 @import 'functions';
 @import 'maps';
 
+
    /* General background */
 body {
     background-color: $backgroundColor;
@@ -28,7 +29,7 @@ body {
         position: fixed;
         height: 100vh;
         width: 100vw;
-        transition: background-color .5s;
+        transition: background-color $menuTransitionSec;
         z-index: -3;
     }
     /* The side navigation menu */
@@ -41,7 +42,7 @@ body {
         background-color: $menuColor; 
         overflow-x: hidden; 
         padding-top: 30px; 
-        transition: 0.5s; 
+        transition: $menuTransitionSec; 
         z-index: 1; 
         @include mobile {
             padding-top: 50px; 
@@ -51,11 +52,11 @@ body {
         a {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
-            font-size: 30px;
+            font-size: $sideNavFontSize;
             height: 50px;
             color: $secondaryColor;
             display: block;
-            transition: 0.3s;
+            transition: $menuTransitionSec;
             @include mobile {
                 text-align: center;
         }
@@ -87,7 +88,7 @@ body {
             height: 5px;
             background-color: $primaryColor;
             margin: 6px 0;
-            transition: 0.4s;
+            transition: $menuTransitionSec;
             }
     /* Transforming icon hamburger to X */ 
         @include barsToX();
@@ -123,7 +124,7 @@ body {
             height: 5px;
             background-color: $primaryColor;
             margin: 6px 0;
-            transition: 0.4s;
+            transition: $menuTransitionSec;
             }
         @include barsToX2();
     }
@@ -131,6 +132,7 @@ body {
     main{
         width: 100vw;
         padding-left: $mainPaddingLeftVw;
+        padding-right: $mainPaddingLeftVw;
         position: relative;
         @include mobile {
             display: none;
@@ -157,10 +159,12 @@ body {
     }
     /* Footer */ 
     #copy {
-        font-size: 10px;
+        font-size: $copyFontSize;
         color: $secondaryColor;
         position: fixed;
         bottom: 10px;
         right: 12px;
     }
 }
+
+

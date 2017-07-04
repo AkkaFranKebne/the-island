@@ -1,0 +1,42 @@
+//subpages extra styles
+
+
+//headers
+
+h2 {
+    font-size: $subtitlesFontSize;
+    text-align: center;
+    color: $primaryColor;
+    margin-top: $subtitleMarginTop;
+    margin-bottom: $subtitleMarginBottom;
+}
+
+
+//galeries
+
+    .gallery {
+        //border: 1px solid red;
+        display: inline-block;
+        height: auto;
+        background-color: $secondaryColorWithOpacity;
+        border-radius: $galleryElementsBorderRadius;
+        .photos {
+            float:none; // keep pictures staying in their greed
+            height: auto;
+            //border: 1px solid black;
+                picture {
+                    //border: 1px solid red; 
+                    display: inline-block;
+                    height: auto;
+                    padding-left: $picturePadding;
+                    padding-right: $picturePadding;
+                    margin: $pictureMargin;
+                    text-align: center; //is it necesarry for mobile centering?
+                    img {
+                        border-radius: $galleryElementsBorderRadius;
+                        max-height: 100%;
+                        max-width: 100%;
+                        }
+            }            
+        }
+    }
