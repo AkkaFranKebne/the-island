@@ -11,9 +11,24 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
 </head>
  <body id = "sm">
     <div id="menuOpacity"> </div> 
-    <?php include 'elements_nav.php';?>
-    <main>
-    </main>
+     
+    <div class="grid-container">
+        
+        <div class="row">
+            <div class="col-12">
+                <?php include 'elements_nav.php';?>
+            </div>
+        </div>
+        
+     <main>
+        <div class="row">
+            <div class="col-12">
+                <h2> SOCIAL MEDIA </h2>
+            </div>
+        </div>           
+        
+        <?php include 'elements_gallery.php';?>
+    </main>  
      <?php include 'elements_footer.php';?>
 </body>
 </html>

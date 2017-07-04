@@ -9,12 +9,16 @@ do korekty
         > przesuniete logo lemonhills na podstronach w ie (mimo, ze dalam na stronie glownej niewidoczne X)
         > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
         > zaladowywanie gorszej wersji obrazka na poczatku, a potem podmiana na lepsza
+        > <!-- change the path for production -->: favicon, images, funkcja path
+        > dalej na prod czasem sciska sie animacja
+        > mobile: nie scrolluje sie menu
+        > stopka na srodku ekranu w mobilnym
+        > logo nie wycentrowane w mobilnym
         
         
  do zrobienia po dogadaniu z klientem - wyslany mail z  v.01:
-    - mobile  i dotykowe - na razie zamarkowane - jak ma wygladac?
     - stare przegladarki i nie majace js - jak ma wygladac?
-    - na pozniej: wyglad i mechanika podstron
+    - mobile i podstrony - po przygotowaniu mechaniki: uwagi dot design od projektanta
 
 testowanie: selenium
     */
