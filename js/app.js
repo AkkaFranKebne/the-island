@@ -3,9 +3,8 @@ $(document).ready(function () {
 
     /* 
 to do
-        > NA SERWERZE NIE DZIALA INTRO?
         > on load img  dla preloadera
-        > elementy strony newbiz: team + mapa + adres + formularz kontaktowy
+        > formularz kontaktowy -  backend
         > domyslna strona statyczna, jak sie zaladuje js to pierwsze co popraosic o dynamiczna
         > problemy z media query -  gulp - link w fb, potem przegladanie can i use
         > przesuniete logo lemonhills na podstronach w ie (mimo, ze dalam na stronie glownej niewidoczne X)
@@ -16,6 +15,12 @@ to do
         > mobile: nie scrolluje sie menu
         > stopka na srodku ekranu w mobilnym
         > logo nie wycentrowane w mobilnym
+        > dopasowanie poziomow mixinow
+        > obrazki w galeriach - optymalne ladowanie - preload zdjec w galeriach
+        > kolory w js w zmienne
+        >  opozniona animacja poczatkowa
+        > animacje na pojawianie sie elementow na podstronach
+        > scroll mobile gallery
         
 
 testowanie: selenium
@@ -44,7 +49,15 @@ testowanie: selenium
     var grpelemPaddingTopPx = 18;
     var imageScale = 0.7;
     var areas = $('area');
+    
+    //galleries element
+    var galleryImages = $('.gallery').find('img');
+    var modal= $('#modal');
+    var modalCloseButton = $('span.close');
+    var arrows = $('.arrow');
+    
 
+    
     //map image
     //maplight library setup //////////
     island_img.maphilight({
@@ -84,7 +97,7 @@ testowanie: selenium
     var preloaderMilisec = 4000;
     
     //time in initial animation
-    var duration = 400;
+    var duration = 4000;
     var delay = 100;
     
     //onclick animation time
@@ -314,7 +327,7 @@ testowanie: selenium
 
 
     if (main.attr('data-source') && !body.hasClass('loading')) {
-        backToStartAnimation()
+       backToStartAnimation()
     }
 
 
@@ -433,6 +446,71 @@ testowanie: selenium
 
     });
 
+    //-------------opening modal in galleries----
+    
+    
+    galleryImages.on('click', function(){
+        modal.fadeIn();
+        modal.find('.modal-content').attr('src', $(this).data('source'));
+        modal.find('#caption').html($(this).attr('alt'));
+          if ($(this).data('order') == 9 ) {
+            modal.find('.right').hide();
+        }
+        if ($(this).data('order') == 1 ) {
+            modal.find('.left').hide();
+        }
+    });
+    
+        //-------------closing modal in galleries----
+    
+    modalCloseButton.on('click', function(){
+        $(this).parent().fadeOut();
+    });
+    
+    
+        //-------------clicking arrows in galleries----
+    
+    
+        arrows.on('click keydown', function(e){
+        var imageSource = $(this).parent().find('img').attr('src');
+        var order = 0;
+        galleryImages.each(function(index){
+           if ($(this).data('source') === imageSource) {
+               order = $(this).data('order');
+                if (order == 9) {  //not working prop
+                    $('.right').hide();
+                } 
+                
+                else if (order == 1) { //not working prop
+                    $('.left').hide();
+                }
+               
+           }
+        });
+              console.log("this img order: "+order);
+       if ($(this).hasClass('left') ||  (e.keyCode == 37) ){
+           order -= 1;
+       } 
+        else if ($(this).hasClass('right') ||  (e.keyCode == 39) ){
+            order += 1;    
+        }
+        console.log("next img order: "+order);
+        if ( order > 0 && order < 10) {
+            galleryImages.each(function(index){
+                arrows.show();
+                if ($(this).data('order') === order) {
+                    var nextImage = $(this);
+                    modal.find('.modal-content').attr('src', nextImage.data('source'));
+                    modal.find('#caption').html(nextImage.attr('alt'));
+               
+           }
+
+        });
+                               
+
+        
+        }
+        });
     
 
     //-------------------end----------------------------   

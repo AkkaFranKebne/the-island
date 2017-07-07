@@ -6,8 +6,9 @@
     //max-width: 1500px;
     margin: 0 auto; //centering
     .row{
-      padding-bottom: 10px;
-      padding-top: 10px;
+      //border: 1px solid black;
+      padding-bottom: 0.1vw;
+      padding-top: 0.1vw;
       &:before, //clearfix, necesarry for float
       &:after {
         content: " ";
@@ -21,6 +22,7 @@
         }
         
       [class*="col-"] {
+          //border: 1px solid red;
             float: left;
             min-height: 1px;  //not to let empty columns overlap
             //padding: 12px;

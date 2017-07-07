@@ -44,6 +44,9 @@ body {
         padding-top: 30px; 
         transition: $menuTransitionSec; 
         z-index: 1;
+         @include mobile {
+                position: absolute;
+        }
         a {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
@@ -65,7 +68,7 @@ body {
     
 
    }
-    &.main-page .sidenav{
+    &#main-page-body .sidenav{
         @include mobile {
             padding-top: 50px; 
             width: 100%;
@@ -144,7 +147,7 @@ body {
             padding-left: $mainPaddingLeftVwMobile;
         padding-right: $mainPaddingLeftVwMobile;
         }
-    &.main-page{
+    &#main-page-main{
         @include mobile {
             display: none;
         }

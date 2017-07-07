@@ -10,6 +10,17 @@ h2 {
     margin-top: $subtitleMarginTop;
     margin-bottom: $subtitleMarginBottom;
 }
+h3 {
+    font-size: $descriptionFontSize;
+        @include non-desktop {
+            font-size: $subtitlesFontSize;
+    }
+    text-align: center;
+    color: $primaryColor;
+    margin-top: $subtitleMarginTop;
+    margin-bottom: $subtitleMarginBottom;
+    font-weight: normal;
+}
 
 
 //galeries
@@ -28,6 +39,7 @@ h2 {
                     //border: 1px solid red; 
                     display: inline-block;
                     height: auto;
+                    overflow: hidden;
                     padding-left: $picturePadding;
                     padding-right: $picturePadding;
                     margin: $pictureMargin;
@@ -36,7 +48,127 @@ h2 {
                         border-radius: $galleryElementsBorderRadius;
                         max-height: 100%;
                         max-width: 100%;
+                        border-radius: $galleryElementsBorderRadius;
+                        cursor: pointer;
+                        transition: $menuTransitionSec;
+                        &:hover {
+                            opacity: 0.7;
+                            }
                         }
             }            
         }
     }
+
+/* The Modal (background) */
+#modal {
+    display: none; 
+    position: fixed; 
+    z-index: 3; 
+    padding-top: 20px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: auto; /* Enable scroll if needed */
+    background-color: $menuColor; /* Fallback color  - need to put them in other opacity plces*/
+    background-color: $menuColorWithOpacity; 
+    
+    
+    i {
+        border: solid $secondaryColor;;
+        border-width: 0 5px 5px 0;
+        display: inline-block;
+        padding: 10px;
+        height: 20px;
+        position: absolute;
+        top: 25vh;
+    }
+
+    .right {
+        transform: rotate(-45deg);
+        -webkit-transform: rotate(-45deg);
+        right: 25px;
+    }
+
+    .left {
+        transform: rotate(135deg);
+        -webkit-transform: rotate(135deg);
+        left: 25px;
+    }
+    
+
+    
+        /* Modal Content (Image) */
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 70vw;
+        max-width: 1000px;
+    }
+
+    /* Caption of Modal Image (Image Text) - Same Width as the Image */
+    #caption {
+        margin: auto;
+        display: block;
+        width: 90%;
+        max-width: 1000px;
+        text-align: center;
+        color: $secondaryColor;
+        padding: 10px 0;
+        height: 150px;
+        font-size: $descriptionFontSize;
+    }
+
+    /* Add Animation - Zoom in the Modal */
+    .modal-content, #caption { 
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: 0.6s;
+        animation-name: zoom;
+        animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes zoom {
+        from {-webkit-transform:scale(0)} 
+        to {-webkit-transform:scale(1)}
+    }
+
+    @keyframes zoom {
+        from {transform:scale(0)} 
+        to {transform:scale(1)}
+    }
+
+    /* The Close Button */
+    .close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        color: $secondaryColor;
+        font-size: 40px;
+        font-weight: bold;
+        transition: $menuTransitionSec;
+    }
+
+    .close:hover,
+    .close:focus,
+    .arrow:hover,
+    .arrow:focus{
+        color: $primaryColor;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* 100% Image Width on Smaller Screens */
+    @indlude mobile{
+        .modal-content {
+            width: 100%;
+        }
+    }
+}
+
+
+
+//address
+
+#address{
+    padding: 30px;
+}

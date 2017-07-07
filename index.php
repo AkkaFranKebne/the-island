@@ -10,13 +10,13 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
      <?php include 'elements_meta.php';?>
 </head>
         
- <body class="main-page"  <?php  
+ <body  id="main-page-body"  <?php   
        if ($_SESSION["seen_intro"]==0) {
            echo "class='loading'";
        }  ?>>
     <div id="menuOpacity"> </div> 
     <?php include 'elements_nav_main.php';?>
-    <main class="main-page" <?php  
+    <main id="main-page-main" <?php  
           if ($_SESSION["seen_intro"]==0) {
               echo "class='hidden'"; 
               $_SESSION["seen_intro"]=1; 
@@ -38,3 +38,4 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
 
 
 
+class="main-page" 
