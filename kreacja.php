@@ -20,7 +20,7 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
             </div>
         </div>
         
-     <main>
+     <main id = "main-gallery">
         <div class="row">
             <div class="col-12">
                 <h2> KREACJA </h2>

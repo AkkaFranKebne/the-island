@@ -3,27 +3,36 @@ $(document).ready(function () {
 
     /* 
 to do
-        > on load img  dla preloadera
+
+zrobic w tym tygodniu:        
         > formularz kontaktowy -  backend
-        > domyslna strona statyczna, jak sie zaladuje js to pierwsze co popraosic o dynamiczna
-        > problemy z media query -  gulp - link w fb, potem przegladanie can i use
-        > przesuniete logo lemonhills na podstronach w ie (mimo, ze dalam na stronie glownej niewidoczne X)
-        > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
+        > ogarniecie media query -  gulp - link w fb, potem przegladanie can i use
+        > scroll mobile gallery 
+        >testowanie selenium
+
+problemy na warsztaty - do obgadania z prowadzacym:
+        > on load img  dla preloadera  w main page i galeriach- JAKI BLAD?
+        > przesuniete logo lemonhills na podstronach w ie (mimo, ze dalam na stronie glownej niewidoczne X) - DLACZEGO?
+        > galerie: przy klikach pojawia sie strzalka, zdjecia dalej laduja sie z opoznieniem
         > zaladowywanie gorszej wersji obrazka na poczatku, a potem podmiana na lepsza
-        > <!-- change the path for production -->: favicon, images, funkcja path
-        > dalej na prod czasem sciska sie animacja
-        > mobile: nie scrolluje sie menu
+        > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
+        > dalej na prod czasem sciska sie animacja;
         > stopka na srodku ekranu w mobilnym
         > logo nie wycentrowane w mobilnym
-        > dopasowanie poziomow mixinow
-        > obrazki w galeriach - optymalne ladowanie - preload zdjec w galeriach
-        > kolory w js w zmienne
-        >  opozniona animacja poczatkowa
-        > animacje na pojawianie sie elementow na podstronach
-        > scroll mobile gallery
+        >  opozniona animacja poczatkowa - czemu nie dzialaja zmienne?
+               
+ 
+ do zrobienia pozniej:
+        > domyslna strona statyczna, jak sie zaladuje js to pierwsze co popraosic o dynamiczna
+        > animacje na pojawianie sie elementow na podstronach - po dogadaniu ich wygladu z grafikiem
         
-
-testowanie: selenium
+  
+  do poprawienia przed oddaniem:
+        > <!-- change the path for production -->: favicon, images, funkcja path - zmienic tak, by nie trzeba bylo zmieniac - php?
+        > dopasowanie poziomow mixinow
+        > kolory w js w zmienne
+        > kod mapy przerzucic do app.js
+        
     */
 
 
@@ -96,9 +105,6 @@ testowanie: selenium
     //time in preloader
     var preloaderMilisec = 4000;
     
-    //time in initial animation
-    var duration = 4000;
-    var delay = 100;
     
     //onclick animation time
     var onclickAnimationMilisec = 2000;
@@ -168,12 +174,12 @@ testowanie: selenium
 			  body.removeClass('loading');
               main.removeClass('hidden');
               island.removeClass('hidden'); //just in case if it is  hidden
-                noticeMyArea(areas.eq(3), 0, duration);
-                noticeMyArea(areas.eq(4), delay, (duration+delay));
-                noticeMyArea(areas.eq(0), (2*delay), (duration+2*delay));
-                noticeMyArea(areas.eq(1), (3*delay), (duration+3*delay));
-                noticeMyArea(areas.eq(2), (4*delay), (duration+4*delay));
-                noticeMyArea(areas.eq(3), (5*delay), (duration+5*delay));
+                noticeMyArea(areas.eq(3), 0, 400);
+                noticeMyArea(areas.eq(4), 100, 500);
+                noticeMyArea(areas.eq(0), 200, 600);
+                noticeMyArea(areas.eq(1), 300, 700);
+                noticeMyArea(areas.eq(2), 400, 800);
+                noticeMyArea(areas.eq(3), 500, 900);
 		}, preloaderMilisec);        
     }
 
@@ -291,6 +297,111 @@ testowanie: selenium
             "height": fixedHeightImg
         });
     }
+    
+    
+    //moving to the next image in galleries
+    
+        
+    
+    function showNextImg(){
+        
+        //preparing variables for 3 images: current, previous and next
+        var imageSource = modal.find('.modal-content').attr('src');
+        var dataSource ='#';
+        var dataSourcePrevious ='#';
+        var dataSourceNext ='#';
+        var caption = '';
+        
+        //finding these three images
+        galleryImages.each(function(index){
+           if ($(this).data('source') === imageSource) {
+                 dataSourcePrevious = $(this).data('source');
+                 dataSource = galleryImages.eq(index+1).data('source');
+                 dataSourceNext = galleryImages.eq(index+2).data('source');
+                 caption = galleryImages.eq(index+1).attr('alt');
+               
+               
+                //showing / hiding arrows, based on data-order in html
+                if (galleryImages.eq(index+1).data('order') >= 9 ) {   
+                        modal.find('.right').hide();
+                }
+                else if (galleryImages.eq(index+1).data('order') <= 1 ) {
+                        modal.find('.left').hide();
+                }
+               else {
+                   modal.find('.right').show();
+                   modal.find('.left').show();
+               }
+           }    
+
+        }); 
+          
+        // loading three images
+        modal.find('.modal-content').attr('src',dataSource);
+        modal.find('.previous-modal-content').attr('src',dataSourcePrevious);
+        modal.find('.next-modal-content').attr('src',dataSourceNext);
+        modal.find('#caption').html(caption);
+    }
+    
+   //moving to the previous image in galleries
+    
+    
+    function showPreviousImg(){
+        //preparing variables for 3 images: current, previous and next
+        var imageSource = modal.find('.modal-content').attr('src');
+        var dataSource ='#';
+        var dataSourcePrevious ='#';
+        var dataSourceNext ='#';
+        var caption = '';
+        
+        //finding these three images
+        galleryImages.each(function(index){
+           if ($(this).data('source') === imageSource) {
+                 dataSourceNext = $(this).data('source');
+                 dataSource = galleryImages.eq(index-1).data('source');
+                 dataSourcePrevious = galleryImages.eq(index-2).data('source');
+                caption = galleryImages.eq(index-1).attr('alt');
+               
+               
+                //showing / hiding arrows, based on data-order in html
+                if (galleryImages.eq(index-1).data('order') >= 9 ) {   
+                        modal.find('.right').hide();
+                }
+                else if (galleryImages.eq(index-1).data('order') <= 1 ) {
+                        modal.find('.left').hide();
+                }
+               else {
+                   modal.find('.right').show();
+                   modal.find('.left').show();
+               }
+           }    
+
+        }); 
+          
+        // loading three images
+        modal.find('.modal-content').attr('src',dataSource);
+        modal.find('.previous-modal-content').attr('src',dataSourcePrevious);
+        modal.find('.next-modal-content').attr('src',dataSourceNext);
+        modal.find('#caption').html(caption);
+    }
+    
+           //-------------closing modal in galleries----
+    
+    function closeTheModal(){
+          // hiding the modal
+        modal.hide();
+        
+        //preparing the preloader for the next click
+        modal.find('#preloader').show('slow');
+        modal.find('.modal-content').addClass('hidden');
+        
+        //preparing arrows
+        modal.find('.right').show();
+        modal.find('.left').show();      
+    }
+    
+    
+    
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
 
@@ -446,71 +557,87 @@ testowanie: selenium
 
     });
 
-    //-------------opening modal in galleries----
+    //-------------opening modal in galleries----//use here preloading ass well, when you fix it
     
     
     galleryImages.on('click', function(){
-        modal.fadeIn();
-        modal.find('.modal-content').attr('src', $(this).data('source'));
+        
+        //prepare variables for loading 3 images: current, previous and next 
+        var dataSource = $(this).data('source');
+        var dataSourcePrevious ='';
+        var dataSourceNext ='';
+        
+        //finding these 3 images
+        galleryImages.each(function(index){
+           if ($(this).data('source') === dataSource) {
+                 dataSourcePrevious = galleryImages.eq(index-1).data('source');
+                 dataSourceNext = galleryImages.eq(index+1).data('source');
+           }
+        }); 
+        
+        //loading 3 images    
+        modal.find('.modal-content').attr('src',dataSource);
+        modal.find('.previous-modal-content').attr('src',dataSourcePrevious);
+        modal.find('.next-modal-content').attr('src',dataSourceNext);
+        
+        
+        //loading the description of the current img
         modal.find('#caption').html($(this).attr('alt'));
-          if ($(this).data('order') == 9 ) {
+        
+        
+        //showing / hiding arrows, based on data-order in html
+        if ($(this).data('order') == 9 ) {   
             modal.find('.right').hide();
         }
         if ($(this).data('order') == 1 ) {
             modal.find('.left').hide();
         }
+ 
+        //showing the modal
+        modal.fadeIn();
+        
+        //showing the preloader - now is for all clicks, should be based on img loaded - to fix
+        setTimeout(function() {   
+            modal.find('#preloader').hide();
+            modal.find('.modal-content').removeClass('hidden');
+        },3000);
+        
     });
-    
-        //-------------closing modal in galleries----
+        
+ //---------------------clicking close in the modal in galleriers
     
     modalCloseButton.on('click', function(){
-        $(this).parent().fadeOut();
+        closeTheModal();
+    });
+       
+        //-------------clicking arrows in the modal in galleries----
+
+
+    $('.right').on('click', function(e) {
+            showNextImg();
+    });
+    
+        $('.left').on('click', function(e) {
+            showPreviousImg();
     });
     
     
-        //-------------clicking arrows in galleries----
+            //-------------clicking gallery using keyboard----
     
     
-        arrows.on('click keydown', function(e){
-        var imageSource = $(this).parent().find('img').attr('src');
-        var order = 0;
-        galleryImages.each(function(index){
-           if ($(this).data('source') === imageSource) {
-               order = $(this).data('order');
-                if (order == 9) {  //not working prop
-                    $('.right').hide();
-                } 
-                
-                else if (order == 1) { //not working prop
-                    $('.left').hide();
-                }
-               
-           }
-        });
-              console.log("this img order: "+order);
-       if ($(this).hasClass('left') ||  (e.keyCode == 37) ){
-           order -= 1;
+        $('body').on('keydown', function(e){
+       if ( (e.keyCode == 37) ){  
+           showPreviousImg();
        } 
-        else if ($(this).hasClass('right') ||  (e.keyCode == 39) ){
-            order += 1;    
+        else if ( (e.keyCode == 39) ){
+            showNextImg();
         }
-        console.log("next img order: "+order);
-        if ( order > 0 && order < 10) {
-            galleryImages.each(function(index){
-                arrows.show();
-                if ($(this).data('order') === order) {
-                    var nextImage = $(this);
-                    modal.find('.modal-content').attr('src', nextImage.data('source'));
-                    modal.find('#caption').html(nextImage.attr('alt'));
-               
-           }
+        else if ( (e.keyCode == 27) ){
+            closeTheModal();
+        }
 
         });
-                               
-
-        
-        }
-        });
+    
     
 
     //-------------------end----------------------------   

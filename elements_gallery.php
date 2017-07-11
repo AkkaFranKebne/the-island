@@ -35,15 +35,25 @@
               </div>
                   
                   <!-- The Modal -->
-                  <div id="modal" class="modal">
+                  <div id="modal" class="modal loading">
 
                       <!-- The Close Button -->
                       <span class="close">&times;</span>
                       
                       <i class="arrow left"></i>
+                      
+                      <!-- Preloader-->
+                      <img id="preloader"  src ="../the-island/images/loading.gif">
+                          
+                      
+                      <!-- Modal Content (The Image) -->
+                      <img class="previous-modal-content" src ="#">
 
                       <!-- Modal Content (The Image) -->
-                      <img class="modal-content" src ="#">
+                      <img class="modal-content hidden" src ="#">
+                      
+                      <!-- Modal Content (The Image) -->
+                      <img class="next-modal-content" src ="#">
                       
                       <i class="arrow right"></i>
 
