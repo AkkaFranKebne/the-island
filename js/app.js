@@ -32,6 +32,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
         > dopasowanie poziomow mixinow
         > kolory w js w zmienne
         > kod mapy przerzucic do app.js
+        > sprawdzic czy sesja dziala poprawnie
         
     */
 
@@ -84,6 +85,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
         shadowPosition: 'outside',
         alwaysOn: false
     });
+    
     //an initial width for the map to rescale
     var initWidth = 2690; //fixed value based on pic width. why it is bigger than pic width (1,43)? to check
     
@@ -117,6 +119,16 @@ problemy na warsztaty - do obgadania z prowadzacym:
     //size of extended island part - 150% of original 
     var heightOfExtendedIsland = '1647px';
     var widthOfExtendedIsland = '2822px';
+    
+    //contact form
+    var form  = $('form');
+    var submitButton = form.find('input[type="submit"]');
+    var emailField = form.find('#email');
+    var telephoneField = form.find('#tel');
+    var errorOne = $('.error-one');
+    var errorTwo = $('.error-two');
+    var successAlert = $('.alert-success');
+    var emailValue = emailField.val();
 
 
 
@@ -400,6 +412,33 @@ problemy na warsztaty - do obgadania z prowadzacym:
         modal.find('.left').show();      
     }
     
+    // ------------validating contact form  telephone-------------
+    
+    
+    
+    function validateTelephone(){
+        var telephoneValue = telephoneField.val();
+        var filter = /^[0-9-+ ]+$/;
+        if (filter.test(telephoneValue) &&  telephoneValue.length > 7) {
+            errorOne.text("").hide();
+        }
+        else {
+            errorOne.text("Podaj poprawny numer").show();
+            
+            
+        }
+    }
+    
+     // ------------validating contact form  email-------------
+    function validateEmail(){
+        var emailValue = emailField.val();
+        if (emailValue.indexOf("@")==-1  || emailValue.indexOf(".")==-1  || emailValue.length < 5) {
+                errorTwo.text("Podaj poprawny adres email").show();
+        }
+        else {
+                errorTwo.text("").hide();
+        }
+    }
     
     
 
@@ -638,7 +677,31 @@ problemy na warsztaty - do obgadania z prowadzacym:
 
         });
     
+   // --------------validating fields in contact form  during filing the form-----
     
+     
+    telephoneField.on("blur", function(){
+          validateTelephone();
+    });
+    
+    emailField.on("blur", function(){
+          validateEmail();
+    });
+    
+    
+    //---------validating the contact form on  submiting ------
+    
+    submitButton.on('click', function(event){
+        var telephoneValue = telephoneField.val();
+        var emailValue = emailField.val();
+        validateEmail();
+        validateTelephone();
+        if (errorOne.text() !== ''  || errorTwo.text() !== '') {
+            event.preventDefault();
+            console.log("error");
+        }
+         
+    });
 
     //-------------------end----------------------------   
 });
