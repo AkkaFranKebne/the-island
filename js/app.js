@@ -5,22 +5,22 @@ $(document).ready(function () {
 to do
 
 zrobic w tym tygodniu: 
+        > stopka na srodku ekranu w mobilnym
+        > logo nie wycentrowane w mobilnym
+        > ogarniecie media query (jakie rozmiary? jak ustawic dotykowe), niektore elementy do poprawy (logo)-  gulp - link w fb, potem przegladanie can i use
 
-        > swipe mobile gallery 
-        > strzalka najechanie zielona
-        > ogarniecie media query (jakie rozmiary? jak ustawic dotykowe), niektore elementy zjebane (logo)-  gulp - link w fb, potem przegladanie can i use
-
-        >testowanie selenium
+        >testowanie selenium obczaic przed warsztatami
 
 problemy na warsztaty - do obgadania z prowadzacym:
         > on load img  dla preloadera  w main page i galeriach- JAKI BLAD?
-        > przesuniete logo lemonhills na podstronach w ie (mimo, ze dalam na stronie glownej niewidoczne X) - DLACZEGO?
+        > jak zamykac galerie swipe?
+        >Unable to preventDefault inside passive event listener due to target being treated as passive.  https://github.com/alvarotrigo/fullPage.js/issues/2362
         > zaladowywanie gorszej wersji obrazka na poczatku, a potem podmiana na lepsza
-        > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
         > dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa;
-        > stopka na srodku ekranu w mobilnym
-        > logo nie wycentrowane w mobilnym
         
+        > przesuniete logo lemonhills na podstronach w ie (mimo, ze dalam na stronie glownej niewidoczne X) - DLACZEGO?
+        > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
+          
                
  
  do zrobienia pozniej:
@@ -672,12 +672,13 @@ problemy na warsztaty - do obgadania z prowadzacym:
         closeTheModal();
     });
     
-//------------------closing gallery using scroll -------------------
-    
+//------------------closing gallery using scroll - interfere with swipe -------------------
+    /*
         $(document).on('scrollstart', function(e){
             console.log('start scrolling');
                closeTheModal();
         }); 
+        */
        
 //-------------navigating gallery using arrows-----------------------
 
@@ -709,6 +710,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
     
     
   //-------------navigating gallery using swipe---------------
+ 
     
          $(document).on('swipeleft', function(e){
              console.log('swipe left');
@@ -719,6 +721,8 @@ problemy na warsztaty - do obgadania z prowadzacym:
             console.log('swipe right');
                showPreviousImg();
         });
+        
+        
     
    // --------------validating fields in contact form  during filing the form-----
     
