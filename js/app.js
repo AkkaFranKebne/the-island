@@ -668,7 +668,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
     
     $(function() {      
       $(modal).swipe( {
-        swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
+        swipeDown:function() {
           closeTheModal();
         },
         //Default is 75px, set to 0 for demo so any distance triggers swipe
@@ -676,7 +676,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
       });
            
       $(modal).swipe( {  
-        swipeUp:function(event, direction, distance, duration, fingerCount, fingerData) {
+        swipeUp:function() {
           closeTheModal();
         },
          //threshold:0
@@ -714,17 +714,17 @@ problemy na warsztaty - do obgadania z prowadzacym:
     //-------------navigating gallery using swipe -  touchSwipe library---------------
 
     
-     $(function() {      
+     $(function() {  //sprawdzic co to za typ zapisu    
 
       $(modal).swipe( {
-        swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {
+        swipeLeft:function() {
           showNextImg();
         },
         //Default is 75px, set to 0 for demo so any distance triggers swipe
          //threshold:0
       });
         $(modal).swipe( {
-        swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
+        swipeRight:function() {
           showPreviousImg();
         },
          //threshold:0
