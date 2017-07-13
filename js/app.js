@@ -6,19 +6,18 @@ to do
 
 zrobic w tym tygodniu:        
         > ogarniecie media query -  gulp - link w fb, potem przegladanie can i use
-        > scroll mobile gallery 
+        > swipe mobile gallery 
         >testowanie selenium
 
 problemy na warsztaty - do obgadania z prowadzacym:
         > on load img  dla preloadera  w main page i galeriach- JAKI BLAD?
         > przesuniete logo lemonhills na podstronach w ie (mimo, ze dalam na stronie glownej niewidoczne X) - DLACZEGO?
-        > galerie: przy klikach pojawia sie strzalka, zdjecia dalej laduja sie z opoznieniem
         > zaladowywanie gorszej wersji obrazka na poczatku, a potem podmiana na lepsza
         > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
         > dalej na prod czasem sciska sie animacja;
         > stopka na srodku ekranu w mobilnym
         > logo nie wycentrowane w mobilnym
-        >  opozniona animacja poczatkowa - czemu nie dzialaja zmienne?
+        
                
  
  do zrobienia pozniej:
@@ -30,6 +29,8 @@ problemy na warsztaty - do obgadania z prowadzacym:
         > <!-- change the path for production -->: favicon, images, funkcja path - zmienic tak, by nie trzeba bylo zmieniac - php?
         > dopasowanie poziomow mixinow
         > kolory w js w zmienne
+        >  opozniona animacja poczatkowa - czemu nie dzialaja zmienne?
+        > powtorzony kod w js zamienic na zmienne
         > kod mapy przerzucic do app.js
         > sprawdzic czy sesja dziala poprawnie
         
@@ -335,18 +336,22 @@ problemy na warsztaty - do obgadania z prowadzacym:
                
                 //showing / hiding arrows, based on data-order in html
                 if (galleryImages.eq(index+1).data('order') < 9  ) {   
-                        modal.find('.right').show();
+                        modal.find('.right').fadeIn();
                 }
                 else {
-                   modal.find('.right').hide();
+                   modal.find('.right').fadeOut();
                }
                
                
                 if (galleryImages.eq(index+1).data('order') > 1 ) {
-                        modal.find('.left').show();
+                        modal.find('.left').fadeIn();
                 }
                else {
-                   modal.find('.left').hide();
+                   modal.find('.left').fadeOut();
+               }
+               
+              if ( typeof galleryImages.eq(index+1).data('order') === "undefined") {
+                   closeTheModal();
                }
                
            }    
@@ -383,18 +388,21 @@ problemy na warsztaty - do obgadania z prowadzacym:
                
                 //showing / hiding arrows, based on data-order in html
                 if (galleryImages.eq(index-1).data('order') < 9  ) {   
-                        modal.find('.right').show();
+                        modal.find('.right').fadeIn();
                 }
                 else {
-                   modal.find('.right').hide();
+                   modal.find('.right').fadeOut();
                }
                
                
                 if (galleryImages.eq(index-1).data('order') > 1 ) {
-                        modal.find('.left').show();
+                        modal.find('.left').fadeIn();
                 }
                else {
-                   modal.find('.left').hide();
+                   modal.find('.left').fadeOut();
+               }
+               if ( typeof galleryImages.eq(index-1).data('order') === "undefined") {
+                   closeTheModal();
                }
            }    
 
@@ -411,15 +419,17 @@ problemy na warsztaty - do obgadania z prowadzacym:
     
     function closeTheModal(){
           // hiding the modal
-        modal.hide();
+        modal.fadeOut("slow", function(){
+                //preparing the preloader for the next click
+                modal.find('#preloader').show('slow');
+                modal.find('.modal-content').addClass('hidden');
+
+                //preparing arrows
+                modal.find('.right').show();
+                modal.find('.left').show(); 
+        });
         
-        //preparing the preloader for the next click
-        modal.find('#preloader').show('slow');
-        modal.find('.modal-content').addClass('hidden');
-        
-        //preparing arrows
-        modal.find('.right').show();
-        modal.find('.left').show();      
+     
     }
     
     // ------------validating contact form  telephone-------------
@@ -653,13 +663,20 @@ problemy na warsztaty - do obgadania z prowadzacym:
         
     });
         
- //---------------------clicking close in the modal in galleriers
+ //--------------------closing gallery using X  -------------------
     
     modalCloseButton.on('click', function(){
         closeTheModal();
     });
+    
+//------------------closing gallery using scroll -------------------
+    
+        $(document).on('scrollstart', function(e){
+            console.log('start scrolling');
+               closeTheModal();
+        }); 
        
-        //-------------clicking arrows in the modal in galleries----
+//-------------navigating gallery using arrows-----------------------
 
 
     $('.right').on('click', function(e) {
@@ -671,20 +688,33 @@ problemy na warsztaty - do obgadania z prowadzacym:
     });
     
     
-            //-------------clicking gallery using keyboard----
+    //-------------navigating gallery using keyboard---------------
     
     
         $('body').on('keydown', function(e){
-       if ( (e.keyCode == 37) ){  
+       if ( (e.keyCode == 37) ){   // left button
            showPreviousImg();
        } 
-        else if ( (e.keyCode == 39) ){
+        else if ( (e.keyCode == 39) ){  // right button
             showNextImg();
         }
-        else if ( (e.keyCode == 27) ){
+        else if ( (e.keyCode == 27) ){   //esc button
             closeTheModal();
         }
 
+        });
+    
+    
+  //-------------navigating gallery using swipe---------------
+    
+         $(document).on('swipeleft', function(e){
+             console.log('swipe left');
+               showNextImg();
+        }); 
+    
+        $(document).on('swiperight', function(e){
+            console.log('swipe right');
+               showPreviousImg();
         });
     
    // --------------validating fields in contact form  during filing the form-----
