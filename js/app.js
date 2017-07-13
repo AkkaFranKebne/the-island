@@ -5,7 +5,6 @@ $(document).ready(function () {
 to do
 
 zrobic w tym tygodniu:        
-        > formularz kontaktowy -  backend
         > ogarniecie media query -  gulp - link w fb, potem przegladanie can i use
         > scroll mobile gallery 
         >testowanie selenium
@@ -332,18 +331,24 @@ problemy na warsztaty - do obgadania z prowadzacym:
                  dataSourceNext = galleryImages.eq(index+2).data('source');
                  caption = galleryImages.eq(index+1).attr('alt');
                
+               console.log(galleryImages.eq(index+1).data('order'));
                
                 //showing / hiding arrows, based on data-order in html
-                if (galleryImages.eq(index+1).data('order') >= 9 ) {   
-                        modal.find('.right').hide();
+                if (galleryImages.eq(index+1).data('order') < 9  ) {   
+                        modal.find('.right').show();
                 }
-                else if (galleryImages.eq(index+1).data('order') <= 1 ) {
-                        modal.find('.left').hide();
+                else {
+                   modal.find('.right').hide();
+               }
+               
+               
+                if (galleryImages.eq(index+1).data('order') > 1 ) {
+                        modal.find('.left').show();
                 }
                else {
-                   modal.find('.right').show();
-                   modal.find('.left').show();
+                   modal.find('.left').hide();
                }
+               
            }    
 
         }); 
@@ -374,17 +379,22 @@ problemy na warsztaty - do obgadania z prowadzacym:
                  dataSourcePrevious = galleryImages.eq(index-2).data('source');
                 caption = galleryImages.eq(index-1).attr('alt');
                
+               console.log(galleryImages.eq(index-1).data('order'));
                
                 //showing / hiding arrows, based on data-order in html
-                if (galleryImages.eq(index-1).data('order') >= 9 ) {   
-                        modal.find('.right').hide();
+                if (galleryImages.eq(index-1).data('order') < 9  ) {   
+                        modal.find('.right').show();
                 }
-                else if (galleryImages.eq(index-1).data('order') <= 1 ) {
-                        modal.find('.left').hide();
+                else {
+                   modal.find('.right').hide();
+               }
+               
+               
+                if (galleryImages.eq(index-1).data('order') > 1 ) {
+                        modal.find('.left').show();
                 }
                else {
-                   modal.find('.right').show();
-                   modal.find('.left').show();
+                   modal.find('.left').hide();
                }
            }    
 
