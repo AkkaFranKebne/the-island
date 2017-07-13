@@ -73,7 +73,7 @@ h3 {
     background-color: $menuColor; /* Fallback color  - need to put them in other opacity plces*/
     background-color: $menuColorWithOpacity; 
     
-    i {
+    .arrow {
         border: solid $secondaryColor;;
         border-width: 0 5px 5px 0;
         display: inline-block;
@@ -103,6 +103,10 @@ h3 {
         display: block;
         width: 70vw;
         max-width: 1000px;
+            /* 100% Image Width on Smaller Screens */
+        @include mobile{
+            width: 100%;
+        }
     }
     .previous-modal-content, .next-modal-content {
         display: none;
@@ -112,6 +116,10 @@ h3 {
     #preloader {
         margin: auto;  //center the image
         display: block;
+        @include mobile{
+            width: 400px;
+        }
+        
     }
         
 
@@ -161,17 +169,13 @@ h3 {
     .close:focus,
     .arrow:hover,
     .arrow:focus{
-        color: $primaryColor;
+        color: $primaryColor ;
+        border-color: $primaryColor ;
         text-decoration: none;
         cursor: pointer;
     }
+    
 
-    /* 100% Image Width on Smaller Screens */
-    @indlude mobile{
-        .modal-content {
-            width: 100%;
-        }
-    }
 }
 
 

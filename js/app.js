@@ -4,9 +4,12 @@ $(document).ready(function () {
     /* 
 to do
 
-zrobic w tym tygodniu:        
-        > ogarniecie media query -  gulp - link w fb, potem przegladanie can i use
+zrobic w tym tygodniu: 
+
         > swipe mobile gallery 
+        > strzalka najechanie zielona
+        > ogarniecie media query (jakie rozmiary? jak ustawic dotykowe), niektore elementy zjebane (logo)-  gulp - link w fb, potem przegladanie can i use
+
         >testowanie selenium
 
 problemy na warsztaty - do obgadania z prowadzacym:
@@ -14,7 +17,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
         > przesuniete logo lemonhills na podstronach w ie (mimo, ze dalam na stronie glownej niewidoczne X) - DLACZEGO?
         > zaladowywanie gorszej wersji obrazka na poczatku, a potem podmiana na lepsza
         > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
-        > dalej na prod czasem sciska sie animacja;
+        > dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa;
         > stopka na srodku ekranu w mobilnym
         > logo nie wycentrowane w mobilnym
         
