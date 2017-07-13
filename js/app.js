@@ -1,18 +1,17 @@
 $(document).ready(function () {
-    
+
 
     /* 
 to do
 
 zrobic w tym tygodniu:
-        > galeria swipe: jak dopasowac wersje jquery  https://stackoverflow.com/questions/38497347/jquery-mobile-1-4-5-uncaught-typeerror-cannot-read-property-concat-of-undefin, 
         > ogarniecie media query (jakie rozmiary? jak ustawic dotykowe), niektore elementy do poprawy (logo, stopka)-  gulp - link w fb, potem przegladanie can i use
 
         >testowanie selenium obczaic przed warsztatami
 
 problemy na warsztaty - do obgadania z prowadzacym:
         > on load img  dla preloadera  w main page i galeriach- JAKI BLAD?
-        > galeria swipe: jak zamykac galerie swipe?
+        > galeria swipe: bugi
         >Unable to preventDefault inside passive event listener due to target being treated as passive.  https://github.com/alvarotrigo/fullPage.js/issues/2362
         > zaladowywanie gorszej wersji obrazka na poczatku, a potem podmiana na lepsza
         > dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa;
@@ -45,7 +44,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
     var main = $('main');
     var body = $('body');
     var mainPaddingLeftVw = 15;
-    var images =$('img');
+    var images = $('img');
 
     //navigation//////////
     var nav = $('nav');
@@ -61,15 +60,15 @@ problemy na warsztaty - do obgadania z prowadzacym:
     var grpelemPaddingTopPx = 18;
     var imageScale = 0.7;
     var areas = $('area');
-    
+
     //galleries element
     var galleryImages = $('.gallery').find('img');
-    var modal= $('#modal');
+    var modal = $('#modal');
     var modalCloseButton = $('span.close');
     var arrows = $('.arrow');
-    
 
-    
+
+
     //map image
     //maplight library setup //////////
     island_img.maphilight({
@@ -87,10 +86,10 @@ problemy na warsztaty - do obgadania z prowadzacym:
         shadowPosition: 'outside',
         alwaysOn: false
     });
-    
+
     //an initial width for the map to rescale
     var initWidth = 2690; //fixed value based on pic width. why it is bigger than pic width (1,43)? to check
-    
+
     //position for every island part//////////
     var left = 0;
     var top = 0;
@@ -104,26 +103,26 @@ problemy na warsztaty - do obgadania z prowadzacym:
     var wwwTop = 250;
     var smLeft = 170;
     var smTop = 100;
-    
+
     //animations
     //time in preloader
     var preloaderMilisec = 4000;
-    
-    
+
+
     //onclick animation time
     var onclickAnimationMilisec = 2000;
     var onclickAnimationDelay = 200;
-    var reloadPageDelay = 2300;  //sum of previous two plus little extra
-    
+    var reloadPageDelay = 2300; //sum of previous two plus little extra
+
     //backToStartAnimation time
     var backToStartAnimationMilisec = 2000;
-    
+
     //size of extended island part - 150% of original 
     var heightOfExtendedIsland = '1647px';
     var widthOfExtendedIsland = '2822px';
-    
+
     //contact form
-    var form  = $('form');
+    var form = $('form');
     var submitButton = form.find('input[type="submit"]');
     var emailField = form.find('#email');
     var telephoneField = form.find('#tel');
@@ -167,7 +166,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
             coordsAll.push(thisMapCoords);
         };
 
-        var previousWidth = initWidth; 
+        var previousWidth = initWidth;
         var x = $('body').width() / previousWidth;
         for (var i = 0; i < coordsAll.length; i++) {
             for (var j = 0; j < coordsAll[i].length; j++) {
@@ -182,19 +181,19 @@ problemy na warsztaty - do obgadania z prowadzacym:
 
 
     //showing  preloader on start//////////
-    
-        function showPreloader(){
-        		setTimeout(function() {
-			  body.removeClass('loading');
-              main.removeClass('hidden');
-              island.removeClass('hidden'); //just in case if it is  hidden
-                noticeMyArea(areas.eq(3), 0, 400);
-                noticeMyArea(areas.eq(4), 100, 500);
-                noticeMyArea(areas.eq(0), 200, 600);
-                noticeMyArea(areas.eq(1), 300, 700);
-                noticeMyArea(areas.eq(2), 400, 800);
-                noticeMyArea(areas.eq(3), 500, 900);
-		}, preloaderMilisec);        
+
+    function showPreloader() {
+        setTimeout(function () {
+            body.removeClass('loading');
+            main.removeClass('hidden');
+            island.removeClass('hidden'); //just in case if it is  hidden
+            noticeMyArea(areas.eq(3), 0, 400);
+            noticeMyArea(areas.eq(4), 100, 500);
+            noticeMyArea(areas.eq(0), 200, 600);
+            noticeMyArea(areas.eq(1), 300, 700);
+            noticeMyArea(areas.eq(2), 400, 800);
+            noticeMyArea(areas.eq(3), 500, 900);
+        }, preloaderMilisec);
     }
 
     //map areas animation on start //////////
@@ -275,7 +274,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
                     width: widthPx
                 }, {
                     duration: backToStartAnimationMilisec,
-                    always: function () {  //both fail & success;
+                    always: function () { //both fail & success;
                         wholeisland //added
                             .removeClass('exposed')
                             .addClass('hidden');
@@ -285,7 +284,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
 
             );
     }
-    
+
 
 
     // fixed size of images for the pageview //////////
@@ -311,158 +310,152 @@ problemy na warsztaty - do obgadania z prowadzacym:
             "height": fixedHeightImg
         });
     }
-    
-    
+
+
     //moving to the next image in galleries
-    
-        
-    
-    function showNextImg(){
-        
+
+
+
+    function showNextImg() {
+
         //preparing variables for 3 images: current, previous and next
         var imageSource = modal.find('.modal-content').attr('src');
-        var dataSource ='#';
-        var dataSourcePrevious ='#';
-        var dataSourceNext ='#';
+        var dataSource = '#';
+        var dataSourcePrevious = '#';
+        var dataSourceNext = '#';
         var caption = '';
-        
+
         //finding these three images
-        galleryImages.each(function(index){
-           if ($(this).data('source') === imageSource) {
-                 dataSourcePrevious = $(this).data('source');
-                 dataSource = galleryImages.eq(index+1).data('source');
-                 dataSourceNext = galleryImages.eq(index+2).data('source');
-                 caption = galleryImages.eq(index+1).attr('alt');
-               
-               console.log(galleryImages.eq(index+1).data('order'));
-               
+        galleryImages.each(function (index) {
+            if ($(this).data('source') === imageSource) {
+                dataSourcePrevious = $(this).data('source');
+                dataSource = galleryImages.eq(index + 1).data('source');
+                dataSourceNext = galleryImages.eq(index + 2).data('source');
+                caption = galleryImages.eq(index + 1).attr('alt');
+
+                console.log(galleryImages.eq(index + 1).data('order'));
+
                 //showing / hiding arrows, based on data-order in html
-                if (galleryImages.eq(index+1).data('order') < 9  ) {   
-                        modal.find('.right').fadeIn();
+                if (galleryImages.eq(index + 1).data('order') < 9) {
+                    modal.find('.right').fadeIn();
+                } else {
+                    modal.find('.right').fadeOut();
                 }
-                else {
-                   modal.find('.right').fadeOut();
-               }
-               
-               
-                if (galleryImages.eq(index+1).data('order') > 1 ) {
-                        modal.find('.left').fadeIn();
-                }
-               else {
-                   modal.find('.left').fadeOut();
-               }
-               
-              if ( typeof galleryImages.eq(index+1).data('order') === "undefined") {
-                   closeTheModal();
-               }
-               
-           }    
 
-        }); 
-          
-        // loading three images
-        modal.find('.modal-content').attr('src',dataSource);
-        modal.find('.previous-modal-content').attr('src',dataSourcePrevious);
-        modal.find('.next-modal-content').attr('src',dataSourceNext);
-        modal.find('#caption').html(caption);
-    }
-    
-   //moving to the previous image in galleries
-    
-    
-    function showPreviousImg(){
-        //preparing variables for 3 images: current, previous and next
-        var imageSource = modal.find('.modal-content').attr('src');
-        var dataSource ='#';
-        var dataSourcePrevious ='#';
-        var dataSourceNext ='#';
-        var caption = '';
-        
-        //finding these three images
-        galleryImages.each(function(index){
-           if ($(this).data('source') === imageSource) {
-                 dataSourceNext = $(this).data('source');
-                 dataSource = galleryImages.eq(index-1).data('source');
-                 dataSourcePrevious = galleryImages.eq(index-2).data('source');
-                caption = galleryImages.eq(index-1).attr('alt');
-               
-               console.log(galleryImages.eq(index-1).data('order'));
-               
-                //showing / hiding arrows, based on data-order in html
-                if (galleryImages.eq(index-1).data('order') < 9  ) {   
-                        modal.find('.right').fadeIn();
-                }
-                else {
-                   modal.find('.right').fadeOut();
-               }
-               
-               
-                if (galleryImages.eq(index-1).data('order') > 1 ) {
-                        modal.find('.left').fadeIn();
-                }
-               else {
-                   modal.find('.left').fadeOut();
-               }
-               if ( typeof galleryImages.eq(index-1).data('order') === "undefined") {
-                   closeTheModal();
-               }
-           }    
 
-        }); 
-          
-        // loading three images
-        modal.find('.modal-content').attr('src',dataSource);
-        modal.find('.previous-modal-content').attr('src',dataSourcePrevious);
-        modal.find('.next-modal-content').attr('src',dataSourceNext);
-        modal.find('#caption').html(caption);
-    }
-    
-           //-------------closing modal in galleries----
-    
-    function closeTheModal(){
-          // hiding the modal
-        modal.fadeOut("slow", function(){
-                //preparing the preloader for the next click
-                modal.find('#preloader').show('slow');
-                modal.find('.modal-content').addClass('hidden');
+                if (galleryImages.eq(index + 1).data('order') > 1) {
+                    modal.find('.left').fadeIn();
+                } else {
+                    modal.find('.left').fadeOut();
+                }
 
-                //preparing arrows
-                modal.find('.right').show();
-                modal.find('.left').show(); 
+                if (typeof galleryImages.eq(index + 1).data('order') === "undefined") {
+                    closeTheModal();
+                }
+
+            }
+
         });
-        
-     
+
+        // loading three images
+        modal.find('.modal-content').attr('src', dataSource);
+        modal.find('.previous-modal-content').attr('src', dataSourcePrevious);
+        modal.find('.next-modal-content').attr('src', dataSourceNext);
+        modal.find('#caption').html(caption);
     }
-    
+
+    //moving to the previous image in galleries
+
+
+    function showPreviousImg() {
+        //preparing variables for 3 images: current, previous and next
+        var imageSource = modal.find('.modal-content').attr('src');
+        var dataSource = '#';
+        var dataSourcePrevious = '#';
+        var dataSourceNext = '#';
+        var caption = '';
+
+        //finding these three images
+        galleryImages.each(function (index) {
+            if ($(this).data('source') === imageSource) {
+                dataSourceNext = $(this).data('source');
+                dataSource = galleryImages.eq(index - 1).data('source');
+                dataSourcePrevious = galleryImages.eq(index - 2).data('source');
+                caption = galleryImages.eq(index - 1).attr('alt');
+
+                console.log(galleryImages.eq(index - 1).data('order'));
+
+                //showing / hiding arrows, based on data-order in html
+                if (galleryImages.eq(index - 1).data('order') < 9) {
+                    modal.find('.right').fadeIn();
+                } else {
+                    modal.find('.right').fadeOut();
+                }
+
+
+                if (galleryImages.eq(index - 1).data('order') > 1) {
+                    modal.find('.left').fadeIn();
+                } else {
+                    modal.find('.left').fadeOut();
+                }
+                if (typeof galleryImages.eq(index - 1).data('order') === "undefined") {
+                    closeTheModal();
+                }
+            }
+
+        });
+
+        // loading three images
+        modal.find('.modal-content').attr('src', dataSource);
+        modal.find('.previous-modal-content').attr('src', dataSourcePrevious);
+        modal.find('.next-modal-content').attr('src', dataSourceNext);
+        modal.find('#caption').html(caption);
+    }
+
+    //-------------closing modal in galleries----
+
+    function closeTheModal() {
+        // hiding the modal
+        modal.fadeOut("slow", function () {
+            //preparing the preloader for the next click
+            modal.find('#preloader').show('slow');
+            modal.find('.modal-content').addClass('hidden');
+
+            //preparing arrows
+            modal.find('.right').show();
+            modal.find('.left').show();
+        });
+
+
+    }
+
     // ------------validating contact form  telephone-------------
-    
-    
-    
-    function validateTelephone(){
+
+
+
+    function validateTelephone() {
         var telephoneValue = telephoneField.val();
         var filter = /^[0-9-+ ]+$/;
-        if (filter.test(telephoneValue) &&  telephoneValue.length > 7) {
+        if (filter.test(telephoneValue) && telephoneValue.length > 7) {
             errorOne.text("").hide();
-        }
-        else {
+        } else {
             errorOne.text("Podaj poprawny numer").show();
-            
-            
+
+
         }
     }
-    
-     // ------------validating contact form  email-------------
-    function validateEmail(){
+
+    // ------------validating contact form  email-------------
+    function validateEmail() {
         var emailValue = emailField.val();
-        if (emailValue.indexOf("@")==-1  || emailValue.indexOf(".")==-1  || emailValue.length < 5) {
-                errorTwo.text("Podaj poprawny adres email").show();
-        }
-        else {
-                errorTwo.text("").hide();
+        if (emailValue.indexOf("@") == -1 || emailValue.indexOf(".") == -1 || emailValue.length < 5) {
+            errorTwo.text("Podaj poprawny adres email").show();
+        } else {
+            errorTwo.text("").hide();
         }
     }
-    
-    
+
+
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
 
@@ -499,7 +492,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
 
 
     if (main.attr('data-source') && !body.hasClass('loading')) {
-       backToStartAnimation()
+        backToStartAnimation()
     }
 
 
@@ -619,134 +612,153 @@ problemy na warsztaty - do obgadania z prowadzacym:
     });
 
     //-------------opening modal in galleries----//use here preloading ass well, when you fix it
-    
-    
-    galleryImages.on('click', function(){
-        
+
+
+    galleryImages.on('click', function () {
+        console.log('galleryImages.on(click, function ()');
         //prepare variables for loading 3 images: current, previous and next 
         var dataSource = $(this).data('source');
-        var dataSourcePrevious ='';
-        var dataSourceNext ='';
-        
+        var dataSourcePrevious = '';
+        var dataSourceNext = '';
+
         //finding these 3 images
-        galleryImages.each(function(index){
-           if ($(this).data('source') === dataSource) {
-                 dataSourcePrevious = galleryImages.eq(index-1).data('source');
-                 dataSourceNext = galleryImages.eq(index+1).data('source');
-           }
-        }); 
-        
+        galleryImages.each(function (index) {
+            if ($(this).data('source') === dataSource) {
+                dataSourcePrevious = galleryImages.eq(index - 1).data('source');
+                dataSourceNext = galleryImages.eq(index + 1).data('source');
+            }
+        });
+
         //loading 3 images    
-        modal.find('.modal-content').attr('src',dataSource);
-        modal.find('.previous-modal-content').attr('src',dataSourcePrevious);
-        modal.find('.next-modal-content').attr('src',dataSourceNext);
-        
-        
+        modal.find('.modal-content').attr('src', dataSource);
+        modal.find('.previous-modal-content').attr('src', dataSourcePrevious);
+        modal.find('.next-modal-content').attr('src', dataSourceNext);
+
+
         //loading the description of the current img
         modal.find('#caption').html($(this).attr('alt'));
-        
-        
+
+
         //showing / hiding arrows, based on data-order in html
-        if ($(this).data('order') == 9 ) {   
+        if ($(this).data('order') == 9) {
             modal.find('.right').hide();
         }
-        if ($(this).data('order') == 1 ) {
+        if ($(this).data('order') == 1) {
             modal.find('.left').hide();
         }
- 
+
         //showing the modal
         modal.fadeIn();
-        
+
         //showing the preloader - now is for all clicks, should be based on img loaded - to fix
-        setTimeout(function() {   
+        setTimeout(function () {
             modal.find('#preloader').hide();
             modal.find('.modal-content').removeClass('hidden');
-        },3000);
-        
+        }, 3000);
+
     });
-        
- //--------------------closing gallery using X  -------------------
-    
-    modalCloseButton.on('click', function(){
+
+    //--------------------closing gallery using X  -------------------
+
+    modalCloseButton.on('click', function () {
         closeTheModal();
     });
+
+    //------------------closing gallery using scroll -  touchSwipe library -------------------
     
-//------------------closing gallery using scroll - interfere with swipe -------------------
-    /*
-        $(document).on('scrollstart', function(e){
-            console.log('start scrolling');
-               closeTheModal();
-        }); 
-        */
-       
-//-------------navigating gallery using arrows-----------------------
-
-
-    $('.right').on('click', function(e) {
-            showNextImg();
+    $(function() {      
+      $(modal).swipe( {
+        swipeDown:function(event, direction, distance, duration, fingerCount, fingerData) {
+          closeTheModal();
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+         //threshold:0
+      });
+           
+      $(modal).swipe( {  
+        swipeUp:function(event, direction, distance, duration, fingerCount, fingerData) {
+          closeTheModal();
+        },
+         //threshold:0
+      });
     });
     
-        $('.left').on('click', function(e) {
-            showPreviousImg();
+
+    //-------------navigating gallery using arrows-----------------------
+
+
+    $('.right').on('click', function (e) {
+        showNextImg();
     });
-    
-    
+
+    $('.left').on('click', function (e) {
+        showPreviousImg();
+    });
+
+
     //-------------navigating gallery using keyboard---------------
-    
-    
-        $('body').on('keydown', function(e){
-       if ( (e.keyCode == 37) ){   // left button
-           showPreviousImg();
-       } 
-        else if ( (e.keyCode == 39) ){  // right button
+
+
+    $('body').on('keydown', function (e) {
+        if ((e.keyCode == 37)) { // left button
+            showPreviousImg();
+        } else if ((e.keyCode == 39)) { // right button
             showNextImg();
-        }
-        else if ( (e.keyCode == 27) ){   //esc button
+        } else if ((e.keyCode == 27)) { //esc button
             closeTheModal();
         }
 
-        });
-    
-    
-  //-------------navigating gallery using swipe---------------
- 
-    
-         $(document).on('swipeleft', function(e){
-             console.log('swipe left');
-               showNextImg();
-        }); 
-    
-        $(document).on('swiperight', function(e){
-            console.log('swipe right');
-               showPreviousImg();
-        });
-        
-        
-    
-   // --------------validating fields in contact form  during filing the form-----
-    
-     
-    telephoneField.on("blur", function(){
-          validateTelephone();
     });
+
+
+    //-------------navigating gallery using swipe -  touchSwipe library---------------
+
     
-    emailField.on("blur", function(){
-          validateEmail();
+     $(function() {      
+
+      $(modal).swipe( {
+        swipeLeft:function(event, direction, distance, duration, fingerCount, fingerData) {
+          showNextImg();
+        },
+        //Default is 75px, set to 0 for demo so any distance triggers swipe
+         //threshold:0
+      });
+        $(modal).swipe( {
+        swipeRight:function(event, direction, distance, duration, fingerCount, fingerData) {
+          showPreviousImg();
+        },
+         //threshold:0
+      });       
+         
     });
-    
-    
+
+
+
+
+    // --------------validating fields in contact form  during filing the form-----
+
+
+    telephoneField.on("blur", function () {
+        validateTelephone();
+    });
+
+    emailField.on("blur", function () {
+        validateEmail();
+    });
+
+
     //---------validating the contact form on  submiting ------
-    
-    submitButton.on('click', function(event){
+
+    submitButton.on('click', function (event) {
         var telephoneValue = telephoneField.val();
         var emailValue = emailField.val();
         validateEmail();
         validateTelephone();
-        if (errorOne.text() !== ''  || errorTwo.text() !== '') {
+        if (errorOne.text() !== '' || errorTwo.text() !== '') {
             event.preventDefault();
             console.log("error");
         }
-         
+
     });
 
     //-------------------end----------------------------   

@@ -4,9 +4,12 @@
 <!-- jquery-->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
 <!-- jquery: version suitable for jquery mobile 
-<script src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>-->
-<!-- jquery mobile -->
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>
+workaround: 
+<script src="https://code.jquery.com/jquery-migrate-3.0.0.js"></script>
+-- jquery mobile -
+<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
 <!-- map hilight -->
 <script type="text/javascript" src="js/jquery.maphilight.js"></script>
 <!-- javascript -->
