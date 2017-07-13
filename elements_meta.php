@@ -1,8 +1,10 @@
 <meta  content="text/html;charset=UTF-8"/>
 <!-- viewport -->
 <meta name="viewport" content="width=device-width initial-scale=1"> 
-<!-- jquery: version suitable for jquery mobile -->
-<script src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>
+<!-- jquery-->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+<!-- jquery: version suitable for jquery mobile 
+<script src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>-->
 <!-- jquery mobile -->
 <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <!-- map hilight -->

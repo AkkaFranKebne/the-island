@@ -4,16 +4,15 @@ $(document).ready(function () {
     /* 
 to do
 
-zrobic w tym tygodniu: 
-        > stopka na srodku ekranu w mobilnym
-        > logo nie wycentrowane w mobilnym
-        > ogarniecie media query (jakie rozmiary? jak ustawic dotykowe), niektore elementy do poprawy (logo)-  gulp - link w fb, potem przegladanie can i use
+zrobic w tym tygodniu:
+        > galeria swipe: jak dopasowac wersje jquery  https://stackoverflow.com/questions/38497347/jquery-mobile-1-4-5-uncaught-typeerror-cannot-read-property-concat-of-undefin, 
+        > ogarniecie media query (jakie rozmiary? jak ustawic dotykowe), niektore elementy do poprawy (logo, stopka)-  gulp - link w fb, potem przegladanie can i use
 
         >testowanie selenium obczaic przed warsztatami
 
 problemy na warsztaty - do obgadania z prowadzacym:
         > on load img  dla preloadera  w main page i galeriach- JAKI BLAD?
-        > jak zamykac galerie swipe?
+        > galeria swipe: jak zamykac galerie swipe?
         >Unable to preventDefault inside passive event listener due to target being treated as passive.  https://github.com/alvarotrigo/fullPage.js/issues/2362
         > zaladowywanie gorszej wersji obrazka na poczatku, a potem podmiana na lepsza
         > dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa;
