@@ -1,0 +1,56 @@
+/*--------------------media query mixins------------*/
+
+//--------------------type of input mechanism----------------------------//
+
+// devices where user's main input mechanism is a finger
+
+@mixin touch () {
+    @media  screen and (pointer: coarse){
+        @content;
+    }
+}
+
+// devices where user's main input mechanism is a mouse or other pointer
+
+@mixin pointer () {
+    @media  screen and (pointer: fine){
+        @content;
+    }
+}
+
+//--------------------small screens--------------------------//
+
+@mixin mobile () {
+    @media  screen and  (max-width: 450px)  {
+        @content;
+    }
+}
+
+
+@mixin non-desktop () {
+    @media  screen  and (max-width: 800px) and (min-width: 451px) {
+        @content;
+    }
+}
+
+//--------------------big screens--------------------------//
+
+// devices where user's main input mechanism is a pointer and they have a very small or small screen
+@mixin desktop () {
+    @media  screen and (min-width: 801px)  {
+        @content;
+    }
+}
+
+@mixin big-desktop () {
+    @media  screen and (min-width: 961px)   {
+        @content;
+    }
+}
+
+@mixin hd-desktop () {
+    @media only screen and (min-width: 1601px) and (min-resolution:2dppx),
+        only screen and (min-width: 1601px) and (-webkit-min-device-pixel-ratio:2) {
+        @content;
+    }
+}

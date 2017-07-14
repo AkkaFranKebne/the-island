@@ -1,28 +1,5 @@
 //subpages extra styles
 
-
-//headers
-
-h2 {
-    font-size: $subtitlesFontSize;
-    text-align: center;
-    color: $primaryColor;
-    margin-top: $subtitleMarginTop;
-    margin-bottom: $subtitleMarginBottom;
-}
-h3 {
-    font-size: $descriptionFontSize;
-        @include non-desktop {
-            font-size: $subtitlesFontSize;
-    }
-    text-align: center;
-    color: $primaryColor;
-    margin-top: $subtitleMarginTop;
-    margin-bottom: $subtitleMarginBottom;
-    font-weight: normal;
-}
-
-
 //galeries
 
     .gallery {
@@ -180,8 +157,4 @@ h3 {
 
 
 
-//address
 
-#address{
-    padding: 30px;
-}

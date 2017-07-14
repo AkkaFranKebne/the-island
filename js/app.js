@@ -5,7 +5,8 @@ $(document).ready(function () {
 to do
 
 zrobic w tym tygodniu:
-        > ogarniecie media query (jakie rozmiary? jak ustawic dotykowe), niektore elementy do poprawy (logo, stopka)-  gulp - link w fb, potem przegladanie can i use
+        > ogarniecie media query (jakie rozmiary? jak ustawic dotykowe), niektore elementy do poprawy (logo, stopka, czemu nie dziala body 100vh)-  gulp - link w fb, potem przegladanie can i use
+        https://css-tricks.com/touch-devices-not-judged-size/
 
         >testowanie selenium obczaic przed warsztatami
 
@@ -18,6 +19,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
         
         > przesuniete logo lemonhills na podstronach w ie (mimo, ze dalam na stronie glownej niewidoczne X) - DLACZEGO?
         > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
+        > form nie on focus tylko na zmiane, dlaczego nie dziala?
           
                
  
@@ -34,6 +36,8 @@ problemy na warsztaty - do obgadania z prowadzacym:
         > powtorzony kod w js zamienic na zmienne
         > kod mapy przerzucic do app.js
         > sprawdzic czy sesja dziala poprawnie
+        > https://www.w3schools.com/jquery/jquery_events.asp  polaczenie eventow w 1
+        
         
     */
 
@@ -195,6 +199,70 @@ problemy na warsztaty - do obgadania z prowadzacym:
             noticeMyArea(areas.eq(3), 500, 900);
         }, preloaderMilisec);
     }
+    
+    
+    // ------ better one - based on images on load - not working unfortunatelly -----
+    
+    
+    /*
+    
+        //showing  preloader on start untill all images are downloaded
+
+    var main = $('main');
+    var body = $('body');
+    var island = $('#island');
+    var images =$('img');
+
+    // step one: checking if there are  still some unloaded images
+   
+    function someImagesUnloaded() {
+        var numberOfUnloadedImages = 0;
+        images.each(function () {
+            numberOfUnloadedImages += 1 ;
+        });
+        images.each(function () {
+            $(this).on("load", function() { //PROBLEM
+               numberOfUnloadedImages -= 1;  
+            });
+        });
+        console.log("number of unloaded images: " + numberOfUnloadedImages);
+        if (numberOfUnloadedImages > 0) {
+            console.log('some images still unloaded');
+            return true;
+        }
+        else {
+            console.log('all images loaded');
+            return false;
+        }
+    }
+
+    
+    //step two:  if some images are unloaded  - keep the preloader shown and set on the timeout, if all images are loaded: hide the preloader  and show the body of the site + start the initial animation
+      
+    function showPreloader() {
+        if (someImagesUnloaded()) {
+           console.log('continuing with preloader gif');
+           startTimeout(); 
+        }
+        else {
+            console.log('starting the body');
+            body.removeClass('loading');
+            main.removeClass('hidden');
+            island.removeClass('hidden'); 
+        }   
+    }
+    
+    // step three: timeout function: wait 3 sec and  check once again if images are loaded - step two and three will be repeated untill all  images are loaded
+    
+      var startTimeout =  function() {
+          console.log('setting the timeout');
+           setTimeout(function () {
+            showPreloader();
+        }, 3000);
+       }
+
+    
+    */
 
     //map areas animation on start //////////
 
@@ -424,6 +492,9 @@ problemy na warsztaty - do obgadania z prowadzacym:
             //preparing arrows
             modal.find('.right').show();
             modal.find('.left').show();
+            
+            //withrdaw changes from body
+            body.removeClass('fitInViewport');
         });
 
 
@@ -455,6 +526,8 @@ problemy na warsztaty - do obgadania z prowadzacym:
         }
     }
 
+    
+    
 
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
@@ -615,7 +688,6 @@ problemy na warsztaty - do obgadania z prowadzacym:
 
 
     galleryImages.on('click', function () {
-        console.log('galleryImages.on(click, function ()');
         //prepare variables for loading 3 images: current, previous and next 
         var dataSource = $(this).data('source');
         var dataSourcePrevious = '';
@@ -649,6 +721,9 @@ problemy na warsztaty - do obgadania z prowadzacym:
 
         //showing the modal
         modal.fadeIn();
+        
+        //limiting the body height
+        body.addClass('fitInViewport');
 
         //showing the preloader - now is for all clicks, should be based on img loaded - to fix
         setTimeout(function () {
@@ -738,11 +813,11 @@ problemy na warsztaty - do obgadania z prowadzacym:
     // --------------validating fields in contact form  during filing the form-----
 
 
-    telephoneField.on("blur", function () {
+    telephoneField.on("change", function () {
         validateTelephone();
     });
 
-    emailField.on("blur", function () {
+    emailField.on("change", function () {
         validateEmail();
     });
 
