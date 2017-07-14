@@ -14,10 +14,9 @@ problemy na warsztaty - do obgadania z prowadzacym:
         > on load img  dla preloadera  w main page i galeriach- JAKI BLAD?
         > galeria swipe: bugi
         >Unable to preventDefault inside passive event listener due to target being treated as passive.  https://github.com/alvarotrigo/fullPage.js/issues/2362
-        > zaladowywanie gorszej wersji obrazka na poczatku, a potem podmiana na lepsza
+        > zaladowywanie gorszej wersji obrazka na poczatku, a potem podmiana na lepsza (picture)
         > dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa;
         
-        > przesuniete logo lemonhills na podstronach w ie (mimo, ze dalam na stronie glownej niewidoczne X) - DLACZEGO?
         > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
         > form nie on focus tylko na zmiane, dlaczego nie dziala?
           
@@ -589,11 +588,11 @@ problemy na warsztaty - do obgadania z prowadzacym:
         $(this).toggleClass('change');
         console.log($(this).parent().css("width"));
         if ($(this).parent().find('.sidenav').css("width") === '0px') {
-            $(this).parent().find('.sidenav').css("width", "250px");
+            $(this).parent().find('.sidenav').addClass('expanded');
             menuOpacity.css("background-color", "rgba(0,0,0,0.4)").css("z-index", "1");
 
-        } else if ($(this).parent().find('.sidenav').css("width") === '250px') {
-            $(this).parent().find('.sidenav').css("width", "0px");
+        } else if ($(this).parent().find('.sidenav').hasClass('expanded')) {
+            $(this).parent().find('.sidenav').removeClass('expanded');
             menuOpacity.css("background-color", "transparent").css("z-index", "-3");
         }
 
@@ -603,7 +602,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
 
     menuOpacity.on('click', function () {
         $(this).css("background-color", "transparent").css("z-index", "-3");
-        hamburger.toggleClass('change').parent().find('.sidenav').css("width", "0px");
+        hamburger.toggleClass('change').parent().find('.sidenav').removeClass('expanded');
     })
 
 

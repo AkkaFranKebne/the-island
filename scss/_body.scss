@@ -76,13 +76,17 @@ body {
         padding-top: 30px; 
         transition: $menuTransitionSec; 
         z-index: 1;
+       &.expanded {
+           width: 255px;
+            @include non-desktop {
+                width: 100vw;
+                }
+           @include mobile {
+                width: 100vw;
+            }
+       }
        /* The side navigation menu is not fixed for very small and small displays */
-         @include non-desktop {
-                position: absolute; //is it necesarry?
-        }
-         @include mobile {
-                position: absolute; //is it necesarry?
-        }
+
        /* links in the side navigation menu */
         a {
             padding: 8px 8px 8px 32px;
@@ -140,6 +144,25 @@ body {
         margin-top: 45px;
         display: inline-block;
         cursor: pointer;
+       /* better visibility of hamburger for very small and small displays, as it is fixed there */
+          @include non-desktop {
+              background-color: $backgroundColor;
+              border-radius: 50%;
+              padding: 9px 9px 9px 12px;
+              height: 54px;
+              width: 54px;
+              //margin-left: 35px;
+              //margin-top: 110px;
+            }  
+        @include mobile {
+              background-color: $backgroundColor;
+              border-radius: 50%;
+              padding: 9px 9px 9px 12px;
+              height: 54px;
+              width: 54px;
+              margin-left: 15px;
+              margin-top: 110px;
+            } 
         .bar1, .bar2, .bar3 {
             width: 30px;
             height: 5px;

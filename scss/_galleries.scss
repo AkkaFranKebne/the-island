@@ -1,17 +1,20 @@
 //subpages extra styles
 
-//galeries
+/* gallery grid */ 
 
-    .gallery {
+    /* look and feel of gallery rows */ 
+.gallery {
         //border: 1px solid red;
         display: inline-block;
         height: auto;
         background-color: $secondaryColorWithOpacity;
         border-radius: $galleryElementsBorderRadius;
+        /* look and feel of photos columns */ 
         .photos {
             float:none; // keep pictures staying in their greed
             height: auto;
             //border: 1px solid black;
+            /* look and feel of single picture box */ 
                 picture {
                     //border: 1px solid red; 
                     display: inline-block;
@@ -21,6 +24,7 @@
                     padding-right: $picturePadding;
                     margin: $pictureMargin;
                     text-align: center; //is it necesarry for mobile centering?
+             /* look and feel of img inside a href link */        
                     img {
                         border-radius: $galleryElementsBorderRadius;
                         max-height: 100%;
@@ -28,6 +32,7 @@
                         border-radius: $galleryElementsBorderRadius;
                         cursor: pointer;
                         transition: $menuTransitionSec;
+            /* blinking on hover */ 
                         &:hover {
                             opacity: 0.7;
                             }
@@ -36,20 +41,24 @@
         }
     }
 
-/* The Modal (background) */
+/* modal - background for a big photo*/
 #modal {
     display: none; 
     position: fixed; 
     z-index: 3; 
-    padding-top: 20px; /* Location of the box */
+/* Location of the box with the photo */
+    padding-top: 20px; 
     left: 0;
     top: 0;
     width: 100vw;
     height: 100vh;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: $menuColor; /* Fallback color  - need to put them in other opacity plces*/
+/* Enable scroll if needed */
+    overflow: auto; 
+/* Fallback color  - need to put them in other opacity places!!*/
+    background-color: $menuColor; 
+/* Background with opacity*/
     background-color: $menuColorWithOpacity; 
-    
+ /* navigation in modal*/   
     .arrow {
         border: solid $secondaryColor;;
         border-width: 0 5px 5px 0;
@@ -59,37 +68,34 @@
         position: absolute;
         top: 25vh;
     }
-
     .right {
         transform: rotate(-45deg);
         -webkit-transform: rotate(-45deg);
         right: 25px;
     }
-
     .left {
         transform: rotate(135deg);
         -webkit-transform: rotate(135deg);
         left: 25px;
     }
     
-
-    
-        /* Modal Content (Image) */
+ /* image in modal*/  
     .modal-content {
         margin: auto;  //center the image
         display: block;
         width: 70vw;
         max-width: 1000px;
-            /* 100% Image Width on Smaller Screens */
+ /* 100% Image Width for very small screens */
         @include mobile{
             width: 100%;
         }
     }
+ /* preloaded previous and next image */
     .previous-modal-content, .next-modal-content {
         display: none;
     }
     
-    /* preloader */
+/* preloader */
     #preloader {
         margin: auto;  //center the image
         display: block;
@@ -98,9 +104,8 @@
         }
         
     }
-        
 
-    /* Caption of Modal Image (Image Text) - Same Width as the Image */
+/* caption for modal */
     #caption {
         margin: auto;
         display: block;
@@ -113,7 +118,7 @@
         font-size: $descriptionFontSize;
     }
 
-    /* Add Animation - Zoom in the Modal */
+/* animation zoom for modal opening */
     .modal-content, #caption, #preloader { 
         -webkit-animation-name: zoom;
         -webkit-animation-duration: 0.6s;
@@ -131,7 +136,7 @@
         to {transform:scale(1)}
     }
 
-    /* The Close Button */
+  /* close button */
     .close {
         position: absolute;
         top: 20px;
@@ -142,6 +147,7 @@
         transition: $menuTransitionSec;
     }
 
+    /* color changing for close and arrows on hover */
     .close:hover,
     .close:focus,
     .arrow:hover,
