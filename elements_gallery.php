@@ -2,7 +2,7 @@
             <div class="col-12 photos">
               <div class="row">
                   <picture  class="col-4"><a href="#" title="PORSCHE CUP - plakat turniejowy">
-                            <img  src="../the-island/images/thumbnail_porsche-cup.png" alt="PORSCHE CUP - plakat turniejowy" data-source ="../the-island/images/porsche-cup.png" data-order="1">
+                            <img   src="../the-island/images/thumbnail_porsche-cup.png" alt="PORSCHE CUP - plakat turniejowy" data-source ="../the-island/images/porsche-cup.png" data-order="1">
                 </a></picture>
                   <picture  class="col-4"><a href="#" title="PIAZZA DI MODA - materiały promocyjne">
                             <img  src="../the-island/images/thumbnail_piazza-di-moda.png" alt="PIAZZA DI MODA - materiały promocyjne" data-source ="../the-island/images/piazza-di-moda.png" data-order="2">

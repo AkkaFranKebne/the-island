@@ -203,7 +203,7 @@ body {
             transition: $menuTransitionSec;
             }
     /* Transforming icon hamburger to X */ 
-        @include barsToX();
+        @include barsTo-X(change);
      } 
     
     &#main-page-body #hamburger{
@@ -250,8 +250,11 @@ body {
             background-color: $primaryColor;
             margin: 6px 0;
             transition: $menuTransitionSec;
-            }
-        @include barsToX2();
+     } 
+        /* Transforming bars to X */ 
+        @include barsTo-X(close);
+    
+        
     }
     /* the center part of each site*/ 
     main{

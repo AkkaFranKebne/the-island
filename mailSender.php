@@ -1,4 +1,7 @@
 <?php
+session_start();
+if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
+
 
 //use the library
 require 'PHPMailerAutoload.php';

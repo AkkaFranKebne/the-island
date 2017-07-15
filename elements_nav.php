@@ -6,7 +6,7 @@
             </a>
         </div>
      <a href="index.php?source=<?php echo $_SERVER['SCRIPT_NAME'] ?>">
-            <div id="close">
+            <div id="close" class="close">
                   <div class="bar1"></div>
                   <div class="bar2"></div>
                   <div class="bar3"></div>

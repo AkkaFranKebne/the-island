@@ -4,15 +4,8 @@ $(document).ready(function () {
     /* 
 to do
 
-zrobic w tym tygodniu:
-        
-       
-
-        
-
 problemy na warsztaty - do obgadania z prowadzacym:
-        > on load img  dla preloadera  w main page i galeriach- JAKI BLAD?
-        > sensownosc wspolpracy obrazka z sesja. Czy sesja jest ustawiona poprawnie?
+        >bars
         > Dodanie prefixow: gulp - https://www.npmjs.com/package/gulp-autoprefixer 
         > przegladniecie can i use i ewen poprawki
         >testowanie selenium:
@@ -191,7 +184,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
 
 
     //showing  preloader on start//////////
-
+/*
     function showPreloader() {
         setTimeout(function () {
             body.removeClass('loading');
@@ -205,70 +198,25 @@ problemy na warsztaty - do obgadania z prowadzacym:
             noticeMyArea(areas.eq(3), 500, 900);
         }, preloaderMilisec);
     }
-    
-    
-    // ------ better one - based on images on load - not working unfortunatelly -----
-    
-    
-    /*
-    
-        //showing  preloader on start untill all images are downloaded
-
-    var main = $('main');
-    var body = $('body');
-    var island = $('#island');
-    var images =$('img');
-
-    // step one: checking if there are  still some unloaded images
-   
-    function someImagesUnloaded() {
-        var numberOfUnloadedImages = 0;
-        images.each(function () {
-            numberOfUnloadedImages += 1 ;
-        });
-        images.each(function () {
-            $(this).on("load", function() { //PROBLEM
-               numberOfUnloadedImages -= 1;  
-            });
-        });
-        console.log("number of unloaded images: " + numberOfUnloadedImages);
-        if (numberOfUnloadedImages > 0) {
-            console.log('some images still unloaded');
-            return true;
-        }
-        else {
-            console.log('all images loaded');
-            return false;
-        }
-    }
-
-    
-    //step two:  if some images are unloaded  - keep the preloader shown and set on the timeout, if all images are loaded: hide the preloader  and show the body of the site + start the initial animation
+ */   
       
-    function showPreloader() {
-        if (someImagesUnloaded()) {
-           console.log('continuing with preloader gif');
-           startTimeout(); 
-        }
-        else {
-            console.log('starting the body');
-            body.removeClass('loading');
-            main.removeClass('hidden');
-            island.removeClass('hidden'); 
-        }   
-    }
-    
-    // step three: timeout function: wait 3 sec and  check once again if images are loaded - step two and three will be repeated untill all  images are loaded
-    
-      var startTimeout =  function() {
-          console.log('setting the timeout');
-           setTimeout(function () {
-            showPreloader();
-        }, 3000);
-       }
+       function showPreloader() {
+            island_img.on("load", function() { 
+                body.removeClass('loading');
+                main.removeClass('hidden');
+                island.removeClass('hidden'); //just in case if it is  hidden
+                console.log("2 done");
+                console.log("3 start");
+                noticeMyArea(areas.eq(3), 0, 400);
+                noticeMyArea(areas.eq(4), 100, 500);
+                noticeMyArea(areas.eq(0), 200, 600);
+                noticeMyArea(areas.eq(1), 300, 700);
+                noticeMyArea(areas.eq(2), 400, 800);
+                noticeMyArea(areas.eq(3), 500, 900); 
+            });
+    } 
 
     
-    */
 
     //map areas animation on start //////////
 
@@ -451,12 +399,13 @@ problemy na warsztaty - do obgadania z prowadzacym:
         //finding these three images
         galleryImages.each(function (index) {
             if ($(this).data('source') === imageSource) {
+
                 dataSourcePrevious = $(this).data('source');
                 dataSource = galleryImages.eq(index + 1).data('source');
                 dataSourceNext = galleryImages.eq(index + 2).data('source');
                 caption = galleryImages.eq(index + 1).attr('alt');
 
-                console.log(galleryImages.eq(index + 1).data('order'));
+                //console.log(galleryImages.eq(index + 1).data('order'));
 
                 //showing / hiding arrows, based on data-order in html
                 if (galleryImages.eq(index + 1).data('order') < 9) {
@@ -475,9 +424,9 @@ problemy na warsztaty - do obgadania z prowadzacym:
                 if (typeof galleryImages.eq(index + 1).data('order') === "undefined") {
                     closeTheModal();
                 }
-
+    
             }
-
+                                                
         });
         
         // resize difrent images sizes for different screens        
@@ -628,6 +577,20 @@ problemy na warsztaty - do obgadania z prowadzacym:
     if (main.attr('data-source') && !body.hasClass('loading')) {
         backToStartAnimation()
     }
+    
+    //----------setting the size of the thumbnails for galleries /////////
+    
+    if (nondesktop.matches) {
+            if ($('.row').hasClass('gallery')) {
+            var images = $('.row').find('picture img');
+            images.each(function(e){
+                var source = $(this).attr("src");
+                source = source.replace('.png','_nondesktop.png');
+                $(this).attr('src', source);
+            });        
+     }
+    }
+
 
 
     //----------------------EVENTS---------------------------------------------------------------------------------
@@ -793,12 +756,21 @@ problemy na warsztaty - do obgadania z prowadzacym:
         body.addClass('fitInViewport');
 
         //showing the preloader - now is for all clicks, should be based on img loaded - to fix
+        /*
         setTimeout(function () {
             modal.find('#preloader').hide();
             modal.find('.modal-content').removeClass('hidden');
             modal.find('.arrow').removeClass('hidden');
             modal.find('#caption').removeClass('hidden');
         }, 3000);
+        */
+        
+        modal.find('.modal-content').on("load", function() { 
+            modal.find('#preloader').hide();
+            modal.find('.modal-content').removeClass('hidden');
+            modal.find('.arrow').removeClass('hidden');
+            modal.find('#caption').removeClass('hidden');
+          });
 
     });
 

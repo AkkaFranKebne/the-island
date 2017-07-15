@@ -29,6 +29,19 @@
                         border-radius: $galleryElementsBorderRadius;
                         max-height: 100%;
                         max-width: 100%;
+             /* for very small and small screens gallery pictures are 100% wide */
+                        @include mobile{
+                            max-width: none;
+                            max-height: none;
+                            width: 98vw;
+                            height: auto;
+                        }
+                    @include non-desktop{
+                            max-width: none;
+                            max-height: none;
+                            width: 98vw;
+                            height: auto;
+                        }
                         border-radius: $galleryElementsBorderRadius;
                         cursor: pointer;
                         transition: $menuTransitionSec;
@@ -87,6 +100,9 @@
         max-width: 1000px;
  /* 100% Image Width for very small screens */
         @include mobile{
+            width: 100%;
+        }
+        @include non-desktop{
             width: 100%;
         }
     }
