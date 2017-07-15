@@ -390,7 +390,9 @@ problemy na warsztaty - do obgadania z prowadzacym:
     
     function mediaMatches(dataSource,dataSourcePrevious,dataSourceNext){
         if (mobile.matches) {
+           if (typeof dataSource != "undefined") {
             dataSource= dataSource.replace('.png','_mobile.png');
+           }
             
            if (typeof dataSourcePrevious != "undefined") {
                dataSourcePrevious= dataSourcePrevious.replace('.png','_mobile.png');
@@ -402,7 +404,9 @@ problemy na warsztaty - do obgadania z prowadzacym:
             
 		} 
         else if (nondesktop.matches) {
+           if (typeof dataSource != "undefined") {
             dataSource= dataSource.replace('.png','_nondesktop.png');
+           }
             
            if (typeof dataSourcePrevious != "undefined") {
             dataSourcePrevious= dataSourcePrevious.replace('.png','_nondesktop.png');
@@ -414,7 +418,9 @@ problemy na warsztaty - do obgadania z prowadzacym:
         }
         
         else if (desktop.matches) {
+          if (typeof dataSource != "undefined") {
             dataSource= dataSource.replace('.png','_desktop.png');
+          }
             
            if (typeof dataSourcePrevious != "undefined") {
             dataSourcePrevious= dataSourcePrevious.replace('.png','_desktop.png');
@@ -424,13 +430,15 @@ problemy na warsztaty - do obgadania z prowadzacym:
             dataSourceNext= dataSourceNext.replace('.png','_desktop.png');
             }
         }
+        //check if it works properly
+        console.log(dataSource);
+        console.log(dataSourcePrevious);
+        console.log(dataSourceNext);
             
     }
     
     
     //moving to the next image in galleries
-
-
 
     function showNextImg() {
 
@@ -475,10 +483,6 @@ problemy na warsztaty - do obgadania z prowadzacym:
         
         // resize difrent images sizes for different screens        
         mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
-        //check if it works properly
-        console.log(dataSource);
-        console.log(dataSourcePrevious);
-        console.log(dataSourceNext);
 
         // loading three images
         modal.find('.modal-content').attr('src', dataSource);
@@ -530,10 +534,6 @@ problemy na warsztaty - do obgadania z prowadzacym:
         
         // resize difrent images sizes for different screens        
         mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
-        //check if it works properly
-        console.log(dataSource);
-        console.log(dataSourcePrevious);
-        console.log(dataSourceNext);
 
         // loading three images
         modal.find('.modal-content').attr('src', dataSource);
@@ -748,7 +748,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
 
     });
 
-    //-------------opening modal in galleries----//use here preloading ass well, when you fix it
+    //-------------opening modal in galleries----//use here preloading as well, when you fix it
 
 
     galleryImages.on('click', function () {
@@ -768,10 +768,6 @@ problemy na warsztaty - do obgadania z prowadzacym:
         
         // resize difrent images sizes for different screens        
         mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
-        //check if it works properly
-        console.log(dataSource);
-        console.log(dataSourcePrevious);
-        console.log(dataSourceNext);
 
         //loading 3 images  
         modal.find('.modal-content').attr('src', dataSource);
@@ -801,6 +797,8 @@ problemy na warsztaty - do obgadania z prowadzacym:
         setTimeout(function () {
             modal.find('#preloader').hide();
             modal.find('.modal-content').removeClass('hidden');
+            modal.find('.arrow').removeClass('hidden');
+            modal.find('#caption').removeClass('hidden');
         }, 3000);
 
     });

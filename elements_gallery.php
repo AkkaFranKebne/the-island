@@ -40,7 +40,7 @@
                       <!-- The Close Button -->
                       <span class="close">&times;</span>
                       
-                      <div class="arrow left"></div>
+                      <div class="arrow left hidden"></div>
                       
                       <!-- Preloader-->
                       <img id="preloader"  src ="../the-island/images/loading.gif">
@@ -55,10 +55,10 @@
                       <!-- Modal Content (The Image) -->
                       <img class="next-modal-content" src ="#">
                       
-                      <div class="arrow right"></div>
+                      <div class="arrow right hidden"></div>
 
                       <!-- Modal Caption (Image Text) -->
-                      <div id="caption"></div>
+                      <div id="caption" class="hidden"></div>
     
  
                 </div>
