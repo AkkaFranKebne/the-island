@@ -5,37 +5,40 @@ $(document).ready(function () {
 to do
 
 zrobic w tym tygodniu:
-        > ogarniecie media query (jakie rozmiary? jak ustawic dotykowe), niektore elementy do poprawy (logo, stopka, czemu nie dziala body 100vh)-  gulp - link w fb, potem przegladanie can i use
-        https://css-tricks.com/touch-devices-not-judged-size/
+        
+       
 
-        >testowanie selenium obczaic przed warsztatami
+        
 
 problemy na warsztaty - do obgadania z prowadzacym:
+        > zaladowywanie gorszej wersji obrazka na poczatku, a potem podmiana na lepsza (oparcie sie o picture i polifile?)  
         > on load img  dla preloadera  w main page i galeriach- JAKI BLAD?
-        > galeria swipe: bugi
-        >Unable to preventDefault inside passive event listener due to target being treated as passive.  https://github.com/alvarotrigo/fullPage.js/issues/2362
-        > zaladowywanie gorszej wersji obrazka na poczatku, a potem podmiana na lepsza (picture)
-        > dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa;
+        > sensownosc wspolpracy obrazka z sesja. Czy sesja jest ustawiona poprawnie?
+        > Dodanie prefixow: gulp - https://www.npmjs.com/package/gulp-autoprefixer 
+        > przegladniecie can i use i ewen poprawki
+        >testowanie selenium:
+                > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
+                > form nie on focus tylko na zmiane, dlaczego nie dziala?
+                > galeria: bugi 
+                > dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa;   
         
-        > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
-        > form nie on focus tylko na zmiane, dlaczego nie dziala?
-          
-               
  
  do zrobienia pozniej:
-        > domyslna strona statyczna, jak sie zaladuje js to pierwsze co popraosic o dynamiczna
-        > animacje na pojawianie sie elementow na podstronach - po dogadaniu ich wygladu z grafikiem
-        
+        > domyslna strona statyczna dla przegladarek bez js, jak sie zaladuje js to pierwsze co popraosic o dynamiczna (narzedzie)
+        > hinty na mapie dla ekranow dotykowych (gdzie brak hovera)
+        > animacje na pojawianie sie elementow na podstronach 
+        > poprawki wizualne
+        > dodanie wordpressa
   
   do poprawienia przed oddaniem:
         > <!-- change the path for production -->: favicon, images, funkcja path - zmienic tak, by nie trzeba bylo zmieniac - php?
-        > dopasowanie poziomow mixinow
         > kolory w js w zmienne
         >  opozniona animacja poczatkowa - czemu nie dzialaja zmienne?
         > powtorzony kod w js zamienic na zmienne
         > kod mapy przerzucic do app.js
         > sprawdzic czy sesja dziala poprawnie
-        > https://www.w3schools.com/jquery/jquery_events.asp  polaczenie eventow w 1
+        > ladny css https://www.w3schools.com/jquery/jquery_events.asp  polaczenie eventow w 1
+        > minifikacja
         
         
     */
@@ -134,6 +137,11 @@ problemy na warsztaty - do obgadania z prowadzacym:
     var successAlert = $('.alert-success');
     var emailValue = emailField.val();
 
+    
+    //media queries
+    var mobile = window.matchMedia("screen and  (max-width: 450px)");
+    var nondesktop = window.matchMedia("screen  and (max-width: 800px) and (min-width: 451px)");
+    var desktop = window.matchMedia("screen and (min-width: 801px) and (max-width: 960px)");
 
 
     //-------------FUNCTIONS--------------------------------------------------------------------------------------------------
@@ -378,7 +386,48 @@ problemy na warsztaty - do obgadania z prowadzacym:
         });
     }
 
-
+    // introducing media queries for images 
+    
+    function mediaMatches(dataSource,dataSourcePrevious,dataSourceNext){
+        if (mobile.matches) {
+            dataSource= dataSource.replace('.png','_mobile.png');
+            
+           if (typeof dataSourcePrevious != "undefined") {
+               dataSourcePrevious= dataSourcePrevious.replace('.png','_mobile.png');
+           }
+            
+           if (typeof dataSourceNext != "undefined") {
+               dataSourceNext= dataSourceNext.replace('.png','_mobile.png');
+           } 
+            
+		} 
+        else if (nondesktop.matches) {
+            dataSource= dataSource.replace('.png','_nondesktop.png');
+            
+           if (typeof dataSourcePrevious != "undefined") {
+            dataSourcePrevious= dataSourcePrevious.replace('.png','_nondesktop.png');
+           }
+            
+            if (typeof dataSourceNext != "undefined") {           
+            dataSourceNext= dataSourceNext.replace('.png','_nondesktop.png');
+            }
+        }
+        
+        else if (desktop.matches) {
+            dataSource= dataSource.replace('.png','_desktop.png');
+            
+           if (typeof dataSourcePrevious != "undefined") {
+            dataSourcePrevious= dataSourcePrevious.replace('.png','_desktop.png');
+           }
+            
+            if (typeof dataSourceNext != "undefined") {           
+            dataSourceNext= dataSourceNext.replace('.png','_desktop.png');
+            }
+        }
+            
+    }
+    
+    
     //moving to the next image in galleries
 
 
@@ -423,6 +472,13 @@ problemy na warsztaty - do obgadania z prowadzacym:
             }
 
         });
+        
+        // resize difrent images sizes for different screens        
+        mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
+        //check if it works properly
+        console.log(dataSource);
+        console.log(dataSourcePrevious);
+        console.log(dataSourceNext);
 
         // loading three images
         modal.find('.modal-content').attr('src', dataSource);
@@ -471,6 +527,13 @@ problemy na warsztaty - do obgadania z prowadzacym:
             }
 
         });
+        
+        // resize difrent images sizes for different screens        
+        mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
+        //check if it works properly
+        console.log(dataSource);
+        console.log(dataSourcePrevious);
+        console.log(dataSourceNext);
 
         // loading three images
         modal.find('.modal-content').attr('src', dataSource);
@@ -590,10 +653,12 @@ problemy na warsztaty - do obgadania z prowadzacym:
         if ($(this).parent().find('.sidenav').css("width") === '0px') {
             $(this).parent().find('.sidenav').addClass('expanded');
             menuOpacity.css("background-color", "rgba(0,0,0,0.4)").css("z-index", "1");
+            body.css("overflow", "hidden");
 
         } else if ($(this).parent().find('.sidenav').hasClass('expanded')) {
             $(this).parent().find('.sidenav').removeClass('expanded');
             menuOpacity.css("background-color", "transparent").css("z-index", "-3");
+            body.css("overflow", "auto");
         }
 
     });
@@ -691,6 +756,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
         var dataSource = $(this).data('source');
         var dataSourcePrevious = '';
         var dataSourceNext = '';
+        console.log(dataSourcePrevious);
 
         //finding these 3 images
         galleryImages.each(function (index) {
@@ -699,8 +765,15 @@ problemy na warsztaty - do obgadania z prowadzacym:
                 dataSourceNext = galleryImages.eq(index + 1).data('source');
             }
         });
+        
+        // resize difrent images sizes for different screens        
+        mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
+        //check if it works properly
+        console.log(dataSource);
+        console.log(dataSourcePrevious);
+        console.log(dataSourceNext);
 
-        //loading 3 images    
+        //loading 3 images  
         modal.find('.modal-content').attr('src', dataSource);
         modal.find('.previous-modal-content').attr('src', dataSourcePrevious);
         modal.find('.next-modal-content').attr('src', dataSourceNext);

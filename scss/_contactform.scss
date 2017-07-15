@@ -1,3 +1,8 @@
+
+   /*-------------------------------rules for form on contact site-------------------------  */
+
+
+   /* after sending message alert*/
 .alert {
   height: 100%;
   width: 100%;
@@ -6,13 +11,7 @@
   display: none;
 }
 
-//address
-
-#address{
-    padding: 30px;
-}
-
-
+   /* fonts for the form */
 
 @font-face {
 	font-family: 'YanoneKaffeesatzRegular';
@@ -25,16 +24,48 @@
 	font-style: normal;
 }
 
-form p {
+    form p {
     text-shadow:0 1px 0 #fff; 
     font-size:24px;
 }
+/*  form */
+	form {
+        background:#f7f2ec url('../images/letter_bg.png'); 
+        top:200px;
+        overflow:hidden;
+        margin:0px auto;
+        padding:20px; 
+		border: 1px solid #fff;
+		border-radius: 3px; 
+		-moz-border-radius: 3px; 
+        -webkit-border-radius: 3px;
+		box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 27px #fff;
+		-moz-box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 14px #fff;
+		-webkit-box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 27px #fff;
+        
+
+}
+
+    label {
+			margin: 11px 20px 0 0; 
+			font-size: 16px; color: #b3aba1;
+			text-transform: uppercase; 
+			text-shadow: 0px 1px 0px #fff;
+		}
 
 
+   /* wraper for the form and its additional parts */
 #wrap {
     width:530px; 
     margin:20px auto 0; 
     height:600px;
+}
+
+    #form_wrap { 
+    overflow:hidden; 
+    height:546px; 
+    position:relative; 
+    top:0px;
 }
 
 
@@ -44,6 +75,8 @@ form p {
     font-size:48px; 
     text-shadow:0 1px 0 #ede8d9; 
 }
+
+   /* rules for input areas */
 
 
 input[type=text], textarea {
@@ -70,7 +103,22 @@ textarea:focus, input[type=text]:focus {
             background:rgba(255,255,255,.35);
 }
 
-		#form_wrap:hover input[type=submit] {
+/* animation of the submit button */
+
+		#form_wrap input[type=submit] {
+			position:relative;
+            font-family: 'YanoneKaffeesatzRegular'; 
+			font-size:24px; 
+            color: #7c7873;
+            text-shadow:0 1px 0 #fff;
+			width:100%; text-align:center;
+			background:none;
+			cursor: pointer;
+			-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; 
+
+		}
+
+#form_wrap:hover input[type=submit] {
             z-index:1;opacity:1;
 			-webkit-transition: opacity .5s ease-in-out 1.3s;
 			-moz-transition: opacity .5s ease-in-out 1.3s;
@@ -81,21 +129,24 @@ textarea:focus, input[type=text]:focus {
                 color:#435c70;
 }
 
+
+
+
+   /* ----------------------------------------Specific rules for desktop--------------------- */
+
 @include desktop {
 
-
-
+       /* animation for the form*/
+    
 #form_wrap { 
-    overflow:hidden; 
-    height:546px; 
-    position:relative; 
-    top:0px;
 		-webkit-transition: all 1s ease-in-out .3s;
 		-moz-transition: all 1s ease-in-out .3s;
 		-o-transition: all 1s ease-in-out .3s;
 		transition: all 1s ease-in-out .3s;
 }
 	
+   /* the before additional img */    
+    
 #form_wrap:before {
     content:"";
     position:absolute;
@@ -105,7 +156,8 @@ textarea:focus, input[type=text]:focus {
     width:530px;
     height: 316px;
 }
-	
+	/* the after additional img */  
+    
 	#form_wrap:after {
         content:"";
         position:absolute;
@@ -115,125 +167,108 @@ textarea:focus, input[type=text]:focus {
 		width:530px;
         height: 260px; 
 }
-
+/*
 	#form_wrap.hide:after, #form_wrap.hide:before {
         display:none; 
 }
-	#form_wrap:hover {  //changing height and position
-        height:776px;
-        top:-200px;
-}
+    
+    */
 
 
+/* form styles for desktop*/  
 	form {
-        background:#f7f2ec url('../images/letter_bg.png'); 
 		position:relative;
-        top:200px;
-        overflow:hidden;
-		height:200px;
+        height:200px;
         width:400px;
-        margin:0px auto;
-        padding:20px; 
-		border: 1px solid #fff;
-		border-radius: 3px; 
-		-moz-border-radius: 3px; 
-        -webkit-border-radius: 3px;
-		box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 27px #fff;
-		-moz-box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 14px #fff;
-		-webkit-box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 27px #fff;
-		-webkit-transition: all 1s ease-in-out .3s;
+        -webkit-transition: all 1s ease-in-out .3s;
 		-moz-transition: all 1s ease-in-out .3s;
 		-o-transition: all 1s ease-in-out .3s;
 		transition: all 1s ease-in-out .3s;
 }
 
-
-		#form_wrap:hover form {
-            height:530px;
-}
-
-		label {
-			margin: 11px 20px 0 0; 
-			font-size: 16px; color: #b3aba1;
-			text-transform: uppercase; 
-			text-shadow: 0px 1px 0px #fff;
-		}
-
-
-		#form_wrap input[type=submit] {
-			position:relative;
-            font-family: 'YanoneKaffeesatzRegular'; 
-			font-size:24px; 
-            color: #7c7873;
-            text-shadow:0 1px 0 #fff;
-			width:100%; text-align:center;
-            opacity:0;
-			background:none;
-			cursor: pointer;
-			-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; 
+/* submit styles for desktop*/  
+#form_wrap input[type=submit] {
 			-webkit-transition: opacity .6s ease-in-out 0s;
 			-moz-transition: opacity .6s ease-in-out 0s;
 			-o-transition: opacity .6s ease-in-out 0s;
 			transition: opacity .6s ease-in-out 0s;
 		}
-
+    
+/* changing the height and the position of the form on hover*/  
+    
+	#form_wrap:hover {  
+        height:776px;
+        top:-200px;
+        form {
+            height:530px;
+            }
+        }
 
 }
 
 
-@include non-desktop {
-#wrap {
+
+
+
+/* ----------------------------Specific rules for very small displays------------------------------ */
+ 
+@include mobile {
+    
+    /* wraper for the form is extended and positioned, animation is removed */
+    
+    #wrap {
     width:100%; 
     margin:0; 
     margin-top:20px; 
     height:600px;
 }
     
-    #form_wrap { 
-    overflow:hidden; 
-    height:546px; 
-    position:relative; 
-    top:0px;
-}
 
+/* form styles for mobile*/  
 	form {
-        background:#f7f2ec url('../images/letter_bg.png'); 
-        overflow:hidden;
-		height:100%;
+        height:100%;
         width:100%;
-        margin:0px auto;
-        padding:20px; 
-		border: 1px solid #fff;
-		border-radius: 3px; 
-		-moz-border-radius: 3px; 
-        -webkit-border-radius: 3px;
-		box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 27px #fff;
-		-moz-box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 14px #fff;
-		-webkit-box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 27px #fff;
 }
 
 
-		label {
-			margin: 11px 20px 0 0; 
-			font-size: 16px; color: #b3aba1;
-			text-transform: uppercase; 
-			text-shadow: 0px 1px 0px #fff;
-		}
+
+    /* changes in input for mobile */
+
+    
+    input[type=text], textarea {
+			width: 98%; 
+    }
+    
+    textarea { 
+            height: 130px;
+}
+
+    
+}
+
+/* ------------------------Specific rules for  small displays  - for now same as for very small displays above*/
+ 
+@include non-desktop {
+    
+    /* wraper for the form is extended and positioned, animation is removed */
+    
+    #wrap {
+    width:100%; 
+    margin:0; 
+    margin-top:20px; 
+    height:600px;
+}
+    
+
+/* form styles for mobile*/  
+	form {
+        height:100%;
+        width:100%;
+}
 
 
+    /* changes in input for mobile */
 
-		#form_wrap input[type=submit] {
-			position:relative;
-            font-family: 'YanoneKaffeesatzRegular'; 
-			font-size:24px; 
-            color: #7c7873;
-            text-shadow:0 1px 0 #fff;
-			width:100%; text-align:center;
-			background:none;
-			cursor: pointer;
-			-moz-border-radius: 3px; -webkit-border-radius: 3px; border-radius: 3px; 
-
-		}
     
     input[type=text], textarea {
 			width: 98%; 
@@ -247,4 +282,21 @@ textarea:focus, input[type=text]:focus {
 }
 
 
+/* -----------------------------Specific rules  for touchscreens-------------------------------- */
+
+@include touch {
+    
+        /* wraper for the form is extended and positioned, animation is removed */
+    
+    form {
+        top: 0;
+        height: 500px;
+    }
+    
+       #form_wrap:hover {
+        top: 0;
+    }
+    
+
+}
 

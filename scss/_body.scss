@@ -2,7 +2,7 @@
 @import 'variables';
 @import 'media';
 @import 'mixins';
-@import 'functions';
+@import 'grid';
 @import 'maps';
 
 
@@ -76,17 +76,24 @@ body {
         padding-top: 30px; 
         transition: $menuTransitionSec; 
         z-index: 1;
+    /* class for menu expandiing, full screen width for small and very small screens */
        &.expanded {
            width: 255px;
             @include non-desktop {
                 width: 100vw;
+                background-image: url('../images/lemonhills.png');
+                background-repeat: no-repeat;
+                background-position: 50% 30px;
                 }
            @include mobile {
                 width: 100vw;
+                background-image: url('../images/lemonhills.png');
+                background-repeat: no-repeat;
+                background-position: 50% 30px;
             }
        }
-       /* The side navigation menu is not fixed for very small and small displays */
 
+       
        /* links in the side navigation menu */
         a {
             padding: 8px 8px 8px 32px;
@@ -116,19 +123,21 @@ body {
     
 
    }
-    /* on the main page for very small and small displays sidenav menu is open */
+    /* on the main page for very small and small displays sidenav menu is open and in absloute position */
     &#main-page-body .sidenav{
         @include non-desktop {
             padding-top: 50px; 
             width: 100%;
             background-color: transparent;
             height: 500px;
+            position: absolute;
             }  
         @include mobile {
             padding-top: 50px; 
             width: 100%;
             background-color: transparent;
             height: 500px;
+            position: absolute;
             } 
        }
     
@@ -183,8 +192,6 @@ body {
             display: none;
         }       
     }
-    
-
     
     
     /* Logo */    
