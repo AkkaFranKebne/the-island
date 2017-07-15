@@ -1,12 +1,12 @@
 $(document).ready(function () {
 
+    
 
     /* 
 to do
 
 problemy na warsztaty - do obgadania z prowadzacym:
-        >bars
-        > Dodanie prefixow: gulp - https://www.npmjs.com/package/gulp-autoprefixer 
+        > Dodanie prefixow: gulp - https://www.npmjs.com/package/gulp-autoprefixer   +jshint
         > przegladniecie can i use i ewen poprawki
         >testowanie selenium:
                 > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;

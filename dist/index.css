@@ -1,0 +1,1392 @@
+/* line 1, scss/_reset.scss */
+* {
+  padding: 0;
+  margin: 0;
+  font-size: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  border: 0;
+  outline: none;
+}
+
+/* classed used in different part of the site */
+/* line 3, scss/_classes.scss */
+.exposed {
+  visibility: visible;
+  z-index: 999;
+}
+
+/* line 9, scss/_classes.scss */
+.hidden {
+  visibility: hidden;
+}
+
+/* line 14, scss/_classes.scss */
+.fitInViewport {
+  height: 100vh;
+  overflow: hidden;
+}
+
+/*--------------------media query mixins------------*/
+/* mixins used in different part of the web page */
+/* grid for main container */
+/* line 4, scss/_grid.scss */
+.grid-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* line 8, scss/_grid.scss */
+.grid-container .row {
+  padding-bottom: 0.1vw;
+  padding-top: 0.1vw;
+}
+
+/* line 12, scss/_grid.scss */
+.grid-container .row:before, .grid-container .row:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
+
+/* line 20, scss/_grid.scss */
+.grid-container .row .col-1 {
+  width: 8.33333%;
+}
+
+/* line 24, scss/_grid.scss */
+.grid-container .row [class*="col-"] {
+  float: left;
+  min-height: 1px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+/* line 20, scss/_grid.scss */
+.grid-container .row .col-2 {
+  width: 16.66667%;
+}
+
+/* line 24, scss/_grid.scss */
+.grid-container .row [class*="col-"] {
+  float: left;
+  min-height: 1px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+/* line 20, scss/_grid.scss */
+.grid-container .row .col-3 {
+  width: 25.0%;
+}
+
+/* line 24, scss/_grid.scss */
+.grid-container .row [class*="col-"] {
+  float: left;
+  min-height: 1px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+/* line 20, scss/_grid.scss */
+.grid-container .row .col-4 {
+  width: 33.33333%;
+}
+
+/* line 24, scss/_grid.scss */
+.grid-container .row [class*="col-"] {
+  float: left;
+  min-height: 1px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+/* line 20, scss/_grid.scss */
+.grid-container .row .col-5 {
+  width: 41.66666%;
+}
+
+/* line 24, scss/_grid.scss */
+.grid-container .row [class*="col-"] {
+  float: left;
+  min-height: 1px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+/* line 20, scss/_grid.scss */
+.grid-container .row .col-6 {
+  width: 50.0%;
+}
+
+/* line 24, scss/_grid.scss */
+.grid-container .row [class*="col-"] {
+  float: left;
+  min-height: 1px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+/* line 20, scss/_grid.scss */
+.grid-container .row .col-7 {
+  width: 58.33333%;
+}
+
+/* line 24, scss/_grid.scss */
+.grid-container .row [class*="col-"] {
+  float: left;
+  min-height: 1px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+/* line 20, scss/_grid.scss */
+.grid-container .row .col-8 {
+  width: 66.66666%;
+}
+
+/* line 24, scss/_grid.scss */
+.grid-container .row [class*="col-"] {
+  float: left;
+  min-height: 1px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+/* line 20, scss/_grid.scss */
+.grid-container .row .col-9 {
+  width: 75.0%;
+}
+
+/* line 24, scss/_grid.scss */
+.grid-container .row [class*="col-"] {
+  float: left;
+  min-height: 1px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+/* line 20, scss/_grid.scss */
+.grid-container .row .col-10 {
+  width: 83.33333%;
+}
+
+/* line 24, scss/_grid.scss */
+.grid-container .row [class*="col-"] {
+  float: left;
+  min-height: 1px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+/* line 20, scss/_grid.scss */
+.grid-container .row .col-11 {
+  width: 91.66666%;
+}
+
+/* line 24, scss/_grid.scss */
+.grid-container .row [class*="col-"] {
+  float: left;
+  min-height: 1px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+/* line 20, scss/_grid.scss */
+.grid-container .row .col-12 {
+  width: 100.0%;
+}
+
+/* line 24, scss/_grid.scss */
+.grid-container .row [class*="col-"] {
+  float: left;
+  min-height: 1px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 24, scss/_grid.scss */
+  .grid-container .row [class*="col-"] {
+    float: none;
+    width: 100%;
+    padding-bottom: 10px;
+  }
+}
+
+/* Maps used at the different pages */
+/* General set of css rules for all pages and the main page */
+/* line 11, scss/_body.scss */
+body {
+  background-color: lightblue;
+  /* small and very small screens has a more colorful background as they do not contain the clickable island */
+  position: relative;
+  height: 100vh;
+  background-repeat: no-repeat;
+  /* Preloading on main page */
+  /* Backgrounds of subpages */
+  /* Headers font size */
+  /* Opacity for side navigation menu */
+  /* The side navigation menu */
+  /* on the main page for very small and small displays sidenav menu is open and in absloute position */
+  /* Menu icon hamburger */
+  /* Logo */
+  /* X sign at subpages */
+  /* the center part of each site*/
+  /* The whole island +  separate parts of the island */
+  /* Footer */
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 11, scss/_body.scss */
+  body {
+    background-image: url(../images/wyspa%20www.png);
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* line 11, scss/_body.scss */
+  body {
+    background-image: url(../images/wyspa%20www.png);
+  }
+}
+
+/* line 24, scss/_body.scss */
+body.loading {
+  background-image: url("../images/loading_pigs.gif");
+  background-position: center;
+}
+
+/* line 30, scss/_body.scss */
+body#eventy {
+  background-image: url(../images/wyspa%20www.png);
+  background-size: 2822px 1647px;
+  background-position: -1000px -500px;
+}
+
+/* line 30, scss/_body.scss */
+body#sm {
+  background-image: url(../images/wyspa%20www.png);
+  background-size: 2822px 1647px;
+  background-position: 170px 100px;
+}
+
+/* line 30, scss/_body.scss */
+body#www {
+  background-image: url(../images/wyspa%20www.png);
+  background-size: 2822px 1647px;
+  background-position: -350px 250px;
+}
+
+/* line 30, scss/_body.scss */
+body#kreacja {
+  background-image: url(../images/wyspa%20www.png);
+  background-size: 2822px 1647px;
+  background-position: -1800px 100px;
+}
+
+/* line 30, scss/_body.scss */
+body#newbiz {
+  background-image: url(../images/wyspa%20www.png);
+  background-size: 2822px 1647px;
+  background-position: 700px -600px;
+}
+
+/* line 39, scss/_body.scss */
+body h2, body h3, body h4 {
+  text-align: center;
+  color: cadetblue;
+  margin-top: 1vh;
+  margin-bottom: 0.5vh;
+}
+
+/* line 46, scss/_body.scss */
+body h2 {
+  font-weight: bold;
+  font-size: 26px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 46, scss/_body.scss */
+  body h2 {
+    font-size: 4vmax;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 46, scss/_body.scss */
+  body h2 {
+    font-size: 3.8vmax;
+  }
+}
+
+/* line 58, scss/_body.scss */
+body h3 {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 58, scss/_body.scss */
+  body h3 {
+    font-size: 3.5vmax;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 58, scss/_body.scss */
+  body h3 {
+    font-size: 3.1vmax;
+  }
+}
+
+/* line 69, scss/_body.scss */
+body h4 {
+  font-weight: normal;
+  font-size: 16px;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 69, scss/_body.scss */
+  body h4 {
+    font-size: 3vmax;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 69, scss/_body.scss */
+  body h4 {
+    font-size: 2.9vmax;
+  }
+}
+
+/* line 83, scss/_body.scss */
+body #menuOpacity {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  -webkit-transition: background-color 0.5s;
+  transition: background-color 0.5s;
+  z-index: -3;
+}
+
+/* line 91, scss/_body.scss */
+body .sidenav {
+  height: 100%;
+  width: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #696969;
+  overflow-x: hidden;
+  padding-top: 30px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  z-index: 1;
+  /* class for menu expandiing, full screen width for small and very small screens */
+  /* links in the side navigation menu */
+}
+
+/* line 103, scss/_body.scss */
+body .sidenav.expanded {
+  width: 255px;
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 103, scss/_body.scss */
+  body .sidenav.expanded {
+    width: 100vw;
+    background-image: url("../images/lemonhills.png");
+    background-repeat: no-repeat;
+    background-position: 50% 30px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* line 103, scss/_body.scss */
+  body .sidenav.expanded {
+    width: 100vw;
+    background-image: url("../images/lemonhills.png");
+    background-repeat: no-repeat;
+    background-position: 50% 30px;
+  }
+}
+
+/* line 121, scss/_body.scss */
+body .sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 30px;
+  height: 50px;
+  color: white;
+  display: block;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  /* links in side navigation menu are centered for very small and small displays */
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 121, scss/_body.scss */
+  body .sidenav a {
+    text-align: center;
+    font-weight: 800;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* line 121, scss/_body.scss */
+  body .sidenav a {
+    text-align: center;
+    font-weight: 800;
+  }
+}
+
+/* line 140, scss/_body.scss */
+body .sidenav a:first-of-type {
+  margin-top: 80px;
+}
+
+/* line 143, scss/_body.scss */
+body .sidenav a:hover, body .sidenav a:focus {
+  color: cadetblue;
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 150, scss/_body.scss */
+  body#main-page-body .sidenav {
+    padding-top: 50px;
+    width: 100%;
+    background-color: transparent;
+    height: 500px;
+    position: absolute;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* line 150, scss/_body.scss */
+  body#main-page-body .sidenav {
+    padding-top: 50px;
+    width: 100%;
+    background-color: transparent;
+    height: 500px;
+    position: absolute;
+  }
+}
+
+/* line 170, scss/_body.scss */
+body #hamburger {
+  z-index: 2;
+  position: fixed;
+  height: 30px;
+  width: 30px;
+  margin-left: 45px;
+  margin-top: 45px;
+  display: inline-block;
+  cursor: pointer;
+  /* better visibility of hamburger for very small and small displays, as it is fixed there */
+  /* Transforming icon hamburger to X */
+  /* Transforming icon hamburger to X */
+  /* Rotate first bar */
+  /* Fade out the second bar */
+  /* Rotate last bar */
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 170, scss/_body.scss */
+  body #hamburger {
+    background-color: lightblue;
+    border-radius: 50%;
+    padding: 9px 9px 9px 12px;
+    height: 54px;
+    width: 54px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* line 170, scss/_body.scss */
+  body #hamburger {
+    background-color: lightblue;
+    border-radius: 50%;
+    padding: 9px 9px 9px 12px;
+    height: 54px;
+    width: 54px;
+    margin-left: 15px;
+    margin-top: 110px;
+  }
+}
+
+/* line 198, scss/_body.scss */
+body #hamburger .bar1, body #hamburger .bar2, body #hamburger .bar3 {
+  width: 30px;
+  height: 5px;
+  background-color: cadetblue;
+  margin: 6px 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+/* line 26, scss/_mixins.scss */
+body #hamburger.change .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+/* line 31, scss/_mixins.scss */
+body #hamburger.change .bar2 {
+  opacity: 0;
+}
+
+/* line 35, scss/_mixins.scss */
+body #hamburger.change .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/* line 209, scss/_body.scss */
+body#main-page-body #hamburger {
+  /* hamburger is not visible for small and very small screens for main page */
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 209, scss/_body.scss */
+  body#main-page-body #hamburger {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* line 209, scss/_body.scss */
+  body#main-page-body #hamburger {
+    display: none;
+  }
+}
+
+/* line 221, scss/_body.scss */
+body .container {
+  max-width: 300px;
+  margin: auto;
+}
+
+/* line 224, scss/_body.scss */
+body .container #logo {
+  height: auto;
+  width: 300px;
+  margin-top: 30px;
+}
+
+/* line 232, scss/_body.scss */
+body #close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 20px;
+  width: 20px;
+  margin-top: 35px;
+  margin-right: 45px;
+  /*x is invisible for very small and small screens */
+  /* Transforming bars to X */
+  /* Transforming icon hamburger to X */
+  /* Rotate first bar */
+  /* Fade out the second bar */
+  /* Rotate last bar */
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 232, scss/_body.scss */
+  body #close {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* line 232, scss/_body.scss */
+  body #close {
+    display: none;
+  }
+}
+
+/* line 247, scss/_body.scss */
+body #close .bar1, body #close .bar2, body #close .bar3 {
+  width: 30px;
+  height: 5px;
+  background-color: cadetblue;
+  margin: 6px 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+/* line 26, scss/_mixins.scss */
+body #close.close .bar1 {
+  -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+  transform: rotate(-45deg) translate(-9px, 6px);
+}
+
+/* line 31, scss/_mixins.scss */
+body #close.close .bar2 {
+  opacity: 0;
+}
+
+/* line 35, scss/_mixins.scss */
+body #close.close .bar3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -8px);
+  transform: rotate(45deg) translate(-8px, -8px);
+}
+
+/* line 260, scss/_body.scss */
+body main {
+  width: 100vw;
+  padding-left: 15vw;
+  padding-right: 15vw;
+  position: relative;
+  /* paddings are changed for very small and small screens*/
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 260, scss/_body.scss */
+  body main {
+    padding-left: 0.1vw;
+    padding-right: 0.1vw;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* line 260, scss/_body.scss */
+  body main {
+    padding-left: 0.1vw;
+    padding-right: 0.1vw;
+  }
+}
+
+/* line 274, scss/_body.scss */
+body main#main-page-main {
+  /* at the main page the center part is not visible for very small and small  screens (as the side menu is open and takes its role*/
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 274, scss/_body.scss */
+  body main#main-page-main {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  /* line 274, scss/_body.scss */
+  body main#main-page-main {
+    display: none;
+  }
+}
+
+/* line 286, scss/_body.scss */
+body .grpelem {
+  opacity: 1;
+  display: inline;
+  padding-top: 18px;
+  position: absolute;
+  width: 70vw;
+  height: 40.86124vw;
+}
+
+/* line 294, scss/_body.scss */
+body .grpelem img {
+  width: 70vw;
+  height: 40.86124vw;
+}
+
+/* line 300, scss/_body.scss */
+body .grpelem#island_img {
+  z-index: 99;
+}
+
+/* line 305, scss/_body.scss */
+body #copy {
+  font-size: 10px;
+  color: white;
+  position: fixed;
+  bottom: 10px;
+  right: 12px;
+}
+
+/* gallery grid */
+/* look and feel of gallery rows */
+/* line 6, scss/_galleries.scss */
+.gallery {
+  display: inline-block;
+  height: auto;
+  background-color: rgba(255, 255, 255, 0.6);
+  border-radius: 5px;
+  /* look and feel of photos columns */
+}
+
+/* line 13, scss/_galleries.scss */
+.gallery .photos {
+  float: none;
+  height: auto;
+  /* look and feel of single picture box */
+}
+
+/* line 18, scss/_galleries.scss */
+.gallery .photos picture {
+  display: inline-block;
+  height: auto;
+  overflow: hidden;
+  padding-left: 0.1vw;
+  padding-right: 0.1vw;
+  margin: 0;
+  text-align: center;
+  /* look and feel of img inside a href link */
+}
+
+/* line 28, scss/_galleries.scss */
+.gallery .photos picture img {
+  border-radius: 5px;
+  max-height: 100%;
+  max-width: 100%;
+  /* for very small and small screens gallery pictures are 100% wide */
+  border-radius: 5px;
+  cursor: pointer;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  /* blinking on hover */
+}
+
+@media screen and (max-width: 450px) {
+  /* line 28, scss/_galleries.scss */
+  .gallery .photos picture img {
+    max-width: none;
+    max-height: none;
+    width: 98vw;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 28, scss/_galleries.scss */
+  .gallery .photos picture img {
+    max-width: none;
+    max-height: none;
+    width: 98vw;
+    height: auto;
+  }
+}
+
+/* line 49, scss/_galleries.scss */
+.gallery .photos picture img:hover {
+  opacity: 0.7;
+}
+
+/* modal - background for a big photo*/
+/* line 58, scss/_galleries.scss */
+#modal {
+  display: none;
+  position: fixed;
+  z-index: 3;
+  /* Location of the box with the photo */
+  padding-top: 20px;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  /* Enable scroll if needed */
+  overflow: auto;
+  /* Fallback color  - need to put them in other opacity places!!*/
+  background-color: #696969;
+  /* Background with opacity*/
+  background-color: rgba(105, 105, 105, 0.95);
+  /* navigation in modal*/
+  /* image in modal*/
+  /* preloaded previous and next image */
+  /* preloader */
+  /* caption for modal */
+  /* animation zoom for modal opening */
+  /* close button */
+  /* color changing for close and arrows on hover */
+}
+
+/* line 75, scss/_galleries.scss */
+#modal .arrow {
+  border: solid white;
+  border-width: 0 5px 5px 0;
+  display: inline-block;
+  padding: 10px;
+  height: 20px;
+  position: absolute;
+  top: 25vh;
+}
+
+/* line 84, scss/_galleries.scss */
+#modal .right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  right: 25px;
+}
+
+/* line 89, scss/_galleries.scss */
+#modal .left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+  left: 25px;
+}
+
+/* line 96, scss/_galleries.scss */
+#modal .modal-content {
+  margin: auto;
+  display: block;
+  width: 70vw;
+  max-width: 1000px;
+  /* 100% Image Width for very small screens */
+}
+
+@media screen and (max-width: 450px) {
+  /* line 96, scss/_galleries.scss */
+  #modal .modal-content {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* line 96, scss/_galleries.scss */
+  #modal .modal-content {
+    width: 100%;
+  }
+}
+
+/* line 110, scss/_galleries.scss */
+#modal .previous-modal-content, #modal .next-modal-content {
+  display: none;
+}
+
+/* line 115, scss/_galleries.scss */
+#modal #preloader {
+  margin: auto;
+  display: block;
+}
+
+@media screen and (max-width: 450px) {
+  /* line 115, scss/_galleries.scss */
+  #modal #preloader {
+    width: 400px;
+  }
+}
+
+/* line 125, scss/_galleries.scss */
+#modal #caption {
+  margin: auto;
+  display: block;
+  width: 90%;
+  max-width: 1000px;
+  text-align: center;
+  color: white;
+  padding: 10px 0;
+  height: 150px;
+  font-size: 16px;
+}
+
+/* line 138, scss/_galleries.scss */
+#modal .modal-content, #modal #caption, #modal #preloader {
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes zoom {
+  from {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/* line 156, scss/_galleries.scss */
+#modal .close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+/* line 167, scss/_galleries.scss */
+#modal .close:hover,
+#modal .close:focus,
+#modal .arrow:hover,
+#modal .arrow:focus {
+  color: cadetblue;
+  border-color: cadetblue;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/*-------------------------------rules for form on contact site-------------------------  */
+/* after sending message alert*/
+/* line 6, scss/_contactform.scss */
+.alert {
+  height: 100%;
+  width: 100%;
+  font-size: 16px;
+  color: red;
+  display: none;
+}
+
+/* fonts for the form */
+@font-face {
+  font-family: 'YanoneKaffeesatzRegular';
+  src: url("../yanonekaffeesatz-regular-webfont.eot");
+  src: url("../yanonekaffeesatz-regular-webfont.eot?#iefix") format("embedded-opentype"), url("../yanonekaffeesatz-regular-webfont.woff") format("woff"), url("../yanonekaffeesatz-regular-webfont.ttf") format("truetype"), url("../yanonekaffeesatz-regular-webfont.svg#YanoneKaffeesatzRegular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* line 27, scss/_contactform.scss */
+form p {
+  text-shadow: 0 1px 0 #fff;
+  font-size: 24px;
+}
+
+/*  form */
+/* line 32, scss/_contactform.scss */
+form {
+  background: #f7f2ec url("../images/letter_bg.png");
+  top: 200px;
+  overflow: hidden;
+  margin: 0px auto;
+  padding: 20px;
+  border: 1px solid #fff;
+  border-radius: 3px;
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 27px #fff;
+  -moz-box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 14px #fff;
+  -webkit-box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 27px #fff;
+}
+
+/* line 49, scss/_contactform.scss */
+label {
+  margin: 11px 20px 0 0;
+  font-size: 16px;
+  color: #b3aba1;
+  text-transform: uppercase;
+  text-shadow: 0px 1px 0px #fff;
+}
+
+/* wraper for the form and its additional parts */
+/* line 58, scss/_contactform.scss */
+#wrap {
+  width: 530px;
+  margin: 20px auto 0;
+  height: 600px;
+}
+
+/* line 64, scss/_contactform.scss */
+#form_wrap {
+  overflow: hidden;
+  height: 546px;
+  position: relative;
+  top: 0px;
+}
+
+/* line 72, scss/_contactform.scss */
+#wrap h1 {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: 48px;
+  text-shadow: 0 1px 0 #ede8d9;
+}
+
+/* rules for input areas */
+/* line 82, scss/_contactform.scss */
+input[type=text], textarea {
+  font: 14px normal normal uppercase helvetica, arial, serif;
+  color: #7c7873;
+  background: none;
+  width: 360px;
+  height: 36px;
+  padding: 0px 10px;
+  margin: 0 0 10px 0;
+  border: 1px solid #f8f5f1;
+  border-radius: 5px;
+  -webkit-box-shadow: inset 0px 0px 1px #b3a895;
+  box-shadow: inset 0px 0px 1px #b3a895;
+}
+
+/* line 97, scss/_contactform.scss */
+textarea {
+  padding-top: 9px;
+  resize: none;
+}
+
+/* line 102, scss/_contactform.scss */
+textarea:focus, input[type=text]:focus {
+  background: rgba(255, 255, 255, 0.35);
+}
+
+/* animation of the submit button */
+/* line 108, scss/_contactform.scss */
+#form_wrap input[type=submit] {
+  position: relative;
+  font-family: 'YanoneKaffeesatzRegular';
+  font-size: 24px;
+  color: #7c7873;
+  text-shadow: 0 1px 0 #fff;
+  width: 100%;
+  text-align: center;
+  background: none;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+/* line 121, scss/_contactform.scss */
+#form_wrap:hover input[type=submit] {
+  z-index: 1;
+  opacity: 1;
+  -webkit-transition: opacity .5s ease-in-out 1.3s;
+  transition: opacity .5s ease-in-out 1.3s;
+}
+
+/* line 128, scss/_contactform.scss */
+#form_wrap:hover input:hover[type=submit] {
+  color: #435c70;
+}
+
+/* ----------------------------------------Specific rules for desktop--------------------- */
+@media screen and (min-width: 801px) {
+  /* animation for the form*/
+  /* line 141, scss/_contactform.scss */
+  #form_wrap {
+    -webkit-transition: all 1s ease-in-out .3s;
+    transition: all 1s ease-in-out .3s;
+  }
+  /* the before additional img */
+  /* line 150, scss/_contactform.scss */
+  #form_wrap:before {
+    content: "";
+    position: absolute;
+    bottom: 128px;
+    left: 0px;
+    background: url("../images/before.png");
+    width: 530px;
+    height: 316px;
+  }
+  /* the after additional img */
+  /* line 161, scss/_contactform.scss */
+  #form_wrap:after {
+    content: "";
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    background: url("../images/after.png");
+    width: 530px;
+    height: 260px;
+  }
+  /*
+	#form_wrap.hide:after, #form_wrap.hide:before {
+        display:none; 
+}
+    
+    */
+  /* form styles for desktop*/
+  /* line 179, scss/_contactform.scss */
+  form {
+    position: relative;
+    height: 200px;
+    width: 400px;
+    -webkit-transition: all 1s ease-in-out .3s;
+    transition: all 1s ease-in-out .3s;
+  }
+  /* submit styles for desktop*/
+  /* line 190, scss/_contactform.scss */
+  #form_wrap input[type=submit] {
+    -webkit-transition: opacity .6s ease-in-out 0s;
+    transition: opacity .6s ease-in-out 0s;
+  }
+  /* changing the height and the position of the form on hover*/
+  /* line 199, scss/_contactform.scss */
+  #form_wrap:hover {
+    height: 776px;
+    top: -200px;
+  }
+  /* line 202, scss/_contactform.scss */
+  #form_wrap:hover form {
+    height: 530px;
+  }
+}
+
+/* ----------------------------Specific rules for very small displays------------------------------ */
+@media screen and (max-width: 450px) {
+  /* wraper for the form is extended and positioned, animation is removed */
+  /* line 219, scss/_contactform.scss */
+  #wrap {
+    width: 100%;
+    margin: 0;
+    margin-top: 20px;
+    height: 600px;
+  }
+  /* form styles for mobile*/
+  /* line 228, scss/_contactform.scss */
+  form {
+    height: 100%;
+    width: 100%;
+  }
+  /* changes in input for mobile */
+  /* line 238, scss/_contactform.scss */
+  input[type=text], textarea {
+    width: 98%;
+  }
+  /* line 242, scss/_contactform.scss */
+  textarea {
+    height: 130px;
+  }
+}
+
+/* ------------------------Specific rules for  small displays  - for now same as for very small displays above*/
+@media screen and (max-width: 800px) and (min-width: 451px) {
+  /* wraper for the form is extended and positioned, animation is removed */
+  /* line 255, scss/_contactform.scss */
+  #wrap {
+    width: 100%;
+    margin: 0;
+    margin-top: 20px;
+    height: 600px;
+  }
+  /* form styles for mobile*/
+  /* line 264, scss/_contactform.scss */
+  form {
+    height: 100%;
+    width: 100%;
+  }
+  /* changes in input for mobile */
+  /* line 273, scss/_contactform.scss */
+  input[type=text], textarea {
+    width: 98%;
+  }
+  /* line 277, scss/_contactform.scss */
+  textarea {
+    height: 130px;
+  }
+}
+
+/* -----------------------------Specific rules  for touchscreens-------------------------------- */
+@media screen and (pointer: coarse) {
+  /* wraper for the form is extended and positioned, animation is removed */
+  /* line 291, scss/_contactform.scss */
+  form {
+    top: 0;
+    height: 500px;
+  }
+  /* line 296, scss/_contactform.scss */
+  #form_wrap:hover {
+    top: 0;
+  }
+}
+
+/* styles for address and map part in contact site */
+/* line 3, scss/_location.scss */
+#location {
+  width: 100%;
+  height: 35vh;
+  border: 5px solid white;
+}
+
+/* line 9, scss/_location.scss */
+#address {
+  padding: 30px;
+}
