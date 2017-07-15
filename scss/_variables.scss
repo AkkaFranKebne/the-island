@@ -9,7 +9,7 @@ $menuColorWithOpacity: rgba(105, 105, 105, 0.95);
 //images sources
 $loadingImage: url('../images/loading_pigs.gif');
 $islandImage: url(../images/wyspa%20www.png);
-$loadingImageModal: url('../images/tobias-rothe-org.gif');
+
 
 //island size
 $widthToHeightProportion: (1098/1881); //image from the designer: 1881 x 1098
@@ -27,8 +27,19 @@ $menuTransitionSec: 0.5s;
 //font sizes
 $sideNavFontSize: 30px;
 $copyFontSize: 10px;
-$subtitlesFontSize: 3vh;
-$descriptionFontSize: 2.5vh;
+
+$titlesFontSize: 26px;
+$subtitlesFontSize: 24px;
+$descriptionFontSize: 16px;
+
+
+$titlesFontSizeMobile: 4vmax;
+$subtitlesFontSizeMobile: 3.5vmax;
+$descriptionFontSizeMobile: 3vmax;
+
+$titlesFontSizeNondesktop: 3.8vmax;
+$subtitlesFontSizeNondesktop: 3.1vmax;
+$descriptionFontSizeNondesktop: 2.9vmax;
 
 //subtitles margins
 $subtitleMarginTop: 1vh;

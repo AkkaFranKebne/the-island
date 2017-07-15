@@ -33,13 +33,13 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
                 <div class="col-6">
                     <div class="row">
                         <div class="col-12">
-                            <h2>ODWIEDZ NAS:</h2>
+                            <h3>ODWIEDZ NAS:</h3>
                             <div id="address">
-                                <h3>LemOnHills Sp. z o.o.</h3>
-                                <h3>ul. Wiosenna 5a</h3>
-                                <h3>55-040 Bielany Wrocławskie</h3>
-                                <h3>info@lemonhills.pl</h3>
-                                <h3>+48.509.680.400</h3>
+                                <h4>LemOnHills Sp. z o.o.</h4>
+                                <h4>ul. Wiosenna 5a</h4>
+                                <h4>55-040 Bielany Wrocławskie</h4>
+                                <h4>info@lemonhills.pl</h4>
+                                <h4>+48.509.680.400</h4>
                             </div>
                         </div>
                     </div>
@@ -50,7 +50,7 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
                     </div>
                 </div>
                 <div class="col-6">
-                    <h2> WYSLIJ NAM WIADOMOSC:</h2>
+                    <h3> WYSLIJ NAM WIADOMOSC:</h3>
                     <?php include 'elements_contactform.php';?>
                 </div>
             </div>  

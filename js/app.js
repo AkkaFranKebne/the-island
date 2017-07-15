@@ -11,7 +11,6 @@ zrobic w tym tygodniu:
         
 
 problemy na warsztaty - do obgadania z prowadzacym:
-        > zaladowywanie gorszej wersji obrazka na poczatku, a potem podmiana na lepsza (oparcie sie o picture i polifile?)  
         > on load img  dla preloadera  w main page i galeriach- JAKI BLAD?
         > sensownosc wspolpracy obrazka z sesja. Czy sesja jest ustawiona poprawnie?
         > Dodanie prefixow: gulp - https://www.npmjs.com/package/gulp-autoprefixer 
@@ -24,11 +23,11 @@ problemy na warsztaty - do obgadania z prowadzacym:
         
  
  do zrobienia pozniej:
-        > domyslna strona statyczna dla przegladarek bez js, jak sie zaladuje js to pierwsze co popraosic o dynamiczna (narzedzie)
+        > domyslna strona statyczna dla przegladarek bez js, jak sie zaladuje js to pierwsze co poprosic o dynamiczna (narzedzie)
         > hinty na mapie dla ekranow dotykowych (gdzie brak hovera)
         > animacje na pojawianie sie elementow na podstronach 
         > poprawki wizualne
-        > dodanie wordpressa
+        > dodanie wordpressa do obrazkow (jak ogarnac media?)
   
   do poprawienia przed oddaniem:
         > <!-- change the path for production -->: favicon, images, funkcja path - zmienic tak, by nie trzeba bylo zmieniac - php?

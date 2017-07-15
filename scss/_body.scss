@@ -35,24 +35,47 @@ body {
     }
     
         /* Headers font size */
+    
+    h2, h3, h4 {
+        text-align: center;
+        color: $primaryColor;
+        margin-top: $subtitleMarginTop;
+        margin-bottom: $subtitleMarginBottom;
+     }
 
     h2 {
-        font-size: $subtitlesFontSize;
-        text-align: center;
-        color: $primaryColor;
-        margin-top: $subtitleMarginTop;
-        margin-bottom: $subtitleMarginBottom;
-    }
-    h3 {
-        font-size: $descriptionFontSize;
-            @include non-desktop {
-                font-size: $subtitlesFontSize;
+        font-weight: bold;
+        font-size: $titlesFontSize;
+            @include mobile {
+                font-size: $titlesFontSizeMobile;
         }
-        text-align: center;
-        color: $primaryColor;
-        margin-top: $subtitleMarginTop;
-        margin-bottom: $subtitleMarginBottom;
+            @include non-desktop {
+                font-size: $titlesFontSizeNondesktop;
+        }
+    }
+    
+    
+    h3 {
+        font-weight: bold;
+        font-size: $subtitlesFontSize;
+            @include mobile {
+                font-size: $subtitlesFontSizeMobile;
+        }
+            @include non-desktop {
+                font-size: $subtitlesFontSizeNondesktop;
+        }
+    }
+    
+    h4 {
         font-weight: normal;
+         font-size: $descriptionFontSize;
+            @include mobile {
+                font-size: $descriptionFontSizeMobile;
+        }
+            @include non-desktop {
+                font-size: $descriptionFontSizeNondesktop;
+        }      
+        
     }
     
     
