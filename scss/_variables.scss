@@ -4,7 +4,8 @@ $secondaryColor: white;
 $secondaryColorWithOpacity: rgba(255, 255, 255, 0.6);
 $backgroundColor: lightblue;
 $menuColor: #696969;
-$menuColorWithOpacity: rgba(105, 105, 105, 0.95);
+$menuColorWithOpacity: rgba(100, 100, 100, 0.9);
+$menuColorWithOpacityStrong: rgba(100, 100, 100, 0.3);
 
 //images sources
 $loadingImage: url('../images/loading_pigs.gif');
@@ -26,6 +27,11 @@ $menuTransitionSec: 0.5s;
 
 //font sizes
 $sideNavFontSize: 30px;
+$sideNavFontSizeMobile: 8vh;
+
+$sideNavLinkHeight: 50px;
+$sideNavLinkHeightMobile: 12vh;
+
 $copyFontSize: 10px;
 
 $titlesFontSize: 26px;

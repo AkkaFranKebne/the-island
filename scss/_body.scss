@@ -1,84 +1,80 @@
-
 @import 'variables';
 @import 'media';
 @import 'mixins';
 @import 'grid';
 @import 'maps';
 
-
-   /* General set of css rules for all pages and the main page */
+/* General set of css rules for all pages and the main page */
 
 body {
     background-color: $backgroundColor;
     /* small and very small screens has a more colorful background as they do not contain the clickable island */
     @include non-desktop {
-                background-image: $islandImage;
-        }
+        background-image: $islandImage;
+    }
     @include mobile {
-                background-image: $islandImage;
-        }
+        background-image: $islandImage;
+    }
     position: relative;
     height: 100vh;
-    background-repeat: no-repeat;  
+    background-repeat: no-repeat;
     /* Preloading on main page */
-    &.loading,  {
+    &.loading,
+    {
         background-image: $loadingImage;
         background-position: center;
     }
     /* Backgrounds of subpages */
-    @each $subpage in eventy, sm, www, kreacja, newbiz{
+    @each $subpage in eventy,
+    sm,
+    www,
+    kreacja,
+    newbiz {
         &##{$subpage} {
             background-image: $islandImage;
             background-size: $backgroundSize;
             background-position: map-get($islandBackgroundPosition, $subpage);
         }
     }
-    
-        /* Headers font size */
-    
-    h2, h3, h4 {
+    /* Headers font size */
+    h2,
+    h3,
+    h4 {
         text-align: center;
         color: $primaryColor;
         margin-top: $subtitleMarginTop;
         margin-bottom: $subtitleMarginBottom;
-     }
-
+    }
     h2 {
         font-weight: bold;
         font-size: $titlesFontSize;
-            @include mobile {
-                font-size: $titlesFontSizeMobile;
+        @include mobile {
+            font-size: $titlesFontSizeMobile;
         }
-            @include non-desktop {
-                font-size: $titlesFontSizeNondesktop;
+        @include non-desktop {
+            font-size: $titlesFontSizeNondesktop;
         }
     }
-    
-    
     h3 {
         font-weight: bold;
         font-size: $subtitlesFontSize;
-            @include mobile {
-                font-size: $subtitlesFontSizeMobile;
+        @include mobile {
+            font-size: $subtitlesFontSizeMobile;
         }
-            @include non-desktop {
-                font-size: $subtitlesFontSizeNondesktop;
+        @include non-desktop {
+            font-size: $subtitlesFontSizeNondesktop;
         }
     }
-    
     h4 {
         font-weight: normal;
-         font-size: $descriptionFontSize;
-            @include mobile {
-                font-size: $descriptionFontSizeMobile;
+        font-size: $descriptionFontSize;
+        @include mobile {
+            font-size: $descriptionFontSizeMobile;
         }
-            @include non-desktop {
-                font-size: $descriptionFontSizeNondesktop;
-        }      
-        
+        @include non-desktop {
+            font-size: $descriptionFontSizeNondesktop;
+        }
     }
-    
-    
     /* Opacity for side navigation menu */
     #menuOpacity {
         position: fixed;
@@ -88,87 +84,88 @@ body {
         z-index: -3;
     }
     /* The side navigation menu */
-   .sidenav {
-        height: 100%; 
+    .sidenav {
+        height: 100%;
         width: 0px;
-        position: fixed; 
+        position: fixed;
         top: 0;
         left: 0;
-        background-color: $menuColor; 
-        overflow-x: hidden; 
-        padding-top: 30px; 
-        transition: $menuTransitionSec; 
+        background-color: $menuColor;
+        overflow-x: hidden;
+        padding-top: 30px;
+        transition: $menuTransitionSec;
         z-index: 1;
-    /* class for menu expandiing, full screen width for small and very small screens */
-       &.expanded {
-           width: 255px;
+        /* class for menu expandiing, full screen width for small and very small screens */
+        &.expanded {
+            width: 255px;
             @include non-desktop {
                 width: 100vw;
-                background-image: url('../images/lemonhills.png');
-                background-repeat: no-repeat;
-                background-position: 50% 30px;
-                }
-           @include mobile {
-                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
                 background-image: url('../images/lemonhills.png');
                 background-repeat: no-repeat;
                 background-position: 50% 30px;
             }
-       }
-
-       
-       /* links in the side navigation menu */
+            @include mobile {
+                width: 100vw;
+                height: 100vh;
+                overflow: hidden;
+                background-image: url('../images/lemonhills.png');
+                background-repeat: no-repeat;
+                background-position: 50% 30px;
+            }
+        }
+        /* links in the side navigation menu */
         a {
             padding: 8px 8px 8px 32px;
             text-decoration: none;
             font-size: $sideNavFontSize;
-            height: 50px;
+            height: $sideNavLinkHeight;
             color: $secondaryColor;
             display: block;
             transition: $menuTransitionSec;
-        /* links in side navigation menu are centered for very small and small displays */
+            /* links in side navigation menu are centered for very small and small displays */
             @include non-desktop {
                 text-align: center;
                 font-weight: 800;
-        }
-           @include mobile {
+                font-size: $sideNavFontSizeMobile;
+                height: $sideNavLinkHeightMobile;
+            }
+            @include mobile {
                 text-align: center;
                 font-weight: 800;
+                font-size: $sideNavFontSizeMobile;
+                height: $sideNavLinkHeightMobile;
+            }
         }
-            
+        a:first-of-type {
+            margin-top: 40px;
         }
-       a:first-of-type{
-           margin-top: 80px;
-       }
-        a:hover, a:focus{
-                color: $primaryColor;
+        a:hover,
+        a:focus {
+            color: $primaryColor;
         }
-    
-
-   }
+    }
     /* on the main page for very small and small displays sidenav menu is open and in absloute position */
-    &#main-page-body .sidenav{
+    &#main-page-body .sidenav {
         @include non-desktop {
-            padding-top: 50px; 
+            padding-top: 50px;
             width: 100%;
             background-color: transparent;
             height: 500px;
             position: absolute;
-            }  
+        }
         @include mobile {
-            padding-top: 50px; 
+            padding-top: 50px;
             width: 100%;
             background-color: transparent;
             height: 500px;
             position: absolute;
-            } 
-       }
-    
-    
+        }
+    }
     /* Menu icon hamburger */
-    
     #hamburger {
-        z-index: 2; 
+        z-index: 2;
         position: fixed;
         height: 30px;
         width: 30px;
@@ -176,59 +173,57 @@ body {
         margin-top: 45px;
         display: inline-block;
         cursor: pointer;
-       /* better visibility of hamburger for very small and small displays, as it is fixed there */
-          @include non-desktop {
-              background-color: $backgroundColor;
-              border-radius: 50%;
-              padding: 9px 9px 9px 12px;
-              height: 54px;
-              width: 54px;
-              //margin-left: 35px;
-              //margin-top: 110px;
-            }  
+        /* better visibility of hamburger for very small and small displays, as it is fixed there */
+        @include non-desktop {
+            background-color: $backgroundColor;
+            border-radius: 50%;
+            padding: 9px 9px 9px 12px;
+            height: 54px;
+            width: 54px;
+            //margin-left: 35px;
+            //margin-top: 110px;
+        }
         @include mobile {
-              background-color: $backgroundColor;
-              border-radius: 50%;
-              padding: 9px 9px 9px 12px;
-              height: 54px;
-              width: 54px;
-              margin-left: 15px;
-              margin-top: 110px;
-            } 
-        .bar1, .bar2, .bar3 {
+            background-color: $backgroundColor;
+            border-radius: 50%;
+            padding: 9px 9px 9px 12px;
+            height: 54px;
+            width: 54px;
+            margin-left: 15px;
+            margin-top: 110px;
+        }
+        .bar1,
+        .bar2,
+        .bar3 {
             width: 30px;
             height: 5px;
             background-color: $primaryColor;
             margin: 6px 0;
             transition: $menuTransitionSec;
-            }
-    /* Transforming icon hamburger to X */ 
+        }
+        /* Transforming icon hamburger to X */
         @include barsTo-X(change);
-     } 
-    
-    &#main-page-body #hamburger{
-         /* hamburger is not visible for small and very small screens for main page */  
+    }
+    &#main-page-body #hamburger {
+        /* hamburger is not visible for small and very small screens for main page */
         @include non-desktop {
             display: none;
         }
         @include mobile {
             display: none;
-        }       
+        }
     }
-    
-    
-    /* Logo */    
+    /* Logo */
     .container {
-      max-width: 300px;
-      margin: auto;
+        max-width: 300px;
+        margin: auto;
         #logo {
             height: auto;
             width: 300px;
             margin-top: 30px;
-        } 
-        
+        }
     }
-    /* X sign at subpages */  
+    /* X sign at subpages */
     #close {
         position: absolute;
         top: 0;
@@ -237,57 +232,56 @@ body {
         width: 20px;
         margin-top: 35px;
         margin-right: 45px;
-   /*x is invisible for very small and small screens */
+        /*x is invisible for very small and small screens */
         @include non-desktop {
             display: none;
         }
         @include mobile {
             display: none;
         }
-         .bar1, .bar2, .bar3 {
+        .bar1,
+        .bar2,
+        .bar3 {
             width: 30px;
             height: 5px;
             background-color: $primaryColor;
             margin: 6px 0;
             transition: $menuTransitionSec;
-     } 
-        /* Transforming bars to X */ 
+        }
+        /* Transforming bars to X */
         @include barsTo-X(close);
-    
-        
     }
-    /* the center part of each site*/ 
-    main{
+    /* the center part of each site*/
+    main {
         width: 100vw;
         padding-left: $mainPaddingLeftVw;
         padding-right: $mainPaddingLeftVw;
         position: relative;
-    /* paddings are changed for very small and small screens*/ 
-        @include non-desktop  {
+        /* paddings are changed for very small and small screens*/
+        @include non-desktop {
             padding-left: $mainPaddingLeftVwMobile;
-        padding-right: $mainPaddingLeftVwMobile;
+            padding-right: $mainPaddingLeftVwMobile;
         }
-        @include mobile  {
+        @include mobile {
             padding-left: $mainPaddingLeftVwMobile;
-        padding-right: $mainPaddingLeftVwMobile;
+            padding-right: $mainPaddingLeftVwMobile;
         }
-    &#main-page-main{
-    /* at the main page the center part is not visible for very small and small  screens (as the side menu is open and takes its role*/ 
-        @include  non-desktop{
-            display: none;
+        &#main-page-main {
+            /* at the main page the center part is not visible for very small and small  screens (as the side menu is open and takes its role*/
+            @include non-desktop {
+                display: none;
+            }
+            @include mobile {
+                display: none;
+            }
         }
-        @include  mobile {
-            display: none;
-        }
-     }
     }
-    
-    /* The whole island +  separate parts of the island */ 
+    /* The whole island +  separate parts of the island */
     .grpelem {
         opacity: 1;
-        display:inline;
+        display: inline;
         padding-top: $grpelemPaddingTopPx;
-        position:absolute;
+        position: absolute;
         width: $imageScaledWidth;
         height: $imageScaledHeight;
         //border: 1px solid red;
@@ -295,13 +289,13 @@ body {
             width: $imageScaledWidth;
             height: $imageScaledHeight;
             //border: 1px solid yellow;
-        } 
+        }
         //the whole island
         &#island_img {
             z-index: 99;
         }
     }
-    /* Footer */ 
+    /* Footer */
     #copy {
         font-size: $copyFontSize;
         color: $secondaryColor;
@@ -317,8 +311,4 @@ body {
             //right: -55vw;
         }
     }
-    
-
 }
-
-

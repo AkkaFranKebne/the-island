@@ -3,6 +3,8 @@ var gulp = require('gulp');
 var autoprefixer = require('gulp-autoprefixer');
 var sourcemaps = require('gulp-sourcemaps');
 var sass = require("gulp-sass");
+var cleanCSS = require('gulp-clean-css');
+var imageop = require('gulp-image-optimization');  //not working properly
 
 
 gulp.task("sass", function (){
@@ -17,11 +19,9 @@ gulp.task("sass", function (){
     .pipe(gulp.dest("css"))
 });
 
-
 gulp.task("watch", function(){
     gulp.watch(['scss/**/*.scss' ], ['sass']); 
 });
-
 
 
 gulp.task('prefix', function (){
@@ -32,7 +32,22 @@ gulp.task('prefix', function (){
             grid: true
         
 		}))
-		.pipe(gulp.dest('dist'))
+		.pipe(gulp.dest('css'))
+});
+
+gulp.task('minify-css', function () {
+  return gulp.src('css/index.css')
+    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(gulp.dest('css-minified'));
+});
+
+
+gulp.task('images', function(cb) {
+    gulp.src(['images/**/*.png','images/**/*.jpg','images/**/*.gif','images/**/*.jpeg']).pipe(imageop({
+        optimizationLevel: 5,
+        progressive: true,
+        interlaced: true
+    })).pipe(gulp.dest('public/images')).on('end', cb).on('error', cb);
 });
 
 

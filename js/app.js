@@ -5,14 +5,31 @@ $(document).ready(function () {
     /* 
 to do
 
-problemy na warsztaty - do obgadania z prowadzacym:
-        > Dodanie prefixow: gulp - https://www.npmjs.com/package/gulp-autoprefixer   +jshint
-        > przegladniecie can i use i ewen poprawki
-        >testowanie selenium:
-                > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
-                > form nie on focus tylko na zmiane, dlaczego nie dziala?
-                > galeria: bugi 
-                > dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa;   
+can  I use: 
+> dodac support color dla opacity
+> grid layout : chrome 49 i nizej, ios safari 10.2 i nizej, opera mini, android browser 4.4 i nizej
+> transform  ie <9 - The scale transform can be emulated in IE < 9 using Microsoft's "zoom" extension, others are (not easily) possible using the MS Matrix filter  + nie dziala na opera mini
+> transition opera mini
+> animation w opera mini
+> border radius opera mini
+> box shadow opera mini
+
+
+>testowanie - znalezione bledy:
+> obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
+> form nie on focus tylko na zmiane, dlaczego nie dziala?
+> dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa; 
+
+        
+        
+
+    
+        
+        animacja x w zamknieciu
+        gulp svg konwersja fontawsome na ikony
+        hide mobile menu browser in modal
+        
+  
         
  
  do zrobienia pozniej:
@@ -30,8 +47,8 @@ problemy na warsztaty - do obgadania z prowadzacym:
         > kod mapy przerzucic do app.js
         > sprawdzic czy sesja dziala poprawnie
         > ladny css https://www.w3schools.com/jquery/jquery_events.asp  polaczenie eventow w 1
-        > minifikacja
-        
+        > linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
+        creative cloud obczaic
         
     */
 
@@ -183,22 +200,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
 
 
 
-    //showing  preloader on start//////////
-/*
-    function showPreloader() {
-        setTimeout(function () {
-            body.removeClass('loading');
-            main.removeClass('hidden');
-            island.removeClass('hidden'); //just in case if it is  hidden
-            noticeMyArea(areas.eq(3), 0, 400);
-            noticeMyArea(areas.eq(4), 100, 500);
-            noticeMyArea(areas.eq(0), 200, 600);
-            noticeMyArea(areas.eq(1), 300, 700);
-            noticeMyArea(areas.eq(2), 400, 800);
-            noticeMyArea(areas.eq(3), 500, 900);
-        }, preloaderMilisec);
-    }
- */   
+    //showing  preloader on start//////////  
       
        function showPreloader() {
             island_img.on("load", function() { 
@@ -338,43 +340,43 @@ problemy na warsztaty - do obgadania z prowadzacym:
     function mediaMatches(dataSource,dataSourcePrevious,dataSourceNext){
         if (mobile.matches) {
            if (typeof dataSource != "undefined") {
-            dataSource= dataSource.replace('.png','_mobile.png');
+            dataSource= dataSource.replace('.jpg','_mobile.jpg');
            }
             
            if (typeof dataSourcePrevious != "undefined") {
-               dataSourcePrevious= dataSourcePrevious.replace('.png','_mobile.png');
+               dataSourcePrevious= dataSourcePrevious.replace('.jpg','_mobile.jpg');
            }
             
            if (typeof dataSourceNext != "undefined") {
-               dataSourceNext= dataSourceNext.replace('.png','_mobile.png');
+               dataSourceNext= dataSourceNext.replace('.jpg','_mobile.jpg');
            } 
             
 		} 
         else if (nondesktop.matches) {
            if (typeof dataSource != "undefined") {
-            dataSource= dataSource.replace('.png','_nondesktop.png');
+            dataSource= dataSource.replace('.jpg','_nondesktop.jpg');
            }
             
            if (typeof dataSourcePrevious != "undefined") {
-            dataSourcePrevious= dataSourcePrevious.replace('.png','_nondesktop.png');
+            dataSourcePrevious= dataSourcePrevious.replace('.jpg','_nondesktop.jpg');
            }
             
             if (typeof dataSourceNext != "undefined") {           
-            dataSourceNext= dataSourceNext.replace('.png','_nondesktop.png');
+            dataSourceNext= dataSourceNext.replace('.jpg','_nondesktop.jpg');
             }
         }
         
         else if (desktop.matches) {
           if (typeof dataSource != "undefined") {
-            dataSource= dataSource.replace('.png','_desktop.png');
+            dataSource= dataSource.replace('.jpg','_desktop.jpg');
           }
             
            if (typeof dataSourcePrevious != "undefined") {
-            dataSourcePrevious= dataSourcePrevious.replace('.png','_desktop.png');
+            dataSourcePrevious= dataSourcePrevious.replace('.jpg','_desktop.jpg');
            }
             
             if (typeof dataSourceNext != "undefined") {           
-            dataSourceNext= dataSourceNext.replace('.png','_desktop.png');
+            dataSourceNext= dataSourceNext.replace('.jpg','_desktop.jpg');
             }
         }
         //check if it works properly
@@ -537,8 +539,24 @@ problemy na warsztaty - do obgadania z prowadzacym:
     }
 
     
+    //--------------removing specific page from menu on the specific page ----------//
+    function removeFromMenu(){
+       var url = window.location.href; 
+       url = url.split("/");
+       url = url[4];  // on production change for 3
+        
+      var sideNavLinks = $('.sidenav a');
+      sideNavLinks.show();
+      sideNavLinks.each(function(){
+          if ($(this).attr('href') == url) {
+              $(this).hide();
+          }
+      });
     
-
+         
+    
+    }
+    
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
 
@@ -578,6 +596,11 @@ problemy na warsztaty - do obgadania z prowadzacym:
         backToStartAnimation()
     }
     
+    //--------- hiding specific link from side menu ///////
+    
+       
+    removeFromMenu();
+    
     //----------setting the size of the thumbnails for galleries /////////
     
     if (nondesktop.matches) {
@@ -585,7 +608,7 @@ problemy na warsztaty - do obgadania z prowadzacym:
             var images = $('.row').find('picture img');
             images.each(function(e){
                 var source = $(this).attr("src");
-                source = source.replace('.png','_nondesktop.png');
+                source = source.replace('.jpg','_nondesktop.jpg');
                 $(this).attr('src', source);
             });        
      }
@@ -755,20 +778,14 @@ problemy na warsztaty - do obgadania z prowadzacym:
         //limiting the body height
         body.addClass('fitInViewport');
 
-        //showing the preloader - now is for all clicks, should be based on img loaded - to fix
-        /*
-        setTimeout(function () {
-            modal.find('#preloader').hide();
-            modal.find('.modal-content').removeClass('hidden');
-            modal.find('.arrow').removeClass('hidden');
-            modal.find('#caption').removeClass('hidden');
-        }, 3000);
-        */
+        //showing the preloader 
+    
         
         modal.find('.modal-content').on("load", function() { 
             modal.find('#preloader').hide();
             modal.find('.modal-content').removeClass('hidden');
             modal.find('.arrow').removeClass('hidden');
+            modal.find('.arrow-background').removeClass('hidden');
             modal.find('#caption').removeClass('hidden');
           });
 
