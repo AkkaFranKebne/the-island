@@ -59,6 +59,11 @@
     width:530px; 
     margin:20px auto 0; 
     height:600px;
+    /* wraper animation on enter the webpage */
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: $menuTransitionSec;
+    animation-name: zoom;
+    animation-duration: $menuTransitionSec;
 }
 
     #form_wrap { 

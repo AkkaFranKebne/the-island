@@ -6,7 +6,7 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
 <!DOCTYPE html>
 <html  lang="pl-PL">
  <head>
-<title>KREACJA</title>
+<title>KREACJA </title>
      <?php include 'elements_meta.php';?>
 </head>
  <body id = "kreacja">
@@ -24,6 +24,8 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
         <div class="row">
             <div class="col-12">
                 <h2> KREACJA </h2>
+                <noscript>Strona wymaga uruchomionego Java Script. </noscript>
+            <noscript> Zaktualizuj lub zmień przeglądarkę. </noscript>
             </div>
         </div>           
         

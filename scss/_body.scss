@@ -3,6 +3,7 @@
 @import 'mixins';
 @import 'grid';
 @import 'maps';
+@import 'animations';
 
 /* General set of css rules for all pages and the main page */
 
@@ -37,6 +38,16 @@ body {
         }
     }
     /* Headers font size */
+    
+    
+    noscript {
+        color: red;
+        font-size: 20px;
+        height: 50px;
+        margin-left: 30vw;
+        text-align: center;
+    }
+    
     h2,
     h3,
     h4 {
@@ -251,6 +262,10 @@ body {
         /* Transforming bars to X */
         @include barsTo-X(close);
     }
+    
+    
+
+    
     /* the center part of each site*/
     main {
         width: 100vw;

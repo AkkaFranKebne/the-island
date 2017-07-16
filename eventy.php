@@ -26,6 +26,8 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
         <div class="row">
             <div class="col-12">
                 <h2> EVENTY </h2>
+                <noscript>Strona wymaga uruchomionego Java Script. </noscript>
+            <noscript> Zaktualizuj lub zmień przeglądarkę. </noscript>
             </div>
         </div>           
         

@@ -6,7 +6,8 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
 <!DOCTYPE html>
 <html  lang="pl-PL">
  <head>
-<title>MAIN</title>
+
+<title>MAIN </title>
      <?php include 'elements_meta.php';?>
 </head>
         
@@ -30,12 +31,12 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
           ?>  >
         <?php include 'elements_map.php';?>
         <?php include 'elements_island_parts.php';?>
-  </main>     
+  </main> 
+            <noscript>Strona wymaga uruchomionego Java Script. Zaktualizuj lub zmień przeglądarkę.</noscript>
+            
    <?php include 'elements_footer.php';?>
  </body>
 </html>
 
 
 
-
-class="main-page" 

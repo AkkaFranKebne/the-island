@@ -4,8 +4,18 @@
         width: 100%;
         height: 35vh;
         border: 5px solid white;
+        /* animation for entering the web page */
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: $menuTransitionSec;
+        animation-name: zoom;
+        animation-duration: $menuTransitionSec;
       }
 
 #address{
-            padding: 30px;
+    padding: 30px;
+    /* animation for entering the web page */
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: $menuTransitionSec;
+    animation-name: zoom;
+    animation-duration: $menuTransitionSec;
         }

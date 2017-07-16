@@ -7,8 +7,13 @@
         //border: 1px solid red;
         display: inline-block;
         height: auto;
+        /* animation for gallery apperance */
         background-color: $secondaryColorWithOpacity;
         border-radius: $galleryElementsBorderRadius;
+        -webkit-animation-name: zoom;
+        -webkit-animation-duration: $menuTransitionSec;
+        animation-name: zoom;
+        animation-duration: $menuTransitionSec;
         /* look and feel of photos columns */ 
         .photos {
             float:none; // keep pictures staying in their greed
@@ -120,7 +125,6 @@
         }
     }
     
-    
  /* image in modal*/  
     .modal-content {
         margin: auto;  //center the image
@@ -168,23 +172,15 @@
         font-size: $descriptionFontSize;
     }
 
-/* animation zoom for modal opening */
+/* animation  for modal opening */
     .modal-content, #caption, #preloader { 
         -webkit-animation-name: zoom;
-        -webkit-animation-duration: 0.6s;
+        -webkit-animation-duration: $menuTransitionSec;
         animation-name: zoom;
-        animation-duration: 0.6s;
+        animation-duration: $menuTransitionSec;
     }
 
-    @-webkit-keyframes zoom {
-        from {-webkit-transform:scale(0)} 
-        to {-webkit-transform:scale(1)}
-    }
 
-    @keyframes zoom {
-        from {transform:scale(0)} 
-        to {transform:scale(1)}
-    }
 
   /* close button */
     .close {

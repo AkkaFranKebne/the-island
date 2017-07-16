@@ -20,35 +20,24 @@ can  I use:
 > form nie on focus tylko na zmiane, dlaczego nie dziala?
 > dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa; 
 
-        
-        
 
-    
-        
-        animacja x w zamknieciu
-        gulp svg konwersja fontawsome na ikony
-        hide mobile menu browser in modal
-        
-  
-        
- 
- do zrobienia pozniej:
-        > domyslna strona statyczna dla przegladarek bez js, jak sie zaladuje js to pierwsze co poprosic o dynamiczna (narzedzie)
+ do zrobienia :
+        > gulp svg konwersja fontawsome na ikony
         > hinty na mapie dla ekranow dotykowych (gdzie brak hovera)
         > animacje na pojawianie sie elementow na podstronach 
-        > poprawki wizualne
-        > dodanie wordpressa do obrazkow (jak ogarnac media?)
+        > animacje na chowanie sie elementow na podstronach
+        > dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow?)
   
   do poprawienia przed oddaniem:
         > <!-- change the path for production -->: favicon, images, funkcja path - zmienic tak, by nie trzeba bylo zmieniac - php?
-        > kolory w js w zmienne
+        > css i js zmienne
         >  opozniona animacja poczatkowa - czemu nie dzialaja zmienne?
         > powtorzony kod w js zamienic na zmienne
         > kod mapy przerzucic do app.js
         > sprawdzic czy sesja dziala poprawnie
-        > ladny css https://www.w3schools.com/jquery/jquery_events.asp  polaczenie eventow w 1
+        > ladny css i js https://www.w3schools.com/jquery/jquery_events.asp  polaczenie eventow w 1
         > linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
-        creative cloud obczaic
+        > creative cloud obczaic
         
     */
 
@@ -241,7 +230,6 @@ can  I use:
     // OBS!: there is a need to use extra layer, as image with map is not resizeable. 
 
     function backToStartAnimation() {
-        // data-source of related part of the island
         var source = main.data('source');
         source = source.split("/");
         source = source[2].split(".");
