@@ -24,7 +24,6 @@ can  I use:
  do zrobienia :
         > gulp svg konwersja fontawsome na ikony
         > hinty na mapie dla ekranow dotykowych (gdzie brak hovera)
-        > animacje na pojawianie sie elementow na podstronach 
         > animacje na chowanie sie elementow na podstronach
         > dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow?)
   
@@ -581,7 +580,7 @@ can  I use:
 
 
     if (main.attr('data-source') && !body.hasClass('loading')) {
-        backToStartAnimation()
+        backToStartAnimation();
     }
     
     //--------- hiding specific link from side menu ///////
@@ -720,6 +719,21 @@ can  I use:
         }
 
     });
+    
+    //----------------moving between pages with animation --------------------------------------//
+    
+    $('nav a').on('click', function(event){
+        event.preventDefault();
+        $('main').fadeOut("fast"); 
+        var link = $(this).attr("href");
+        setTimeout(function(){
+            window.location = link;
+      },200);
+ 
+    });
+    
+    
+    
 
     //-------------opening modal in galleries----//use here preloading as well, when you fix it
 

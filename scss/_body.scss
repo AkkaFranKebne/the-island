@@ -91,7 +91,7 @@ body {
         position: fixed;
         height: 100vh;
         width: 100vw;
-        transition: background-color $menuTransitionSec;
+        transition:  $menuTransitionSec;
         z-index: -3;
     }
     /* The side navigation menu */
@@ -134,7 +134,7 @@ body {
             height: $sideNavLinkHeight;
             color: $secondaryColor;
             display: block;
-            transition: $menuTransitionSec;
+            //transition: $menuTransitionSec;
             /* links in side navigation menu are centered for very small and small displays */
             @include non-desktop {
                 text-align: center;
@@ -163,14 +163,12 @@ body {
             padding-top: 50px;
             width: 100%;
             background-color: transparent;
-            height: 500px;
             position: absolute;
         }
         @include mobile {
             padding-top: 50px;
             width: 100%;
             background-color: transparent;
-            height: 500px;
             position: absolute;
         }
     }
@@ -263,8 +261,6 @@ body {
         @include barsTo-X(close);
     }
     
-    
-
     
     /* the center part of each site*/
     main {
