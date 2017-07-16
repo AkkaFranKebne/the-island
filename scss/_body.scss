@@ -11,10 +11,10 @@ body {
     background-color: $backgroundColor;
     /* small and very small screens has a more colorful background as they do not contain the clickable island */
     @include non-desktop {
-        background-image: $islandImage;
+        background-image: $islandImageNondesktop;
     }
     @include mobile {
-        background-image: $islandImage;
+        background-image: $islandImageMobile;
     }
     position: relative;
     height: 100vh;

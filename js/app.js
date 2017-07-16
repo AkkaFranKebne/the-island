@@ -5,8 +5,15 @@ $(document).ready(function () {
     /* 
 to do
 
+
+ do zrobienia :
+        > gulp svg konwersja fontawsome na ikony
+        > hinty na mapie dla ekranow dotykowych (gdzie brak hovera)
+        > dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow?)
+        
+        
 can  I use: 
-> dodac support color dla opacity
+> dodac wszedzie backup color dla bcgr opacity;
 > grid layout : chrome 49 i nizej, ios safari 10.2 i nizej, opera mini, android browser 4.4 i nizej
 > transform  ie <9 - The scale transform can be emulated in IE < 9 using Microsoft's "zoom" extension, others are (not easily) possible using the MS Matrix filter  + nie dziala na opera mini
 > transition opera mini
@@ -19,16 +26,9 @@ can  I use:
 > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
 > form nie on focus tylko na zmiane, dlaczego nie dziala?
 > dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa; 
-
-
- do zrobienia :
-        > gulp svg konwersja fontawsome na ikony
-        > hinty na mapie dla ekranow dotykowych (gdzie brak hovera)
-        > animacje na chowanie sie elementow na podstronach
-        > dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow?)
   
   do poprawienia przed oddaniem:
-        > <!-- change the path for production -->: favicon, images, funkcja path - zmienic tak, by nie trzeba bylo zmieniac - php?
+        > linki - zmienic tak, by nie trzeba bylo zmieniac - przy wysylaniu na prod;
         > css i js zmienne
         >  opozniona animacja poczatkowa - czemu nie dzialaja zmienne?
         > powtorzony kod w js zamienic na zmienne
@@ -321,11 +321,12 @@ can  I use:
             "height": fixedHeightImg
         });
     }
+    
 
     // introducing media queries for images 
     
     function mediaMatches(dataSource,dataSourcePrevious,dataSourceNext){
-        if (mobile.matches) {
+        if (mobile.matches ) {
            if (typeof dataSource != "undefined") {
             dataSource= dataSource.replace('.jpg','_mobile.jpg');
            }
