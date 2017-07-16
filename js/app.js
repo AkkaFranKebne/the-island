@@ -539,10 +539,10 @@ can  I use:
           if ($(this).attr('href') == url) {
               $(this).hide();
           }
+          else if ($(this).attr('href') == "index.php" && url == "") {
+              $(this).hide();
+          }
       });
-    
-         
-    
     }
     
 
