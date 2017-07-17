@@ -4,9 +4,7 @@ $(document).ready(function () {
 
     /* 
 to do:
- do zrobienia : 
-        > menu - dopracowac funkcje usuwajaca elementy menu - nie dziala przy get w url
-        > hinty na mapie dla ekranow dotykowych - dodac do 1 session, przeliczac przy obrocie ekranu, sprawdzic czy nie ma problemu dla pionowego ekranu (inaczej wyliczac top - jako proporcja do wysokosci zajmowanej przez wyspe? px?), dodac klik
+        > hinty na mapie dla ekranow dotykowych - dodac klik, potestowac na realnych tabletach lokalizacje   s
         > preloader dla obrazkow nie w pierwszej sesji - wywala sie na obrazkach w cache
         > obrazek wyspy: pogadac z grafikiem, czy starczy jpg (jakie bedzie tlo?)
         > dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
@@ -214,6 +212,9 @@ inne do poprawienia przed oddaniem:
                 body.removeClass('loading');
                 main.removeClass('hidden');
                 island.removeClass('hidden'); 
+                //showing pins for touchscreens
+                isTouch();
+                //showing animation
                 noticeMyArea(areas.eq(3), 0, 400);
                 noticeMyArea(areas.eq(4), 100, 500);
                 noticeMyArea(areas.eq(0), 200, 600);
