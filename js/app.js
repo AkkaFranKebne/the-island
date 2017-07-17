@@ -3,16 +3,17 @@ $(document).ready(function () {
     
 
     /* 
-to do
-
-
- do zrobienia :
-        > gulp svg konwersja fontawsome na ikony
-        > hinty na mapie dla ekranow dotykowych (gdzie brak hovera)
-        > dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow?)
+to do:
+ do zrobienia : 
+        > menu - dopracowac funkcje usuwajaca elementy menu - nie dziala przy get w url
+        > hinty na mapie dla ekranow dotykowych - dodac do 1 session, przeliczac przy obrocie ekranu, sprawdzic czy nie ma problemu dla pionowego ekranu (inaczej wyliczac top - jako proporcja do wysokosci zajmowanej przez wyspe? px?), dodac klik
+        > preloader dla obrazkow nie w pierwszej sesji - wywala sie na obrazkach w cache
+        > obrazek wyspy: pogadac z grafikiem, czy starczy jpg (jakie bedzie tlo?)
+        > dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
+        > video w galeriach
         
         
-can  I use: 
+do poprawnienia z "can  I use": 
 > dodac wszedzie backup color dla bcgr opacity;
 > grid layout : chrome 49 i nizej, ios safari 10.2 i nizej, opera mini, android browser 4.4 i nizej
 > transform  ie <9 - The scale transform can be emulated in IE < 9 using Microsoft's "zoom" extension, others are (not easily) possible using the MS Matrix filter  + nie dziala na opera mini
@@ -27,7 +28,8 @@ can  I use:
 > form nie on focus tylko na zmiane, dlaczego nie dziala?
 > dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa; 
   
-  do poprawienia przed oddaniem:
+  
+inne do poprawienia przed oddaniem:
         > linki - zmienic tak, by nie trzeba bylo zmieniac - przy wysylaniu na prod;
         > css i js zmienne
         >  opozniona animacja poczatkowa - czemu nie dzialaja zmienne?
@@ -37,9 +39,9 @@ can  I use:
         > ladny css i js https://www.w3schools.com/jquery/jquery_events.asp  polaczenie eventow w 1
         > linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
         > creative cloud obczaic
+        > gulp svg konwersja obczaic
         
     */
-
 
     //----------------------VARIABLES-----------------------------------------------------------------------
 
@@ -63,6 +65,8 @@ can  I use:
     var grpelemPaddingTopPx = 18;
     var imageScale = 0.7;
     var areas = $('area');
+    var pins = $('.pin');
+    var pulses = $('.pulse');
 
     //galleries element
     var galleryImages = $('.gallery').find('img');
@@ -139,6 +143,7 @@ can  I use:
     var mobile = window.matchMedia("screen and  (max-width: 450px)");
     var nondesktop = window.matchMedia("screen  and (max-width: 800px) and (min-width: 451px)");
     var desktop = window.matchMedia("screen and (min-width: 801px) and (max-width: 960px)");
+    var touch = window.matchMedia("screen and (pointer: coarse)");
 
 
     //-------------FUNCTIONS--------------------------------------------------------------------------------------------------
@@ -189,14 +194,26 @@ can  I use:
 
 
     //showing  preloader on start//////////  
-      
+      //not works when pic is in cache - fix, eg read about lazy loading and blur loading 
        function showPreloader() {
+           body.addClass('loading');  
             island_img.on("load", function() { 
+                console.log("pic loaded");
                 body.removeClass('loading');
                 main.removeClass('hidden');
-                island.removeClass('hidden'); //just in case if it is  hidden
-                console.log("2 done");
-                console.log("3 start");
+                island.removeClass('hidden'); 
+            });
+    } 
+    
+    
+     //showing  preloader and animation on start//////////  
+      
+       function showPreloaderAndAnimation() {
+            island_img.on("load", function() { 
+                console.log("pic loaded for the first time");
+                body.removeClass('loading');
+                main.removeClass('hidden');
+                island.removeClass('hidden'); 
                 noticeMyArea(areas.eq(3), 0, 400);
                 noticeMyArea(areas.eq(4), 100, 500);
                 noticeMyArea(areas.eq(0), 200, 600);
@@ -204,7 +221,7 @@ can  I use:
                 noticeMyArea(areas.eq(2), 400, 800);
                 noticeMyArea(areas.eq(3), 500, 900); 
             });
-    } 
+    }
 
     
 
@@ -290,6 +307,8 @@ can  I use:
                             .removeClass('exposed')
                             .addClass('hidden');
                         island.removeClass('hidden');
+                        //showing pins for touchscreens
+                        isTouch();
                     }
                 }
 
@@ -373,6 +392,17 @@ can  I use:
         console.log(dataSourceNext);
             
     }
+    
+    // introducing media queries for pins => touchscreens
+    
+    function isTouch(){
+        if (touch.matches && !island.hasClass('hidden')) {
+           pins.removeClass("hidden");
+           pulses.removeClass("hidden");
+        }
+    }
+    
+    
     
     
     //moving to the next image in galleries
@@ -530,6 +560,8 @@ can  I use:
     //--------------removing specific page from menu on the specific page ----------//
     function removeFromMenu(){
        var url = window.location.href; 
+       url = url.split("?");
+       url=url[0];
        url = url.split("/");
        url = url[4];  // on production change for 3
         
@@ -548,16 +580,24 @@ can  I use:
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
 
-
+    
 
     // ---------preloader--gif//////////
 
-
+    //for the first  session
     //main.addClass('hidden');//moved to  php session
 
     if (body.hasClass('loading')) { //only php session = 0
-        showPreloader()
+        showPreloaderAndAnimation();
     }
+    else if (!main.attr('data-source')){  //--------entering index.php without specific area
+        //showPreloader();  //not for the first session 
+        island.removeClass('hidden'); 
+        isTouch(); //----------------showing pins for touchscreens
+    }
+    
+    //OBS! island needs to be hidden by default not to disturb the  backToStartAnimation();
+    
 
     // ----resizing map image - once during pageview//////////
 
@@ -568,13 +608,6 @@ can  I use:
     // ---- fixing the sizes of images of the island - once during pageview ////////
 
     fixedImgSize();
-
-    //--------entering index.php without specific area exposed//////////
-    //OBS! island needs to be hidden by default not to disturb the  backToStartAnimation();
-
-    if (!main.attr('data-source')) {
-        island.removeClass('hidden');
-    }
 
 
     //--------come back to index.php with specific area exposed//////////
@@ -602,7 +635,8 @@ can  I use:
      }
     }
 
-
+    
+    
 
     //----------------------EVENTS---------------------------------------------------------------------------------
 
@@ -658,8 +692,12 @@ can  I use:
 
 
     //---map areas clicks actions on main page: exposing specific area//////////
-
+    // if  i add ".add(pins).add(pulses)" in click in pin or pulse i do not have proper this. maybe area should be totally transparent and pins should be visible from underneath? will it help faster downloading as well?
+    
     areas.on('click', function (event) {
+        //hiding pins if they are visible
+           pins.addClass("hidden");
+           pulses.addClass("hidden");
 
         //titles of related part of the island
         var title = $(this).attr('title');

@@ -12,19 +12,32 @@ $islandBackgroundPosition: (
    /* Pin positions for different island areas */
 
 $islandPinsTop: (
-   eventy:  50%,
-   sm:  20px,
-   www: 300px,
-   kreacja: 500px,
-   newbiz: 400px 
+   eventy:  260px,
+   sm:  170px,
+   www: 140px,
+   kreacja: 170px,
+   newbiz: 300px 
 );
 
 
 $islandPinsLeft: (
-   eventy:  50%,
-   sm:  200px,
-   www: 250px,
-   kreacja: 100px,
-   newbiz: 600px 
+   eventy:  65vw,
+   sm:  32vw,
+   www: 60vw,
+   kreacja: 70vw,
+   newbiz: 35vw 
 );
+
+   /* Pulse positions for different island areas */
+
+$islandPulseTop: (
+   eventy:  270px,
+   sm:  180px,
+   www: 150px,
+   kreacja: 180px,
+   newbiz: 310px 
+);
+
+
+
 

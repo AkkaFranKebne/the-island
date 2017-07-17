@@ -1,13 +1,12 @@
 .pin {
+  z-index: 1;
   width: 30px;
   height: 30px;
   border-radius: 50% 50% 50% 0;
   background-color: red;
   position: absolute;
   transform: rotate(-45deg);
-  //left: 50%;
-  //top: 50%;
-      /* position of each pin */
+  /* position of each pin */
     @each $pin in 
     eventy,
     sm,
@@ -36,16 +35,26 @@
 }
     
 .pulse{
+  z-index: 2;
   background-color: rgba(0,0,0,0.2);
   border-radius: 50%;
   height: 14px;
   width: 14px;
   position: absolute;
-  left: 50%;
-  top: 50%;
+/* position of each pulse */
+    @each $pulse in 
+    eventy,
+    sm,
+    www,
+    kreacja,
+    newbiz {
+        &.#{$pulse} {
+            top: map-get($islandPulseTop, $pulse);
+            left: map-get($islandPinsLeft, $pulse);
+        }
+    }
   margin: 11px 0px 0px -12px;
   transform: rotateX(55deg);
-  z-index: -2;
     &:after {
     content: "";
     border-radius: 50%;
