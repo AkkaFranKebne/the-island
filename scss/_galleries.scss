@@ -141,6 +141,19 @@
             height: auto;
         }
     }
+    
+    iframe{
+            width: 80vw !important;
+            @include mobile{
+                width: 100vw !important;
+                height: 90vh !important;
+            }
+            @include non-desktop{
+                width: 100vw !important;
+                height: 90vh !important;
+        }
+        }
+    
  /* preloaded previous and next image */
     .previous-modal-content, .next-modal-content {
         display: none;
@@ -174,9 +187,9 @@
 
 /* animation  for modal opening */
     .modal-content, #caption, #preloader { 
-        -webkit-animation-name: zoom;
+        -webkit-animation-name: pureopacity;
         -webkit-animation-duration: $menuTransitionSec;
-        animation-name: zoom;
+        animation-name: pureopacity;
         animation-duration: $menuTransitionSec;
     }
 

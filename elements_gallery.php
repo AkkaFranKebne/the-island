@@ -26,8 +26,8 @@
                   <picture  class="col-4"><a href="#" title="Gala Oscarów MEDICUSA - oprawa graficzna, produkcja materiałów, scenografia, hostessy, wizaż">
                             <img  src="../the-island/images/thumbnail_gala-oskarow-medicusa.jpg" alt="Gala Oscarów MEDICUSA - oprawa graficzna, produkcja materiałów, scenografia, hostessy, wizaż" data-source ="../the-island/images/gala-oskarow-medicusa.jpg"  data-order="7">
                 </a></picture>
-                  <picture  class="col-4"><a href="#" title="ALLVIEW - ogólnopolska kampania OOH">
-                            <img  src="../the-island/images/thumbnail_all-view.jpg" alt="ALLVIEW - ogólnopolska kampania OOH" data-source ="../the-island/images/all-view.jpg"  data-order="8">
+                  <picture  class="col-4"><a href="#" title="QUTE product animation">
+                            <img  class = 'video' src="../the-island/images/thumbnail_QUTE-product-animation.jpg" alt="QUTE - product animation" data-source ='https://player.vimeo.com/video/202009420'  data-order="8">
                 </a></picture>
                   <picture  class="col-4"><a href="#" title="PORT LOTNICZY WROCŁAW - sezonowy KeyVisual (jesień/zima 2016/17)">
                             <img  src="../the-island/images/thumbnail_port-lotniczy-wroclaw.jpg" alt="PORT LOTNICZY WROCŁAW - sezonowy KeyVisual (jesień/zima 2016/17)" data-source ="../the-island/images/port-lotniczy-wroclaw.jpg" data-order="9">
@@ -35,7 +35,7 @@
               </div>
                   
                   <!-- The Modal -->
-                  <div id="modal" class="modal loading">
+                  <div id="modal" class="modal">
 
                       <!-- The Close Button -->
                       <span class="close">&times;</span>
@@ -47,14 +47,17 @@
                       <img id="preloader"  src ="../the-island/images/loading.gif">
                           
                       
-                      <!-- Modal Content (The Image) -->
+                      <!-- Modal Content PRE (The Image) -->
                       <img class="previous-modal-content" src ="#">
+                      <iframe class="previous-modal-content" src="#"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
                       <!-- Modal Content (The Image) -->
                       <img class="modal-content hidden" src ="#">
+                      <iframe class="modal-content hidden" src="#"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen ></iframe>
                       
-                      <!-- Modal Content (The Image) -->
-                      <img class="next-modal-content" src ="#">
+                      <!-- Modal Content NEXT (The Image) -->
+                      <img class="next-modal-content hidden" src ="#">
+                      <iframe class="next-modal-content hidden" src="#"  frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
                       
                       <div class="arrow-background right hidden"></div>
                       <div class="arrow right hidden"></div> 

@@ -4,11 +4,14 @@ $(document).ready(function () {
 
     /* 
 to do:
+        > wysrodkowanie galerii
+        > przeladowanie zdjec w galerii na zmiane orientacji (na ipad czasem wieksza galeria)
         > hinty na mapie dla ekranow dotykowych - dodac klik, potestowac na realnych tabletach lokalizacje   s
         > preloader dla obrazkow nie w pierwszej sesji - wywala sie na obrazkach w cache
         > obrazek wyspy: pogadac z grafikiem, czy starczy jpg (jakie bedzie tlo?)
         > dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
-        > video w galeriach
+        
+        
         
         
 do poprawnienia z "can  I use": 
@@ -388,9 +391,9 @@ inne do poprawienia przed oddaniem:
             }
         }
         //check if it works properly
-        console.log(dataSource);
-        console.log(dataSourcePrevious);
-        console.log(dataSourceNext);
+        //console.log(dataSource);
+        //console.log(dataSourcePrevious);
+        //console.log(dataSourceNext);
             
     }
     
@@ -402,16 +405,21 @@ inne do poprawienia przed oddaniem:
            pulses.removeClass("hidden");
         }
     }
+     
     
-    
-    
-    
-    //moving to the next image in galleries
+    //moving to the next image in galleries---------------------------------
 
     function showNextImg() {
+        //finding current image
+        var imageSource ="#";
+        var modalContentElements = modal.find('.modal-content');
+        modalContentElements.each(function(){
+          if ($(this).is(":visible")) {
+              imageSource = $(this).attr('src');
+          } 
+        });
 
         //preparing variables for 3 images: current, previous and next
-        var imageSource = modal.find('.modal-content').attr('src');
         var dataSource = '#';
         var dataSourcePrevious = '#';
         var dataSourceNext = '#';
@@ -454,18 +462,55 @@ inne do poprawienia przed oddaniem:
         mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
 
         // loading three images
-        modal.find('.modal-content').attr('src', dataSource);
-        modal.find('.previous-modal-content').attr('src', dataSourcePrevious);
-        modal.find('.next-modal-content').attr('src', dataSourceNext);
+        
+    galleryImages.each(function (index) {
+    if (galleryImages.eq(index + 1).data('source') === dataSource) {
+        if (galleryImages.eq(index + 1).hasClass('video')) {
+            console.log("to video");
+            modal.find('iframe.modal-content').removeClass('hidden').attr('src', dataSource).fadeIn(150);
+            modal.find('img.modal-content').fadeOut(150);
+        }
+        else {
+            console.log("to img");
+            modal.find('img.modal-content').attr('src', dataSource).fadeIn(150);
+            modal.find('iframe.modal-content').fadeOut(150);
+        }
+        
+        
+        if ($(this).hasClass('video')){
+            modal.find('iframe.previous-modal-content').attr('src', dataSourcePrevious);
+        }
+        else {
+            modal.find('img.previous-modal-content').attr('src', dataSourcePrevious); 
+        }
+        
+        if (galleryImages.eq(index + 2).hasClass('video')){
+            modal.find('iframe.next-modal-content').attr('src', dataSourceNext);
+        }
+        else {
+            modal.find('img.next-modal-content').attr('src', dataSourceNext);
+        }
+    }
+    });
         modal.find('#caption').html(caption);
     }
 
-    //moving to the previous image in galleries
+
+    //moving to the previous image in galleries------------------------------
 
 
     function showPreviousImg() {
+                
+        //finding current image
+        var imageSource ="#";
+        var modalContentElements = modal.find('.modal-content');
+        modalContentElements.each(function(){
+          if ($(this).is(":visible")) {
+              imageSource = $(this).attr('src');
+          } 
+        });
+
         //preparing variables for 3 images: current, previous and next
-        var imageSource = modal.find('.modal-content').attr('src');
         var dataSource = '#';
         var dataSourcePrevious = '#';
         var dataSourceNext = '#';
@@ -505,9 +550,36 @@ inne do poprawienia przed oddaniem:
         mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
 
         // loading three images
-        modal.find('.modal-content').attr('src', dataSource);
-        modal.find('.previous-modal-content').attr('src', dataSourcePrevious);
-        modal.find('.next-modal-content').attr('src', dataSourceNext);
+        
+    galleryImages.each(function (index) {
+    if (galleryImages.eq(index - 1).data('source') === dataSource) {
+        if (galleryImages.eq(index - 1).hasClass('video')) {
+            console.log("to video");
+            modal.find('iframe.modal-content').removeClass('hidden').attr('src', dataSource).fadeIn(150);
+            modal.find('img.modal-content').fadeOut(150);
+        }
+        else {
+            console.log("to img");
+            modal.find('img.modal-content').attr('src', dataSource).fadeIn(150);
+            modal.find('iframe.modal-content').fadeOut(150);
+        }
+        
+        
+        if (galleryImages.eq(index - 2).hasClass('video')){
+            modal.find('iframe.previous-modal-content').attr('src', dataSourcePrevious);
+        }
+        else {
+            modal.find('img.previous-modal-content').attr('src', dataSourcePrevious); 
+        }
+        
+        if ($(this).hasClass('video')){
+            modal.find('iframe.next-modal-content').attr('src', dataSourceNext);
+        }
+        else {
+            modal.find('img.next-modal-content').attr('src', dataSourceNext);
+        }
+    }
+    });
         modal.find('#caption').html(caption);
     }
 
@@ -518,7 +590,7 @@ inne do poprawienia przed oddaniem:
         modal.fadeOut("slow", function () {
             //preparing the preloader for the next click
             modal.find('#preloader').show('slow');
-            modal.find('.modal-content').addClass('hidden');
+            modal.find('.modal-content').fadeOut('slow');
 
             //preparing arrows
             modal.find('.right').show();
@@ -797,11 +869,35 @@ inne do poprawienia przed oddaniem:
         mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
 
         //loading 3 images  
-        modal.find('.modal-content').attr('src', dataSource);
-        modal.find('.previous-modal-content').attr('src', dataSourcePrevious);
-        modal.find('.next-modal-content').attr('src', dataSourceNext);
-
-
+    galleryImages.each(function (index) {
+    if ($(this).data('source') === dataSource) {
+        if ($(this).hasClass('video')) {
+            console.log("to video");
+            modal.find('iframe.modal-content').attr('src', dataSource).show();
+            modal.find('img.modal-content').hide();
+        }
+        else {
+            console.log("to img");
+            modal.find('img.modal-content').attr('src', dataSource).show();
+            modal.find('iframe.modal-content').hide();
+        }
+        
+        
+        if (galleryImages.eq(index - 1).hasClass('video')){
+            modal.find('iframe.previous-modal-content').attr('src', dataSourcePrevious);
+        }
+        else {
+            modal.find('img.previous-modal-content').attr('src', dataSourcePrevious); 
+        }
+        
+        if (galleryImages.eq(index + 1).hasClass('video')){
+            modal.find('iframe.next-modal-content').attr('src', dataSourceNext);
+        }
+        else {
+            modal.find('img.next-modal-content').attr('src', dataSourceNext);
+        }
+    }
+    });
         //loading the description of the current img
         modal.find('#caption').html($(this).attr('alt'));
 
@@ -820,16 +916,27 @@ inne do poprawienia przed oddaniem:
         //limiting the body height
         body.addClass('fitInViewport');
 
-        //showing the preloader 
+        //hiding the preloader 
     
-        
-        modal.find('.modal-content').on("load", function() { 
+       if ($(this).hasClass('video')) {
+        modal.find('iframe.modal-content').on("load", function() { 
             modal.find('#preloader').hide();
-            modal.find('.modal-content').removeClass('hidden');
+            modal.find('iframe.modal-content').removeClass('hidden').fadeIn(150);
             modal.find('.arrow').removeClass('hidden');
             modal.find('.arrow-background').removeClass('hidden');
             modal.find('#caption').removeClass('hidden');
           });
+       }
+        else {
+        modal.find('img.modal-content').on("load", function() { 
+            modal.find('#preloader').hide();
+            modal.find('img.modal-content').removeClass('hidden').fadeIn(150);
+            modal.find('.arrow').removeClass('hidden');
+            modal.find('.arrow-background').removeClass('hidden');
+            modal.find('#caption').removeClass('hidden');
+          });            
+        }
+
 
     });
 
