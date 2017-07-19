@@ -4,10 +4,10 @@ $(document).ready(function () {
 
     /* 
 to do:
-        > hinty na mapie dla ekranow dotykowych - dodac klik, potestowac na realnych tabletach lokalizacje   s
+        > hinty na mapie dla ekranow dotykowych  potestowac na realnych tabletach lokalizacje   s
         > preloader dla obrazkow nie w pierwszej sesji - wywala sie na obrazkach w cache
         > obrazek wyspy: pogadac z grafikiem, czy starczy jpg, bo png strasznie muli 
-        na gotowej stronie -  dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
+        > dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
         
         
         
@@ -769,9 +769,10 @@ inne do poprawienia przed oddaniem:
 
 
     //---map areas clicks actions on main page: exposing specific area//////////
-    // if  i add ".add(pins).add(pulses)" in click in pin or pulse i do not have proper this. maybe area should be totally transparent and pins should be visible from underneath? will it help faster downloading as well?
+    // rewriting in on function does not work (changed all this to function param) - test
     
-    areas.on('click', function (event) {
+    
+    areas.add(pins).add(pulses).on('click', function (event) {
         //hiding pins if they are visible
            pins.addClass("hidden");
            pulses.addClass("hidden");
@@ -833,6 +834,7 @@ inne do poprawienia przed oddaniem:
         function reloadPage() { //setting links
             location.href = linkString;
         }
+
 
     });
     
