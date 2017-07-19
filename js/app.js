@@ -4,9 +4,6 @@ $(document).ready(function () {
 
     /* 
 to do:
-        > hinty na mapie dla ekranow dotykowych  potestowac na realnych tabletach lokalizacje   s
-        > preloader dla obrazkow nie w pierwszej sesji - wywala sie na obrazkach w cache
-        > obrazek wyspy: pogadac z grafikiem, czy starczy jpg, bo png strasznie muli 
         > dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
         
         
@@ -41,8 +38,17 @@ inne do poprawienia przed oddaniem:
         > gulp svg konwersja obczaic
         
         
-        thumbnail: 350x220
-        nondesktop_thumbnail: 800x440
+Galeria:
+Mobile: 350x220
+Tablet / Notebook: 800x440
+Desktop: 350x220
+Duzy Desktop i Desktop wysokiej rozdzielczosci 800x440
+
+Modal: 
+Mobile: 450x300
+Tablet / Notebook: 800x530
+Desktop: 1000x660
+Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         
     */
 
@@ -199,14 +205,23 @@ inne do poprawienia przed oddaniem:
 
     //showing  preloader on start//////////  
       //not works when pic is in cache - fix, eg read about lazy loading and blur loading 
-       function showPreloader() {
+       function showPreloader(idOfImageThatIsLoading, idOfImageThatIsLoadingSTRING ) {
+           console.log(idOfImageThatIsLoading);
            body.addClass('loading');  
-            island_img.on("load", function() { 
+            idOfImageThatIsLoading.on("load", function() {  //island_img
                 console.log("pic loaded");
                 body.removeClass('loading');
                 main.removeClass('hidden');
                 island.removeClass('hidden'); 
             });
+           var pictureInCache = document.getElementById(idOfImageThatIsLoadingSTRING).complete;
+           console.log(pictureInCache);
+               if (pictureInCache == true ) {
+                   console.log('img in cache but i will do it for you');
+                    body.removeClass('loading');
+                    main.removeClass('hidden');
+                    island.removeClass('hidden');
+        }
     } 
     
     
@@ -667,9 +682,10 @@ inne do poprawienia przed oddaniem:
         showPreloaderAndAnimation();
     }
     else if (!main.attr('data-source')){  //--------entering index.php without specific area
-        //showPreloader();  //not for the first session 
-        island.removeClass('hidden'); 
+        if (main.children().first().hasClass('grpelem')) { //for the main page
+            showPreloader(island_img, 'island_img');  //not for the first session 
         isTouch(); //----------------showing pins for touchscreens
+        }        
     }
     
     //OBS! island needs to be hidden by default not to disturb the  backToStartAnimation();
