@@ -1,15 +1,13 @@
 $(document).ready(function () {
 
-    
+
 
     /* 
 to do:
-        > wysrodkowanie galerii
-        > przeladowanie zdjec w galerii na zmiane orientacji (na ipad czasem wieksza galeria)
         > hinty na mapie dla ekranow dotykowych - dodac klik, potestowac na realnych tabletach lokalizacje   s
         > preloader dla obrazkow nie w pierwszej sesji - wywala sie na obrazkach w cache
-        > obrazek wyspy: pogadac z grafikiem, czy starczy jpg (jakie bedzie tlo?)
-        > dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
+        > obrazek wyspy: pogadac z grafikiem, czy starczy jpg, bo png strasznie muli 
+        na gotowej stronie -  dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
         
         
         
@@ -41,6 +39,10 @@ inne do poprawienia przed oddaniem:
         > linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
         > creative cloud obczaic
         > gulp svg konwersja obczaic
+        
+        
+        thumbnail: 350x220
+        nondesktop_thumbnail: 800x440
         
     */
 
@@ -144,6 +146,7 @@ inne do poprawienia przed oddaniem:
     var mobile = window.matchMedia("screen and  (max-width: 450px)");
     var nondesktop = window.matchMedia("screen  and (max-width: 800px) and (min-width: 451px)");
     var desktop = window.matchMedia("screen and (min-width: 801px) and (max-width: 960px)");
+    var bigdesktop = window.matchMedia("screen and (min-width: 1401px)");
     var touch = window.matchMedia("screen and (pointer: coarse)");
 
 
@@ -697,7 +700,7 @@ inne do poprawienia przed oddaniem:
     
     //----------setting the size of the thumbnails for galleries /////////
     
-    if (nondesktop.matches) {
+    if (nondesktop.matches || bigdesktop.matches) {
             if ($('.row').hasClass('gallery')) {
             var images = $('.row').find('picture img');
             images.each(function(e){
@@ -707,6 +710,7 @@ inne do poprawienia przed oddaniem:
             });        
      }
     }
+
 
     
     
@@ -1042,6 +1046,12 @@ inne do poprawienia przed oddaniem:
         }
 
     });
+    
+    //-----------------reloading the page on orientation change in mobile ---///
+    
+    $(window).on("orientationchange",function(){
+        location.reload();
+  }); 
 
     //-------------------end----------------------------   
 });
