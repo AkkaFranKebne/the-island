@@ -1,12 +1,15 @@
 $(document).ready(function () {
-
-
-
     /* 
         
-do potestowania:
-> grid layout : chrome 49 i nizej, ios safari 10.2 i nizej, opera mini, android browser 4.4 i nizej - jak to wyglada?
-
+testowanie - znalezione bledy:
+>chrome 38 - widac preloader galerii mimo, ze zdjecie jest juz zaladowane
+> chrome 58 - obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
+> chrome 58 - form zwija sie podczas pisania
+> edge -  menu przesuwa sie w prawo przy kliku w modal i wejsciu na podstrony - czasem, minimalnie
+>iphone 6  - na sg biegaja swinki - problem nie ladujacej sie grafiki celowo?
+>ipad air  - nie pokazuja sie piny
+>galaxy note  - biegaja swinki nie pokazuje sie wyspa 1 sesja
+>motorola  - nie widac calego menu przy pozimym ostawieniu
 
 nie dziala na opera mini - jak to wyglada?:
 > transform
@@ -15,13 +18,6 @@ nie dziala na opera mini - jak to wyglada?:
 > border radius 
 > box shadow 
 
-
->testowanie - znalezione bledy:
-> obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
-> form nie on focus tylko na zmiane, dlaczego nie dziala?
-> dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa; 
-
-
 --------------------------------------------------------------
   
  
@@ -29,13 +25,11 @@ jak zdaze to do:
         > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
         > przepisanie na funkcje next/previous image
         > przerobienie walidacji formularza z blur na natychmiastowa
-        
-               
+        > 404 page               
 
 do zmiany przed oddaniem:
         > linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
         
-
 extra homework:
         > lazy load obczaic
         > blur load obczaic
