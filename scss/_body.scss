@@ -38,8 +38,6 @@ body {
         }
     }
     /* Headers font size */
-    
-    
     noscript {
         color: red;
         font-size: $subtitlesFontSize;
@@ -47,7 +45,6 @@ body {
         margin-left: 30vw;
         text-align: center;
     }
-    
     h2,
     h3,
     h4 {
@@ -91,7 +88,7 @@ body {
         position: fixed;
         height: 100vh;
         width: 100vw;
-        transition:  $menuTransitionSec;
+        transition: $menuTransitionSec;
         z-index: -3;
     }
     /* The side navigation menu */
@@ -195,7 +192,7 @@ body {
         @include mobile {
             background-color: $backgroundColor;
             border-radius: 50%;
-            padding:$hamburgerMobilePadding;
+            padding: $hamburgerMobilePadding;
             height: $hamburgerMobileBackgroundHeight;
             width: $hamburgerMobileBackgroundWidth;
             margin-left: $hamburgerMobileMarginLeft;
@@ -260,8 +257,6 @@ body {
         /* Transforming bars to X */
         @include barsTo-X(close);
     }
-    
-    
     /* the center part of each site*/
     main {
         width: 100vw;

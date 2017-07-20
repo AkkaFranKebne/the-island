@@ -2,36 +2,30 @@
 session_start();
 if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
 ?>
-    
 <!DOCTYPE html>
-<html  lang="pl-PL">
- <head>
-<title>NEWBIZ</title>
-     <?php include 'elements_meta.php';?>
-     <?php include 'elements_contactform_meta.php';?>
+<html lang="pl-PL">
+<head>
+    <title>NEWBIZ</title>
+    <?php include 'elements_meta.php';?>
+    <?php include 'elements_contactform_meta.php';?>
 </head>
- <body id = "newbiz">
-    <div id="menuOpacity"> </div> 
-     
+<body id="newbiz">
+    <div id="menuOpacity"> </div>
     <div class="grid-container">
-        
-            <div class="row">
-                <div class="col-12">
-                    <?php include 'elements_nav.php';?>
-                </div>
+        <div class="row">
+            <div class="col-12">
+                <?php include 'elements_nav.php';?>
             </div>
-
-         <main>
+        </div>
+        <main>
             <div class="row">
                 <div class="col-12">
                     <h2> KONTAKT </h2>
                     <noscript>Strona wymaga uruchomionego Java Script. </noscript>
-            <noscript> Zaktualizuj lub zmień przeglądarkę. </noscript>
+                    <noscript> Zaktualizuj lub zmień przeglądarkę. </noscript>
                 </div>
-            </div> 
-            
-             
-           <div class="row">
+            </div>
+            <div class="row">
                 <div class="col-6">
                     <div class="row">
                         <div class="col-12">
@@ -47,7 +41,7 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
                     </div>
                     <div class="row">
                         <div class="col-12">
-                        <?php include 'elements_location.php';?>
+                            <?php include 'elements_location.php';?>
                         </div>
                     </div>
                 </div>
@@ -55,18 +49,14 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
                     <h3> WYSLIJ NAM WIADOMOSC:</h3>
                     <?php include 'elements_contactform.php';?>
                 </div>
-            </div>  
-        
-         </div>
-        </main>        
-      
-        
-        <div class="row">
-            <div class="col-12">
-                <?php include 'elements_footer.php';?>
             </div>
+    </div>
+    </main>
+    <div class="row">
+        <div class="col-12">
+            <?php include 'elements_footer.php';?>
         </div>
-        
+    </div>
     </div>
 </body>
 </html>

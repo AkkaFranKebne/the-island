@@ -1,6 +1,6 @@
-    /* styles for address and map part in contact site */ 
-
-#location {
+    /* styles for address and map part in contact site */
+    
+    #location {
         width: $locationWidth;
         height: $locationHeight;
         border: $locationBorder;
@@ -9,13 +9,13 @@
         -webkit-animation-duration: $menuTransitionSec;
         animation-name: zoom;
         animation-duration: $menuTransitionSec;
-      }
-
-#address {
+    }
+    
+    #address {
         padding: $addressPadding;
         /* animation for entering the web page */
         -webkit-animation-name: zoom;
         -webkit-animation-duration: $menuTransitionSec;
         animation-name: zoom;
         animation-duration: $menuTransitionSec;
-        }
+    }

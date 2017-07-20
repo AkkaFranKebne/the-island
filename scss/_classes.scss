@@ -1,21 +1,15 @@
    /* classed used in different part of the site */
-
-.exposed {
-    visibility: visible;
-    z-index: 999;
-}
-
-.hidden {
-    visibility: hidden;
-}
-
-
-.fitInViewport {
-    height: 100vh;
-    overflow: hidden;
-}
-
-
-
-    
-
+   
+   .exposed {
+       visibility: visible;
+       z-index: 999;
+   }
+   
+   .hidden {
+       visibility: hidden;
+   }
+   
+   .fitInViewport {
+       height: 100vh;
+       overflow: hidden;
+   }

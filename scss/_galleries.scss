@@ -1,98 +1,101 @@
 //subpages extra styles
 
-/* gallery grid */ 
+/* gallery grid */
 
-    /* look and feel of gallery rows */ 
+
+/* look and feel of gallery rows */
+
 .gallery {
-        //border: 1px solid red;
-        display: inline-block;
+    //border: 1px solid red;
+    display: inline-block;
+    height: auto;
+    /* animation for gallery apperance */
+    background-color: $secondaryColorWithOpacity;
+    border-radius: $galleryElementsBorderRadius;
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: $menuTransitionSec;
+    animation-name: zoom;
+    animation-duration: $menuTransitionSec;
+    /* look and feel of photos columns */
+    .photos {
+        float: none; // keep pictures staying in their greed
         height: auto;
-        /* animation for gallery apperance */
-        background-color: $secondaryColorWithOpacity;
-        border-radius: $galleryElementsBorderRadius;
-        -webkit-animation-name: zoom;
-        -webkit-animation-duration: $menuTransitionSec;
-        animation-name: zoom;
-        animation-duration: $menuTransitionSec;
-        /* look and feel of photos columns */ 
-        .photos {
-            float:none; // keep pictures staying in their greed
+        //border: 1px solid black;
+        /* look and feel of single picture box */
+        picture {
+            //border: 1px solid red; 
+            display: inline-block;
             height: auto;
-            //border: 1px solid black;
-            /* look and feel of single picture box */ 
-                picture {
-                    //border: 1px solid red; 
-                    display: inline-block;
+            overflow: hidden;
+            padding-left: $picturePadding;
+            padding-right: $picturePadding;
+            margin: $pictureMargin;
+            text-align: center; //is it necesarry for mobile centering?
+            /* look and feel of img inside a href link */
+            img {
+                border-radius: $galleryElementsBorderRadius;
+                max-height: 100%;
+                max-width: 100%;
+                /* for very small and small screens gallery pictures are 100% wide */
+                @include mobile {
+                    max-width: none;
+                    max-height: none;
+                    width: $galleryMobileImgWidth;
                     height: auto;
-                    overflow: hidden;
-                    padding-left: $picturePadding;
-                    padding-right: $picturePadding;
-                    margin: $pictureMargin;
-                    text-align: center; //is it necesarry for mobile centering?
-             /* look and feel of img inside a href link */        
-                    img {
-                        border-radius: $galleryElementsBorderRadius;
-                        max-height: 100%;
-                        max-width: 100%;
-             /* for very small and small screens gallery pictures are 100% wide */
-                        @include mobile{
-                            max-width: none;
-                            max-height: none;
-                            width: $galleryMobileImgWidth;
-                            height: auto;
-                        }
-                    @include non-desktop{
-                            max-width: none;
-                            max-height: none;
-                            width: $galleryMobileImgWidth;
-                            height: auto;
-                        }
-                        border-radius: $galleryElementsBorderRadius;
-                        cursor: pointer;
-                        transition: $menuTransitionSec;
-            /* blinking on hover */ 
-                        &:hover {
-                            opacity: $galleryHoverOpacity;
-                            }
-                        }
-            }            
+                }
+                @include non-desktop {
+                    max-width: none;
+                    max-height: none;
+                    width: $galleryMobileImgWidth;
+                    height: auto;
+                }
+                border-radius: $galleryElementsBorderRadius;
+                cursor: pointer;
+                transition: $menuTransitionSec;
+                /* blinking on hover */
+                &:hover {
+                    opacity: $galleryHoverOpacity;
+                }
+            }
         }
     }
+}
+
 
 /* modal - background for a big photo*/
+
 #modal {
-    display: none; 
-    position: fixed; 
-    z-index: 3; 
-/* Location of the box with the photo */
+    display: none;
+    position: fixed;
+    z-index: 3;
+    /* Location of the box with the photo */
     //padding-top: 20px; 
     left: 0;
     top: 0;
     width: 100vw;
     height: 100vh;
-/* Enable scroll if needed */
-    overflow: auto; 
-/* Fallback color */
-    background-color: $menuColor; 
-/* Background with opacity*/
-    background-color: $menuColorWithOpacity; 
- /* navigation in modal*/
-        .arrow-background {
-            position: absolute;
-            top: $modalArrowFromTop; 
-            background-color: $secondaryColorWithOpacity;
-            border-radius: 50%;
-            width: $modalArrowBackgroundWidth;
-            height: $modalArrowBackgroundHeight;
-            padding: $modalArrowPadding;
-        @include mobile{
+    /* Enable scroll if needed */
+    overflow: auto;
+    /* Fallback color */
+    background-color: $menuColor;
+    /* Background with opacity*/
+    background-color: $menuColorWithOpacity;
+    /* navigation in modal*/
+    .arrow-background {
+        position: absolute;
+        top: $modalArrowFromTop;
+        background-color: $secondaryColorWithOpacity;
+        border-radius: 50%;
+        width: $modalArrowBackgroundWidth;
+        height: $modalArrowBackgroundHeight;
+        padding: $modalArrowPadding;
+        @include mobile {
             background-color: $menuColorWithOpacityStrong;
         }
-        @include non-desktop{
+        @include non-desktop {
             background-color: $menuColorWithOpacityStrong;
         }
-     }
-            
+    }
     .arrow {
         border: solid $secondaryColor;
         border-width: $modalArrowBorder;
@@ -101,12 +104,11 @@
         height: $modalArrowHeight;
         position: absolute;
         top: $modalArrowHeight+$modalArrowFromTop;
-        @include mobile{
+        @include mobile {
             border-width: $modalArrowBorderMobile;
             padding: $modalArrowPaddingMobile;
             height: $modalArrowHeightMobile;
         }
-                
     }
     .right {
         @include right();
@@ -122,55 +124,50 @@
             left: $modalArrowFromBorderMobile;
         }
     }
-    
- /* image in modal*/  
+    /* image in modal*/
     .modal-content {
-        margin: auto;  //center the image
+        margin: auto; //center the image
         display: block;
         height: $modalImgHeight;
         width: $modalImgWidth;
- /* 100% Image Width for very small screens */
-        @include mobile{
+        /* 100% Image Width for very small screens */
+        @include mobile {
             width: $modalImgWidthMobile;
             height: $modalImgHeightMobile;
         }
-        @include non-desktop{
+        @include non-desktop {
             width: $modalImgWidthMobile;
             height: $modalImgHeightMobile;
         }
     }
-    
-    iframe{
-            width: $modalIframeWidth;
-            @include mobile{
-                width: $modalIframeWidthMobile;
-                height: $modalIframeHeightMobile;
-            }
-            @include non-desktop{
-                width: $modalIframeWidthMobile;
-                height: $modalIframeHeightMobile;
+    iframe {
+        width: $modalIframeWidth;
+        @include mobile {
+            width: $modalIframeWidthMobile;
+            height: $modalIframeHeightMobile;
         }
+        @include non-desktop {
+            width: $modalIframeWidthMobile;
+            height: $modalIframeHeightMobile;
         }
-    
- /* preloaded previous and next image */
-    .previous-modal-content, .next-modal-content {
+    }
+    /* preloaded previous and next image */
+    .previous-modal-content,
+    .next-modal-content {
         display: none;
     }
-    
-/* preloader */
+    /* preloader */
     #preloader {
-        margin: auto;  //center the image
+        margin: auto; //center the image
         display: block;
-        @include mobile{
+        @include mobile {
             width: $modalPreloaderWidthMobile;
         }
-        @include non-desktop{
+        @include non-desktop {
             width: $modalPreloaderWidthNondesktop;
         }
-        
     }
-
-/* caption for modal */
+    /* caption for modal */
     #caption {
         margin: auto;
         display: block;
@@ -182,18 +179,16 @@
         height: $modalCaptionHeight;
         font-size: $descriptionFontSize;
     }
-
-/* animation  for modal opening */
-    .modal-content, #caption, #preloader { 
+    /* animation  for modal opening */
+    .modal-content,
+    #caption,
+    #preloader {
         -webkit-animation-name: pureopacity;
         -webkit-animation-duration: $menuTransitionSec;
         animation-name: pureopacity;
         animation-duration: $menuTransitionSec;
     }
-
-
-
-  /* close button */
+    /* close button */
     .close {
         position: absolute;
         top: $modalCloseFromTop;
@@ -206,28 +201,21 @@
         border-radius: 50%;
         width: $modalCloseWidth;
         padding: $modalClosePadding;
-        @include mobile{
+        @include mobile {
             background-color: $menuColorWithOpacityStrong;
         }
-        @include non-desktop{
+        @include non-desktop {
             background-color: $menuColorWithOpacityStrong;
         }
     }
-
     /* color changing for close and arrows on hover */
     .close:hover,
     .close:focus,
     .arrow:hover,
-    .arrow:focus{
-        color: $primaryColor ;
-        border-color: $primaryColor ;
+    .arrow:focus {
+        color: $primaryColor;
+        border-color: $primaryColor;
         text-decoration: none;
         cursor: pointer;
     }
-    
-
 }
-
-
-
-

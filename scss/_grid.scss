@@ -1,45 +1,41 @@
-
-   /* grid for main container */
+/* grid for main container */
 
 .grid-container {
     width: 100%;
     //max-width: 1500px;  //always full width
     margin: 0 auto; //centering
-    .row{
-      //border: 1px solid black;
-      padding-bottom: 0.1vw;
-      padding-top: 0.1vw;
-      &:before, //clearfix, necesarry for float
-      &:after {
-        content: " ";
-        display: table; 
-        clear: both;
+    .row {
+        //border: 1px solid black;
+        padding-bottom: 0.1vw;
+        padding-top: 0.1vw;
+        &:before, //clearfix, necesarry for float
+        &:after {
+            content: " ";
+            display: table;
+            clear: both;
         }
-      // column width   
-      @for $i from 1 through 12 {
+        // column width   
+        @for $i from 1 through 12 {
             .col-#{$i} {
-            width: 8.333333% * $i;
+                width: 8.333333% * $i;
+            }
+            [class*="col-"] {
+                //border: 1px solid red;
+                float: left;
+                min-height: 1px; //not to let empty columns overlap
+                //padding: 12px;
+                @include mobile {
+                    float: none;
+                    width: 100%;
+                    padding-bottom: 10px;
+                }
+                @include non-desktop {
+                    //this can be removed  - to discuss how client wants to see non desktop sitess
+                    float: none;
+                    width: 100%;
+                    padding-bottom: 10px;
+                }
+            }
         }
-        
-      [class*="col-"] {
-          //border: 1px solid red;
-            float: left;
-            min-height: 1px;  //not to let empty columns overlap
-            //padding: 12px;
-             @include mobile {
-                 float: none ;
-                 width: 100% ;
-                 padding-bottom: 10px;
-            }
-          
-                @include non-desktop {  //this can be removed  - to discuss how client wants to see non desktop sitess
-                 float: none ;
-                 width: 100% ;
-                 padding-bottom: 10px;
-            }
-            }
-
-        }  
     }
-         
 }

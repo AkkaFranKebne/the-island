@@ -1,14 +1,13 @@
 .pin {
-  z-index: 2;
-  width: $pinsWidth;
-  height: $pinsHeight;
-  border-radius: 50% 50% 50% 0;
-  background-color: red;
-  position: absolute;
-  @include right();
-  /* position of each pin */
-    @each $pin in 
-    eventy,
+    z-index: 2;
+    width: $pinsWidth;
+    height: $pinsHeight;
+    border-radius: 50% 50% 50% 0;
+    background-color: red;
+    position: absolute;
+    @include right();
+    /* position of each pin */
+    @each $pin in eventy,
     sm,
     www,
     kreacja,
@@ -18,32 +17,30 @@
             left: map-get($islandPinsLeft, $pin);
         }
     }
-  margin: $pinsMargin;
-  animation-name: bounce;
-  animation-fill-mode: both;
-  animation-duration: $pinAnimationSec;
+    margin: $pinsMargin;
+    animation-name: bounce;
+    animation-fill-mode: both;
+    animation-duration: $pinAnimationSec;
     &:after {
-    content: '';
-    width: $pinsCenterWidth;
-    height: $pinsCenterHeight;
-    margin: $pinsCenterMargin;
-    background-color: $PinCenterBackgroundColor;
-    position: absolute;
-    border-radius: 50%;
+        content: '';
+        width: $pinsCenterWidth;
+        height: $pinsCenterHeight;
+        margin: $pinsCenterMargin;
+        background-color: $PinCenterBackgroundColor;
+        position: absolute;
+        border-radius: 50%;
     }
-      
 }
-    
-.pulse{
-  z-index: 3;
-  background-color: $PinPulseColorWithOpacity;
-  border-radius: 50%;
-  height: $pinsPulseHeight;
-  width: $pinsPulseWidth;
-  position: absolute;
-/* position of each pulse */
-    @each $pulse in 
-    eventy,
+
+.pulse {
+    z-index: 3;
+    background-color: $PinPulseColorWithOpacity;
+    border-radius: 50%;
+    height: $pinsPulseHeight;
+    width: $pinsPulseWidth;
+    position: absolute;
+    /* position of each pulse */
+    @each $pulse in eventy,
     sm,
     www,
     kreacja,
@@ -53,22 +50,19 @@
             left: map-get($islandPinsLeft, $pulse);
         }
     }
-  margin: $pinsPulseMargin;
-  @include x();
+    margin: $pinsPulseMargin;
+    @include x();
     &:after {
-    content: "";
-    border-radius: 50%;
-    height: $pinsPulseCenterHeight;
-    width: $pinsPulseCenterWidth;
-    position: absolute;
-    margin: $pinsPulseCenterMargin;
-    animation: pulsate $pinAnimationSec ease-out;
-    animation-iteration-count: infinite;
-    opacity: 0;
-    box-shadow: $pinsPulseCenterShadow $PinPulseCenterShadowColor;
-    animation-delay: $pinAnimationSec;
+        content: "";
+        border-radius: 50%;
+        height: $pinsPulseCenterHeight;
+        width: $pinsPulseCenterWidth;
+        position: absolute;
+        margin: $pinsPulseCenterMargin;
+        animation: pulsate $pinAnimationSec ease-out;
+        animation-iteration-count: infinite;
+        opacity: 0;
+        box-shadow: $pinsPulseCenterShadow $PinPulseCenterShadowColor;
+        animation-delay: $pinAnimationSec;
     }
-    
 }
-
-

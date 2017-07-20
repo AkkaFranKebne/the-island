@@ -1,41 +1,36 @@
    /* mixins used in different part of the web page */
-
-//changing 3 bars to X in menus
-
-@mixin barsTo-X($class){ 
-        /* Transforming icon hamburger to X */ 
-        /* Rotate first bar */
-        &.#{$class} .bar1 {
-            -webkit-transform: rotate(-45deg) translate(-9px, 6px) ;
-            transform: rotate(-45deg) translate(-9px, 6px) ;
-        }
-        /* Fade out the second bar */
-        &.#{$class} .bar2 {
-            opacity: 0;
-        }
-        /* Rotate last bar */
-        &.#{$class} .bar3 {
-            -webkit-transform: rotate(45deg) translate(-8px, -8px) ;
-            transform: rotate(45deg) translate(-8px, -8px) ;
-        }
-     }
-
-
-//arrows and pins
-
-@mixin right(){ 
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-     }
-
-@mixin left(){ 
+   
+   //changing 3 bars to X in menus
+   @mixin barsTo-X($class) {
+       /* Transforming icon hamburger to X */
+       /* Rotate first bar */
+       &.#{$class} .bar1 {
+           -webkit-transform: rotate(-45deg) translate(-9px, 6px);
+           transform: rotate(-45deg) translate(-9px, 6px);
+       }
+       /* Fade out the second bar */
+       &.#{$class} .bar2 {
+           opacity: 0;
+       }
+       /* Rotate last bar */
+       &.#{$class} .bar3 {
+           -webkit-transform: rotate(45deg) translate(-8px, -8px);
+           transform: rotate(45deg) translate(-8px, -8px);
+       }
+   }
+   
+   //arrows and pins
+   @mixin right() {
+       -webkit-transform: rotate(-45deg);
+       transform: rotate(-45deg);
+   }
+   
+   @mixin left() {
        -webkit-transform: rotate(135deg);
-        transform: rotate(135deg); 
-     }
-
-@mixin x(){
-        -webkit-transform: rotateX(55deg); 
-        transform: rotateX(55deg);   
-}
-
-
+       transform: rotate(135deg);
+   }
+   
+   @mixin x() {
+       -webkit-transform: rotateX(55deg);
+       transform: rotateX(55deg);
+   }

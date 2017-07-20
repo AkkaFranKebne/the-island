@@ -3,56 +3,43 @@ $primaryColor: cadetblue;
 $secondaryColor: white;
 $secondaryColorWithOpacity: rgba(255, 255, 255, 0.6);
 $backgroundColor: lightblue;
-$PinBackgroundColor: red ;
+$PinBackgroundColor: red;
 $PinCenterBackgroundColor: #2f2f2f;
-$PinPulseColorWithOpacity: rgba(0,0,0,0.2);
+$PinPulseColorWithOpacity: rgba(0, 0, 0, 0.2);
 $PinPulseCenterShadowColor: #89849b;
-    
 $menuColor: #696969;
 $menuColorWithOpacity: rgba(100, 100, 100, 0.9);
 $menuColorWithOpacityStrong: rgba(100, 100, 100, 0.3);
-
 //images sources
 $loadingImage: url('../images/loading_pigs.gif');
 $islandImage: url(../images/wyspa%20www.png);
 $islandImageNondesktop: url(../images/wyspa%20www_nondesktop.jpg);
 $islandImageMobile: url(../images/wyspa%20www_mobile.jpg);
 $mobileMenuBackground: url('../images/lemonhills.png');
-
 //transitions
 $menuTransitionSec: 0.5s;
 $pinAnimationSec: 1s;
-
 //font sizes
 $sideNavFontSize: 30px;
 $sideNavFontSizeMobile: 8vh;
-
 $sideNavLinkHeight: 50px;
 $sideNavLinkHeightMobile: 12vh;
-
 $copyFontSize: 10px;
-
 $titlesFontSize: 26px;
 $subtitlesFontSize: 24px;
 $descriptionFontSize: 16px;
-
-
 $titlesFontSizeMobile: 4vmax;
 $subtitlesFontSizeMobile: 3.5vmax;
 $descriptionFontSizeMobile: 3vmax;
-
 $titlesFontSizeNondesktop: 3.8vmax;
 $subtitlesFontSizeNondesktop: 3.1vmax;
 $descriptionFontSizeNondesktop: 2.9vmax;
-
 //subtitles margins
 $subtitleMarginTop: 1vh;
 $subtitleMarginBottom: 0.5vh;
 $addressPadding: 30px;
-
 //mobile
 $mainPaddingLeftVwMobile: 0.1vw;
-
 //pins
 $pinsHeight: 30px;
 $pinsWidth: 30px;
@@ -68,24 +55,20 @@ $pinsPulseCenterHeight: 40px;
 $pinsPulseCenterWidth: 40px;
 $pinsPulseCenterMargin: -13px 0 0 -13px;
 $pinsPulseCenterShadow: 0 0 1px 2px;
-
 //island size
 $widthToHeightProportion: (1098/1881); //image from the designer: 1881 x 1098
-$imageScaledWidth: 70vw;  //size of the island on the web page
+$imageScaledWidth: 70vw; //size of the island on the web page
 $imageScaledHeight: $imageScaledWidth * $widthToHeightProportion;
 $backgroundSize: 2822px 1647px; // size of the extended island part - 1.5 x normal size 
-
 //island paddings
 $mainPaddingLeftVw: 15vw;
 $grpelemPaddingTopPx: 18px;
-
 //menu 
 $menuPaddingTop: 30px;
 $menuMainPagePaddingTopMobile: 50px;
 $expandedMenuWidth: 255px;
 $menuLinksPadding: 8px 8px 8px 32px;
 $menuFirstLinkTopMargin: 40px;
-
 //hamburger
 $hamburgerHeight: 30px;
 $hamburgerBarHeight: 5px;
@@ -98,11 +81,9 @@ $hamburgerMobileMarginTop: 110px;
 $hamburgerMobileBackgroundHeight:54px;
 $hamburgerMobileBackgroundWidth: 54px;
 $hamburgerMobilePadding: 9px 9px 9px 12px;
-
 //Logo
 $logoMaxWidth: 300px;
 $logoTopMargin: 30px;
-
 //close button
 $closeHeight: 20px;
 $closeWidth: 20px;
@@ -111,14 +92,12 @@ $closeRightMargin: 45px;
 $closeBarHeight: 5px;
 $closeBarWidth: 30px;
 $CloseBarMargin: 6px 0;
-
 //gallery 
 $galleryElementsBorderRadius: 5px;
 $picturePadding: 0.1vw;
 $pictureMargin: 0;
 $galleryMobileImgWidth: 98vw;
 $galleryHoverOpacity: 0.7;
-
 //modal navigation
 $modalArrowFromTop: 95px;
 $modalArrowFromBorder: 33px;
@@ -132,43 +111,33 @@ $modalArrowHeight: 15px;
 $modalArrowHeightMobile: 12px;
 $modalArrowPadding: 7px;
 $modalArrowPaddingMobile: 6px;
-
 //modal images
 $modalImgHeight: 92vh;
 $modalImgHeightMobile: auto;
 $modalImgWidth: auto;
 $modalImgWidthMobile: 100%;
-
 //modal iframe
 $modalIframeHeightMobile: 90vh !important;
 $modalIframeWidth: 80vw !important;
 $modalIframeWidthMobile: 100vw !important;
-
 //modal caption
 $modalCaptionWidth: 90%;
 $modalCaptionHeight: 150px;
 $modalCaptionMaxWidth: 1000px;
 $modalCaptionPadding: 10px 0;
-
 //modal preloader
 $modalPreloaderWidthMobile: 400px;
 $modalPreloaderWidthNondesktop: 800px;
-
 //modal close
 $modalCloseFromTop: 25px;
 $modalCloseFromRight: 15px;
 $modalCloseHeight: 40px;
 $modalCloseWidth: 45px;
 $modalClosePadding: 0 0 2px 11px;
-
 //location (contact)
 $locationWidth: 100%;
 $locationHeight: 35vh;
 $locationBorder: 5px solid $secondaryColor;
-
-
 //copy
 $copyfromBottom: 10px;
 $copyFromRight: 12px;
-
-
