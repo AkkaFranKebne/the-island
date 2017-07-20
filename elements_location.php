@@ -1,5 +1,6 @@
 
         <div id="location"></div>
+        <!--- google maps script ----->
         <script>
               function initMap() {
                 var uluru = {lat: 51.031836, lng: 16.97143989999995};

@@ -7,7 +7,7 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
 <html  lang="pl-PL">
  <head>
 
-<title>MAIN </title>
+<title>LemOnHills - Agencja Marketingowa</title>
      <?php include 'elements_meta.php';?>
 </head>
         

@@ -1,24 +1,28 @@
 <meta  content="text/html;charset=UTF-8"/>
 <!-- viewport -->
 <meta name="viewport" content="width=device-width initial-scale=1"> 
+<!-- keywords and description -->
+<meta name="keywords" content="agencja reklamowa wrocław, marketing, agencja marketingowa, planowanie mediów, strony www, prowadzeie facebooka, marketing szeptany,grafika, kreacja, kreacja reklamowa, reklama, szkolenia, badania, pozycjonowanie, kampanie RTB, pr, kampanie adwords">
+<meta name="description" content="LemonHills - agencja marketingowa. Kompleksowa obsługa marketingowa: kreacja, planowanie mediów, Public Relations, produkcja materiałów reklamowych, strony WWW, social media, badania i organizacja eventów.">
+<!-- descrpition for robots -->
+<meta name="robots" content="index,follow,all">
+<!-- descrpition for social media -->
+<meta property="og:description" content="LemonHills - agencja marketingowa. Kompleksowa obsługa marketingowa: kreacja, planowanie mediów, Public Relations, produkcja materiałów reklamowych, strony WWW, social media, badania i organizacja eventów.">
+<meta property="og:image" content="#"> <!--to set -->
+<meta property="og:url" content="#"> <!--to set -->
 <!-- jquery-->
 <script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
-<!-- jquery: version suitable for jquery mobile 
-<script src="https://code.jquery.com/jquery-1.11.3.min.js" ></script>
-workaround: 
-<script src="https://code.jquery.com/jquery-migrate-3.0.0.js"></script>
--- jquery mobile -
-<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>-->
+<!--  touch swipe -->
 <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
 <!-- map hilight -->
 <script type="text/javascript" src="js/jquery.maphilight.js"></script>
 <!-- javascript -->
 <script src="js/app.js"> </script>
-<!-- css -->
-<link rel="stylesheet" type="text/css" href="css/index.css"/>  
 <!-- favicon -->
-<link rel="icon" href="/the-island/images/favicon.gif" type="image/gif" sizes="16x16"> <!-- change the path for production -->
-
-
-
+<link rel="icon" href="images/favicon.gif" type="image/gif" sizes="16x16"> <!-- change the path for production -->
+<!-- css -->
+<link rel="stylesheet" type="text/css" href="css/index.css"/> 
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<![endif]-->
 

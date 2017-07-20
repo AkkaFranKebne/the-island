@@ -38,13 +38,13 @@
                         @include mobile{
                             max-width: none;
                             max-height: none;
-                            width: 98vw;
+                            width: $galleryMobileImgWidth;
                             height: auto;
                         }
                     @include non-desktop{
                             max-width: none;
                             max-height: none;
-                            width: 98vw;
+                            width: $galleryMobileImgWidth;
                             height: auto;
                         }
                         border-radius: $galleryElementsBorderRadius;
@@ -52,7 +52,7 @@
                         transition: $menuTransitionSec;
             /* blinking on hover */ 
                         &:hover {
-                            opacity: 0.7;
+                            opacity: $galleryHoverOpacity;
                             }
                         }
             }            
@@ -72,19 +72,19 @@
     height: 100vh;
 /* Enable scroll if needed */
     overflow: auto; 
-/* Fallback color  - need to put them in other opacity places!!*/
+/* Fallback color */
     background-color: $menuColor; 
 /* Background with opacity*/
     background-color: $menuColorWithOpacity; 
  /* navigation in modal*/
         .arrow-background {
             position: absolute;
-            top: 95px; 
+            top: $modalArrowFromTop; 
             background-color: $secondaryColorWithOpacity;
             border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            padding: 0 0 2px 11px;
+            width: $modalArrowBackgroundWidth;
+            height: $modalArrowBackgroundHeight;
+            padding: $modalArrowPadding;
         @include mobile{
             background-color: $menuColorWithOpacityStrong;
         }
@@ -94,34 +94,32 @@
      }
             
     .arrow {
-        border: solid $secondaryColor;;
-        border-width: 0 4px 4px 0;
+        border: solid $secondaryColor;
+        border-width: $modalArrowBorder;
         display: inline-block;
-        padding: 7px;
-        height: 14px;
+        padding: $modalArrowPadding;
+        height: $modalArrowHeight;
         position: absolute;
-        top: 110px;
+        top: $modalArrowHeight+$modalArrowFromTop;
         @include mobile{
-            border-width: 0 3px 3px 0;
-            padding: 6px;
-            height: 12px;
+            border-width: $modalArrowBorderMobile;
+            padding: $modalArrowPaddingMobile;
+            height: $modalArrowHeightMobile;
         }
                 
     }
     .right {
-        transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
-        right: 33px;
+        @include right();
+        right: $modalArrowFromBorder;
         &.arrow-background {
-            right: 15px;
+            right: $modalArrowFromBorderMobile;
         }
     }
     .left {
-        transform: rotate(135deg);
-        -webkit-transform: rotate(135deg);
-        left: 33px;
+        @include left();
+        left: $modalArrowFromBorder;
         &.arrow-background {
-            left: 15px;
+            left: $modalArrowFromBorderMobile;
         }
     }
     
@@ -129,28 +127,28 @@
     .modal-content {
         margin: auto;  //center the image
         display: block;
-        height: 92vh;
-        width: auto;
+        height: $modalImgHeight;
+        width: $modalImgWidth;
  /* 100% Image Width for very small screens */
         @include mobile{
-            width: 100%;
-            height: auto;
+            width: $modalImgWidthMobile;
+            height: $modalImgHeightMobile;
         }
         @include non-desktop{
-            width: 100%;
-            height: auto;
+            width: $modalImgWidthMobile;
+            height: $modalImgHeightMobile;
         }
     }
     
     iframe{
-            width: 80vw !important;
+            width: $modalIframeWidth;
             @include mobile{
-                width: 100vw !important;
-                height: 90vh !important;
+                width: $modalIframeWidthMobile;
+                height: $modalIframeHeightMobile;
             }
             @include non-desktop{
-                width: 100vw !important;
-                height: 90vh !important;
+                width: $modalIframeWidthMobile;
+                height: $modalIframeHeightMobile;
         }
         }
     
@@ -164,10 +162,10 @@
         margin: auto;  //center the image
         display: block;
         @include mobile{
-            width: 400px;
+            width: $modalPreloaderWidthMobile;
         }
         @include non-desktop{
-            width: 800px;
+            width: $modalPreloaderWidthNondesktop;
         }
         
     }
@@ -176,12 +174,12 @@
     #caption {
         margin: auto;
         display: block;
-        width: 90%;
-        max-width: 1000px;
+        width: $modalCaptionWidth;
+        max-width: $modalCaptionMaxWidth;
         text-align: center;
         color: $secondaryColor;
-        padding: 10px 0;
-        height: 150px;
+        padding: $modalCaptionPadding;
+        height: $modalCaptionHeight;
         font-size: $descriptionFontSize;
     }
 
@@ -198,16 +196,16 @@
   /* close button */
     .close {
         position: absolute;
-        top: 25px;
-        right: 15px;
+        top: $modalCloseFromTop;
+        right: $modalCloseFromRight;
         color: $secondaryColor;
-        font-size: 40px;
+        font-size: $modalCloseHeight;
         font-weight: bold;
         transition: $menuTransitionSec;
-            background-color: $secondaryColorWithOpacity;
-            border-radius: 50%;
-            width: 45px;
-            padding: 0 0 2px 11px;
+        background-color: $secondaryColorWithOpacity;
+        border-radius: 50%;
+        width: $modalCloseWidth;
+        padding: $modalClosePadding;
         @include mobile{
             background-color: $menuColorWithOpacityStrong;
         }

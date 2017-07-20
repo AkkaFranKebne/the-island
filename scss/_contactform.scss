@@ -1,6 +1,7 @@
 
    /*-------------------------------rules for form on contact site-------------------------  */
 
+//to rebuild with client, then to introduce variables
 
    /* after sending message alert*/
 .alert {
@@ -125,10 +126,10 @@ textarea:focus, input[type=text]:focus {
 
 #form_wrap:hover input[type=submit] {
             z-index:1;opacity:1;
-			-webkit-transition: opacity .5s ease-in-out 1.3s;
-			-moz-transition: opacity .5s ease-in-out 1.3s;
-			-o-transition: opacity .5s ease-in-out 1.3s;
-			transition: opacity .5s ease-in-out 1.3s;}
+			-webkit-transition: opacity 0.5s ease-in-out 1.3s;
+			-moz-transition: opacity 0.5s ease-in-out 1.3s;
+			-o-transition: opacity 0.5s ease-in-out 1.3s;
+			transition: opacity 0.5s ease-in-out 1.3s;}
 
 			#form_wrap:hover input:hover[type=submit] {
                 color:#435c70;
@@ -193,10 +194,10 @@ textarea:focus, input[type=text]:focus {
 
 /* submit styles for desktop*/  
 #form_wrap input[type=submit] {
-			-webkit-transition: opacity .6s ease-in-out 0s;
-			-moz-transition: opacity .6s ease-in-out 0s;
-			-o-transition: opacity .6s ease-in-out 0s;
-			transition: opacity .6s ease-in-out 0s;
+			-webkit-transition: opacity 0.6s ease-in-out 0s;
+			-moz-transition: opacity 0.6s ease-in-out 0s;
+			-o-transition: opacity 0.6s ease-in-out 0s;
+			transition: opacity 0.6s ease-in-out 0s;
 		}
     
 /* changing the height and the position of the form on hover*/  

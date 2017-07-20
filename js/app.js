@@ -3,40 +3,47 @@ $(document).ready(function () {
 
 
     /* 
-to do:
-        > dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
         
-        
-        
-        
-do poprawnienia z "can  I use": 
-> dodac wszedzie backup color dla bcgr opacity;
-> grid layout : chrome 49 i nizej, ios safari 10.2 i nizej, opera mini, android browser 4.4 i nizej
-> transform  ie <9 - The scale transform can be emulated in IE < 9 using Microsoft's "zoom" extension, others are (not easily) possible using the MS Matrix filter  + nie dziala na opera mini
-> transition opera mini
-> animation w opera mini
-> border radius opera mini
-> box shadow opera mini
+do potestowania:
+> grid layout : chrome 49 i nizej, ios safari 10.2 i nizej, opera mini, android browser 4.4 i nizej - jak to wyglada?
+
+
+nie dziala na opera mini - jak to wyglada?:
+> transform
+> transition 
+> animation 
+> border radius 
+> box shadow 
 
 
 >testowanie - znalezione bledy:
 > obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
 > form nie on focus tylko na zmiane, dlaczego nie dziala?
 > dalej na prod czasem sciska sie animacja i nie wlacza animacja poczatkowa; 
+
+
+--------------------------------------------------------------
   
-  
-inne do poprawienia przed oddaniem:
-        > linki - zmienic tak, by nie trzeba bylo zmieniac - przy wysylaniu na prod;
-        > css i js zmienne
-        >  opozniona animacja poczatkowa - czemu nie dzialaja zmienne?
-        > powtorzony kod w js zamienic na zmienne
-        > kod mapy przerzucic do app.js
-        > sprawdzic czy sesja dziala poprawnie
-        > ladny css i js https://www.w3schools.com/jquery/jquery_events.asp  polaczenie eventow w 1
+ 
+jak zdaze to do:
+        > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
+        > przepisanie na funkcje next/previous image
+        > przerobienie walidacji formularza z blur na natychmiastowa
+        
+               
+
+do zmiany przed oddaniem:
         > linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
+        
+
+extra homework:
+        > lazy load obczaic
+        > blur load obczaic
         > creative cloud obczaic
         > gulp svg konwersja obczaic
-        
+        > cookie js obczaic
+
+-------------------------------------------------------------------
         
 Galeria:
 Mobile: 350x220
@@ -53,6 +60,13 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     */
 
     //----------------------VARIABLES-----------------------------------------------------------------------
+    
+    //media queries
+    var mobile = window.matchMedia("screen and  (max-width: 450px)");
+    var nondesktop = window.matchMedia("screen  and (max-width: 800px) and (min-width: 451px)");
+    var desktop = window.matchMedia("screen and (min-width: 801px) and (max-width: 960px)");
+    var bigdesktop = window.matchMedia("screen and (min-width: 1401px)");
+    var touch = window.matchMedia("screen and (pointer: coarse)");
 
     //basic//////////
     var main = $('main');
@@ -73,16 +87,11 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var wholeisland_img = wholeisland.find('#wholeisland_img');
     var grpelemPaddingTopPx = 18;
     var imageScale = 0.7;
+    
+    //pins
     var areas = $('area');
     var pins = $('.pin');
     var pulses = $('.pulse');
-
-    //galleries element
-    var galleryImages = $('.gallery').find('img');
-    var modal = $('#modal');
-    var modalCloseButton = $('span.close');
-    var arrows = $('.arrow');
-
 
 
     //map image
@@ -119,23 +128,44 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var wwwTop = 250;
     var smLeft = 170;
     var smTop = 100;
+    
+    
+    //size of extended island part - 150% of original 
+    var heightOfExtendedIsland = '1647px';
+    var widthOfExtendedIsland = '2822px';
+
 
     //animations
-    //time in preloader
-    var preloaderMilisec = 4000;
+    //time in preloaderAndAnimation
+    var animationFirstSessionTimeStart = 100;
+    var animationFirstSessionTimeEnd = 400;
+    var Start1 = 0;
+    var Start2 = animationFirstSessionTimeStart;
+    var Start3 = 2 * animationFirstSessionTimeStart;
+    var Start4 = 3 * animationFirstSessionTimeStart;
+    var Start5 = 4 * animationFirstSessionTimeStart;
+    var Start6 = 5 * animationFirstSessionTimeStart;
+    var End1 = animationFirstSessionTimeEnd;
+    var End2 = Start2 + animationFirstSessionTimeEnd;
+    var End3 = Start3 + animationFirstSessionTimeEnd;
+    var End4 = Start4 + animationFirstSessionTimeEnd;
+    var End5 = Start5 + animationFirstSessionTimeEnd;
+    var End6 = Start6 + animationFirstSessionTimeEnd;   
 
-
+    
     //onclick animation time
     var onclickAnimationMilisec = 2000;
     var onclickAnimationDelay = 200;
-    var reloadPageDelay = 2300; //sum of previous two plus little extra
+    var reloadPageDelay = onclickAnimationMilisec+onclickAnimationDelay+100; //sum of previous two plus little extra
 
     //backToStartAnimation time
     var backToStartAnimationMilisec = 2000;
 
-    //size of extended island part - 150% of original 
-    var heightOfExtendedIsland = '1647px';
-    var widthOfExtendedIsland = '2822px';
+    //galleries element
+    var galleryImages = $('.gallery').find('img');
+    var modal = $('#modal');
+    var modalCloseButton = $('span.close');
+    var arrows = $('.arrow');
 
     //contact form
     var form = $('form');
@@ -148,12 +178,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var emailValue = emailField.val();
 
     
-    //media queries
-    var mobile = window.matchMedia("screen and  (max-width: 450px)");
-    var nondesktop = window.matchMedia("screen  and (max-width: 800px) and (min-width: 451px)");
-    var desktop = window.matchMedia("screen and (min-width: 801px) and (max-width: 960px)");
-    var bigdesktop = window.matchMedia("screen and (min-width: 1401px)");
-    var touch = window.matchMedia("screen and (pointer: coarse)");
+    
 
 
     //-------------FUNCTIONS--------------------------------------------------------------------------------------------------
@@ -179,7 +204,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         }
     }
 
-    // recalculating map coordinates //////////
+    // recalculating map coordinates ////////////////////////////
 
     function imageMapCalculate(map) {
         var coordsAll = [];
@@ -202,52 +227,48 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     }
 
 
-
-    //showing  preloader on start//////////  
-      //not works when pic is in cache - fix, eg read about lazy loading and blur loading 
+    //showing  preloader on start//////////////////////////////// 
+    
        function showPreloader(idOfImageThatIsLoading, idOfImageThatIsLoadingSTRING ) {
-           console.log(idOfImageThatIsLoading);
+           //console.log(idOfImageThatIsLoading);
            body.addClass('loading');  
-            idOfImageThatIsLoading.on("load", function() {  //island_img
-                console.log("pic loaded");
+            idOfImageThatIsLoading.on("load", function() {  
+                //console.log("pic loaded");
                 body.removeClass('loading');
                 main.removeClass('hidden');
                 island.removeClass('hidden'); 
             });
            var pictureInCache = document.getElementById(idOfImageThatIsLoadingSTRING).complete;
-           console.log(pictureInCache);
+           //console.log(pictureInCache);
                if (pictureInCache == true ) {
-                   console.log('img in cache but i will do it for you');
+                   //console.log('img in cache but i will do it for you');
                     body.removeClass('loading');
                     main.removeClass('hidden');
                     island.removeClass('hidden');
         }
     } 
     
-    
-     //showing  preloader and animation on start//////////  
+     //showing  preloader and animation on start///////////////  
       
        function showPreloaderAndAnimation() {
             island_img.on("load", function() { 
-                console.log("pic loaded for the first time");
+                //console.log("pic loaded for the first time");
                 body.removeClass('loading');
                 main.removeClass('hidden');
                 island.removeClass('hidden'); 
                 //showing pins for touchscreens
                 isTouch();
                 //showing animation
-                noticeMyArea(areas.eq(3), 0, 400);
-                noticeMyArea(areas.eq(4), 100, 500);
-                noticeMyArea(areas.eq(0), 200, 600);
-                noticeMyArea(areas.eq(1), 300, 700);
-                noticeMyArea(areas.eq(2), 400, 800);
-                noticeMyArea(areas.eq(3), 500, 900); 
+                noticeMyArea(areas.eq(3), Start1, End1);
+                noticeMyArea(areas.eq(4), Start2, End2);
+                noticeMyArea(areas.eq(0), Start3, End3);
+                noticeMyArea(areas.eq(1), Start4, End4);
+                noticeMyArea(areas.eq(2), Start5, End5);
+                noticeMyArea(areas.eq(3), Start6, End6); 
             });
     }
 
-    
-
-    //map areas animation on start //////////
+    //map areas animation on start //////////////////////////
 
 
     function noticeMyArea(ele, delay1, delay2) {
@@ -263,17 +284,18 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         }, delay2);
     };
 
-    // map areas animation after coming back from subpage//////////
-
+    // map areas animation after coming back from subpage///
     // OBS!: there is a need to use extra layer, as image with map is not resizeable. 
 
     function backToStartAnimation() {
+        //getting the proper island part from GET
         var source = main.data('source');
+        //console.log(source);
+        source = source.replace('/the-island',''); //for localhost only
+        console.log(source);
         source = source.split("/");
-        source = source[2].split(".");
-        //source = source[1].split("."); for production, where there url is different
+        source = source[1].split(".");  
         source = source[0];
-
 
         // START position of the image
         islandPartDisplayParameters(source);
@@ -324,8 +346,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                     width: widthPx
                 }, {
                     duration: backToStartAnimationMilisec,
-                    always: function () { //both fail & success;
-                        wholeisland //added
+                    always: function () { //in this form this happens both fail & success;
+                        wholeisland 
                             .removeClass('exposed')
                             .addClass('hidden');
                         island.removeClass('hidden');
@@ -337,9 +359,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             );
     }
 
-
-
-    // fixed size of images for the pageview //////////
+    // fixing the size of map images for the pageview //////////
     //(not resizable during window resize - that is how maphihlight work for mapped image, and they need to be the same size as mapped imape, to make the animation run smoothly)
 
     function fixedImgSize() {
@@ -364,7 +384,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     }
     
 
-    // introducing media queries for images 
+    // introducing media queries for images in galleries  //////////////
     
     function mediaMatches(dataSource,dataSourcePrevious,dataSourceNext){
         if (mobile.matches ) {
@@ -415,7 +435,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             
     }
     
-    // introducing media queries for pins => touchscreens
+    // introducing media queries for pins => touchscreens //////////
     
     function isTouch(){
         if (touch.matches && !island.hasClass('hidden')) {
@@ -423,14 +443,17 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
            pulses.removeClass("hidden");
         }
     }
-     
     
-    //moving to the next image in galleries---------------------------------
+ 
+      
+    //moving to the next image in galleries////////////////////////
+    //OBS! this function is to big, should be divided to different small functions
 
     function showNextImg() {
         //finding current image
         var imageSource ="#";
         var modalContentElements = modal.find('.modal-content');
+        //choosing the visible one (between two: img and iframe)
         modalContentElements.each(function(){
           if ($(this).is(":visible")) {
               imageSource = $(this).attr('src');
@@ -446,62 +469,64 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         //finding these three images
         galleryImages.each(function (index) {
             if ($(this).data('source') === imageSource) {
-
+                
+                //this image become the previous one (as we move forward)
                 dataSourcePrevious = $(this).data('source');
+                //next image become the actual image
                 dataSource = galleryImages.eq(index + 1).data('source');
+                //the image after next become next image
                 dataSourceNext = galleryImages.eq(index + 2).data('source');
+                //caption is taken from the actual image
                 caption = galleryImages.eq(index + 1).attr('alt');
 
-                //console.log(galleryImages.eq(index + 1).data('order'));
-
                 //showing / hiding arrows, based on data-order in html
+                //if the actual image is the last one
                 if (galleryImages.eq(index + 1).data('order') < 9) {
                     modal.find('.right').fadeIn();
                 } else {
                     modal.find('.right').fadeOut();
                 }
-
-
+                //if the actual image is the first one
                 if (galleryImages.eq(index + 1).data('order') > 1) {
                     modal.find('.left').fadeIn();
                 } else {
                     modal.find('.left').fadeOut();
                 }
-
+                
+                //if the user wants to go beyond the first or last image
                 if (typeof galleryImages.eq(index + 1).data('order') === "undefined") {
                     closeTheModal();
                 }
-    
-            }
-                                                
-        });
-        
+             }                                        
+            });
         // resize difrent images sizes for different screens        
         mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
 
         // loading three images
+        galleryImages.each(function (index) {
+        //load the actual image
+        if (galleryImages.eq(index + 1).data('source') === dataSource) {
+            //as the video
+            if (galleryImages.eq(index + 1).hasClass('video')) {
+                //console.log("to video");
+                modal.find('iframe.modal-content').removeClass('hidden').attr('src', dataSource).fadeIn(150);
+                modal.find('img.modal-content').fadeOut(150);
+            }
+            //as an image
+            else {
+                //console.log("to img");
+                modal.find('img.modal-content').attr('src', dataSource).fadeIn(150);
+                modal.find('iframe.modal-content').fadeOut(150);
+            }
         
-    galleryImages.each(function (index) {
-    if (galleryImages.eq(index + 1).data('source') === dataSource) {
-        if (galleryImages.eq(index + 1).hasClass('video')) {
-            console.log("to video");
-            modal.find('iframe.modal-content').removeClass('hidden').attr('src', dataSource).fadeIn(150);
-            modal.find('img.modal-content').fadeOut(150);
-        }
-        else {
-            console.log("to img");
-            modal.find('img.modal-content').attr('src', dataSource).fadeIn(150);
-            modal.find('iframe.modal-content').fadeOut(150);
-        }
-        
-        
+        //prepare the previous image/video
         if ($(this).hasClass('video')){
             modal.find('iframe.previous-modal-content').attr('src', dataSourcePrevious);
         }
         else {
             modal.find('img.previous-modal-content').attr('src', dataSourcePrevious); 
         }
-        
+        //prepare the next image/video
         if (galleryImages.eq(index + 2).hasClass('video')){
             modal.find('iframe.next-modal-content').attr('src', dataSourceNext);
         }
@@ -510,18 +535,36 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         }
     }
     });
+        //insert caption
         modal.find('#caption').html(caption);
+    }
+    
+       //----------setting the size of the thumbnails for galleries /////////
+    
+    function setThumbnailsSize() {
+         if (nondesktop.matches || bigdesktop.matches) {
+                if ($('.row').hasClass('gallery')) {
+                var images = $('.row').find('picture img');
+                images.each(function(e){
+                    var source = $(this).attr("src");
+                    source = source.replace('.jpg','_nondesktop.jpg');
+                    $(this).attr('src', source);
+                });        
+         }
+        }       
     }
 
 
-    //moving to the previous image in galleries------------------------------
 
+    //moving to the previous image in galleries------------------------------
+    //OBS!! the code is simmilar to showNextImg() - in vol2 it can be put into one function with ifs;
 
     function showPreviousImg() {
                 
         //finding current image
         var imageSource ="#";
         var modalContentElements = modal.find('.modal-content');
+        //choosing the visible one (between two: img and iframe)
         modalContentElements.each(function(){
           if ($(this).is(":visible")) {
               imageSource = $(this).attr('src');
@@ -537,71 +580,75 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         //finding these three images
         galleryImages.each(function (index) {
             if ($(this).data('source') === imageSource) {
+                //this image become the next one (as we move backward)
                 dataSourceNext = $(this).data('source');
+                //the  previous image become the actual image
                 dataSource = galleryImages.eq(index - 1).data('source');
+                //the image before the previous image become the previous image
                 dataSourcePrevious = galleryImages.eq(index - 2).data('source');
+                //caption is taken from the actual image
                 caption = galleryImages.eq(index - 1).attr('alt');
 
-                console.log(galleryImages.eq(index - 1).data('order'));
-
                 //showing / hiding arrows, based on data-order in html
+                //if the actual image is the last one
                 if (galleryImages.eq(index - 1).data('order') < 9) {
                     modal.find('.right').fadeIn();
                 } else {
                     modal.find('.right').fadeOut();
                 }
-
-
+                //if the actual image is the first one
                 if (galleryImages.eq(index - 1).data('order') > 1) {
                     modal.find('.left').fadeIn();
                 } else {
                     modal.find('.left').fadeOut();
                 }
+                //if the user wants to go beyond the first or last image
                 if (typeof galleryImages.eq(index - 1).data('order') === "undefined") {
                     closeTheModal();
                 }
             }
-
-        });
-        
-        // resize difrent images sizes for different screens        
-        mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
+          });
+         // resize difrent images sizes for different screens        
+         mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
 
         // loading three images
         
-    galleryImages.each(function (index) {
-    if (galleryImages.eq(index - 1).data('source') === dataSource) {
-        if (galleryImages.eq(index - 1).hasClass('video')) {
-            console.log("to video");
-            modal.find('iframe.modal-content').removeClass('hidden').attr('src', dataSource).fadeIn(150);
-            modal.find('img.modal-content').fadeOut(150);
+        galleryImages.each(function (index) {
+            //load the actual image
+        if (galleryImages.eq(index - 1).data('source') === dataSource) {
+            //as the video
+            if (galleryImages.eq(index - 1).hasClass('video')) {
+                console.log("to video");
+                modal.find('iframe.modal-content').removeClass('hidden').attr('src', dataSource).fadeIn(150);
+                modal.find('img.modal-content').fadeOut(150);
+            }
+            //as an image
+            else {
+                console.log("to img");
+                modal.find('img.modal-content').attr('src', dataSource).fadeIn(150);
+                modal.find('iframe.modal-content').fadeOut(150);
+            }
+            //prepare the previous image/video
+            if (galleryImages.eq(index - 2).hasClass('video')){
+                modal.find('iframe.previous-modal-content').attr('src', dataSourcePrevious);
+            }
+            else {
+                modal.find('img.previous-modal-content').attr('src', dataSourcePrevious); 
+            }
+            //prepare the next image/video
+            if ($(this).hasClass('video')){
+                modal.find('iframe.next-modal-content').attr('src', dataSourceNext);
+            }
+            else {
+                modal.find('img.next-modal-content').attr('src', dataSourceNext);
+            }
         }
-        else {
-            console.log("to img");
-            modal.find('img.modal-content').attr('src', dataSource).fadeIn(150);
-            modal.find('iframe.modal-content').fadeOut(150);
-        }
-        
-        
-        if (galleryImages.eq(index - 2).hasClass('video')){
-            modal.find('iframe.previous-modal-content').attr('src', dataSourcePrevious);
-        }
-        else {
-            modal.find('img.previous-modal-content').attr('src', dataSourcePrevious); 
-        }
-        
-        if ($(this).hasClass('video')){
-            modal.find('iframe.next-modal-content').attr('src', dataSourceNext);
-        }
-        else {
-            modal.find('img.next-modal-content').attr('src', dataSourceNext);
-        }
-    }
-    });
+        });
+        //insert caption
         modal.find('#caption').html(caption);
     }
-
-    //-------------closing modal in galleries----
+    
+    //-------------closing modal in galleries----///////////////////
 
     function closeTheModal() {
         // hiding the modal
@@ -621,8 +668,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
     }
 
-    // ------------validating contact form  telephone-------------
-
+    // ------------validating contact form  telephone///////////////////////
 
 
     function validateTelephone() {
@@ -633,11 +679,11 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         } else {
             errorOne.text("Podaj poprawny numer").show();
 
-
         }
     }
 
-    // ------------validating contact form  email-------------
+    // ------------validating contact form  email/////////////////////////
+    
     function validateEmail() {
         var emailValue = emailField.val();
         if (emailValue.indexOf("@") == -1 || emailValue.indexOf(".") == -1 || emailValue.length < 5) {
@@ -646,15 +692,15 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             errorTwo.text("").hide();
         }
     }
-
-    
-    //--------------removing specific page from menu on the specific page ----------//
+ 
+    //--------------removing specific item from the side menu on the specific page ----------//
     function removeFromMenu(){
        var url = window.location.href; 
+       url = url.replace('/the-island','');  //fix for localhost only
        url = url.split("?");
        url=url[0];
        url = url.split("/");
-       url = url[4];  // on production change for 3
+       url = url[3];  
         
       var sideNavLinks = $('.sidenav a');
       sideNavLinks.show();
@@ -668,10 +714,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
       });
     }
     
-
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
-
-    
 
     // ---------preloader--gif//////////
 
@@ -684,7 +727,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     else if (!main.attr('data-source')){  //--------entering index.php without specific area
         if (main.children().first().hasClass('grpelem')) { //for the main page
             showPreloader(island_img, 'island_img');  //not for the first session 
-        isTouch(); //----------------showing pins for touchscreens
+            isTouch(); //----------------showing pins for touchscreens
         }        
     }
     
@@ -698,38 +741,20 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     }
 
     // ---- fixing the sizes of images of the island - once during pageview ////////
-
     fixedImgSize();
 
 
     //--------come back to index.php with specific area exposed//////////
-
-
     if (main.attr('data-source') && !body.hasClass('loading')) {
         backToStartAnimation();
     }
     
-    //--------- hiding specific link from side menu ///////
-    
-       
+    //--------- hiding specific link from side menu ///////   
     removeFromMenu();
     
     //----------setting the size of the thumbnails for galleries /////////
     
-    if (nondesktop.matches || bigdesktop.matches) {
-            if ($('.row').hasClass('gallery')) {
-            var images = $('.row').find('picture img');
-            images.each(function(e){
-                var source = $(this).attr("src");
-                source = source.replace('.jpg','_nondesktop.jpg');
-                $(this).attr('src', source);
-            });        
-     }
-    }
-
-
-    
-    
+    setThumbnailsSize();
 
     //----------------------EVENTS---------------------------------------------------------------------------------
 
@@ -786,6 +811,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
     //---map areas clicks actions on main page: exposing specific area//////////
     // rewriting in on function does not work (changed all this to function param) - test
+    //OBS!! this event  is huge and should be moved to a function
     
     
     areas.add(pins).add(pulses).on('click', function (event) {
@@ -862,14 +888,13 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         var link = $(this).attr("href");
         setTimeout(function(){
             window.location = link;
-      },200);
+      },onclickAnimationDelay);
  
     });
-    
-    
-    
+      
 
     //-------------opening modal in galleries----//use here preloading as well, when you fix it
+    //OBS!! this event  is huge  and has the repeated code, and should be moved to a function
 
 
     galleryImages.on('click', function () {
@@ -877,7 +902,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         var dataSource = $(this).data('source');
         var dataSourcePrevious = '';
         var dataSourceNext = '';
-        console.log(dataSourcePrevious);
+        //console.log(dataSourcePrevious);
 
         //finding these 3 images
         galleryImages.each(function (index) {
@@ -891,27 +916,29 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         mediaMatches(dataSource,dataSourcePrevious,dataSourceNext);
 
         //loading 3 images  
-    galleryImages.each(function (index) {
-    if ($(this).data('source') === dataSource) {
+        galleryImages.each(function (index) {
+            //load the actual image
+        if ($(this).data('source') === dataSource) {
+            //as the video
         if ($(this).hasClass('video')) {
-            console.log("to video");
             modal.find('iframe.modal-content').attr('src', dataSource).show();
             modal.find('img.modal-content').hide();
         }
+            //as an image
         else {
             console.log("to img");
             modal.find('img.modal-content').attr('src', dataSource).show();
             modal.find('iframe.modal-content').hide();
         }
         
-        
+        //prepare the previous image/video
         if (galleryImages.eq(index - 1).hasClass('video')){
             modal.find('iframe.previous-modal-content').attr('src', dataSourcePrevious);
         }
         else {
             modal.find('img.previous-modal-content').attr('src', dataSourcePrevious); 
         }
-        
+        //prepare the next image/video
         if (galleryImages.eq(index + 1).hasClass('video')){
             modal.find('iframe.next-modal-content').attr('src', dataSourceNext);
         }
@@ -925,9 +952,11 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
 
         //showing / hiding arrows, based on data-order in html
+        //if the actual image is the last one
         if ($(this).data('order') == 9) {
             modal.find('.right').hide();
         }
+        //if the actual image is the first one
         if ($(this).data('order') == 1) {
             modal.find('.left').hide();
         }
@@ -938,8 +967,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         //limiting the body height
         body.addClass('fitInViewport');
 
-        //hiding the preloader 
-    
+        //hiding the preloader    
        if ($(this).hasClass('video')) {
         modal.find('iframe.modal-content').on("load", function() { 
             modal.find('#preloader').hide();
@@ -1035,8 +1063,6 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
       });       
          
     });
-
-
 
 
     // --------------validating fields in contact form  during filing the form-----

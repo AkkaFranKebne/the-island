@@ -1,8 +1,8 @@
    /* mixins used in different part of the web page */
 
-//changing 3 bars to X
+//changing 3 bars to X in menus
 
-@mixin barsTo-X($class){ //jak to polaczyc?
+@mixin barsTo-X($class){ 
         /* Transforming icon hamburger to X */ 
         /* Rotate first bar */
         &.#{$class} .bar1 {
@@ -21,7 +21,21 @@
      }
 
 
+//arrows and pins
 
+@mixin right(){ 
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+     }
 
+@mixin left(){ 
+       -webkit-transform: rotate(135deg);
+        transform: rotate(135deg); 
+     }
+
+@mixin x(){
+        -webkit-transform: rotateX(55deg); 
+        transform: rotateX(55deg);   
+}
 
 

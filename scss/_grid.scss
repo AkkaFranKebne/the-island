@@ -3,7 +3,7 @@
 
 .grid-container {
     width: 100%;
-    //max-width: 1500px;
+    //max-width: 1500px;  //always full width
     margin: 0 auto; //centering
     .row{
       //border: 1px solid black;
@@ -15,7 +15,7 @@
         display: table; 
         clear: both;
         }
-      // ustalanie szerokosci kolumn    
+      // column width   
       @for $i from 1 through 12 {
             .col-#{$i} {
             width: 8.333333% * $i;

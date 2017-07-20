@@ -3,6 +3,11 @@ $primaryColor: cadetblue;
 $secondaryColor: white;
 $secondaryColorWithOpacity: rgba(255, 255, 255, 0.6);
 $backgroundColor: lightblue;
+$PinBackgroundColor: red ;
+$PinCenterBackgroundColor: #2f2f2f;
+$PinPulseColorWithOpacity: rgba(0,0,0,0.2);
+$PinPulseCenterShadowColor: #89849b;
+    
 $menuColor: #696969;
 $menuColorWithOpacity: rgba(100, 100, 100, 0.9);
 $menuColorWithOpacityStrong: rgba(100, 100, 100, 0.3);
@@ -12,20 +17,11 @@ $loadingImage: url('../images/loading_pigs.gif');
 $islandImage: url(../images/wyspa%20www.png);
 $islandImageNondesktop: url(../images/wyspa%20www_nondesktop.jpg);
 $islandImageMobile: url(../images/wyspa%20www_mobile.jpg);
-
-
-//island size
-$widthToHeightProportion: (1098/1881); //image from the designer: 1881 x 1098
-$imageScaledWidth: 70vw;  //size of the island on the web page
-$imageScaledHeight: $imageScaledWidth * $widthToHeightProportion;
-$backgroundSize: 2822px 1647px; // size of the extended island part - 1.5 x normal size 
-
-//island paddings
-$mainPaddingLeftVw: 15vw;
-$grpelemPaddingTopPx: 18px;
+$mobileMenuBackground: url('../images/lemonhills.png');
 
 //transitions
 $menuTransitionSec: 0.5s;
+$pinAnimationSec: 1s;
 
 //font sizes
 $sideNavFontSize: 30px;
@@ -52,11 +48,127 @@ $descriptionFontSizeNondesktop: 2.9vmax;
 //subtitles margins
 $subtitleMarginTop: 1vh;
 $subtitleMarginBottom: 0.5vh;
+$addressPadding: 30px;
+
+//mobile
+$mainPaddingLeftVwMobile: 0.1vw;
+
+//pins
+$pinsHeight: 30px;
+$pinsWidth: 30px;
+$pinsMargin: -20px 0 0 -20px;
+$pinsWidth: 30px;
+$pinsCenterHeight: 14px;
+$pinsCenterWidth: 14px;
+$pinsCenterMargin: 8px 0 0 8px;
+$pinsPulseHeight: 14px;
+$pinsPulseWidth: 14px;
+$pinsPulseMargin: 11px 0px 0px -12px;
+$pinsPulseCenterHeight: 40px;
+$pinsPulseCenterWidth: 40px;
+$pinsPulseCenterMargin: -13px 0 0 -13px;
+$pinsPulseCenterShadow: 0 0 1px 2px;
+
+//island size
+$widthToHeightProportion: (1098/1881); //image from the designer: 1881 x 1098
+$imageScaledWidth: 70vw;  //size of the island on the web page
+$imageScaledHeight: $imageScaledWidth * $widthToHeightProportion;
+$backgroundSize: 2822px 1647px; // size of the extended island part - 1.5 x normal size 
+
+//island paddings
+$mainPaddingLeftVw: 15vw;
+$grpelemPaddingTopPx: 18px;
+
+//menu 
+$menuPaddingTop: 30px;
+$menuMainPagePaddingTopMobile: 50px;
+$expandedMenuWidth: 255px;
+$menuLinksPadding: 8px 8px 8px 32px;
+$menuFirstLinkTopMargin: 40px;
+
+//hamburger
+$hamburgerHeight: 30px;
+$hamburgerBarHeight: 5px;
+$hamburgerBarMargin: 6px 0;
+$hamburgerWidth: 30px;
+$hamburgerMarginLeft: 45px;
+$hamburgerMarginTop: 45px;
+$hamburgerMobileMarginLeft: 15px;
+$hamburgerMobileMarginTop: 110px;
+$hamburgerMobileBackgroundHeight:54px;
+$hamburgerMobileBackgroundWidth: 54px;
+$hamburgerMobilePadding: 9px 9px 9px 12px;
+
+//Logo
+$logoMaxWidth: 300px;
+$logoTopMargin: 30px;
+
+//close button
+$closeHeight: 20px;
+$closeWidth: 20px;
+$closeTopMargin: 35px;
+$closeRightMargin: 45px;
+$closeBarHeight: 5px;
+$closeBarWidth: 30px;
+$CloseBarMargin: 6px 0;
 
 //gallery 
 $galleryElementsBorderRadius: 5px;
 $picturePadding: 0.1vw;
 $pictureMargin: 0;
+$galleryMobileImgWidth: 98vw;
+$galleryHoverOpacity: 0.7;
 
-//mobile
-$mainPaddingLeftVwMobile: 0.1vw;
+//modal navigation
+$modalArrowFromTop: 95px;
+$modalArrowFromBorder: 33px;
+$modalArrowFromBorderMobile: 15px;
+$modalArrowBackgroundHeight: 45px;
+$modalArrowBackgroundWidth: 45px;
+$modalArrowPadding: 0 0 2px 11px;
+$modalArrowBorder: 0 4px 4px 0;
+$modalArrowBorderMobile: 0 3px 3px 0;
+$modalArrowHeight: 15px;
+$modalArrowHeightMobile: 12px;
+$modalArrowPadding: 7px;
+$modalArrowPaddingMobile: 6px;
+
+//modal images
+$modalImgHeight: 92vh;
+$modalImgHeightMobile: auto;
+$modalImgWidth: auto;
+$modalImgWidthMobile: 100%;
+
+//modal iframe
+$modalIframeHeightMobile: 90vh !important;
+$modalIframeWidth: 80vw !important;
+$modalIframeWidthMobile: 100vw !important;
+
+//modal caption
+$modalCaptionWidth: 90%;
+$modalCaptionHeight: 150px;
+$modalCaptionMaxWidth: 1000px;
+$modalCaptionPadding: 10px 0;
+
+//modal preloader
+$modalPreloaderWidthMobile: 400px;
+$modalPreloaderWidthNondesktop: 800px;
+
+//modal close
+$modalCloseFromTop: 25px;
+$modalCloseFromRight: 15px;
+$modalCloseHeight: 40px;
+$modalCloseWidth: 45px;
+$modalClosePadding: 0 0 2px 11px;
+
+//location (contact)
+$locationWidth: 100%;
+$locationHeight: 35vh;
+$locationBorder: 5px solid $secondaryColor;
+
+
+//copy
+$copyfromBottom: 10px;
+$copyFromRight: 12px;
+
+
