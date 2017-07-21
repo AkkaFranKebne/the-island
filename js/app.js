@@ -3,7 +3,6 @@ $(document).ready(function () {
         
 testowanie - znalezione bledy NA EMULATORZE - SPRAWDZIC NA FAKTYCZNYCH URZADZENIACH:
 
->chrome 38 - widac preloader galerii mimo, ze zdjecie jest juz zaladowane -> nie doklada sie style display:none - nie dziala hide() w galleryImages.on('click', function ()
 
 > chrome 58 - obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win -> szwankuje imageMapCalculate(map); nie pomogla zmiana na 
 > chrome 58 - form zwija sie podczas pisania
@@ -684,7 +683,9 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         modal.fadeOut("slow", function () {
             //preparing the preloader for the next click
             modal.find('#preloader').show('slow');
-            modal.find('.modal-content').fadeOut('slow');
+            modal.find('.modal-content').each(function(){
+                $(this).fadeOut('slow');
+            });
 
             //preparing arrows
             modal.find('.right').show();
@@ -954,13 +955,13 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             if ($(this).data('source') === dataSource) {
                 //as the video
                 if ($(this).hasClass('video')) {
-                    modal.find('iframe.modal-content').attr('src', dataSource).show();
+                    modal.find('iframe.modal-content').attr('src', dataSource);
                     modal.find('img.modal-content').hide();
                 }
                 //as an image
                 else {
                     console.log("to img");
-                    modal.find('img.modal-content').attr('src', dataSource).show();
+                    modal.find('img.modal-content').attr('src', dataSource);
                     modal.find('iframe.modal-content').hide();
                 }
 
@@ -1001,32 +1002,42 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         //hiding the preloader    
         if ($(this).hasClass('video')) {
             modal.find('iframe.modal-content').on("load", function () {
+                console.log("modal on load video");
                 modal.find('#preloader').hide();
                 modal.find('iframe.modal-content').removeClass('hidden').fadeIn(modalFadeInOutTimeMilisec);
                 modal.find('.arrow').removeClass('hidden');
                 modal.find('.arrow-background').removeClass('hidden');
                 modal.find('#caption').removeClass('hidden');
             }); 
+            //for cache
+            if ($(this).complete) {
+                   console.log("modal cache video");
+                     modal.find('#preloader').hide();
+                    modal.find('iframe.modal-content').removeClass('hidden').fadeIn(modalFadeInOutTimeMilisec);
+                    modal.find('.arrow').removeClass('hidden');
+                    modal.find('.arrow-background').removeClass('hidden');
+                    modal.find('#caption').removeClass('hidden');               
+            }
         } 
         else {
             modal.find('img.modal-content').on("load", function () {
-                console.log(modal.find('#preloader'));
-                modal.find('#preloader').hide().addClass('notDisplayed');
+                console.log("modal on load img");  modal.find('#preloader').hide().addClass('notDisplayed');
                 modal.find('img.modal-content').removeClass('hidden').fadeIn(modalFadeInOutTimeMilisec);
                 modal.find('.arrow').removeClass('hidden');
                 modal.find('.arrow-background').removeClass('hidden');
                 modal.find('#caption').removeClass('hidden');
             });
+            if ($(this).complete) {
+                   console.log("modal cache img");
+                     modal.find('#preloader').hide();
+                    modal.find('img.modal-content').removeClass('hidden').fadeIn(modalFadeInOutTimeMilisec);
+                    modal.find('.arrow').removeClass('hidden');
+                    modal.find('.arrow-background').removeClass('hidden');
+                    modal.find('#caption').removeClass('hidden');               
+            }
         }
         
-        //for cache
-        if ($(this).complete) {
-                 modal.find('#preloader').hide();
-                modal.find('iframe.modal-content').removeClass('hidden').fadeIn(modalFadeInOutTimeMilisec);
-                modal.find('.arrow').removeClass('hidden');
-                modal.find('.arrow-background').removeClass('hidden');
-                modal.find('#caption').removeClass('hidden');               
-            }
+        
               
 
  
