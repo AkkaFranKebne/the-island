@@ -1,15 +1,18 @@
 $(document).ready(function () {
     /* 
         
-testowanie - znalezione bledy:
->chrome 38 - widac preloader galerii mimo, ze zdjecie jest juz zaladowane
-> chrome 58 - obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win - od czego zalezy?;
+testowanie - znalezione bledy NA EMULATORZE - SPRAWDZIC NA FAKTYCZNYCH URZADZENIACH:
+
+>chrome 38 - widac preloader galerii mimo, ze zdjecie jest juz zaladowane -> nie doklada sie style display:none - nie dziala hide() w galleryImages.on('click', function ()
+
+> chrome 58 - obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win -> szwankuje imageMapCalculate(map); nie pomogla zmiana na 
 > chrome 58 - form zwija sie podczas pisania
-> edge -  menu przesuwa sie w prawo przy kliku w modal i wejsciu na podstrony - czasem, minimalnie
->iphone 6  - na sg biegaja swinki - problem nie ladujacej sie grafiki celowo?
+> edge -  menu przesuwa sie w prawo przy kliku w modal i wejsciu na podstrony 
+
+
+>iphone 6, galaxy note  - czasem wyspa dla 1 sesji jest niewidoczna (nie jest usunieta klasa loading z body) ustawic timeout na info o przeladowaniu strony?
 >ipad air  - nie pokazuja sie piny
->galaxy note  - biegaja swinki nie pokazuje sie wyspa 1 sesja
->motorola  - nie widac calego menu przy pozimym ostawieniu
+>motorola  - nie widac calego menu przy pozimym ostawieniu, schowany ostatni link
 
 nie dziala na opera mini - jak to wyglada?:
 > transform
@@ -218,38 +221,45 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             var thisMapCoords = areas[i].coords.split(',');
             coordsAll.push(thisMapCoords);
         };
-
+        //console.log("width: "+ $('body').width());
+        //console.log("client-width: "+ $('body')[0].clientWidth);
+        
         var previousWidth = initWidth;
-        var x = $('body').width() / previousWidth;
+        var x = $('body')[0].clientWidth / previousWidth;  //changed from .width()
         for (var i = 0; i < coordsAll.length; i++) {
             for (var j = 0; j < coordsAll[i].length; j++) {
                 coordsAll[i][j] *= x;
             }
             areas[i].coords = coordsAll[i].join(',');
         }
-        previousWidth = $('body').clientWidth; //for doing it on every resize?
+        previousWidth = $('body')[0].clientWidth; //cleaning the var just in case  //changed
         return true; //necesarry?
     }
 
 
     //showing  preloader on start//////////////////////////////// 
 
-    function showPreloader(idOfImageThatIsLoading, idOfImageThatIsLoadingSTRING) {
+    function showPreloader() {
         //console.log(idOfImageThatIsLoading);
         body.addClass('loading');
-        idOfImageThatIsLoading.on("load", function () {
-            //console.log("pic loaded");
+        island.addClass('hidden');
+        island_img.addClass('hidden');
+        island_img.on("load", function () {
+            console.log("showPreloader - on load");
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
+            island_img.removeClass('hidden');
         });
-        var pictureInCache = document.getElementById(idOfImageThatIsLoadingSTRING).complete;
-        //console.log(pictureInCache);
+        var pictureInCache = document.getElementById('island_img').complete;
+        console.log(pictureInCache);
         if (pictureInCache == true) {
-            //console.log('img in cache but i will do it for you');
+            console.log("showPreloader - cache");
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
+            island_img.removeClass('hidden');
+
         }
     }
 
@@ -257,7 +267,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
     function showPreloaderAndAnimation() {
         island_img.on("load", function () {
-            //console.log("pic loaded for the first time");
+            console.log("showPreloaderAndAnimation - on load");
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
@@ -271,6 +281,24 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             noticeMyArea(areas.eq(2), Start5, End5);
             noticeMyArea(areas.eq(3), Start6, End6);
         });
+        var pictureInCache = document.getElementById('island_img').complete;
+        console.log(pictureInCache);
+        if (pictureInCache == true) {
+            console.log("showPreloaderAndAnimation - cache");
+            body.removeClass('loading');
+            main.removeClass('hidden');
+            island.removeClass('hidden');
+            //showing pins for touchscreens
+            isTouch();
+            //showing animation
+            noticeMyArea(areas.eq(3), Start1, End1);
+            noticeMyArea(areas.eq(4), Start2, End2);
+            noticeMyArea(areas.eq(0), Start3, End3);
+            noticeMyArea(areas.eq(1), Start4, End4);
+            noticeMyArea(areas.eq(2), Start5, End5);
+            noticeMyArea(areas.eq(3), Start6, End6);
+
+        }        
     }
 
     //map areas animation on start //////////////////////////
@@ -295,7 +323,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     function backToStartAnimation() {
         //getting the proper island part from GET
         var source = main.data('source');
-        //console.log(source);
+        console.log(source);
         source = source.replace('/the-island', ''); //for localhost only
         console.log(source);
         source = source.split("/");
@@ -668,6 +696,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
 
     }
+    
+    
 
     // ------------validating contact form  telephone///////////////////////
 
@@ -720,14 +750,22 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
     //for the first  session
     //main.addClass('hidden');//moved to  php session
-
     if (body.hasClass('loading')) { //only php session = 0
         showPreloaderAndAnimation();
-    } else if (!main.attr('data-source')) { //--------entering index.php without specific area
-        if (main.children().first().hasClass('grpelem')) { //for the main page
-            showPreloader(island_img, 'island_img'); //not for the first session 
+    }
+    //for all the other sessions
+    else {
+        if (main.children().first().hasClass('grpelem')) {
+        showPreloader(); }
+    }
+    
+    //--------entering index.php without specific area
+    if (!main.attr('data-source')) { 
+        //if (main.children().first().hasClass('grpelem')) { //for the main page
+            //showPreloader(island_img, 'island_img'); //not for the first session 
+            island.removeClass('hidden'); 
             isTouch(); //----------------showing pins for touchscreens
-        }
+        //}
     }
 
     //OBS! island needs to be hidden by default not to disturb the  backToStartAnimation();
@@ -743,7 +781,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     fixedImgSize();
 
 
-    //--------come back to index.php with specific area exposed//////////
+    //--------come back to index.php with specific area exposed and not in first session//////////
     if (main.attr('data-source') && !body.hasClass('loading')) {
         backToStartAnimation();
     }
@@ -888,7 +926,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     });
 
 
-    //-------------opening modal in galleries----//use here preloading as well, when you fix it
+    //-------------opening modal in galleries----///////////////////////////
     //OBS!! this event  is huge  and has the repeated code, and should be moved to a function
 
 
@@ -968,19 +1006,34 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 modal.find('.arrow').removeClass('hidden');
                 modal.find('.arrow-background').removeClass('hidden');
                 modal.find('#caption').removeClass('hidden');
-            });
-        } else {
+            }); 
+        } 
+        else {
             modal.find('img.modal-content').on("load", function () {
-                modal.find('#preloader').hide();
+                console.log(modal.find('#preloader'));
+                modal.find('#preloader').hide().addClass('notDisplayed');
                 modal.find('img.modal-content').removeClass('hidden').fadeIn(modalFadeInOutTimeMilisec);
                 modal.find('.arrow').removeClass('hidden');
                 modal.find('.arrow-background').removeClass('hidden');
                 modal.find('#caption').removeClass('hidden');
             });
         }
+        
+        //for cache
+        if ($(this).complete) {
+                 modal.find('#preloader').hide();
+                modal.find('iframe.modal-content').removeClass('hidden').fadeIn(modalFadeInOutTimeMilisec);
+                modal.find('.arrow').removeClass('hidden');
+                modal.find('.arrow-background').removeClass('hidden');
+                modal.find('#caption').removeClass('hidden');               
+            }
+              
 
+ 
 
     });
+    
+
 
 
     //--------------------closing gallery using X  -------------------

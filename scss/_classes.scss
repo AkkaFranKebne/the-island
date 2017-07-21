@@ -8,6 +8,10 @@
    .hidden {
        visibility: hidden;
    }
+
+   .notDisplayed {
+       display: none;
+   }
    
    .fitInViewport {
        height: 100vh;
