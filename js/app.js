@@ -3,14 +3,12 @@ $(document).ready(function () {
         
 testowanie - znalezione bledy NA EMULATORZE - SPRAWDZIC NA FAKTYCZNYCH URZADZENIACH:
 
-
-> chrome 58 - obszary wyspy przesuniete lekko w lewo na ie i ff, czasem nawet chrome  na win -> szwankuje imageMapCalculate(map); nie pomogla zmiana na 
 > chrome 58 - form zwija sie podczas pisania
+
 > edge -  menu przesuwa sie w prawo przy kliku w modal i wejsciu na podstrony 
 
-
->iphone 6, galaxy note  - czasem wyspa dla 1 sesji jest niewidoczna (nie jest usunieta klasa loading z body) ustawic timeout na info o przeladowaniu strony?
 >ipad air  - nie pokazuja sie piny
+
 >motorola  - nie widac calego menu przy pozimym ostawieniu, schowany ostatni link
 
 nie dziala na opera mini - jak to wyglada?:
@@ -119,7 +117,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     });
 
     //an initial width for the map to rescale
-    var initWidth = 2690; //fixed value based on pic width. why it is bigger than pic width (1,43)? to check
+    var initWidth = 1881*1.428; //fixed value based on pic width. why it is bigger than pic width? to check  island_img.prop("naturalWidth")  does not work when image is not loaded
+    console.log(initWidth);
 
     //position for every island part//////////
     var left = 0;
@@ -212,6 +211,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     }
 
     // recalculating map coordinates ////////////////////////////
+    //previousWidth is the width which the image had at the time you've originally created the coordinates for area elements
 
     function imageMapCalculate(map) {
         var coordsAll = [];

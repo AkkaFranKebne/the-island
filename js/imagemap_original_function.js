@@ -1,4 +1,8 @@
      //----------oryginalna funkcja 
+
+https://stackoverflow.com/questions/13321067/dynamically-resizing-image-maps-and-images
+//previousWidth is the width which the image had at the time you've originally created the coordinates for area elements
+
      /*
     var ImageMap = function (map) {
             var n,
