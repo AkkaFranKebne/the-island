@@ -9,53 +9,66 @@
 
 body {
     background-color: $backgroundColor;
+    background-image: $backgroundImage;
     /* small and very small screens has a more colorful background as they do not contain the clickable island */
-    @include non-desktop {
-        background-image: $islandImageNondesktop;
-    }
-    @include mobile {
-        background-image: $islandImageMobile;
-    }
     position: relative;
     height: 100vh;
     background-repeat: no-repeat;
     /* Preloading on main page */
     &.loading,
     {
-        background-image: $loadingImage;
+        background-image: $loadingImage, $backgroundImage;;
         background-position: center;
     }
     /* Backgrounds of subpages */
     @each $subpage in eventy,
     sm,
     www,
+    www,
     kreacja,
     newbiz {
         &##{$subpage} {
             background-image: $islandImage;
             background-size: $backgroundSize;
-            background-position: map-get($islandBackgroundPosition, $subpage);
+            background-position: map-get($islandBackgroundPosition, $subpage), center center;
+            @include non-desktop {
+                background-image: none;
+            }
+            @include mobile {
+                background-image: none;
+            }
         }
     }
+
     /* Headers font size */
     noscript {
         color: red;
+        font-size: $subtitlesFontSize;
         font-size: $subtitlesFontSize;
         height: $subtitlesFontSize*2;
         margin-left: 30vw;
         text-align: center;
     }
+    .title-bar{
+        height: 2px;
+        width: 150px;
+        background-color: $primaryColor;
+        margin: 0 auto;
+        margin-top: 30px;
+    }
     h2,
     h3,
-    h4 {
-        text-align: center;
+    h4,
+    span,
+    label{
+        font-weight: 100;   
         color: $primaryColor;
+    }
+    h2, h2 span {
+        font-size: $titlesFontSize;
         margin-top: $subtitleMarginTop;
         margin-bottom: $subtitleMarginBottom;
-    }
-    h2 {
-        font-weight: bold;
-        font-size: $titlesFontSize;
+        text-align: center;
         @include mobile {
             font-size: $titlesFontSizeMobile;
         }
@@ -69,8 +82,8 @@ body {
             font-size: 10vh;
         }
     }
-    h3 {
-        font-weight: bold;
+    h3, label {
+        color: $textsColor;
         font-size: $subtitlesFontSize;
         @include mobile {
             font-size: $subtitlesFontSizeMobile;
@@ -80,13 +93,26 @@ body {
         }
     }
     h4 {
-        font-weight: normal;
         font-size: $descriptionFontSize;
+        line-height: $descriptionLineHeight;
         @include mobile {
             font-size: $descriptionFontSizeMobile;
+            line-height: $descriptionLineHeightMobile;
+            text-align: center;
         }
         @include non-desktop {
             font-size: $descriptionFontSizeNondesktop;
+            line-height: $descriptionLineHeightNondesktop;
+            text-align: center;
+        }
+        &.to-right{
+            text-align: right;
+        @include mobile {
+            text-align: center;
+        }
+        @include non-desktop {
+            text-align: center;
+        }
         }
     }
     /* Opacity for side navigation menu */
@@ -108,7 +134,7 @@ body {
         overflow-x: hidden;
         padding-top: $menuPaddingTop;
         transition: $menuTransitionSec;
-        z-index: 1;
+        z-index: 2;
         /* class for menu expandiing, full screen width for small and very small screens */
         &.expanded {
             width: $expandedMenuWidth;
@@ -137,17 +163,17 @@ body {
             height: $sideNavLinkHeight;
             color: $secondaryColor;
             display: block;
+            font-weight: 100;
+            overflow: hidden;
             //transition: $menuTransitionSec;
             /* links in side navigation menu are centered for very small and small displays */
             @include non-desktop {
                 text-align: center;
-                font-weight: bold;
                 font-size: $sideNavFontSizeMobile;
                 height: $sideNavLinkHeightMobile;
             }
             @include mobile {
                 text-align: center;
-                font-weight: bold;
                 font-size: $sideNavFontSizeMobile;
                 height: $sideNavLinkHeightMobile;
             }
@@ -158,6 +184,7 @@ body {
         a:hover,
         a:focus {
             color: $primaryColor;
+            font-weight: 400;
         }
     }
     /* on the main page for very small and small displays sidenav menu is open and in absloute position */
@@ -177,7 +204,7 @@ body {
     }
     /* Menu icon hamburger */
     #hamburger {
-        z-index: 2;
+        z-index: 3;
         position: fixed;
         height: $hamburgerHeight;
         width: $hamburgerWidth;
@@ -188,6 +215,7 @@ body {
         /* better visibility of hamburger for very small and small displays, as it is fixed there */
         @include non-desktop {
             background-color: $backgroundColor;
+            margin-top: $hamburgerMobileMarginTop;
             border-radius: 50%;
             padding: 9px 9px 9px 12px;
             height: 54px;
@@ -227,12 +255,14 @@ body {
     }
     /* Logo */
     .container {
+        width: auto;
         max-width: $logoMaxWidth;
         margin: auto;
         #logo {
             height: auto;
-            width: $logoMaxWidth;
+            width: 100%;
             margin-top: $logoTopMargin;
+            z-index: 9999;
         }
     }
     /* X sign at subpages */
@@ -307,10 +337,22 @@ body {
             z-index: 99;
         }
     }
+    /* link to about us*/
+    .aboutus {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 40px;
+    margin: 0 auto;
+    height: 100px;
+    width: auto;
+    max-width: 300px;
+}
+    
+    
     /* Footer */
     #copy {
         font-size: $copyFontSize;
-        color: $secondaryColor;
+        color: $primaryColor;
         position: fixed;
         bottom: $copyfromBottom;
         right: $copyFromRight;
@@ -320,3 +362,5 @@ body {
         margin: 0 25vw;
     }
 }
+
+

@@ -1,6 +1,15 @@
     /* styles for address and map part in contact site */
     
-    #location {
+#frame{
+    //border: 1px solid white;
+    margin-top:20px;
+    height: 100%;
+    width: 100%;
+    padding: 20px;
+    background-image: url('../images/frame-DPR.png'), url('../images/frame-GLW.png');
+    background-repeat: no-repeat;
+    background-position: bottom right, top left;
+        #location {
         width: $locationWidth;
         height: $locationHeight;
         border: $locationBorder;
@@ -10,8 +19,9 @@
         animation-name: zoom;
         animation-duration: $menuTransitionSec;
     }
-    
-    #address {
+} 
+    .address {
+        //border: 1px solid white;
         padding: $addressPadding;
         /* animation for entering the web page */
         -webkit-animation-name: zoom;

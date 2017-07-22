@@ -1,43 +1,52 @@
+//fonts
+$latoFont:  'Lato', sans-serif;
+$caveatFont: 'Caveat', cursive;
+
 //colors
-$primaryColor: cadetblue;
-$secondaryColor: white;
+$primaryColor: white;
+$secondaryColor: #a9cbd5;
+$textsColor: #a2a0a2;
 $secondaryColorWithOpacity: rgba(255, 255, 255, 0.6);
-$backgroundColor: lightblue;
+$backgroundColor: #a9cbd5;
+$backgroundImage: url('../images/background.jpg');
 $PinBackgroundColor: red;
 $PinCenterBackgroundColor: #2f2f2f;
 $PinPulseColorWithOpacity: rgba(0, 0, 0, 0.2);
 $PinPulseCenterShadowColor: #89849b;
-$menuColor: #696969;
+$menuColor: #30849f;
 $menuColorWithOpacity: rgba(100, 100, 100, 0.9);
 $menuColorWithOpacityStrong: rgba(100, 100, 100, 0.3);
 //images sources
 $loadingImage: url('../images/loading_pigs.gif');
-$islandImage: url(../images/wyspa%20www.png);
-$islandImageNondesktop: url(../images/wyspa%20www_nondesktop.jpg);
-$islandImageMobile: url(../images/wyspa%20www_mobile.jpg);
+$islandImage: url(../images/wyspa%20www.png), url('../images/background.jpg');
+$islandImageNondesktop: url('../images/background.jpg');
+$islandImageMobile: url('../images/background.jpg');
 $mobileMenuBackground: url('../images/lemonhills.png');
 //transitions
 $menuTransitionSec: 0.5s;
 $pinAnimationSec: 1s;
 //font sizes
-$sideNavFontSize: 30px;
-$sideNavFontSizeMobile: 8vh;
-$sideNavLinkHeight: 50px;
-$sideNavLinkHeightMobile: 12vh;
+$sideNavFontSize: 25px;
+$sideNavFontSizeMobile: 5vmax;
+$sideNavLinkHeight: 40px;
+$sideNavLinkHeightMobile: 7vmax;
 $copyFontSize: 10px;
-$titlesFontSize: 26px;
-$subtitlesFontSize: 24px;
+$titlesFontSize: 24px;
+$subtitlesFontSize: 16px;
 $descriptionFontSize: 16px;
+$descriptionLineHeight: 21px;
 $titlesFontSizeMobile: 4vmax;
-$subtitlesFontSizeMobile: 3.5vmax;
+$subtitlesFontSizeMobile: 3.2vmax;
 $descriptionFontSizeMobile: 3vmax;
-$titlesFontSizeNondesktop: 3.8vmax;
+$descriptionLineHeightMobile: 3.2vmax;
+$titlesFontSizeNondesktop: 3.4vmax;
 $subtitlesFontSizeNondesktop: 3.1vmax;
 $descriptionFontSizeNondesktop: 2.9vmax;
+$descriptionLineHeightNondesktop: 3vmax;
 //subtitles margins
 $subtitleMarginTop: 1vh;
-$subtitleMarginBottom: 0.5vh;
-$addressPadding: 30px;
+$subtitleMarginBottom: 4vh;
+$addressPadding: 1.8vh;
 //mobile
 $mainPaddingLeftVwMobile: 0.1vw;
 //pins
@@ -75,19 +84,19 @@ $hamburgerBarHeight: 5px;
 $hamburgerBarMargin: 6px 0;
 $hamburgerWidth: 30px;
 $hamburgerMarginLeft: 45px;
-$hamburgerMarginTop: 45px;
+$hamburgerMarginTop: 53px;
 $hamburgerMobileMarginLeft: 15px;
 $hamburgerMobileMarginTop: 110px;
 $hamburgerMobileBackgroundHeight:54px;
 $hamburgerMobileBackgroundWidth: 54px;
 $hamburgerMobilePadding: 9px 9px 9px 12px;
 //Logo
-$logoMaxWidth: 300px;
+$logoMaxWidth: 449px;
 $logoTopMargin: 30px;
 //close button
 $closeHeight: 20px;
 $closeWidth: 20px;
-$closeTopMargin: 35px;
+$closeTopMargin: 53px;
 $closeRightMargin: 45px;
 $closeBarHeight: 5px;
 $closeBarWidth: 30px;
@@ -136,8 +145,8 @@ $modalCloseWidth: 45px;
 $modalClosePadding: 0 0 2px 11px;
 //location (contact)
 $locationWidth: 100%;
-$locationHeight: 35vh;
-$locationBorder: 5px solid $secondaryColor;
+$locationHeight: 30vh;
+$locationBorder: none;
 //copy
 $copyfromBottom: 10px;
 $copyFromRight: 12px;

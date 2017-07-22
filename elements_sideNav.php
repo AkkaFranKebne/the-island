@@ -5,10 +5,10 @@
 </div>
 <div class="sidenav">
     <a href="#"></a>
-    <a href="index.php">MAIN</a>
-    <a href="sm.php">SM</a>
-    <a href="kreacja.php">KREACJA</a>
-    <a href="www.php">WWW</a>
-    <a href="eventy.php">EVENTY</a>
-    <a href="newbiz.php">KONTAKT</a>
+    <a href="index.php">Strona Główna</a>
+    <a href="sm.php">Social Media</a>
+    <a href="kreacja.php">Kreacja</a>
+    <a href="www.php">Strony www</a>
+    <a href="eventy.php">Eventy</a>
+    <a href="newbiz.php">Kontakt</a>
 </div>

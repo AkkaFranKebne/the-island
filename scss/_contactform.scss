@@ -4,25 +4,6 @@
 
 /* after sending message alert*/
 
-.alert {
-    height: 100%;
-    width: 100%;
-    font-size: 16px;
-    color: red;
-    display: none;
-}
-
-
-/* fonts for the form */
-
-@font-face {
-    font-family: 'YanoneKaffeesatzRegular';
-    src: url('../yanonekaffeesatz-regular-webfont.eot');
-    src: url('../yanonekaffeesatz-regular-webfont.eot?#iefix') format('embedded-opentype'), url('../yanonekaffeesatz-regular-webfont.woff') format('woff'), url('../yanonekaffeesatz-regular-webfont.ttf') format('truetype'), url('../yanonekaffeesatz-regular-webfont.svg#YanoneKaffeesatzRegular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-
 form p {
     text-shadow: 0 1px 0 #fff;
     font-size: 24px;
@@ -32,26 +13,26 @@ form p {
 /*  form */
 
 form {
-    background: #f7f2ec url('../images/letter_bg.png');
-    top: 200px;
+    background: $primaryColor;
+    top: 90px;
     overflow: hidden;
     margin: 0px auto;
     padding: 20px;
-    border: 1px solid #fff;
+    border: 2px solid black;
     border-radius: 3px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
     box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 27px #fff;
     -moz-box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 14px #fff;
     -webkit-box-shadow: 0px 0px 3px #9d9d9d, inset 0px 0px 27px #fff;
+    .error-one, .error-two {
+        font-size: 13px;
+        color: red;
+    }
 }
 
 label {
     margin: 11px 20px 0 0;
-    font-size: 16px;
-    color: #b3aba1;
-    text-transform: uppercase;
-    text-shadow: 0px 1px 0px #fff;
 }
 
 
@@ -60,7 +41,7 @@ label {
 #wrap {
     width: 530px;
     margin: 20px auto 0;
-    height: 600px;
+    height: 400px;
     /* wraper animation on enter the webpage */
     -webkit-animation-name: zoom;
     -webkit-animation-duration: $menuTransitionSec;
@@ -70,9 +51,27 @@ label {
 
 #form_wrap {
     overflow: hidden;
-    height: 546px;
+    height: 220px;
     position: relative;
-    top: 0px;
+    top: 180px;
+    .alert {
+        z-index: 3;
+        position: absolute;
+        top: 45px;
+        left: 24%;
+        font-size: 28px;
+        font-family: 'Caveat', cursive;
+    }
+    .success {
+        color: green;
+        left: 5%;
+        font-size: 25px;
+    }
+    .failure {
+        color: red;
+        left: 5%;
+        font-size: 25px;
+    }
 }
 
 #wrap h1 {
@@ -118,8 +117,8 @@ input[type=text]:focus {
 
 #form_wrap input[type=submit] {
     position: relative;
-    font-family: 'YanoneKaffeesatzRegular';
-    font-size: 24px;
+    font-size: 28px;
+    font-family: $caveatFont;
     color: #7c7873;
     text-shadow: 0 1px 0 #fff;
     width: 100%;
@@ -159,21 +158,22 @@ input[type=text]:focus {
     #form_wrap:before {
         content: "";
         position: absolute;
-        bottom: 128px;
+        top: 20px;
         left: 0px;
-        background: url('../images/before.png');
-        width: 530px;
-        height: 316px;
+        background:  url('../images/before.png');
+        width: 100%;
+        height: 85px;
+        z-index: 1;
     }
     /* the after additional img */
     #form_wrap:after {
         content: "";
         position: absolute;
-        bottom: 0px;
+        bottom: 5px;
         left: 0;
         background: url('../images/after.png');
-        width: 530px;
-        height: 260px;
+        width: 100%;
+        height: 96px;;
     }
     /*
 	#form_wrap.hide:after, #form_wrap.hide:before {
@@ -184,7 +184,7 @@ input[type=text]:focus {
     /* form styles for desktop*/
     form {
         position: relative;
-        height: 200px;
+        height: 100px;
         width: 400px;
         -webkit-transition: all 1s ease-in-out .3s;
         -moz-transition: all 1s ease-in-out .3s;
@@ -200,12 +200,51 @@ input[type=text]:focus {
     }
     /* changing the height and the position of the form on hover*/
     #form_wrap:hover {
-        height: 776px;
-        top: -200px;
+        height: 440px;
+        top: -50px;
         form {
-            height: 530px;
+            height: 310px;
         }
     }
+}
+
+
+
+
+/* -----------------------------Specific rules  for touchscreens-------------------------------- */
+
+/* to client decision if we hide the after before*/
+@include touch {
+    /* wraper for the form is extended and positioned, animation is removed */
+    #form_wrap {
+        top: 0;
+        height: 350px;
+        .alert {
+        top: 10px;
+        left: 25%;
+        }
+    .success {
+        left: 5%;
+        top: 20px;
+    }
+    .failure {
+        left: 5%;
+        top:20px;
+      }
+        
+    }
+    form {
+        top: 0;
+        height: 330px;
+    }
+    #form_wrap:hover {
+        top: 0;
+        height: 350px;
+    }
+        #form_wrap:before {
+        top: -10px;
+    }
+
 }
 
 
@@ -213,14 +252,40 @@ input[type=text]:focus {
 
 @include mobile {
     /* wraper for the form is extended and positioned, animation is removed */
-    #wrap {
+   #wrap {
         width: 100%;
         margin: 0;
         margin-top: 20px;
-        height: 600px;
+        height: auto;
+    }
+    #form_wrap {
+        height: 440px;
+        top: 10px;
+     .alert {
+        top: 10px;
+        left: 25%;
+        font-size: 28px;
+        }
+    .success {
+        position: absolute;
+        left: 20%;
+        top: 0;
+        font-size: 4vw;
+    }
+    .failure {
+        position: absolute;
+        left: 20%;
+        top: 0;
+        font-size: 4vw;
+      }
+    }
+       #form_wrap:hover {
+        top: 10px;
+        height: 440px;
     }
     /* form styles for mobile*/
     form {
+        border: 2px solid white;
         height: 100%;
         width: 100%;
     }
@@ -232,21 +297,55 @@ input[type=text]:focus {
     textarea {
         height: 130px;
     }
+    
+    .action{
+    visibility: hidden;
 }
+}
+
+
+
+
 
 
 /* ------------------------Specific rules for  small displays  - for now same as for very small displays above*/
 
 @include non-desktop {
     /* wraper for the form is extended and positioned, animation is removed */
-    #wrap {
+   #wrap {
         width: 100%;
         margin: 0;
         margin-top: 20px;
-        height: 600px;
+        height: auto;
+    }
+    #form_wrap {
+        height: 540px; //////////////////////different than mobile!
+        top: 10px;
+     .alert {
+        top: 10px;
+        left: 25%;
+        font-size: 28px;
+        }
+    .success {
+        position: absolute;
+        left: 20%;
+        top: 0;
+        font-size: 4vw;
+    }
+    .failure {
+        position: absolute;
+        left: 20%;
+        top: 0;
+        font-size: 4vw;
+      }
+    }
+       #form_wrap:hover {
+        top: 10px;
+        height: 540px;  //////////////////////different than mobile!
     }
     /* form styles for mobile*/
     form {
+        border: 2px solid white;
         height: 100%;
         width: 100%;
     }
@@ -258,18 +357,8 @@ input[type=text]:focus {
     textarea {
         height: 130px;
     }
+    
+    .action{
+    visibility: hidden;
 }
-
-
-/* -----------------------------Specific rules  for touchscreens-------------------------------- */
-
-@include touch {
-    /* wraper for the form is extended and positioned, animation is removed */
-    form {
-        top: 0;
-        height: 500px;
-    }
-    #form_wrap:hover {
-        top: 0;
-    }
 }

@@ -6,7 +6,7 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
 <!DOCTYPE html>
 <html  lang="pl-PL">
  <head>
-<title>SM</title>
+<title>SOCIAL MEDIA</title>
      <?php include 'elements_meta.php';?>
 </head>
  <body id = "sm">
@@ -23,7 +23,8 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
      <main>
         <div class="row">
             <div class="col-12">
-                <h2> SOCIAL MEDIA </h2>
+                <div class='title-bar'></div>
+                <h2> <span>SOCIAL MEDIA</span> </h2>
                 <noscript>Strona wymaga uruchomionego Java Script. </noscript>
             <noscript> Zaktualizuj lub zmień przeglądarkę. </noscript>
             </div>

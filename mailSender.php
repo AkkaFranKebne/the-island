@@ -50,10 +50,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
       //redirect to the feedback info page using GET
       
      if($mail->send()) {
-        $message = urlencode("Wiadomosc zostala wyslana, odezwiemy sie wkrotce!");
+        $message = urlencode("success");
     } 
       else {
-        $message = urlencode("Wystapil blad, sprobuj ponownie.");
+        $message = urlencode("failure");
     }
     header("Location: newbiz.php?message=$message");
 

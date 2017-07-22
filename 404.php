@@ -7,11 +7,11 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
 <!DOCTYPE html>
 <html  lang="pl-PL">
  <head>
-<title>EVENTY</title>
+<title>BRAK STRONY</title>
      <?php include 'elements_meta.php';?>
 </head>
    </head>
- <body id = "eventy">
+ <body id = "sm">
     <div id="menuOpacity"> </div> 
      
     <div class="grid-container">
@@ -32,8 +32,6 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
             <noscript> Zaktualizuj lub zmień przeglądarkę. </noscript>
             </div>
         </div>           
-        
-        <?php include 'elements_gallery.php';?>
     </main>  
      <?php include 'elements_footer.php';?>
 </body>

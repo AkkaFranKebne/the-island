@@ -1,13 +1,13 @@
 $(document).ready(function () {
     /* 
         
-testowanie - znalezione bledy NA EMULATORZE - SPRAWDZIC NA FAKTYCZNYCH URZADZENIACH:
-
-> chrome 58 - form zwija sie podczas pisania
+testowanie  - SPRAWDZIC NA FAKTYCZNYCH URZADZENIACH
 
 > edge -  menu przesuwa sie w prawo przy kliku w modal i wejsciu na podstrony 
 
 >ipad air  - nie pokazuja sie piny
+
+> ipad - piny pokazuja sie juz przy ladowaniu
 
 >motorola  - nie widac calego menu przy pozimym ostawieniu, schowany ostatni link
 
@@ -22,10 +22,10 @@ nie dziala na opera mini - jak to wyglada?:
   
  
 jak zdaze to do:
+        > png optymalizacja
         > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
         > przepisanie na funkcje next/previous image
-        > przerobienie walidacji formularza z blur na natychmiastowa
-        > 404 page               
+        > przerobienie walidacji formularza z blur na natychmiastowa          
 
 do zmiany przed oddaniem:
         > linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
@@ -36,6 +36,7 @@ extra homework:
         > creative cloud obczaic
         > gulp svg konwersja obczaic
         > cookie js obczaic
+        > instalacja photoshop i ciecie
 
 -------------------------------------------------------------------
         
@@ -68,15 +69,18 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var imgDesktopExt = '_desktop.jpg';
 
     //colors
-    var primaryColor = 'cadetblue';
-    var secondaryColor = 'white';
-    var expandedNavMEnuOpacityColor = "rgba(0,0,0,0.4)";
+    var primaryColor = 'white';
+    var secondaryColor = '#a9cbd5';
+    var expandedNavMEnuOpacityColor = "rgba(169,203,213,0.4)";
 
     //basic//////////
     var main = $('main');
     var body = $('body');
-    var mainPaddingLeftVw = 15;
     var images = $('img');
+    
+    var mainPaddingLeftVw = 15;
+    var barWiderThanTitlePx = 42;
+    
 
     //navigation//////////
     var nav = $('nav');
@@ -118,8 +122,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
     //an initial width for the map to rescale
     var initWidth = 1881*1.428; //fixed value based on pic width. why it is bigger than pic width? to check  island_img.prop("naturalWidth")  does not work when image is not loaded
-    console.log(initWidth);
-
+    
     //position for every island part//////////
     var left = 0;
     var top = 0;
@@ -182,7 +185,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var telephoneField = form.find('#tel');
     var errorOne = $('.error-one');
     var errorTwo = $('.error-two');
-    var successAlert = $('.alert-success');
+    //var successAlert = $('.alert-success');
     var emailValue = emailField.val();
 
 
@@ -719,7 +722,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     function validateEmail() {
         var emailValue = emailField.val();
         if (emailValue.indexOf("@") == -1 || emailValue.indexOf(".") == -1 || emailValue.length < 5) {
-            errorTwo.text("Podaj poprawny adres email").show();
+            errorTwo.text("Podaj poprawny email").show();
         } else {
             errorTwo.text("").hide();
         }
@@ -744,6 +747,25 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             }
         });
     }
+    
+    
+    // the length for title bar
+    
+    function titleBarLength(){
+        var titleWidth = $('h2 span').width();
+        var titleBarWidth = titleWidth + barWiderThanTitlePx;
+        $('.title-bar').width(titleBarWidth);
+    }
+    
+    
+    //scroll to contactform info on mobile
+    
+    function scrollToContactForm(){
+        var hash = $("#wrap").offset().top;
+        $('html, body').animate({ scrollTop: hash });
+    }
+    
+     
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
 
@@ -793,6 +815,18 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     //----------setting the size of the thumbnails for galleries /////////
 
     setThumbnailsSize();
+    
+    
+    //----------------setting the length for title bar
+    
+    titleBarLength();
+    
+    //scroll to the contact form after sending the message
+    
+    if   (window.location.href.indexOf("message") != -1 ){
+        scrollToContactForm();
+    }
+    
 
     //----------------------EVENTS---------------------------------------------------------------------------------
 
@@ -809,17 +843,19 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     // ----hamburger menu onclick//////////
 
     hamburger.on('click', function () {
-        $(this).toggleClass('change');
-        console.log($(this).parent().css("width"));
+        $(this).toggleClass('change'); //rotation to x 
+        //console.log($(this).parent().css("width"));
         if ($(this).parent().find('.sidenav').css("width") === '0px') {
-            $(this).parent().find('.sidenav').addClass('expanded');
-            menuOpacity.css("background-color", expandedNavMEnuOpacityColor).css("z-index", "1");
-            body.css("overflow", "hidden");
+            $(this).parent().find('.sidenav').addClass('expanded'); //expand
+            menuOpacity.css("background-color", expandedNavMEnuOpacityColor).css("z-index", "2"); //add opacity
+            body.css("overflow", "hidden"); //hide evryting that goes outside
+            $(this).children().css('background-color', primaryColor);//fix for touch screens
 
         } else if ($(this).parent().find('.sidenav').hasClass('expanded')) {
-            $(this).parent().find('.sidenav').removeClass('expanded');
-            menuOpacity.css("background-color", "transparent").css("z-index", "-3");
+            $(this).parent().find('.sidenav').removeClass('expanded'); //hide menu
+            menuOpacity.css("background-color", "transparent").css("z-index", "-3");  //remove opacity
             body.css("overflow", "auto");
+            $(this).children().css('background-color', primaryColor); //fix for touch screens
         }
 
     });
