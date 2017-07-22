@@ -49,8 +49,8 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
                         </div>
                         <div class="col-5">
                             <div class="address">
-                                <h4 class="to-right">info@lemonhills.pl</h4>
-                                <h4 class="to-right">+48.509.680.400</h4>
+                                <a href="mailto:info@lemonhills.pl"><h4 class="to-right">info@lemonhills.pl</h4></a>
+                                <a href="tel:+48509680400"><h4 class="to-right">+48.509.680.400</h4></a>
                             </div>
                         </div>
 
@@ -68,18 +68,44 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
                     <?php include 'elements_contactform.php';?>
                 </div>
             </div> 
+             
            <div class="row">
                     <div class="col-12">
-                        <div class='aboutus'>
-                            <a href="#">
-                            <img class="aboutus" src="images/about-us.png" alt="" />
-                        </a>
+                        <div>
+                        <div class="aboutus intro"><h4> Tworzymy kreacje, planujemy media, zajmujemy się wizerunkiem, organizujemy, eventy. </h4><h4> Synergia wiedzy i doświadczenia pozwala nam projektować kampanie kompleksowo, w oparciu o najnowsze technologie i standardy. Wiemy, jak ważna jest komunikacja, dlatego zawsze chętnie z Wami porozmawiamy.</h4></div>
+                            
+                            
+                        <div class="aboutus last">
+                            <div class="row">  
+                              <div class="col-3">  
+                            <img class="person" src="images/person.jpg" alt="" />
+                            </div>
+
+                             <div class="col-9">    
+                            <h4 class="person-name"> Karolina Kaspi Czyczerska</h4><h4 class="person-description">Karolina, czyli #KolekcjonerkaLajków mieszka #NaWyspie Cytrynowe Wzgórza od niedawna. Zadomowiła się w krainie #SocialMedia, gdzie całymi dniami siedzi na fejsie. </h4></div>
+                            </div>
+                        </div>
                         </div>
                     </div>
                 </div>
-            </div> 
+           
+        <!--
+        <div class="row">
+          <div class="col-12">
+            <div class = "team">
+                    <div class = "mate" id="czycz"></div>
+                    <div class = "mate"  id="majk"></div>
+                    <div class = "mate"  id="marys"></div>
+                    <div class = "mate" id="pabik"></div>
+                    <div class = "mate"  id="pawel"></div>
+                    <div class = "mate"  id="kaspi"></div>
+                    <div class = "mate"  id="klaudia"></div>
+                </div>
+            </div>
+        </div>
+        -->
         
-         </div>
+         
         </main>        
       
         
@@ -90,5 +116,8 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
         </div>
         
     </div>
+        
+    </div>
+     </div>
 </body>
 </html>

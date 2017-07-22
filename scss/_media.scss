@@ -37,7 +37,7 @@
 }
 
 @mixin big-desktop () {
-    @media screen and (min-width: 1401px) {
+    @media screen and (min-width: 1601px) {
         @content;
     }
 }

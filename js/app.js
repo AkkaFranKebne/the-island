@@ -1183,6 +1183,15 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         }
 
     });
+    
+    //----------------going to next person in about us (just to show to client how it works, a better function need to be prepared)------
+    
+    $('.aboutus').on('click', function(){
+        $('.aboutus').each(function(){
+            $(this).slideToggle();
+        });
+        
+    })
 
     //-----------------reloading the page on orientation change in mobile ---///
 
