@@ -3,7 +3,7 @@
     width: $pinsWidth;
     height: $pinsHeight;
     border-radius: 50% 50% 50% 0;
-    background-color: red;
+    background-color: $PinBackgroundColor;
     position: absolute;
     @include right();
     /* position of each pin */

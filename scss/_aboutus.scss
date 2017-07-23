@@ -15,7 +15,7 @@
             @include non-desktop {
                 height: 240px;
                 background-size: 30px 30px, 100% 240px ;
-                @media (min-height: 1024px){
+                @media (min-height: 900px){
                  height: 400px;
                 background-size: 30px 30px, 100% 400px ;
                 }

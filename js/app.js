@@ -84,6 +84,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
     //navigation//////////
     var nav = $('nav');
+    var navLinks = nav.find('.sidenav').find('a');
     var hamburger = $('#hamburger');
     var menuOpacity = $('#menuOpacity');
     var close = $('#close');
@@ -188,7 +189,9 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     //var successAlert = $('.alert-success');
     var emailValue = emailField.val();
 
-
+    
+console.log($(window).height());
+console.log($(window).width());
 
     //-------------FUNCTIONS--------------------------------------------------------------------------------------------------
 
@@ -240,18 +243,21 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
 
     //showing  preloader on start//////////////////////////////// 
+   
 
     function showPreloader() {
         //console.log(idOfImageThatIsLoading);
         body.addClass('loading');
         island.addClass('hidden');
         island_img.addClass('hidden');
+        navLinks.addClass('hidden');
         island_img.on("load", function () {
             console.log("showPreloader - on load");
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
             island_img.removeClass('hidden');
+            navLinks.removeClass('hidden');
             //showing pins for touchscreens, with delay if there is back to start animation
             if (main.attr('data-source')) {
             setTimeout(function () {
@@ -271,6 +277,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             main.removeClass('hidden');
             island.removeClass('hidden');
             island_img.removeClass('hidden');
+            navLinks.removeClass('hidden');
             //showing pins for touchscreens, with delay if there is back to start animation
             if (main.attr('data-source')) {
             setTimeout(function () {
@@ -287,11 +294,13 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     //showing  preloader and animation on start///////////////  
 
     function showPreloaderAndAnimation() {
+        navLinks.addClass('hidden');
         island_img.on("load", function () {
             console.log("showPreloaderAndAnimation - on load");
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
+            navLinks.removeClass('hidden');
             //showing pins for touchscreens, with delay if there is back to start animation
             if (main.attr('data-source')) {
             setTimeout(function () {
@@ -316,6 +325,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
+            navLinks.removeClass('hidden');
             //showing pins for touchscreens
             //showing pins for touchscreens, with delay if there is back to start animation
             if (main.attr('data-source')) {
@@ -880,8 +890,11 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         //console.log($(this).parent().css("width"));
         if ($(this).parent().find('.sidenav').css("width") === '0px') {
             $(this).parent().find('.sidenav').addClass('expanded'); //expand
-            menuOpacity.css("background-color", expandedNavMEnuOpacityColor).css("z-index", "2"); //add opacity
-            body.css("overflow", "hidden"); //hide evryting that goes outside
+            if (!touch.matches) { //opacity not working on ipad - to fix
+                 menuOpacity.css("background-color", expandedNavMEnuOpacityColor).css("z-index", "3"); //add opacity
+                body.css("overflow", "hidden"); //hide evryting that goes outside               
+            }
+
             $(this).children().css('background-color', primaryColor);//fix for touch screens
 
         } else if ($(this).parent().find('.sidenav').hasClass('expanded')) {

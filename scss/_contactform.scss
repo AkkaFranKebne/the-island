@@ -14,7 +14,8 @@ form p {
 
 form {
     background: $primaryColor;
-    top: 90px;
+    top: 60px;
+    left: -10px;
     overflow: hidden;
     margin: 0px auto;
     padding: 20px;
@@ -57,7 +58,7 @@ label {
     .alert {
         z-index: 3;
         position: absolute;
-        top: 45px;
+        top: 30px;
         left: 24%;
         font-size: 28px;
         font-family: 'Caveat', cursive;
@@ -133,6 +134,7 @@ input[type=text]:focus {
 #form_wrap:hover input[type=submit] {
     z-index: 1;
     opacity: 1;
+    top: 10px;
     -webkit-transition: opacity 0.5s ease-in-out 1.3s;
     -moz-transition: opacity 0.5s ease-in-out 1.3s;
     -o-transition: opacity 0.5s ease-in-out 1.3s;
@@ -160,7 +162,9 @@ input[type=text]:focus {
         position: absolute;
         top: 20px;
         left: 0px;
-        background:  url('../images/before.png');
+        background-image:  url('../images/before.png');
+        background-repeat: no-repeat;
+        background-size: 95% 70%;
         width: 100%;
         height: 85px;
         z-index: 1;
@@ -171,7 +175,9 @@ input[type=text]:focus {
         position: absolute;
         bottom: 5px;
         left: 0;
-        background: url('../images/after.png');
+        background-image: url('../images/after.png');
+        background-repeat: no-repeat;
+        background-size: 95% 70%;
         width: 100%;
         height: 96px;;
     }
@@ -203,7 +209,7 @@ input[type=text]:focus {
         height: 440px;
         top: -50px;
         form {
-            height: 310px;
+            height: 335px;
         }
     }
 }
@@ -218,7 +224,7 @@ input[type=text]:focus {
     /* wraper for the form is extended and positioned, animation is removed */
     #form_wrap {
         top: 0;
-        height: 350px;
+        height: 430px;
         .alert {
         top: 10px;
         left: 25%;
@@ -234,16 +240,30 @@ input[type=text]:focus {
         
     }
     form {
-        top: 0;
-        height: 330px;
+        top: 45px;
+        left: -10px;
+        height: 345px;
+    }
+    form:hover {
+        top: 45px!important;
+        height: 345px!important;
     }
     #form_wrap:hover {
         top: 0;
-        height: 350px;
+        height: 430px;
     }
         #form_wrap:before {
-        top: -10px;
+        background-size: 95% 70%;
+        top: 0;
     }
+        #form_wrap:after {
+        background-size: 95% 70%;
+        bottom: 0;
+    }
+    
+    #form_wrap input[type=submit] {
+        top: 20px;
+}
 
 }
 
