@@ -252,6 +252,16 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             main.removeClass('hidden');
             island.removeClass('hidden');
             island_img.removeClass('hidden');
+            //showing pins for touchscreens, with delay if there is back to start animation
+            if (main.attr('data-source')) {
+            setTimeout(function () {
+                isTouch();
+            },3000);                
+            }
+            else {
+                isTouch();
+            }
+
         });
         var pictureInCache = document.getElementById('island_img').complete;
         console.log(pictureInCache);
@@ -261,6 +271,15 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             main.removeClass('hidden');
             island.removeClass('hidden');
             island_img.removeClass('hidden');
+            //showing pins for touchscreens, with delay if there is back to start animation
+            if (main.attr('data-source')) {
+            setTimeout(function () {
+                isTouch();
+            },3000);                
+            }
+            else {
+                isTouch();
+            }
 
         }
     }
@@ -273,8 +292,15 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
-            //showing pins for touchscreens
-            isTouch();
+            //showing pins for touchscreens, with delay if there is back to start animation
+            if (main.attr('data-source')) {
+            setTimeout(function () {
+                isTouch();
+            },3000);                
+            }
+            else {
+                isTouch();
+            }
             //showing animation
             noticeMyArea(areas.eq(3), Start1, End1);
             noticeMyArea(areas.eq(4), Start2, End2);
@@ -291,7 +317,15 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             main.removeClass('hidden');
             island.removeClass('hidden');
             //showing pins for touchscreens
-            isTouch();
+            //showing pins for touchscreens, with delay if there is back to start animation
+            if (main.attr('data-source')) {
+            setTimeout(function () {
+                isTouch();
+            },3000);                
+            }
+            else {
+                isTouch();
+            }
             //showing animation
             noticeMyArea(areas.eq(3), Start1, End1);
             noticeMyArea(areas.eq(4), Start2, End2);
@@ -386,8 +420,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                             .removeClass('exposed')
                             .addClass('hidden');
                         island.removeClass('hidden');
-                        //showing pins for touchscreens
-                        isTouch();
+
+                        
                     }
                 }
 
@@ -787,7 +821,6 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         //if (main.children().first().hasClass('grpelem')) { //for the main page
             //showPreloader(island_img, 'island_img'); //not for the first session 
             island.removeClass('hidden'); 
-            isTouch(); //----------------showing pins for touchscreens
         //}
     }
 
