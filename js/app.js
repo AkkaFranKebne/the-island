@@ -6,7 +6,7 @@ testowanie  - SPRAWDZIC NA FAKTYCZNYCH URZADZENIACH
 
 emulatory:
 > edge -  menu przesuwa sie w prawo przy kliku w modal i wejsciu na podstrony 
->motorola  - nie widac calego menu przy pozimym ostawieniu, schowany ostatni link
+>motorola, iphone 6 plus  - nie widac calego menu przy pozimym ostawieniu, schowany ostatni link
 nie dziala na opera mini - jak to wyglada?:
 > transform
 > transition 
@@ -19,6 +19,7 @@ nie dziala na opera mini - jak to wyglada?:
  
 jak zdaze to do:
         > lepszy pomysl na wyliczanie polozenia pinow
+        > jeszcze raz poszukac czemu opacity nie dziala na tablecie
         > png optymalizacja
         > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
         > przepisanie na funkcje next/previous image

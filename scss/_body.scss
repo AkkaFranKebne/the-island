@@ -147,6 +147,7 @@ body {
                 background-image: $mobileMenuBackground;
                 background-repeat: no-repeat;
                 background-position: 50% $menuPaddingTop;
+                background-size: contain;
             }
             @include mobile {
                 width: 100vw;
@@ -155,6 +156,7 @@ body {
                 background-image: $mobileMenuBackground;
                 background-repeat: no-repeat;
                 background-position: 50% $menuPaddingTop;
+                background-size: contain;
             }
         }
         /* links in the side navigation menu */
@@ -173,11 +175,18 @@ body {
                 text-align: center;
                 font-size: $sideNavFontSizeMobile;
                 height: $sideNavLinkHeightMobile;
+                &[href="index.php"] {
+                    visibility: hidden;
+                }
             }
             @include mobile {
                 text-align: center;
                 font-size: $sideNavFontSizeMobile;
                 height: $sideNavLinkHeightMobile;
+            //hiding the link to the main page on mobile menu (there is only menu on it anyway)
+                &[href="index.php"] {
+                    visibility: hidden;
+                }
             }
         }
         a:first-of-type {
