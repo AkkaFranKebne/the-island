@@ -3,14 +3,10 @@ $(document).ready(function () {
         
 testowanie  - SPRAWDZIC NA FAKTYCZNYCH URZADZENIACH
 
+
+emulatory:
 > edge -  menu przesuwa sie w prawo przy kliku w modal i wejsciu na podstrony 
-
->ipad air  - nie pokazuja sie piny
-
-> ipad - piny pokazuja sie juz przy ladowaniu
-
 >motorola  - nie widac calego menu przy pozimym ostawieniu, schowany ostatni link
-
 nie dziala na opera mini - jak to wyglada?:
 > transform
 > transition 
@@ -22,10 +18,11 @@ nie dziala na opera mini - jak to wyglada?:
   
  
 jak zdaze to do:
+        > lepszy pomysl na wyliczanie polozenia pinow
         > png optymalizacja
         > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
         > przepisanie na funkcje next/previous image
-        > przerobienie walidacji formularza z blur na natychmiastowa          
+        > uporzadkowanie css i js
 
 do zmiany przed oddaniem:
         > linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
@@ -190,8 +187,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var emailValue = emailField.val();
 
     
-console.log($(window).height());
-console.log($(window).width());
+//console.log($(window).height());
+//console.log($(window).width());
 
     //-------------FUNCTIONS--------------------------------------------------------------------------------------------------
 
@@ -771,6 +768,15 @@ console.log($(window).width());
             errorTwo.text("").hide();
         }
     }
+    
+    //scroll to contactform info on mobile
+    
+    function scrollToContactForm(){
+        var hash = $("#wrap").offset().top;
+        $('html, body').animate({ scrollTop: hash });
+    }
+    
+    
 
     //--------------removing specific item from the side menu on the specific page ----------//
     function removeFromMenu() {
@@ -793,7 +799,7 @@ console.log($(window).width());
     }
     
     
-    // the length for title bar
+    //--------------------------the length for title bar
     
     function titleBarLength(){
         var titleWidth = $('h2 span').width();
@@ -801,14 +807,22 @@ console.log($(window).width());
         $('.title-bar').width(titleBarWidth);
     }
     
-    
-    //scroll to contactform info on mobile
-    
-    function scrollToContactForm(){
-        var hash = $("#wrap").offset().top;
-        $('html, body').animate({ scrollTop: hash });
+     //--------------------------setting the aboutus box height  
+    function setBoxHeight(){
+        var aboutusBoxes = $('.aboutus');
+        var maxHeight = aboutusBoxes.first().innerHeight();
+        aboutusBoxes.each(function(){
+            if($(this).innerHeight() > maxHeight) {
+                maxHeight = $(this).innerHeight();
+            }      
+        });
+        aboutusBoxes.each(function(){
+            $(this).innerHeight(maxHeight);            
+        });
+           
     }
-    
+
+    setBoxHeight();
      
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
@@ -863,6 +877,13 @@ console.log($(window).width());
     //----------------setting the length for title bar
     
     titleBarLength();
+    
+    //--------------------------setting the aboutus box height  
+     if ($('div').hasClass('aboutus')){
+         setBoxHeight();
+     }
+
+    
     
     //scroll to the contact form after sending the message
     
@@ -1204,10 +1225,10 @@ console.log($(window).width());
     });
 
 
-    // --------------validating fields in contact form  during filing the form-----
+    // --------------validating fields in contact form  during filing the form----- TO DISCUSS WITH CLIENT: ON KEYPRESS OR CHANGE/BLUR
 
 
-    telephoneField.on("change", function () {
+    telephoneField.on("change", function () { 
         validateTelephone();
     });
 

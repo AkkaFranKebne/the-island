@@ -12,6 +12,7 @@
         #location {
         width: $locationWidth;
         height: $locationHeight;
+        max-height: 240px;
         border: $locationBorder;
         /* animation for entering the web page */
         -webkit-animation-name: zoom;

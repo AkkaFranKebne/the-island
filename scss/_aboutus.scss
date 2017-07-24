@@ -1,29 +1,13 @@
 
     .aboutus {
     background-image: url("../images/meet-us.png"), url("../images/about-us.png");
-    background-size: 30px 30px, 100% 120px ;
+    background-size: 30px 30px, 100% 100%;  
     background-position: 95% 50%, center center;
     background-repeat: no-repeat;
     padding-top: 10px;
     padding-bottom: 10px;
     margin: 0 auto;
-    height: 120px;
-            @include mobile {
-                background-size: 30px 30px, 100% 240px ;
-                height: 240px;
-        }
-            @include non-desktop {
-                height: 240px;
-                background-size: 30px 30px, 100% 240px ;
-                @media (min-height: 900px){
-                 height: 400px;
-                background-size: 30px 30px, 100% 400px ;
-                }
-        }
-            @include big-desktop {
-                background-size: 30px 30px, 100% 240px ;
-                height: 240px;
-        }
+    height: auto;
     width: 100%;
     /* animation for entering the web page */
     -webkit-animation-name: zoom;
@@ -44,17 +28,17 @@
             @include mobile {
                 font-size: 4vmin;
                 line-height: 4.7vmin;
-                padding: 20px 50px 5px 25px
+                padding: 20px 50px 15px 25px
         }
             @include non-desktop {
                 font-size: 4vmin;
                 line-height: 4.7vmin;
-                padding: 20px 70px 5px 40px;
+                padding: 20px 70px 15px 40px;
         }
              @include big-desktop {
                 font-size: 1.3vw;
                 line-height: 1.7vw;
-                padding: 40px 90px 5px 90px;
+                padding: 40px 90px 15px 90px;
         }
         }
 }

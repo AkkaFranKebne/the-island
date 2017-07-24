@@ -10,6 +10,7 @@
 body {
     background-color: $backgroundColor;
     background-image: $backgroundImage;
+    background-size: cover;
     /* small and very small screens has a more colorful background as they do not contain the clickable island */
     position: relative;
     height: 100vh;
@@ -29,7 +30,7 @@ body {
     newbiz {
         &##{$subpage} {
             background-image: $islandImage;
-            background-size: $backgroundSize;
+            background-size: $backgroundSize, cover;
             background-position: map-get($islandBackgroundPosition, $subpage), center center;
             @include non-desktop {
                 background-image: none;
