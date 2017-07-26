@@ -83,7 +83,7 @@
     width: 100vw;
     height: 100vh;
     /* Enable scroll if needed */
-    overflow: auto;
+    overflow: hidden;
     /* Fallback color */
     background-color: $menuColor;
     /* Background with opacity*/
@@ -93,6 +93,8 @@
         position: relative;
         top: 50px;
         margin-top: 7vh;
+        margin-left: auto;
+        margin-right: auto;
         width: 100%;
         height: 105px;
         background-image: url('../images/modal-top-bar.png');
@@ -100,23 +102,39 @@
         background-position: center;
         background-size: 100%;
         z-index: 2;
+        @include mobile {
+            background-image: none;
+            top: 0;
+            margin: 0;
+            height: 0;
+        }
+        @include non-desktop {
+            background-image: none;
+            top: 0;
+            margin: 0;
+            height: 0;
+        }
         .close {
             background-image: url('../images/gallery-close.png');
             background-repeat: no-repeat;
             background-position: center;
             background-size: contain;
             position: absolute;
-            bottom: 35px;
-            right: 7vw;
-            width: 3.5vmax;
-            height: 3.5vmax;
-            @include mobile {
+            bottom: 45px;
+            right: 1.7vw;
             width: 2vmax;
             height: 2vmax;
+            @include mobile {
+                width: 50px;
+                height: 50px;
+                top: 5px;
+                right: 75px;
             }
             @include non-desktop {
-            width: 2vmax;
-            height: 2vmax;
+                width: 50px;
+                height: 50px;
+                top: 5px;
+                right: 75px;
             }
     }
     
@@ -125,9 +143,6 @@
     .close:focus,
     .arrow:hover,
     .arrow:focus {
-        color: $primaryColor;
-        border-color: $primaryColor;
-        text-decoration: none;
         cursor: pointer;
     }
     .arrow {
@@ -137,12 +152,12 @@
         background-position: center;
         background-size: contain;
         @include mobile {
-            width: 18px;
-            height: 8px;
+            width: 105px;
+            height: 85px;
         }
         @include non-desktop {
-            width: 22px;
-            height: 17px;
+            width: 105px;
+            height: 85px;
         }
         position: absolute;
         top: 200px;
@@ -150,12 +165,26 @@
     .right {
         background-image: url('../images/gallery-arrow-right.png');
         //@include right();
-        right: 8vw;
+        right: 1vw;
+        @include mobile {
+            right: 130px;
+        }
+        @include non-desktop {
+            right: 130px;
+        }
     }
     .left {
         background-image: url('../images/gallery-arrow-left.png');
         //@include left();
-        left: 8vw;
+        left: 1vw;
+         @include mobile {
+            left: 80px;
+             bottom: 0;
+        }
+        @include non-desktop {
+            left: 80px;
+             bottom: 0;
+        }
     }
     }
 
@@ -207,22 +236,50 @@
         position: relative;
         top: -50px;
         margin-bottom: 5vh;
+        margin-left: auto;
+        margin-right: auto;
         height: 120px;
         width: 100%;
         background-image: url('../images/modal-bottom-bar.png');
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100%;
+        @include mobile {
+            background-image: none;
+            top: 0;
+            margin: 0;
+            height: 0;
+        }
+        @include non-desktop {
+            background-image: none;
+            top: 0;
+            margin: 0;
+            height: 0;
+        }
         #caption {
-        margin: auto;
-        display: block;
-        width: $modalCaptionWidth;
-        max-width: $modalCaptionMaxWidth;
-        text-align: center;
-        color: $secondaryColor;
-        padding: 50px;
-        height: $modalCaptionHeight;
-        font-size: $descriptionFontSize;
+            margin: auto;
+            display: block;
+            width: $modalCaptionWidth;
+            max-width: $modalCaptionMaxWidth;
+            text-align: center;
+            color: $secondaryColor;
+            padding: 50px;
+            height: $modalCaptionHeight;
+            font-size: $descriptionFontSize;
+            @include mobile {
+            height: 0;
+            padding: 0;
+            position: relative;
+            top: -30vh;
+            color: black;
+        }
+        @include non-desktop {
+            height: 0;
+            padding: 0;
+            position: relative;
+            top: -30vh;
+            color: black;
+        }
     }
     }
 

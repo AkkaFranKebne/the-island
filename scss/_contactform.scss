@@ -220,7 +220,7 @@ input[type=text]:focus {
 /* -----------------------------Specific rules  for touchscreens-------------------------------- */
 
 /* to client decision if we hide the after before*/
-@include touch {
+@include touch-big {
     /* wraper for the form is extended and positioned, animation is removed */
     #form_wrap {
         top: 0;
@@ -279,7 +279,7 @@ input[type=text]:focus {
         height: auto;
     }
     #form_wrap {
-        height: 440px;
+        height: 500px;
         top: 10px;
      .alert {
         top: 10px;
@@ -301,7 +301,7 @@ input[type=text]:focus {
     }
        #form_wrap:hover {
         top: 10px;
-        height: 440px;
+        height: 500px;
     }
     /* form styles for mobile*/
     form {
@@ -317,6 +317,8 @@ input[type=text]:focus {
     textarea {
         height: 130px;
     }
+    
+
     
     .action{
     visibility: hidden;
@@ -377,7 +379,7 @@ input[type=text]:focus {
     textarea {
         height: 130px;
     }
-    
+ 
     .action{
     visibility: hidden;
 }

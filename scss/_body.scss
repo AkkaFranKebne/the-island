@@ -107,7 +107,6 @@ body {
         background-position: center;
         margin: 0 auto;
         span, h4{
-            color: $textsColor;
             text-align: center;
         @include mobile {
             padding: 0;
@@ -160,11 +159,15 @@ body {
             font-size: $descriptionFontSizeMobile;
             line-height: $descriptionLineHeightMobile;
             text-align: center;
+            text-shadow: -5px 5px 10px rgba(0, 0, 0, 0.67);
+            color: $primaryColor;
         }
         @include non-desktop {
             font-size: $descriptionFontSizeNondesktop;
             line-height: $descriptionLineHeightNondesktop;
             text-align: center;
+            text-shadow: -5px 5px 10px rgba(0, 0, 0, 0.67);
+            color: $primaryColor;
         }
         &.to-right{
             text-align: right;
@@ -283,7 +286,6 @@ body {
         cursor: pointer;
         /* better visibility of hamburger for very small and small displays, as it is fixed there */
         @include non-desktop {
-            background-color: $backgroundColor;
             margin-top: $hamburgerMobileMarginTop;
             border-radius: 50%;
             padding: 5px 8px 5px 8px;
@@ -293,7 +295,6 @@ body {
             //margin-top: 110px;
         }
         @include mobile {
-            background-color: $backgroundColor;
             border-radius: 50%;
             padding: 5px 8px 5px 8px;
             height: $hamburgerMobileBackgroundHeight;

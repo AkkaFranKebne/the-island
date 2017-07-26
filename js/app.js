@@ -12,16 +12,19 @@ nie dziala na opera mini - jak to wyglada?:
 > border radius 
 > box shadow 
 
+        > przepisanie na funkcje next/previous image
+        > uporzadkowanie css i js i html
+
 --------------------------------------------------------------
   
  
-jak zdaze to do:
+to do:
         > lepszy pomysl na wyliczanie polozenia pinow - map coords?
         > lepszy pomysl na rozmiar karteczek z subtytulami tak, aby nie wychodzily nigdy tytuly poza (jquery szwankuje przy slabym necie? czasem wylicza male wartosci i dopiero po przeladowaniu dziala)
+        > mobile: zablokowanie modalu dla portrait
         > png optymalizacja
         > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
-        > przepisanie na funkcje next/previous image
-        > uporzadkowanie css i js i html
+
 
 do zmiany przed oddaniem:
         > linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
@@ -58,6 +61,9 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var desktop = window.matchMedia("screen and (min-width: 801px) and (max-width: 960px)");
     var bigdesktop = window.matchMedia("screen and (min-width: 1401px)");
     var touch = window.matchMedia("screen and (pointer: coarse)");
+    var portrait = window.matchMedia("(orientation: portrait)");
+    
+
 
     var imgStandardExt = '.jpg';
     var imgMobileExt = '_mobile.jpg';
@@ -463,6 +469,10 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             "height": fixedHeightImg
         });
     }
+        
+  
+    
+    
 
 
     // introducing media queries for images in galleries  //////////////
@@ -590,12 +600,14 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                     //console.log("to video");
                     modal.find('iframe.modal-content').removeClass('hidden').attr('src', dataSource).fadeIn(modalFadeInOutTimeMilisec);
                     modal.find('img.modal-content').fadeOut(modalFadeInOutTimeMilisec);
+                    modalBarLength($('iframe.modal-content'));
                 }
                 //as an image
                 else {
                     //console.log("to img");
                     modal.find('img.modal-content').attr('src', dataSource).fadeIn(modalFadeInOutTimeMilisec);
                     modal.find('iframe.modal-content').fadeOut(modalFadeInOutTimeMilisec);
+                    modalBarLength($('img.modal-content'));
                 }
 
                 //prepare the previous image/video
@@ -699,12 +711,14 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                     console.log("to video");
                     modal.find('iframe.modal-content').removeClass('hidden').attr('src', dataSource).fadeIn(modalFadeInOutTimeMilisec);
                     modal.find('img.modal-content').fadeOut(modalFadeInOutTimeMilisec);
+                    modalBarLength($('iframe.modal-content'));
                 }
                 //as an image
                 else {
-                    console.log("to img");
+                    //console.log("to img");
                     modal.find('img.modal-content').attr('src', dataSource).fadeIn(modalFadeInOutTimeMilisec);
                     modal.find('iframe.modal-content').fadeOut(modalFadeInOutTimeMilisec);
+                    modalBarLength($('img.modal-content'));
                 }
                 //prepare the previous image/video
                 if (galleryImages.eq(index - 2).hasClass('video')) {
@@ -815,7 +829,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         $('.title-bar').width(titleBarWidth);
     }
     
-     //--------------------------setting the height of subtitle box 
+     //--------------------------the height of subtitle box 
         function subtitleBoxHeight(){
          var   subtitleBoxHeight = 150;
         var subtitleHeight = $('.description-bar').find('h4').height();
@@ -826,15 +840,21 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         }
         $('.description-bar').height(subtitleBoxHeight);
     }
+    
+    //--------------------------the length of modal image bar
+    
+    function  modalBarLength(currentImage){
+            var width = currentImage.width() *1.1;
+            $('.top-bar').css('width', width);
+            $('.bottom-bar').css('width', width);
+    }
 
      //---------------------modal arrows position----
     
     function  modalArrowPosition(currentImage){
-        $('.modal-content').each(function(){
              var arrowFromTop = currentImage.height() / 2; 
-            $('.arrow').css('top', arrowFromTop);
             console.log(arrowFromTop);
-        });
+            $('.arrow').css('top', arrowFromTop);
     }
     
     
@@ -1061,6 +1081,15 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
 
     galleryImages.on('click', function () {
+        
+        //unabling with portait mode
+      if (portrait.matches) {
+          alert("Aby powiększyć obrazek obróć urządzenie w tryb pejzażu");
+          return false;
+      }
+        else
+    
+       {
         //hide hamburger
         hamburger.css("z-index", "3");
         //prepare variables for loading 3 images: current, previous and next 
@@ -1092,10 +1121,11 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 }
                 //as an image
                 else {
-                    console.log("to img");
+                    console.log($('img.modal-content').height());
                     modal.find('img.modal-content').attr('src', dataSource);
                     modal.find('iframe.modal-content').hide();
                     modalArrowPosition($('img.modal-content'));
+                    
                 }
 
                 //prepare the previous image/video
@@ -1141,6 +1171,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 modal.find('.arrow').removeClass('hidden');
                 modal.find('.arrow-background').removeClass('hidden');
                 modal.find('#caption').removeClass('hidden');
+                modalBarLength($('iframe.modal-content'));
             }); 
             //for cache
             if ($(this).complete) {
@@ -1149,7 +1180,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                     modal.find('iframe.modal-content').removeClass('hidden').fadeIn(modalFadeInOutTimeMilisec);
                     modal.find('.arrow').removeClass('hidden');
                     modal.find('.arrow-background').removeClass('hidden');
-                    modal.find('#caption').removeClass('hidden');               
+                    modal.find('#caption').removeClass('hidden');
+                modalBarLength($('iframe.modal-content'));
             }
         } 
         else {
@@ -1159,6 +1191,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 modal.find('.arrow').removeClass('hidden');
                 modal.find('.arrow-background').removeClass('hidden');
                 modal.find('#caption').removeClass('hidden');
+                modalBarLength($('img.modal-content'));
             });
             if ($(this).complete) {
                    console.log("modal cache img");
@@ -1166,9 +1199,11 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                     modal.find('img.modal-content').removeClass('hidden').fadeIn(modalFadeInOutTimeMilisec);
                     modal.find('.arrow').removeClass('hidden');
                     modal.find('.arrow-background').removeClass('hidden');
-                    modal.find('#caption').removeClass('hidden');               
+                    modal.find('#caption').removeClass('hidden');
+                    modalBarLength($('img.modal-content'));
             }
-        }      
+        }
+    }
 
     });
     

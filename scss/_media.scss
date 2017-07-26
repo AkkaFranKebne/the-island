@@ -8,6 +8,14 @@
     }
 }
 
+// devices where user's main input mechanism is a finger and in non mobile size 
+@mixin touch-big () {
+    @media screen and (pointer: coarse) and (min-width: 800px) {
+        @content;
+    }
+}
+
+
 // devices where user's main input mechanism is a mouse or other pointer
 @mixin pointer () {
     @media screen and (pointer: fine) {
