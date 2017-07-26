@@ -20,6 +20,7 @@ body {
     {
         background-image: $loadingImage;
         background-position: center;
+        background-size: 314px 273px;
     }
     /* Backgrounds of subpages */
     @each $subpage in eventy,
@@ -45,17 +46,76 @@ body {
     noscript {
         color: red;
         font-size: $subtitlesFontSize;
-        font-size: $subtitlesFontSize;
         height: $subtitlesFontSize*2;
         margin-left: 30vw;
         text-align: center;
     }
     .title-bar{
-        height: 2px;
-        width: 150px;
-        background-color: $primaryColor;
+        position: relative;
+        top: -15px;
+        height: 75px;
+        width: 217px;
+        @include mobile {
+            height: 15vmax;
+            width: 25vmax;
+        }
+        @include non-desktop {
+            height: 14vmax;
+            width: 25vmax;
+        }
+        background-image: url('../images/title-bar.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
         margin: 0 auto;
-        margin-top: 30px;
+        span, h2{
+            text-align: center;
+            padding-top: 6.5%;
+        @include mobile {
+            padding-top: 13%;
+        }
+        @include non-desktop {
+             padding-top: 13%;
+        }
+        }
+    }
+    .description-bar{
+        //border: 1px solid red;
+        position: relative;
+        top: -45px;
+        height: 150px;
+        width: 80%;
+        max-width: 90%;
+        padding: 60px 70px 50px 50px;
+        @include mobile {
+            height: 15vmax;
+            width: 100%;
+            background-image: none;
+            padding: 0;
+            top: 0;
+        }
+        @include non-desktop {
+            height: 14vmax;
+            width: 100%;
+            background-image: none;
+            padding: 0;
+            top: 0;
+        }
+        background-image: url('../images/description-bar.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 0 auto;
+        span, h4{
+            color: $textsColor;
+            text-align: center;
+        @include mobile {
+            padding: 0;
+        }
+        @include non-desktop {
+             padding: 0;
+        }
+        }
     }
     h2,
     h3,
@@ -142,36 +202,37 @@ body {
             width: $expandedMenuWidth;
             @include non-desktop {
                 width: 100vw;
-                height: 100vh;
+                height: 110vh;
                 overflow: hidden;
-                background-image: $mobileMenuBackground;
-                background-repeat: no-repeat;
-                background-position: 50% $menuPaddingTop;
-                background-size: contain;
+                position: relative;
+                top: -10vh;
+
             }
             @include mobile {
                 width: 100vw;
-                height: 100vh;
+                height: 110vh;
                 overflow: hidden;
-                background-image: $mobileMenuBackground;
-                background-repeat: no-repeat;
-                background-position: 50% $menuPaddingTop;
-                background-size: contain;
+                position: relative;
+                top: -10vh;
+
             }
         }
         /* links in the side navigation menu */
         a {
+            position: relative;
+            top: 100px;
             padding: $menuLinksPadding;
             text-decoration: none;
             font-size: $sideNavFontSize;
             height: $sideNavLinkHeight;
-            color: $secondaryColor;
+            color: $textsColor;
             display: block;
             font-weight: 100;
             overflow: hidden;
             //transition: $menuTransitionSec;
             /* links in side navigation menu are centered for very small and small displays */
             @include non-desktop {
+                padding: 0;
                 text-align: center;
                 font-size: $sideNavFontSizeMobile;
                 height: $sideNavLinkHeightMobile;
@@ -180,6 +241,7 @@ body {
                 }
             }
             @include mobile {
+                padding: 0;
                 text-align: center;
                 font-size: $sideNavFontSizeMobile;
                 height: $sideNavLinkHeightMobile;
@@ -189,13 +251,9 @@ body {
                 }
             }
         }
-        a:first-of-type {
-            margin-top: $menuFirstLinkTopMargin;
-        }
         a:hover,
         a:focus {
-            color: $primaryColor;
-            font-weight: 400;
+            background-color: $backgroundColorMenu;
         }
     }
     /* on the main page for very small and small displays sidenav menu is open and in absloute position */
@@ -228,16 +286,16 @@ body {
             background-color: $backgroundColor;
             margin-top: $hamburgerMobileMarginTop;
             border-radius: 50%;
-            padding: 9px 9px 9px 12px;
-            height: 54px;
-            width: 54px;
+            padding: 5px 8px 5px 8px;
+            height: $hamburgerMobileBackgroundHeight;
+            width: $hamburgerMobileBackgroundWidth;
             //margin-left: 35px;
             //margin-top: 110px;
         }
         @include mobile {
             background-color: $backgroundColor;
             border-radius: 50%;
-            padding: $hamburgerMobilePadding;
+            padding: 5px 8px 5px 8px;
             height: $hamburgerMobileBackgroundHeight;
             width: $hamburgerMobileBackgroundWidth;
             margin-left: $hamburgerMobileMarginLeft;
@@ -278,7 +336,7 @@ body {
     }
     /* X sign at subpages */
     #close {
-        position: absolute;
+        position: fixed;
         top: 0;
         right: 0;
         height: $closeHeight;

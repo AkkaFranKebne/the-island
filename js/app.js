@@ -3,10 +3,8 @@ $(document).ready(function () {
         
 testowanie  - SPRAWDZIC NA FAKTYCZNYCH URZADZENIACH
 
-
 emulatory:
 > edge -  menu przesuwa sie w prawo przy kliku w modal i wejsciu na podstrony 
->motorola, iphone 6 plus  - nie widac calego menu przy pozimym ostawieniu, schowany ostatni link
 nie dziala na opera mini - jak to wyglada?:
 > transform
 > transition 
@@ -18,12 +16,12 @@ nie dziala na opera mini - jak to wyglada?:
   
  
 jak zdaze to do:
-        > lepszy pomysl na wyliczanie polozenia pinow
-        > jeszcze raz poszukac czemu opacity nie dziala na tablecie
+        > lepszy pomysl na wyliczanie polozenia pinow - map coords?
+        > lepszy pomysl na rozmiar karteczek z subtytulami tak, aby nie wychodzily nigdy tytuly poza (jquery szwankuje przy slabym necie? czasem wylicza male wartosci i dopiero po przeladowaniu dziala)
         > png optymalizacja
         > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
         > przepisanie na funkcje next/previous image
-        > uporzadkowanie css i js
+        > uporzadkowanie css i js i html
 
 do zmiany przed oddaniem:
         > linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
@@ -68,8 +66,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
     //colors
     var primaryColor = 'white';
-    var secondaryColor = '#a9cbd5';
-    var expandedNavMEnuOpacityColor = "rgba(169,203,213,0.4)";
+    var secondaryColor = '#8a171a';
+    var expandedNavMEnuOpacityColor = "rgba(169,203,213, 0)";
 
     //basic//////////
     var main = $('main');
@@ -77,7 +75,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var images = $('img');
     
     var mainPaddingLeftVw = 15;
-    var barWiderThanTitlePx = 42;
+    var barWiderThanTitlePx = 100;
     
 
     //navigation//////////
@@ -104,18 +102,24 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     //map image
     //maplight library setup //////////
     island_img.maphilight({
-        stroke: false,
-        strokeColor: 'ffffff',
-        strokeWidth: 0,
+        //fill
+        fill: true,
         fillColor: '009DDF',
         fillOpacity: 0.1,
+        //stroke
+        stroke: true,
+        strokeColor: '000000',
+        strokeWidth: 3,
+		strokeOpacity: 0.5,
+        //shadow    
         shadow: true,
-        shadowX: 5,
-        shadowY: 5,
-        shadowRadius: 6,
+        shadowX: 20,
+        shadowY: 12,
+        shadowRadius: 16,
         shadowColor: '000000',
         shadowOpacity: 0.8,
         shadowPosition: 'outside',
+        shadowFrom: false,
         alwaysOn: false
     });
 
@@ -248,14 +252,14 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         body.addClass('loading');
         island.addClass('hidden');
         island_img.addClass('hidden');
-        navLinks.addClass('hidden');
+        //navLinks.addClass('hidden');
         island_img.on("load", function () {
             console.log("showPreloader - on load");
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
             island_img.removeClass('hidden');
-            navLinks.removeClass('hidden');
+            //navLinks.removeClass('hidden');
             //showing pins for touchscreens, with delay if there is back to start animation
             if (main.attr('data-source')) {
             setTimeout(function () {
@@ -275,7 +279,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             main.removeClass('hidden');
             island.removeClass('hidden');
             island_img.removeClass('hidden');
-            navLinks.removeClass('hidden');
+            //navLinks.removeClass('hidden');
             //showing pins for touchscreens, with delay if there is back to start animation
             if (main.attr('data-source')) {
             setTimeout(function () {
@@ -292,13 +296,13 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     //showing  preloader and animation on start///////////////  
 
     function showPreloaderAndAnimation() {
-        navLinks.addClass('hidden');
+        //navLinks.addClass('hidden');
         island_img.on("load", function () {
             console.log("showPreloaderAndAnimation - on load");
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
-            navLinks.removeClass('hidden');
+            //navLinks.removeClass('hidden');
             //showing pins for touchscreens, with delay if there is back to start animation
             if (main.attr('data-source')) {
             setTimeout(function () {
@@ -323,7 +327,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
-            navLinks.removeClass('hidden');
+            //navLinks.removeClass('hidden');
             //showing pins for touchscreens
             //showing pins for touchscreens, with delay if there is back to start animation
             if (main.attr('data-source')) {
@@ -738,6 +742,9 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
             //withrdaw changes from body
             body.removeClass('fitInViewport');
+            
+            //hamburger z-index back
+            hamburger.css("z-index", "4");
         });
 
 
@@ -808,23 +815,29 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         $('.title-bar').width(titleBarWidth);
     }
     
-     //--------------------------setting the aboutus box height  
-    function setBoxHeight(){
-        var aboutusBoxes = $('.aboutus');
-        var maxHeight = aboutusBoxes.first().innerHeight();
-        aboutusBoxes.each(function(){
-            if($(this).innerHeight() > maxHeight) {
-                maxHeight = $(this).innerHeight();
-            }      
-        });
-        aboutusBoxes.each(function(){
-            $(this).innerHeight(maxHeight);            
-        });
-           
+     //--------------------------setting the height of subtitle box 
+        function subtitleBoxHeight(){
+         var   subtitleBoxHeight = 150;
+        var subtitleHeight = $('.description-bar').find('h4').height();
+        subtitleBoxHeight = subtitleHeight - 30;
+            
+        if (mobile.matches || nondesktop.matches) {
+           subtitleBoxHeight = subtitleHeight;
+        }
+        $('.description-bar').height(subtitleBoxHeight);
     }
 
-    setBoxHeight();
-     
+     //---------------------modal arrows position----
+    
+    function  modalArrowPosition(currentImage){
+        $('.modal-content').each(function(){
+             var arrowFromTop = currentImage.height() / 2; 
+            $('.arrow').css('top', arrowFromTop);
+            console.log(arrowFromTop);
+        });
+    }
+    
+    
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
 
@@ -877,12 +890,13 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     
     //----------------setting the length for title bar
     
-    titleBarLength();
+    //titleBarLength();
     
-    //--------------------------setting the aboutus box height  
-     if ($('div').hasClass('aboutus')){
-         setBoxHeight();
-     }
+   //--------------------------setting the height of subtitle box 
+
+
+     subtitleBoxHeight();
+
 
     
     
@@ -891,6 +905,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     if   (window.location.href.indexOf("message") != -1 ){
         scrollToContactForm();
     }
+    
+    
     
 
     //----------------------EVENTS---------------------------------------------------------------------------------
@@ -902,28 +918,35 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     });
 
     hamburger.on('mouseleave', function (event) {
+        if ($(this).parent().find('.sidenav').css("width") === '0px') {
         $(this).children().css('background-color', primaryColor);
+                    }
     });
 
     // ----hamburger menu onclick//////////
+    
+ 
 
     hamburger.on('click', function () {
         $(this).toggleClass('change'); //rotation to x 
         //console.log($(this).parent().css("width"));
         if ($(this).parent().find('.sidenav').css("width") === '0px') {
-            $(this).parent().find('.sidenav').addClass('expanded'); //expand
-            if (!touch.matches) { //opacity not working on ipad - to fix
-                 menuOpacity.css("background-color", expandedNavMEnuOpacityColor).css("z-index", "3"); //add opacity
-                body.css("overflow", "hidden"); //hide evryting that goes outside               
-            }
-
-            $(this).children().css('background-color', primaryColor);//fix for touch screens
+            //expand
+            $(this).parent().find('.sidenav').addClass('expanded');
+            //change hamburger color
+            $(this).children().css('background-color', secondaryColor);
+            //add opacity
+            menuOpacity.css("background-color", expandedNavMEnuOpacityColor).css("z-index", "3");
+            //hide evryting that goes outside
+            body.css("overflow", "hidden"); //hide evryting that goes outside               
+        
 
         } else if ($(this).parent().find('.sidenav').hasClass('expanded')) {
             $(this).parent().find('.sidenav').removeClass('expanded'); //hide menu
             menuOpacity.css("background-color", "transparent").css("z-index", "-3");  //remove opacity
             body.css("overflow", "auto");
-            $(this).children().css('background-color', primaryColor); //fix for touch screens
+            //change hamburger color
+            $(this).children().css('background-color', primaryColor);
         }
 
     });
@@ -933,6 +956,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     menuOpacity.on('click', function () {
         $(this).css("background-color", "transparent").css("z-index", "-3");
         hamburger.toggleClass('change').parent().find('.sidenav').removeClass('expanded');
+        //change hamburger color
+         hamburger.children().css('background-color', primaryColor);
     })
 
 
@@ -1036,6 +1061,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
 
     galleryImages.on('click', function () {
+        //hide hamburger
+        hamburger.css("z-index", "3");
         //prepare variables for loading 3 images: current, previous and next 
         var dataSource = $(this).data('source');
         var dataSourcePrevious = '';
@@ -1061,12 +1088,14 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 if ($(this).hasClass('video')) {
                     modal.find('iframe.modal-content').attr('src', dataSource);
                     modal.find('img.modal-content').hide();
+                    modalArrowPosition($('iframe.modal-content'));
                 }
                 //as an image
                 else {
                     console.log("to img");
                     modal.find('img.modal-content').attr('src', dataSource);
                     modal.find('iframe.modal-content').hide();
+                    modalArrowPosition($('img.modal-content'));
                 }
 
                 //prepare the previous image/video
@@ -1139,12 +1168,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                     modal.find('.arrow-background').removeClass('hidden');
                     modal.find('#caption').removeClass('hidden');               
             }
-        }
-        
-        
-              
-
- 
+        }      
 
     });
     
@@ -1155,6 +1179,15 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
     modalCloseButton.on('click', function () {
         closeTheModal();
+    });
+    
+    
+    //--------------------closing gallery clicking modal (but not its children)  -------------------
+
+    modal.find('.modal-area').on('click', function (){
+       closeTheModal();
+    }).children().on('click', function () {
+        return false;
     });
 
     //------------------closing gallery using scroll -  touchSwipe library -------------------

@@ -6,8 +6,8 @@
     margin: 0 auto; //centering
     .row {
         //border: 1px solid black;
-        padding-bottom: 0.1vw;
-        padding-top: 0.1vw;
+        padding-bottom: 0.01vw;
+        padding-top: 0.01vw;
         @include mobile {
         padding-bottom: 0;
         padding-top: 0;

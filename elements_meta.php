@@ -22,7 +22,7 @@
 <link rel="icon" href="images/favicon.gif" type="image/gif" sizes="16x16"> <!-- change the path for production -->
 <!-- css -->
 <link rel="stylesheet" type="text/css" href="css/index.css"/> 
-<link href="https://fonts.googleapis.com/css?family=Lato:400,700&amp;subset=latin-ext" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Oswald:200&amp;subset=latin-ext" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Caveat:400,700&amp;subset=latin-ext" rel="stylesheet">
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>

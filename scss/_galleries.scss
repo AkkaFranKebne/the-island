@@ -6,11 +6,19 @@
 /* look and feel of gallery rows */
 
 .gallery {
+    position: relative;
+    top: -30px;
+        @include mobile {
+            top: 0;
+        }
+        @include non-desktop {
+            top: 0;
+        }
     //border: 1px solid red;
     display: inline-block;
     height: auto;
     /* animation for gallery apperance */
-    background-color: $secondaryColorWithOpacity;
+    //background-color: $secondaryColorWithOpacity;
     border-radius: $galleryElementsBorderRadius;
     -webkit-animation-name: zoom;
     -webkit-animation-duration: $menuTransitionSec;
@@ -81,54 +89,81 @@
     /* Background with opacity*/
     background-color: $menuColorWithOpacity;
     /* navigation in modal*/
-    .arrow-background {
-        position: absolute;
-        top: $modalArrowFromTop;
-        background-color: $secondaryColorWithOpacity;
-        border-radius: 50%;
-        width: $modalArrowBackgroundWidth;
-        height: $modalArrowBackgroundHeight;
-        padding: $modalArrowPadding;
-        @include mobile {
-            background-color: $menuColorWithOpacityStrong;
-        }
-        @include non-desktop {
-            background-color: $menuColorWithOpacityStrong;
-        }
+    .top-bar {
+        position: relative;
+        top: 50px;
+        margin-top: 7vh;
+        width: 100%;
+        height: 105px;
+        background-image: url('../images/modal-top-bar.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        z-index: 2;
+        .close {
+            background-image: url('../images/gallery-close.png');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+            position: absolute;
+            bottom: 35px;
+            right: 7vw;
+            width: 3.5vmax;
+            height: 3.5vmax;
+            @include mobile {
+            width: 2vmax;
+            height: 2vmax;
+            }
+            @include non-desktop {
+            width: 2vmax;
+            height: 2vmax;
+            }
+    }
+    
+    /* color changing for close and arrows on hover */
+    .close:hover,
+    .close:focus,
+    .arrow:hover,
+    .arrow:focus {
+        color: $primaryColor;
+        border-color: $primaryColor;
+        text-decoration: none;
+        cursor: pointer;
     }
     .arrow {
-        border: solid $secondaryColor;
-        border-width: $modalArrowBorder;
-        display: inline-block;
-        padding: $modalArrowPadding;
-        height: $modalArrowHeight;
-        position: absolute;
-        top: $modalArrowHeight+$modalArrowFromTop;
+        width: 90px;
+        height: 38px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
         @include mobile {
-            border-width: $modalArrowBorderMobile;
-            padding: $modalArrowPaddingMobile;
-            height: $modalArrowHeightMobile;
+            width: 18px;
+            height: 8px;
         }
+        @include non-desktop {
+            width: 22px;
+            height: 17px;
+        }
+        position: absolute;
+        top: 200px;
     }
     .right {
-        @include right();
-        right: $modalArrowFromBorder;
-        &.arrow-background {
-            right: $modalArrowFromBorderMobile;
-        }
+        background-image: url('../images/gallery-arrow-right.png');
+        //@include right();
+        right: 8vw;
     }
     .left {
-        @include left();
-        left: $modalArrowFromBorder;
-        &.arrow-background {
-            left: $modalArrowFromBorderMobile;
-        }
+        background-image: url('../images/gallery-arrow-left.png');
+        //@include left();
+        left: 8vw;
     }
+    }
+
     /* image in modal*/
     .modal-content {
         margin: auto; //center the image
         display: block;
-        height: $modalImgHeight;
+        height: 70vmin;
         width: $modalImgWidth;
         /* 100% Image Width for very small screens */
         @include mobile {
@@ -168,17 +203,29 @@
         }
     }
     /* caption for modal */
-    #caption {
+    .bottom-bar{
+        position: relative;
+        top: -50px;
+        margin-bottom: 5vh;
+        height: 120px;
+        width: 100%;
+        background-image: url('../images/modal-bottom-bar.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: 100%;
+        #caption {
         margin: auto;
         display: block;
         width: $modalCaptionWidth;
         max-width: $modalCaptionMaxWidth;
         text-align: center;
         color: $secondaryColor;
-        padding: $modalCaptionPadding;
+        padding: 50px;
         height: $modalCaptionHeight;
         font-size: $descriptionFontSize;
     }
+    }
+
     /* animation  for modal opening */
     .modal-content,
     #caption,
@@ -189,33 +236,5 @@
         animation-duration: $menuTransitionSec;
     }
     /* close button */
-    .close {
-        position: absolute;
-        top: $modalCloseFromTop;
-        right: $modalCloseFromRight;
-        color: $secondaryColor;
-        font-size: $modalCloseHeight;
-        font-weight: bold;
-        transition: $menuTransitionSec;
-        background-color: $secondaryColorWithOpacity;
-        border-radius: 50%;
-        width: $modalCloseWidth;
-        padding: $modalClosePadding;
-        @include mobile {
-            background-color: $menuColorWithOpacityStrong;
-        }
-        @include non-desktop {
-            background-color: $menuColorWithOpacityStrong;
-        }
-    }
-    /* color changing for close and arrows on hover */
-    .close:hover,
-    .close:focus,
-    .arrow:hover,
-    .arrow:focus {
-        color: $primaryColor;
-        border-color: $primaryColor;
-        text-decoration: none;
-        cursor: pointer;
-    }
+
 }

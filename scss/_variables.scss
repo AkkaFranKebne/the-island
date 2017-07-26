@@ -1,21 +1,21 @@
-//fonts
-$latoFont:  'Lato', sans-serif;
-$caveatFont: 'Caveat', cursive;
+//extra fonts:
+$caveatFont: 'Caveat', cursive;;
 
 //colors
 $primaryColor: white;
-$secondaryColor: #a9cbd5;
-$textsColor: #a2a0a2;
-$secondaryColorWithOpacity: rgba(255, 255, 255, 0.6);
-$backgroundColor: #a9cbd5;
+$secondaryColor: #8a171a;
+$textsColor: black;
+$secondaryColorWithOpacity: rgba(0,0,0, 0.6);
+$backgroundColor: #8dd7df;
+$backgroundColorMenu: #f2f0f2;
 $backgroundImage: url('../images/background.jpg');
 $PinBackgroundColor: #8a171a;
 $PinCenterBackgroundColor: #2f2f2f;
-$PinPulseColorWithOpacity: rgba(0, 0, 0, 0.2);
+$PinPulseColorWithOpacity: rgba(250,250,250, 0.9);
 $PinPulseCenterShadowColor: #89849b;
-$menuColor: #30849f;
-$menuColorWithOpacity: rgba(100, 100, 100, 0.9);
-$menuColorWithOpacityStrong: rgba(100, 100, 100, 0.3);
+$menuColor: white;
+$menuColorWithOpacity: rgba(250, 250, 250, 0);
+$menuColorWithOpacityStrong: rgba(250, 250, 250, 0.3);
 //images sources
 $loadingImage: url('../images/loading_pigs.gif');
 $islandImage: url(../images/wyspa%20www.png), url('../images/background.jpg');
@@ -31,7 +31,7 @@ $sideNavFontSizeMobile: 5vmax;
 $sideNavLinkHeight: 40px;
 $sideNavLinkHeightMobile: 7vmax;
 $copyFontSize: 10px;
-$titlesFontSize: 24px;
+$titlesFontSize: 20px;
 $subtitlesFontSize: 16px;
 $descriptionFontSize: 16px;
 $descriptionLineHeight: 21px;
@@ -76,20 +76,22 @@ $grpelemPaddingTopPx: 18px;
 $menuPaddingTop: 30px;
 $menuMainPagePaddingTopMobile: 50px;
 $expandedMenuWidth: 255px;
-$menuLinksPadding: 8px 8px 8px 32px;
-$menuFirstLinkTopMargin: 40px;
+$menuLinksPadding: 0px 8px 8px 32px;
+$menuFirstLinkTopMargin: 100px;
 //hamburger
-$hamburgerHeight: 30px;
-$hamburgerBarHeight: 5px;
-$hamburgerBarMargin: 6px 0;
-$hamburgerWidth: 30px;
+$hamburgerHeight: 50px;
+$hamburgerBarHeight: 9px;
+$hamburgerBarMargin: 9px 0;
+$hamburgerWidth: 50px;
 $hamburgerMarginLeft: 45px;
 $hamburgerMarginTop: 53px;
 $hamburgerMobileMarginLeft: 15px;
 $hamburgerMobileMarginTop: 110px;
-$hamburgerMobileBackgroundHeight:54px;
-$hamburgerMobileBackgroundWidth: 54px;
+$hamburgerMobileBackgroundHeight:64px;
+$hamburgerMobileBackgroundWidth: 64px;
 $hamburgerMobilePadding: 9px 9px 9px 12px;
+
+
 //Logo
 $logoMaxWidth: 449px;
 $logoTopMargin: 30px;
@@ -97,10 +99,10 @@ $logoTopMargin: 30px;
 $closeHeight: 20px;
 $closeWidth: 20px;
 $closeTopMargin: 53px;
-$closeRightMargin: 45px;
-$closeBarHeight: 5px;
-$closeBarWidth: 30px;
-$CloseBarMargin: 6px 0;
+$closeRightMargin: 60px;
+$closeBarHeight: 9px;
+$closeBarWidth: 50px;
+$CloseBarMargin: 8px 0;
 //gallery 
 $galleryElementsBorderRadius: 5px;
 $picturePadding: 0.1vw;

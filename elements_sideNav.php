@@ -4,7 +4,6 @@
     <div class="bar3"></div>
 </div>
 <div class="sidenav">
-    <a href="#"></a>
     <a href="index.php">Strona Główna</a>
     <a href="sm.php">Social Media</a>
     <a href="kreacja.php">Kreacja</a>

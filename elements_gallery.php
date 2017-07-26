@@ -53,14 +53,15 @@
         </div>
 
         <!-- The Modal -->
-        <div id="modal" class="modal">
+        <div class="row" id="modal" class="modal">
+        <div  class="col-12 modal-area">
 
             <!-- The Close Button -->
-            <span class="close">&times;</span>
-
-            <div class="arrow-background left hidden"></div>
-            <div class="arrow left hidden"></div>
-
+            <div class='top-bar'>    
+                <span class="close"></span>
+                 <div class="arrow left hidden"></div>
+                 <div class="arrow right hidden"></div>
+            </div>
             <!-- Preloader-->
             <img id="preloader" src="images/loading.gif">
 
@@ -77,14 +78,15 @@
             <img class="next-modal-content hidden" src="#">
             <iframe class="next-modal-content hidden" src="#" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-            <div class="arrow-background right hidden"></div>
-            <div class="arrow right hidden"></div>
+            
 
 
             <!-- Modal Caption (Image Text) -->
-            <div id="caption" class="hidden"></div>
+            <div class='bottom-bar'><div id="caption" class="hidden"></div></div>
+            
 
 
+        </div>
         </div>
 
     </div>

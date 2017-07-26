@@ -23,8 +23,7 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
          <main>
             <div class="row">
                 <div class="col-12">
-                    <div class='title-bar'></div>
-                    <h2><span>KONTAKT</span>  </h2>
+                    <div class='title-bar'><h2><span>KONTAKT</span></h2></div>
                     <noscript>Strona wymaga uruchomionego Java Script. </noscript>
             <noscript> Zaktualizuj lub zmień przeglądarkę. </noscript>
                 </div>
@@ -32,30 +31,19 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
             
              
            <div class="row">
+               
                 <div class="col-5">
                     <div class="row">
                         <div class="col-12">
                             <div class="address">
                                 <h4>LemOnHills Sp. z o.o.</h4>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-7">
-                            <div class="address">
                                 <h4>ul. Wiosenna 5a</h4>
                                 <h4>55-040 Bielany Wrocławskie</h4>
+                                <a href="mailto:info@lemonhills.pl"><h4 >info@lemonhills.pl</h4></a>
+                                <a href="tel:+48509680400"><h4 >+48.509.680.400</h4></a>
                             </div>
                         </div>
-                        <div class="col-5">
-                            <div class="address">
-                                <a href="mailto:info@lemonhills.pl"><h4 class="to-right">info@lemonhills.pl</h4></a>
-                                <a href="tel:+48509680400"><h4 class="to-right">+48.509.680.400</h4></a>
-                            </div>
-                        </div>
-
-                    </div>
-                    
+                    </div>                    
                     <div class="row">
                         <div class="col-12">
                             <div id="frame"><?php include 'elements_location.php';?></div>
@@ -64,11 +52,12 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
                 </div>
                
                <div class="col-1"></div>
+               
                 <div class="col-6">
                     <?php include 'elements_contactform.php';?>
                 </div>
             </div> 
-             
+         <!--
            <div class="row">
                     <div class="col-12">
                         <div>
@@ -88,6 +77,8 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
                         </div>
                     </div>
                 </div>
+             
+             ->>
            
         <!--
         <div class="row">
