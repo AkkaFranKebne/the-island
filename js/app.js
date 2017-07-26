@@ -3,6 +3,10 @@ $(document).ready(function () {
         
 testowanie  - SPRAWDZIC NA FAKTYCZNYCH URZADZENIACH
 
+> background image cover szanuje nexus 7
+> meny rwie na mobilnym przy rozwijaniu i nie otwiera na dole strony  przy hamburger fixed
+
+
 emulatory:
 > edge -  menu przesuwa sie w prawo przy kliku w modal i wejsciu na podstrony 
 nie dziala na opera mini - jak to wyglada?:
@@ -254,18 +258,20 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
    
 
     function showPreloader() {
-        //console.log(idOfImageThatIsLoading);
+        if (mobile.matches || nondesktop.matches) {
+            navLinks.addClass('hidden');
+        }
         body.addClass('loading');
         island.addClass('hidden');
         island_img.addClass('hidden');
-        //navLinks.addClass('hidden');
+        navLinks.addClass('hidden');
         island_img.on("load", function () {
             console.log("showPreloader - on load");
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
             island_img.removeClass('hidden');
-            //navLinks.removeClass('hidden');
+            navLinks.removeClass('hidden');
             //showing pins for touchscreens, with delay if there is back to start animation
             if (main.attr('data-source')) {
             setTimeout(function () {
@@ -285,7 +291,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             main.removeClass('hidden');
             island.removeClass('hidden');
             island_img.removeClass('hidden');
-            //navLinks.removeClass('hidden');
+            navLinks.removeClass('hidden');
             //showing pins for touchscreens, with delay if there is back to start animation
             if (main.attr('data-source')) {
             setTimeout(function () {
@@ -302,13 +308,15 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     //showing  preloader and animation on start///////////////  
 
     function showPreloaderAndAnimation() {
-        //navLinks.addClass('hidden');
+        if (mobile.matches || nondesktop.matches) {
+            navLinks.addClass('hidden');
+        }
         island_img.on("load", function () {
             console.log("showPreloaderAndAnimation - on load");
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
-            //navLinks.removeClass('hidden');
+            navLinks.removeClass('hidden');
             //showing pins for touchscreens, with delay if there is back to start animation
             if (main.attr('data-source')) {
             setTimeout(function () {
@@ -333,7 +341,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             body.removeClass('loading');
             main.removeClass('hidden');
             island.removeClass('hidden');
-            //navLinks.removeClass('hidden');
+            navLinks.removeClass('hidden');
             //showing pins for touchscreens
             //showing pins for touchscreens, with delay if there is back to start animation
             if (main.attr('data-source')) {

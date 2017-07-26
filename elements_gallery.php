@@ -2,8 +2,8 @@
     <div class="col-12 photos">
         <div class="row">
             <picture class="col-4">
-                <a href="#" title="PORSCHE CUP - plakat turniejowy">
-                    <img id="gallery" src="images/thumbnail_porsche-cup.jpg" alt="PORSCHE CUP - plakat turniejowy" data-source="images/porsche-cup.jpg" data-order="1">
+                <a href="#" title="MDM Mieszkania na Krzykach  - materiały reklamowe">
+                    <img id="gallery" src="images/thumbnail_nowy_produkt.jpg" alt="MDM Mieszkania na Krzykach  - materiały reklamowe" data-source="images/nowy_produkt.jpg" data-order="1">
                 </a>
             </picture>
             <picture class="col-4">

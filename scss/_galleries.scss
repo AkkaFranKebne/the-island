@@ -262,7 +262,7 @@
             width: $modalCaptionWidth;
             max-width: $modalCaptionMaxWidth;
             text-align: center;
-            color: $secondaryColor;
+            color: $textsColor;
             padding: 50px;
             height: $modalCaptionHeight;
             font-size: $descriptionFontSize;
@@ -271,14 +271,12 @@
             padding: 0;
             position: relative;
             top: -30vh;
-            color: black;
         }
         @include non-desktop {
             height: 0;
             padding: 0;
             position: relative;
             top: -30vh;
-            color: black;
         }
     }
     }

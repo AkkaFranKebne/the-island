@@ -155,6 +155,7 @@ body {
     h4 {
         font-size: $descriptionFontSize;
         line-height: $descriptionLineHeight;
+        color: $textsColor;
         @include mobile {
             font-size: $descriptionFontSizeMobile;
             line-height: $descriptionLineHeightMobile;
@@ -224,6 +225,14 @@ body {
         a {
             position: relative;
             top: 100px;
+            @include non-desktop {
+                top: 60px;
+
+            }
+            @include mobile {
+                top: 60px;
+
+            }
             padding: $menuLinksPadding;
             text-decoration: none;
             font-size: $sideNavFontSize;
@@ -266,12 +275,18 @@ body {
             width: 100%;
             background-color: transparent;
             position: absolute;
+            a {
+                color: $primaryColor;
+            }
         }
         @include mobile {
             padding-top: $menuMainPagePaddingTopMobile;
             width: 100%;
             background-color: transparent;
             position: absolute;
+            a {
+                color: $primaryColor;
+            }
         }
     }
     /* Menu icon hamburger */
@@ -286,20 +301,11 @@ body {
         cursor: pointer;
         /* better visibility of hamburger for very small and small displays, as it is fixed there */
         @include non-desktop {
+            position: absolute;
             margin-top: $hamburgerMobileMarginTop;
-            border-radius: 50%;
-            padding: 5px 8px 5px 8px;
-            height: $hamburgerMobileBackgroundHeight;
-            width: $hamburgerMobileBackgroundWidth;
-            //margin-left: 35px;
-            //margin-top: 110px;
         }
         @include mobile {
-            border-radius: 50%;
-            padding: 5px 8px 5px 8px;
-            height: $hamburgerMobileBackgroundHeight;
-            width: $hamburgerMobileBackgroundWidth;
-            margin-left: $hamburgerMobileMarginLeft;
+            position: absolute;
             margin-top: $hamburgerMobileMarginTop;
         }
         .bar1,
