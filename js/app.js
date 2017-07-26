@@ -1,44 +1,44 @@
 $(document).ready(function () {
     /* 
-        
-testowanie  - SPRAWDZIC NA FAKTYCZNYCH URZADZENIACH
+      
+do zrobienia jutro:
 
+bledy:
 > background image cover szanuje nexus 7
 > meny rwie na mobilnym przy rozwijaniu i nie otwiera na dole strony  przy hamburger fixed
 
 
-emulatory:
-> edge -  menu przesuwa sie w prawo przy kliku w modal i wejsciu na podstrony 
-nie dziala na opera mini - jak to wyglada?:
-> transform
-> transition 
-> animation 
-> border radius 
-> box shadow 
+ulepszenia:
+> lepszy pomysl na wyliczanie polozenia pinow - map coords?
+> lepszy pomysl na rozmiar karteczek z subtytulami tak, aby nie wychodzily nigdy tytuly poza (jquery szwankuje przy slabym necie? czasem wylicza male wartosci i dopiero po przeladowaniu dziala)
+> przepisanie na funkcje next/previous image
 
-        > przepisanie na funkcje next/previous image
-        > uporzadkowanie css i js i html
 
+przed oddaniem koniecznie
+> png optymalizacja
+> uporzadkowanie css i js i html
+> linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
 --------------------------------------------------------------
   
  
-to do:
-        > lepszy pomysl na wyliczanie polozenia pinow - map coords?
-        > lepszy pomysl na rozmiar karteczek z subtytulami tak, aby nie wychodzily nigdy tytuly poza (jquery szwankuje przy slabym necie? czasem wylicza male wartosci i dopiero po przeladowaniu dziala)
-        > mobile: zablokowanie modalu dla portrait
-        > png optymalizacja
-        > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
+w przyszlym tygodniu
+> nowy obszar - smok - galeria o nas
+> inny uklad kontaktu
+> etykiety zamiast pinow
+> potestowanie wiekszej rozdzielczosci tla
+>inne uwagi klienta <3
+> na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
 
 
-do zmiany przed oddaniem:
-        > linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
+--------------------------------------------------------------
         
-extra homework:
-        > lazy load obczaic
-        > blur load obczaic
-        > creative cloud obczaic
-        > gulp svg konwersja obczaic
-        > cookie js obczaic
+do poczytania:
+        > lazy load 
+        > blur load 
+        > creative cloud 
+        > gulp svg konwersja 
+        > awsomefonts
+        > cookie js 
         > instalacja photoshop i ciecie
 
 -------------------------------------------------------------------
