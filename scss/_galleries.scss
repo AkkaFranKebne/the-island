@@ -152,15 +152,15 @@
         background-position: center;
         background-size: contain;
         @include mobile {
-            width: 105px;
-            height: 85px;
+            width: 50px;
+            height: 40px;
         }
         @include non-desktop {
-            width: 105px;
-            height: 85px;
+            width: 50px;
+            height: 40px;
         }
         position: absolute;
-        top: 200px;
+        top: 30px;
     }
     .right {
         background-image: url('../images/gallery-arrow-right.png');
@@ -187,6 +187,27 @@
         }
     }
     }
+    
+        /* preloader */
+    #preloader {
+        height: 200px;
+        width: 200px;
+        padding-top: 30px;
+        margin: auto; //center the image
+        display: block;
+        @include mobile {
+            height: 50px;
+            width: 50px;
+            padding-top: 35vh;
+        }
+        @include non-desktop {
+            height: 50px;
+            width: 50px;
+            padding-top: 35vh;
+        }
+    }
+    
+   
 
     /* image in modal*/
     .modal-content {
@@ -220,17 +241,7 @@
     .next-modal-content {
         display: none;
     }
-    /* preloader */
-    #preloader {
-        margin: auto; //center the image
-        display: block;
-        @include mobile {
-            width: $modalPreloaderWidthMobile;
-        }
-        @include non-desktop {
-            width: $modalPreloaderWidthNondesktop;
-        }
-    }
+
     /* caption for modal */
     .bottom-bar{
         position: relative;

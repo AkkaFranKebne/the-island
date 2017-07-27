@@ -1,23 +1,19 @@
 $(document).ready(function () {
     /* 
       
-do zrobienia jutro:
-
-bledy:
-> background image cover szanuje nexus 7
-> meny rwie na mobilnym przy rozwijaniu i nie otwiera na dole strony  przy hamburger fixed
-
-
-ulepszenia:
+do ulepszenia:
+> full screen dla galerii dla mobile
 > lepszy pomysl na wyliczanie polozenia pinow - map coords?
 > lepszy pomysl na rozmiar karteczek z subtytulami tak, aby nie wychodzily nigdy tytuly poza (jquery szwankuje przy slabym necie? czasem wylicza male wartosci i dopiero po przeladowaniu dziala)
-> przepisanie na funkcje next/previous image
+> przepisanie na funkcje next/previous image - no code duplicate
+> png optymalizacja
 
 
 przed oddaniem koniecznie
-> png optymalizacja
+> komp win popatrzec
 > uporzadkowanie css i js i html
 > linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
+>przejrzec kod i zrozumiec
 --------------------------------------------------------------
   
  
@@ -25,7 +21,6 @@ w przyszlym tygodniu
 > nowy obszar - smok - galeria o nas
 > inny uklad kontaktu
 > etykiety zamiast pinow
-> potestowanie wiekszej rozdzielczosci tla
 >inne uwagi klienta <3
 > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
 
@@ -763,7 +758,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             modal.find('.left').show();
 
             //withrdaw changes from body
-            body.removeClass('fitInViewport');
+            body.removeClass('fitInViewport').css("height", "auto").css("overflow", "auto").css("position", "relative"); 
             
             //hamburger z-index back
             hamburger.css("z-index", "4");
@@ -953,7 +948,6 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
     // ----hamburger menu onclick//////////
     
- 
 
     hamburger.on('click', function () {
         $(this).toggleClass('change'); //rotation to x 
@@ -965,8 +959,9 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             $(this).children().css('background-color', secondaryColor);
             //add opacity
             menuOpacity.css("background-color", expandedNavMEnuOpacityColor).css("z-index", "3");
-            //hide evryting that goes outside
-            body.css("overflow", "hidden"); //hide evryting that goes outside               
+            //hide evryting that goes outside and fix body
+            body.css("height", "100vh").css("overflow", "hidden").css("position", "fixed"); 
+
         
 
         } else if ($(this).parent().find('.sidenav').hasClass('expanded')) {
@@ -975,6 +970,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             body.css("overflow", "auto");
             //change hamburger color
             $(this).children().css('background-color', primaryColor);
+            //show evryting that goes outside and unfix body
+            body.css("height", "auto").css("overflow", "auto").css("position", "relative");  
         }
 
     });
@@ -1092,14 +1089,22 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         
         //unabling with portait mode
       if (portrait.matches) {
-          alert("Aby powiększyć obrazek obróć urządzenie w tryb pejzażu");
+          alert("Aby powiększyć obrazek obróć urządzenie w tryb pejzażu i kliknij ponownie!");
           return false;
       }
         else
     
        {
+        //fix body
+        body.css("height", "100vh").css("overflow", "hidden");
+     if (mobile.matches || nondesktop.matches) {
+        body.css("position", "fixed");  
+     }
+           
         //hide hamburger
         hamburger.css("z-index", "3");
+           
+           
         //prepare variables for loading 3 images: current, previous and next 
         var dataSource = $(this).data('source');
         var dataSourcePrevious = '';
@@ -1125,14 +1130,19 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 if ($(this).hasClass('video')) {
                     modal.find('iframe.modal-content').attr('src', dataSource);
                     modal.find('img.modal-content').hide();
-                    modalArrowPosition($('iframe.modal-content'));
+                    if (!mobile.matches && !nondesktop.matches){
+                        modalArrowPosition($('iframe.modal-content'));
+                    }
+                    
                 }
                 //as an image
                 else {
                     console.log($('img.modal-content').height());
                     modal.find('img.modal-content').attr('src', dataSource);
                     modal.find('iframe.modal-content').hide();
-                    modalArrowPosition($('img.modal-content'));
+                    if (!mobile.matches && !nondesktop.matches){
+                        modalArrowPosition($('img.modal-content'));
+                    }
                     
                 }
 

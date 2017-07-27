@@ -136,7 +136,7 @@ body {
             font-size: $titlesFontSizeNondesktop;
         }
         &#error_page404 {
-            font-size: 40vh;
+            font-size: 25vh;
         }
         &#error_page_info {
             font-size: 10vh;
@@ -208,16 +208,12 @@ body {
                 width: 100vw;
                 height: 110vh;
                 overflow: hidden;
-                position: relative;
-                top: -10vh;
 
             }
             @include mobile {
                 width: 100vw;
                 height: 110vh;
                 overflow: hidden;
-                position: relative;
-                top: -10vh;
 
             }
         }
@@ -303,10 +299,12 @@ body {
         @include non-desktop {
             position: absolute;
             margin-top: $hamburgerMobileMarginTop;
+            margin-left: $hamburgerMobileMarginLeft;
         }
         @include mobile {
             position: absolute;
             margin-top: $hamburgerMobileMarginTop;
+            margin-left: $hamburgerMobileMarginLeft;
         }
         .bar1,
         .bar2,
@@ -425,7 +423,8 @@ body {
     }
     /*404*/
     #error_page_image{
-        margin: 0 25vw;
+        width: 100%;
+        height: auto;
     }
 }
 

@@ -126,9 +126,9 @@ input[type=text]:focus {
     text-align: center;
     background: none;
     cursor: pointer;
-    -moz-border-radius: 3px;
-    -webkit-border-radius: 3px;
-    border-radius: 3px;
+    //-moz-border-radius: 3px;
+    //-webkit-border-radius: 3px;
+    //border-radius: 3px;
 }
 
 #form_wrap:hover input[type=submit] {
@@ -142,7 +142,7 @@ input[type=text]:focus {
 }
 
 #form_wrap:hover input:hover[type=submit] {
-    color: #435c70;
+    color: $secondaryColor;
 }
 
 
@@ -262,7 +262,7 @@ input[type=text]:focus {
     }
     
     #form_wrap input[type=submit] {
-        top: 20px;
+        //top: 20px;
 }
 
 }
@@ -318,7 +318,10 @@ input[type=text]:focus {
         height: 130px;
     }
     
-
+#form_wrap input[type=submit] {
+        position: relative;
+        bottom: 10px;
+    }
     
     .action{
     visibility: hidden;
@@ -363,7 +366,7 @@ input[type=text]:focus {
     }
        #form_wrap:hover {
         top: 10px;
-        height: 440px;  //////////////////////different than mobile!
+        height: 540px;  //////////////////////different than mobile!
     }
     /* form styles for mobile*/
     form {
@@ -378,6 +381,11 @@ input[type=text]:focus {
     }
     textarea {
         height: 130px;
+    }
+    
+    #form_wrap input[type=submit] {
+        position: relative;
+        bottom: 10px;
     }
  
     .action{

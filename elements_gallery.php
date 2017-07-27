@@ -63,14 +63,13 @@
                  <div class="arrow right hidden"></div>
             </div>
             <!-- Preloader-->
-            <img id="preloader" src="images/loading.gif">
-
-
             <!-- Modal Content PRE (The Image) -->
             <img class="previous-modal-content" src="#">
             <iframe class="previous-modal-content" src="#" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
             <!-- Modal Content (The Image) -->
+            <img id="preloader" src="images/loading.gif" >
+            
             <img class="modal-content hidden" src="#">
             <iframe class="modal-content hidden" src="#" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
