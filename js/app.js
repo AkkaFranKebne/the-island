@@ -2,11 +2,17 @@ $(document).ready(function () {
     /* 
       
 do ulepszenia:
+
+ANIMACJA WYMAGA ABY STRONA BYLA 100vh
 desktop:
 > niektore desktopy "widza" piny - dlaczego? zle medium rozpoznajace dotykowe?
-> subtytuly na wolnych tabletach nie dolicza wysokosci na czas
+
+> zmienic wyliczanie subtytulow - subtytuly na wolnych tabletach nie dolicza wysokosci na czas
+
 > logo nie chce byc na wierzchu 
+
 > modal galeria: co jakis czas przy  iframe sie nie ukrywa
+
 > modal galeria: w iframe nie dziala kierowanie strzalkami na klawiaturze  (jest wykorzystane do przesuwania filmu w iframe)
 
 
@@ -15,6 +21,7 @@ mobile:
 > iframe na tablecie: nie dziala swipe, nie chowa sie 
 
 
+> animacja  back to start gdy nie konczy - zostaje przy poczatkowym ustawieniu wyspy, nie koncowym
 > png optymalizacja - jakie narzedzie? - czemu imagemin nie dziala?
 
 --------------------------------------------------------------
