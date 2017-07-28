@@ -71,7 +71,7 @@
             <img id="preloader" src="images/loading.gif" >
             
             <img class="modal-content hidden" src="#">
-            <iframe class="modal-content hidden" src="#" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <iframe id="vimeo-player" class="modal-content hidden" src="#" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
             <!-- Modal Content NEXT (The Image) -->
             <img class="next-modal-content hidden" src="#">
