@@ -789,7 +789,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             modal.find('.left').show();
 
             //withdraw possible changes from body
-            body.removeClass('fitInViewport').css("height", "auto").css("overflow", "auto").css("position", "relative"); 
+            //body.removeClass('fitInViewport').css("height", "auto").css("overflow", "auto").css("position", "relative"); 
             
             //hamburger z-index back
             hamburger.css("z-index", "4");
@@ -1130,7 +1130,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     
        {
         //fix body
-        body.css("height", "100vh").css("overflow", "hidden");
+        //body.css("height", "100vh").css("overflow", "hidden");
         if (mobile.matches || nondesktop.matches) {
             body.css("position", "fixed");  
      }
