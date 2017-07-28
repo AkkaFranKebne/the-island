@@ -20,7 +20,7 @@ body {
     {
         background-image: $loadingImage;
         background-position: center;
-        background-size: 314px 273px;
+        background-size: $loadingSize;
     }
     /* Backgrounds of subpages */
     @each $subpage in eventy,
@@ -52,18 +52,18 @@ body {
     }
     .title-bar{
         position: relative;
-        top: -15px;
-        height: 75px;
-        width: 217px;
+        top: $titleBarTop;
+        height: $titleBarHeight;
+        width: $titleBarWidth;
         @include mobile {
-            height: 15vmax;
-            width: 25vmax;
+            height: $titleBarHeightMobile;
+            width: $titleBarWidthMobile;
         }
         @include non-desktop {
-            height: 14vmax;
-            width: 25vmax;
+            height: $titleBarHeightNondesktop;
+            width: $titleBarWidthNondesktop;
         }
-        background-image: url('../images/title-bar.png');
+        background-image: $titleBarBackground;
         background-size: 100% 100%;
         background-repeat: no-repeat;
         background-position: center;
@@ -80,28 +80,27 @@ body {
         }
     }
     .description-bar{
-        //border: 1px solid red;
         position: relative;
-        top: -45px;
-        height: 150px;
-        width: 80%;
-        max-width: 90%;
-        padding: 60px 70px 50px 50px;
+        top: $desBarTop;
+        height: $desBarHeight;
+        width: $desBarWidth;
+        max-width: $desBarWidthMax;
+        padding: $desBarPadding;
         @include mobile {
-            height: 15vmax;
-            width: 100%;
+            height: $desBarHeightMobile;
+            width: $desBarWidthMobile;
             background-image: none;
             padding: 0;
             top: 0;
         }
         @include non-desktop {
-            height: 14vmax;
-            width: 100%;
+            height: $desBarWidthNondesktop;
+            width: $desBarHeightNondesktop;
             background-image: none;
             padding: 0;
             top: 0;
         }
-        background-image: url('../images/description-bar.png');
+        background-image: $descriptionBarBackground;
         background-size: 100% 100%;
         background-repeat: no-repeat;
         background-position: center;

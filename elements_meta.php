@@ -19,9 +19,9 @@
 <!-- javascript -->
 <script src="js/app.js"> </script>
 <!-- favicon -->
-<link rel="icon" href="images/favicon.gif" type="image/gif" sizes="16x16"> <!-- change the path for production -->
+<link rel="icon" href="favicon.gif" type="image/gif" sizes="16x16"> 
 <!-- css -->
-<link rel="stylesheet" type="text/css" href="css/index.css"/> 
+<link rel="stylesheet" type="text/css" href="css-minified/index.css"/> 
 <link href="https://fonts.googleapis.com/css?family=Oswald:200&amp;subset=latin-ext" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css?family=Caveat:400,700&amp;subset=latin-ext" rel="stylesheet">
 <!--[if lt IE 9]>

@@ -18,10 +18,19 @@ $menuColorWithOpacity: rgba(250, 250, 250, 0);
 $menuColorWithOpacityStrong: rgba(250, 250, 250, 0.3);
 //images sources
 $loadingImage: url('../images/loading_pigs.gif');
-$islandImage: url(../images/wyspa%20www.png), url('../images/background.jpg');
+$loadingSize: 314px 273px;
+$islandImage:url(../images/wyspa%20www.png), url('../images/background.jpg');
 $islandImageNondesktop: url('../images/background.jpg');
 $islandImageMobile: url('../images/background.jpg');
 $mobileMenuBackground: url('../images/lemonhills.png');
+$titleBarBackground: url('../images/title-bar.png');
+$descriptionBarBackground: url('../images/description-bar.png');
+$modalTopBar: url('../images/modal-top-bar.png');
+$modalBottomBar: url('../images/modal-bottom-bar.png');
+$modalarrowLeft: url('../images/gallery-arrow-left.png');
+$modalarrowRight: url('../images/gallery-arrow-right.png');
+$contactFrameDPR: url('../images/frame-DPR.png');
+$contactFrameGLW: url('../images/frame-GLW.png');
 //transitions
 $menuTransitionSec: 0.5s;
 $pinAnimationSec: 1s;
@@ -90,8 +99,6 @@ $hamburgerMobileMarginTop: 95px;
 $hamburgerMobileBackgroundHeight:64px;
 $hamburgerMobileBackgroundWidth: 64px;
 $hamburgerMobilePadding: 9px 9px 9px 12px;
-
-
 //Logo
 $logoMaxWidth: 449px;
 $logoTopMargin: 30px;
@@ -103,7 +110,26 @@ $closeRightMargin: 60px;
 $closeBarHeight: 9px;
 $closeBarWidth: 50px;
 $CloseBarMargin: 8px 0;
+//title bar
+$titleBarTop: -15px;
+$titleBarHeight: 75px;
+$titleBarWidth: 217px;
+$titleBarHeightMobile: 15vmax;
+$titleBarWidthMobile: 25vmax;
+$titleBarHeightNondesktop: 14vmax;
+$titleBarWidthNondesktop: 25vmax;
+//descrption bar
+$desBarTop: -45px;
+$desBarPadding: 60px 70px 50px 50px;
+$desBarHeight: 150px;
+$desBarWidth: 80%;
+$desBarWidthMax: 90%;
+$desBarHeightMobile: 15vmax;
+$desBarWidthMobile: 100%;
+$desBarHeightNondesktop: 14vmax;
+$desBarWidthNondesktop: 100%;
 //gallery 
+$galleryFromTop: -30px;
 $galleryElementsBorderRadius: 5px;
 $picturePadding: 0.1vw;
 $pictureMargin: 0;

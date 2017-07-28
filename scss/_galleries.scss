@@ -7,7 +7,7 @@
 
 .gallery {
     position: relative;
-    top: -30px;
+    top: $galleryFromTop;
         @include mobile {
             top: 0;
         }
@@ -97,7 +97,7 @@
         margin-right: auto;
         width: 100%;
         height: 105px;
-        background-image: url('../images/modal-top-bar.png');
+        background-image: $modalTopBar;
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100%;
@@ -163,7 +163,7 @@
         top: 30px;
     }
     .right {
-        background-image: url('../images/gallery-arrow-right.png');
+        background-image: $modalarrowRight;
         //@include right();
         right: 1vw;
         @include mobile {
@@ -174,7 +174,7 @@
         }
     }
     .left {
-        background-image: url('../images/gallery-arrow-left.png');
+        background-image: $modalarrowLeft;
         //@include left();
         left: 1vw;
          @include mobile {
@@ -251,7 +251,7 @@
         margin-right: auto;
         height: 120px;
         width: 100%;
-        background-image: url('../images/modal-bottom-bar.png');
+        background-image: $modalBottomBar;
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100%;
@@ -301,6 +301,6 @@
         animation-name: pureopacity;
         animation-duration: $menuTransitionSec;
     }
-    /* close button */
+
 
 }

@@ -6,7 +6,7 @@
     height: 100%;
     width: 100%;
     padding: 20px;
-    background-image: url('../images/frame-DPR.png'), url('../images/frame-GLW.png');
+    background-image: $contactFrameDPR, $contactFrameGLW;
     background-repeat: no-repeat;
     background-position: bottom right, top left;
         #location {

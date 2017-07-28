@@ -5,15 +5,8 @@ do ulepszenia:
 > full screen dla galerii dla mobile - jak?
 > przepisanie na funkcje next/previous image - no code duplicate
 > na iframe knoci sie kierowanie strzalkami w modal (jest wykorzystane do przesuwania filmu w iframe)
-> png optymalizacja - jakie narzedzie?
+> png optymalizacja - jakie narzedzie? - czemu imagemin nie dziala?
 
-
-
-przed oddaniem koniecznie
-> komp win popatrzec
-> uporzadkowanie css i js i html
-> linki do mini css i zoptymalizowanych obrazkow zmienic - czemu imagemin nie dziala?
->przejrzec kod i zrozumiec
 --------------------------------------------------------------
   
  
