@@ -2,7 +2,7 @@
     <?php include 'elements_sideNav.php';?>
     <div class="container">
         <a href="index.php?source=<?php echo $_SERVER['SCRIPT_NAME'] ?>">
-            <img class="block" id="logo" src="images/lemonhills.png" alt="" />
+            <img class="block" id="logo"  src="images/lemonhills.png" alt="" />
         </a>
     </div>
     <a href="index.php?source=<?php echo $_SERVER['SCRIPT_NAME'] ?>">

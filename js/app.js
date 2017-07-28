@@ -2,9 +2,19 @@ $(document).ready(function () {
     /* 
       
 do ulepszenia:
-> full screen dla galerii dla mobile - jak?
-> przepisanie na funkcje next/previous image - no code duplicate
-> na iframe knoci sie kierowanie strzalkami w modal (jest wykorzystane do przesuwania filmu w iframe)
+desktop:
+> niektore desktopy "widza" piny - dlaczego? zle medium rozpoznajace dotykowe?
+> subtytuly na wolnych tabletach nie dolicza wysokosci na czas
+> logo nie chce byc na wierzchu 
+> modal galeria: co jakis czas przy  iframe sie nie ukrywa
+> modal galeria: w iframe nie dziala kierowanie strzalkami na klawiaturze  (jest wykorzystane do przesuwania filmu w iframe)
+
+
+mobile: 
+>full screen dla galerii dla mobile - jak?
+> iframe na tablecie: nie dziala swipe, nie chowa sie 
+
+
 > png optymalizacja - jakie narzedzie? - czemu imagemin nie dziala?
 
 --------------------------------------------------------------
@@ -15,7 +25,7 @@ w przyszlym tygodniu
 > inny uklad kontaktu
 > etykiety zamiast pinow
 > ramka nachodzi na strzalke play w filmie - klient musi dac nie tak powyginana ramke
->inne uwagi klienta <3
+> estetyka mobile - klient
 > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
 
 
@@ -48,6 +58,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
     //----------------------VARIABLES-----------------------------------------------------------------------
 
+    
+    
     //media queries
     var mobile = window.matchMedia("screen and  (max-width: 450px)");
     var nondesktop = window.matchMedia("screen  and (max-width: 800px) and (min-width: 451px)");
@@ -98,7 +110,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     
     //subtitels size
     var barWiderThanTitlePx = 100; 
-    var boxHigherThenTextPx = -30;
+    var boxHigherThenTextPx = 0;
 
     //map image
     //maplight library setup //////////
@@ -247,7 +259,6 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         return true; //necesarry?
     }
     
-    
     // position of pins////////////////////////////////////////
     function setPinsCoords(){
     var param = body[0].clientWidth / initWidth;  //size param
@@ -272,6 +283,11 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         x = x * param;  //adjusting to the new img size
         y = y * param;
         x = x + mainPaddingLeftPx   ; //icluding padding 
+        y = y + grpelemPaddingTopPx;
+        //fix for unusuall shape of newbix
+        if ($(this).attr('alt') == 'newbiz'){
+            y = y + 100;
+        }
         var yPluse = y + 10;  // y for pulse under pin
         x= x+'px';
         y= y+'px';
@@ -789,7 +805,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             modal.find('.left').show();
 
             //withdraw possible changes from body
-            //body.removeClass('fitInViewport').css("height", "auto").css("overflow", "auto").css("position", "relative"); 
+            body.removeClass('fitInViewport').css("position", "relative"); 
             
             //hamburger z-index back
             hamburger.css("z-index", "4");

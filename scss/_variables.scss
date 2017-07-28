@@ -155,7 +155,7 @@ $modalImgWidth: auto;
 $modalImgWidthMobile: 100%;
 //modal iframe
 $modalIframeHeightMobile: 100vh !important;
-$modalIframeWidth: 80vw !important;
+$modalIframeWidth: 70vw !important;
 $modalIframeWidthMobile: 100vw !important;
 //modal caption
 $modalCaptionWidth: 90%;
@@ -173,7 +173,7 @@ $modalCloseWidth: 45px;
 $modalClosePadding: 0 0 2px 11px;
 //location (contact)
 $locationWidth: 100%;
-$locationHeight: 30vh;
+$locationHeight: 30vmax;
 $locationBorder: none;
 //copy
 $copyfromBottom: 10px;

@@ -83,19 +83,19 @@ body {
         position: relative;
         top: $desBarTop;
         height: $desBarHeight;
-        width: $desBarWidth;
+        width: auto;
         max-width: $desBarWidthMax;
         padding: $desBarPadding;
         @include mobile {
             height: $desBarHeightMobile;
-            width: $desBarWidthMobile;
+            width: auto;
             background-image: none;
             padding: 0;
             top: 0;
         }
         @include non-desktop {
             height: $desBarWidthNondesktop;
-            width: $desBarHeightNondesktop;
+            width: auto;
             background-image: none;
             padding: 0;
             top: 0;
@@ -221,11 +221,11 @@ body {
             position: relative;
             top: 100px;
             @include non-desktop {
-                top: 60px;
+                top: 0.1vmin;
 
             }
             @include mobile {
-                top: 60px;
+                top: 0.1vmin;
 
             }
             padding: $menuLinksPadding;
@@ -261,6 +261,14 @@ body {
         a:hover,
         a:focus {
             background-color: $backgroundColorMenu;
+            @include non-desktop {
+                background-color: transparent;
+
+            }
+            @include mobile {
+                background-color: transparent;
+
+            }
         }
     }
     /* on the main page for very small and small displays sidenav menu is open and in absloute position */
@@ -272,6 +280,7 @@ body {
             position: absolute;
             a {
                 color: $primaryColor;
+                top: 60px;
             }
         }
         @include mobile {
@@ -281,6 +290,7 @@ body {
             position: absolute;
             a {
                 color: $primaryColor;
+                top: 60px;
             }
         }
     }
@@ -335,7 +345,7 @@ body {
             height: auto;
             width: 100%;
             margin-top: $logoTopMargin;
-            z-index: 9999;
+            z-index: 5!important;
         }
     }
     /* X sign at subpages */

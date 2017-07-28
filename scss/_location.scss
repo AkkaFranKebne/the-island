@@ -12,6 +12,12 @@
         #location {
         width: $locationWidth;
         height: $locationHeight;
+        @include mobile {
+            height: 50vmax;
+        }
+        @include non-desktop {
+            height: 50vmax;
+        }
         max-height: 240px;
         border: $locationBorder;
         /* animation for entering the web page */
