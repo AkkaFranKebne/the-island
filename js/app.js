@@ -3,7 +3,6 @@ $(document).ready(function () {
       
 do ulepszenia:
 
-ANIMACJA WYMAGA ABY STRONA BYLA 100vh
 desktop:
 > niektore desktopy "widza" piny - dlaczego? zle medium rozpoznajace dotykowe?
 
@@ -15,6 +14,10 @@ desktop:
 
 > modal galeria: w iframe nie dziala kierowanie strzalkami na klawiaturze  (jest wykorzystane do przesuwania filmu w iframe)
 
+> modal galeria, iframe zaciaga strone
+
+> modal galeria, wielkosc iframe zalezna od wysokosci
+
 
 mobile: 
 >full screen dla galerii dla mobile - jak?
@@ -25,13 +28,14 @@ mobile:
 > png optymalizacja - jakie narzedzie? - czemu imagemin nie dziala?
 
 --------------------------------------------------------------
-  
+
  
 w przyszlym tygodniu
+> zmniejszenie galerii, tak, by miescila sie w 100vh 
+> ramka nachodzi na strzalke play w filmie - klient musi dac nie tak powyginana ramke
 > nowy obszar - smok - galeria o nas
 > inny uklad kontaktu
 > etykiety zamiast pinow
-> ramka nachodzi na strzalke play w filmie - klient musi dac nie tak powyginana ramke
 > estetyka mobile - klient
 > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
 
@@ -481,7 +485,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                             .removeClass('exposed')
                             .addClass('hidden');
                         island.removeClass('hidden');
-                        isTouch(); //pins can be hidden after click 
+                        //isTouch(); //pins can be hidden after click 
                     }
                 }
             );

@@ -17,6 +17,7 @@
                 </a>
             </picture>
         </div>
+        <!--
         <div class="row">
             <picture class="col-4">
                 <a href="#" title="OSIEDLE PRZYSTAŃ - folder sprzedażowy">
@@ -34,6 +35,7 @@
                 </a>
             </picture>
         </div>
+-->
         <div class="row">
             <picture class="col-4">
                 <a href="#" title="Gala Oscarów MEDICUSA - oprawa graficzna, produkcja materiałów, scenografia, hostessy, wizaż">
