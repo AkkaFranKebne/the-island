@@ -810,6 +810,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             modal.find('.modal-content').each(function(){
                 $(this).fadeOut('slow');
             });
+            modal.find('.bottom-bar').addClass('hidden');
+            modal.find('.top-bar').addClass('hidden');
 
             //preparing arrows
             modal.find('.right').show();
@@ -922,6 +924,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 modal.find('.arrow').removeClass('hidden');
                 modal.find('.arrow-background').removeClass('hidden');
                 modal.find('#caption').removeClass('hidden');
+                modal.find('.bottom-bar').removeClass('hidden');
+                modal.find('.top-bar').removeClass('hidden');
                 //setting the bars width
                 modalBarLength($(el));        
     }

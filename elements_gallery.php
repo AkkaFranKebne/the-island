@@ -59,7 +59,7 @@
         <div  class="col-12 modal-area">
 
             <!-- The Close Button -->
-            <div class='top-bar'>    
+            <div class='top-bar hidden'>    
                 <span class="close"></span>
                  <div class="arrow left hidden"></div>
                  <div class="arrow right hidden"></div>
@@ -67,23 +67,26 @@
             <!-- Preloader-->
             <!-- Modal Content PRE (The Image) -->
             <img class="previous-modal-content" src="#">
-            <iframe class="previous-modal-content" src="#" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-
+            <!--
+            <iframe class="previous-modal-content" src="images/loader-background.jpg" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            -->
             <!-- Modal Content (The Image) -->
             <img id="preloader" src="images/loading.gif" >
             
             <img class="modal-content hidden" src="#">
-            <iframe id="vimeo-player" class="modal-content hidden" src="#" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <iframe id="vimeo-player" class="modal-content hidden" src="images/loader-background.jpg" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
             <!-- Modal Content NEXT (The Image) -->
             <img class="next-modal-content hidden" src="#">
-            <iframe class="next-modal-content hidden" src="#" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            <!--
+            <iframe class="next-modal-content hidden" src="images/loader-background.jpg" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+                -->
 
             
 
 
             <!-- Modal Caption (Image Text) -->
-            <div class='bottom-bar'><div id="caption" class="hidden"></div></div>
+            <div class='bottom-bar hidden'><div id="caption" class="hidden"></div></div>
             
 
 
