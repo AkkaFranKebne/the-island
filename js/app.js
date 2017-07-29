@@ -931,7 +931,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     }
     
  
-    
+
     
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
@@ -1210,16 +1210,17 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 }
 
                 //prepare the previous image/video
+                //prepare the previous image/video
                 if (galleryImages.eq(index - 1).hasClass('video')) {
-                    setIframePre();
+                    modal.find('iframe.previous-modal-content').attr('src', dataSourcePrevious);
                 } else {
-                    setImgPre();
+                    modal.find('img.previous-modal-content').attr('src', dataSourcePrevious);
                 }
                 //prepare the next image/video
                 if (galleryImages.eq(index + 1).hasClass('video')) {
-                    setIframeNxt();
+                    modal.find('iframe.next-modal-content').attr('src', dataSourceNext);
                 } else {
-                    setImgNxt();
+                    modal.find('img.next-modal-content').attr('src', dataSourceNext);
                 }
             }
         });
