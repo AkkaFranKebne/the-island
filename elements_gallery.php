@@ -17,7 +17,7 @@
                 </a>
             </picture>
         </div>
-        <!--
+        
         <div class="row">
             <picture class="col-4">
                 <a href="#" title="OSIEDLE PRZYSTAŃ - folder sprzedażowy">
@@ -35,7 +35,6 @@
                 </a>
             </picture>
         </div>
--->
         <div class="row">
             <picture class="col-4">
                 <a href="#" title="Gala Oscarów MEDICUSA - oprawa graficzna, produkcja materiałów, scenografia, hostessy, wizaż">
@@ -67,20 +66,18 @@
             <!-- Preloader-->
             <!-- Modal Content PRE (The Image) -->
             <img class="previous-modal-content" src="#">
-            <!--
-            <iframe class="previous-modal-content" src="images/loader-background.jpg" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            -->
+  
             <!-- Modal Content (The Image) -->
             <img id="preloader" src="images/loading.gif" >
             
             <img class="modal-content hidden" src="#">
-            <iframe id="vimeo-player" class="modal-content hidden" src="images/loader-background.jpg" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            
+            <div id="video"></div>
+            <!--<iframe id="vimeo-player" class="modal-content hidden" src="images/loader-background.jpg" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
 
             <!-- Modal Content NEXT (The Image) -->
             <img class="next-modal-content hidden" src="#">
-            <!--
-            <iframe class="next-modal-content hidden" src="images/loader-background.jpg" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-                -->
+
 
             
 

@@ -10,11 +10,10 @@ desktop:
 
 > logo nie chce byc na wierzchu 
 
-> modal galeria: co jakis czas przy  iframe sie nie ukrywa
+> modal galeria:  iframe sie nie ukrywa jesli wejdzie sie na niego z galerii
 
 > modal galeria: w iframe nie dziala kierowanie strzalkami na klawiaturze  (jest wykorzystane do przesuwania filmu w iframe)
 
-> modal galeria, iframe zaciaga strone
 
 > modal galeria, wielkosc iframe zalezna od wysokosci
 
@@ -72,6 +71,9 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     
     
     //media queries
+    var currentItemIndex = 0;
+    
+    
     var mobile = window.matchMedia("screen and  (max-width: 450px)");
     var nondesktop = window.matchMedia("screen  and (max-width: 800px) and (min-width: 451px)");
     var desktop = window.matchMedia("screen and (min-width: 801px) and (max-width: 960px)");
@@ -567,10 +569,10 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     
     //stopping all iframe videos ///////////////////////////////////////
     function stopAllIframes() {
-       /* $("iframe").each(function() { 
+        /*$("iframe").each(function() { 
             var src= $(this).attr('src');
-            $(this).attr('src',src);  
-        });   */     
+            $(this).attr('src',src);              
+        });*/        
     }
     
     //funding current image  in modal //////////////////////////////// 
@@ -588,8 +590,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     // set img as a modal image//////////////////////////////////
     
     function setImg(){
-        modal.find('img.modal-content').attr('src', dataSource).removeClass('hidden').fadeIn(modalFadeInOutTimeMilisec);
-        //modal.find('iframe.modal-content').fadeOut(modalFadeInOutTimeMilisec);
+        modal.find('img.modal-content').attr('src', dataSource).fadeIn(modalFadeInOutTimeMilisec).removeClass('hidden');
         $('#video').find('iframe').remove();
         //setting the bar
         modalBarLength($('img.modal-content'));
@@ -602,11 +603,12 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     
     
      function setIframe(){
-         var iframe = $('<iframe>');
-         iframe.addClass('modal-content');
-         iframe.attr('src',dataSource);
+        var iframe = $("<iframe>");
+        console.log(dataSource);
+        iframe.attr('src',dataSource);
          $('#video').html(iframe);
         //modal.find('iframe.modal-content').removeClass('hidden').attr('src', dataSource).fadeIn(modalFadeInOutTimeMilisec);
+         
         modal.find('img.modal-content').fadeOut(modalFadeInOutTimeMilisec).addClass('hidden');
         modalBarLength($('iframe.modal-content'));
         if (!mobile.matches && !nondesktop.matches){
@@ -622,11 +624,11 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     }
     // set iframe as a previous modal image//////////////////////////
     
-    
+    /*
      function setIframePre(){
         modal.find('iframe.previous-modal-content').attr('src', dataSourcePrevious);  
     }
-    
+    */
         // set img as a nxt modal image//////////////////////////////////
     
     function setImgNxt(){
@@ -634,66 +636,85 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     }
     // set iframe as a nxt modal image//////////////////////////
     
-    
+    /*
      function setIframeNxt(){
             modal.find('iframe.next-modal-content').attr('src', dataSourceNext);
     }
     
-    
+    */
     
     //moving to the next image in galleries////////////////////////
         
     function showNextImg() {
         //iframe stop if it's playing
-        stopAllIframes();
+        //stopAllIframes();
         
         //finding current image
         findCurrentImage(); 
 
         //finding these three images
-        galleryImages.each(function (index) {
+        /*galleryImages.each(function (index) {
+            console.log("imageSource:"+imageSource);
             if ($(this).data('source') === imageSource) {
                 //the image after next become next image (as we move forward)
-                dataSourceNext = galleryImages.eq(index + 2).data('source');
+                
+            }
+        });*/
+        
+        dataSourceNext = galleryImages.eq(currentItemIndex+2).data('source');
                 //next image become the actual image (as we move forward)
-                dataSource = galleryImages.eq(index + 1).data('source');
+                dataSource = galleryImages.eq(currentItemIndex+1).data('source');
                 //this image become the previous one (as we move forward)
-                dataSourcePrevious = $(this).data('source');
+                dataSourcePrevious = galleryImages.eq(currentItemIndex-1).data('source');
                 //caption is taken from the actual image
-                caption = galleryImages.eq(index + 1).attr('alt');
-
+                caption = galleryImages.eq(currentItemIndex+2).attr('alt');                
                 //showing / hiding arrows, based on data-order in html
                 //if the actual image is the last one
-                if (galleryImages.eq(index + 1).data('order') < 9) {
+                if (galleryImages.eq(currentItemIndex).data('order') < 9) {
                     modal.find('.right').fadeIn();
                 } else {
                     modal.find('.right').fadeOut();
                 }
                 //if the actual image is the first one
-                if (galleryImages.eq(index + 1).data('order') > 1) {
+                if (galleryImages.eq(currentItemIndex).data('order') > 1) {
                     modal.find('.left').fadeIn();
                 } else {
                     modal.find('.left').fadeOut();
                 }
 
                 //if the user wants to go beyond the first or last image close the modal
-                if (typeof galleryImages.eq(index + 1).data('order') === "undefined") {
+                if (typeof galleryImages.eq(currentItemIndex).data('order') === "undefined") {
                     closeTheModal();
                 }
-            }
-        });
-        console.log("DataSource:"+dataSource);
-        console.log("DataSourceNext:"+dataSourceNext);
-        console.log("DataSourcePrev:"+dataSourcePrevious);
+        
+        console.log(dataSource);
+        console.log(dataSourcePrevious);
+        console.log(dataSourceNext);
+        
         // resize difrent images sizes for different screens        
         mediaMatches(dataSource, dataSourcePrevious, dataSourceNext);
 
         // loading three images
-        galleryImages.each(function (index) {
+        //galleryImages.each(function (index) {
             //load the actual image
-            if (galleryImages.eq(index + 1).data('source') === dataSource) {
+            //if (galleryImages.eq(index).data('source') === dataSource) {
+                                
+                var currentItem = $('picture').eq(currentItemIndex).find('img');
+                var next = $('picture').eq(currentItemIndex+1).find('img');                                                                                
+                console.log(currentItem);
+                console.log(next);
+        
+                if(next.hasClass('video')){
+                    //iFrame
+                    setIframe();
+                }else{
+                    //Image
+                    setImg();
+                }
+                currentItemIndex+=1;
+                
                 //as the video
-                if (galleryImages.eq(index + 1).hasClass('video')) {
+                /*if (galleryImages.eq(index + 1).hasClass('video')) {
                     setIframe();
                 }
                 //as an image
@@ -701,19 +722,18 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                     setImg();
                 }
                 //prepare the previous image/video
-                /*if ($(this).hasClass('video')) {
-                    setIframePre();
+                if ($(this).hasClass('video')) {
+                    document.getElementById( 'vimeo-player' ).setAttribute('src', '');
                 } else {
                     setImgPre();
                 }
                 //prepare the next image/video
                 if (galleryImages.eq(index + 2).hasClass('video')) {
-                    setIframeNxt();
+                    //setIframeNxt();
                 } else {
                     setImgNxt();
-                }*/
-            }
-        });
+                }*/            
+        //});
         //insert caption
         modal.find('#caption').html(caption);
     }
@@ -765,9 +785,24 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         // loading three images
         galleryImages.each(function (index) {
             //load the actual image
-            if (galleryImages.eq(index - 1).data('source') === dataSource) {
+            if (galleryImages.eq(index).data('source') === dataSource) {
+                var currentItem = galleryImages.eq(index);
+                var prev = $(galleryImages[index+1]);                                                
+                                            
+                if(currentItem.hasClass('video')){
+                    //iFrame
+                    setIframe();
+                }else{
+                    //Image
+                    setImg();
+                }
+                
+                
+                //console.log(galleryImages.eq(index-1).hasClass('video'))
+                
+                
                 //as the video
-                if (galleryImages.eq(index - 1).hasClass('video')) {
+                /*if (galleryImages.eq(index - 1).hasClass('video')) {
                     setIframe();
                 }
                 //as an image
@@ -775,14 +810,15 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                     setImg();
                 }
                 //prepare the previous image/video
-                /*if (galleryImages.eq(index - 2).hasClass('video')) {
-                    setIframePre();
+                if (galleryImages.eq(index - 2).hasClass('video')) {
+                    console.log("AAAAAAA");
+                    document.getElementById( 'vimeo-player' ).setAttribute( 'src', '' );
                 } else {
                     setImgPre();
                 }
                 //prepare the next image/video
                 if ($(this).hasClass('video')) {
-                    setIframeNxt();
+                    //setIframeNxt();
                 } else {
                     setImgNxt();
                 }*/
@@ -1178,9 +1214,13 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
            
            
         //prepare variables for loading 3 images: current, previous and next 
-        dataSource = $(this).data('source');
+        dataSource = $(this).data('source');                                 
         var dataSourcePrevious = '';
         var dataSourceNext = '';
+           
+           console.log(dataSource);
+           
+        currentItemIndex = $(this).data('order')-1;
 
 
         //finding these 3 images
@@ -1200,9 +1240,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             if ($(this).data('source') === dataSource) {
                 //as the video
                 if ($(this).hasClass('video')) {
-                    //modal.find('iframe.modal-content').attr('src', dataSource);
                     setIframe();
-                    modal.find('img.modal-content').addClass('hidden');//.hide();
+                    modal.find('img.modal-content').hide();
                     //setting thr arrows
                     if (!mobile.matches && !nondesktop.matches){
                         modalArrowPosition($('iframe.modal-content'));
@@ -1254,9 +1293,9 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
         //hiding the preloader    
         if ($(this).hasClass('video')) {
-            //modal.find('iframe.modal-content').on("load", function () {
+            modal.find('iframe.modal-content').on("load", function () {
                 showAfterPreloader('iframe.modal-content');
-            //}); 
+            }); 
             //for cache
             if ($(this).complete) {
                   showAfterPreloader('iframe.modal-content');
