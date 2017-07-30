@@ -2,3 +2,8 @@
 *.*~
 node_modules
 package.json
+js/jquery-3.2.1.min.js
+PHPMailerAutoload.php
+class.smtp.php
+class.phpmailer.php
+mailSender.php

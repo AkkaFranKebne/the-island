@@ -10,6 +10,10 @@ desktop:
 
 > modal galeria, wielkosc iframe zalezna od wysokosci
 
+>cache server - przyspieszy ladowanie animacji, co przyspieszy dzialania jquery?
+
+> hoover na tabletach android sprawdzic
+
 
 mobile: 
 >full screen dla galerii dla mobile - jak?
@@ -24,10 +28,10 @@ mobile:
  
 w przyszlym tygodniu
 > zmniejszenie galerii, tak, by miescila sie w 100vh 
-> ramka nachodzi na strzalke play w filmie - klient musi dac nie tak powyginana ramke
 > nowy obszar - smok - galeria o nas
 > inny uklad kontaktu
 > etykiety zamiast pinow
+> poprawienie mailer na mailgun
 > estetyka mobile - klient
 > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
 
@@ -931,7 +935,11 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
         
     }
-        
+    
+    console.log($('.gallery').height());
+    console.log($(window).height());
+    vhRatio = $('.gallery').height()/ $(window).height();
+      console.log(vhRatio);  
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
   
