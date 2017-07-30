@@ -63,23 +63,21 @@
                  <div class="arrow left hidden"></div>
                  <div class="arrow right hidden"></div>
             </div>
-            <!-- Preloader-->
+
             <!-- Modal Content PRE (The Image) -->
             <img class="previous-modal-content" src="#">
   
-            <!-- Modal Content (The Image) -->
+
+            <!-- Preloader-->
             <img id="preloader" src="images/loading.gif" >
-            
+
+            <!-- Modal Content (The Image) -->
             <img class="modal-content hidden" src="#">
-            
-            <div id="video"></div>
-            <!--<iframe id="vimeo-player" class="modal-content hidden" src="images/loader-background.jpg" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>-->
+            <div id="video" class ='video'></div>
+
 
             <!-- Modal Content NEXT (The Image) -->
             <img class="next-modal-content hidden" src="#">
-
-
-            
 
 
             <!-- Modal Caption (Image Text) -->

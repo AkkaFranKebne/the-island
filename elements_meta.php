@@ -10,8 +10,10 @@
 <meta property="og:description" content="LemonHills - agencja marketingowa. Kompleksowa obsługa marketingowa: kreacja, planowanie mediów, Public Relations, produkcja materiałów reklamowych, strony WWW, social media, badania i organizacja eventów.">
 <meta property="og:image" content="#"> <!--to set -->
 <meta property="og:url" content="#"> <!--to set -->
-<!-- jquery-->
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" ></script>
+<!-- jquery
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" >-->
+<script src="js/jquery-3.2.1.min.js"> </script>
+</script>
 <!--  touch swipe -->
 <script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
 <!-- map hilight -->

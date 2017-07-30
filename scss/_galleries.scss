@@ -91,7 +91,7 @@
     /* navigation in modal*/
     .top-bar {
         position: relative;
-        top: 30px;
+        top: 40px;
         margin-top: 7vh;
         margin-left: auto;
         margin-right: auto;
@@ -213,7 +213,7 @@
     .modal-content {
         margin: auto; //center the image
         display: block;
-        height: 70vmin;
+        height: $modalImgHeight;
         width: $modalImgWidth;
         /* 100% Image Width for very small screens */
         @include mobile {
@@ -245,7 +245,7 @@
     /* caption for modal */
     .bottom-bar{
         position: relative;
-        top: -35px;
+        top: -45px;
         margin-bottom: 5vh;
         margin-left: auto;
         margin-right: auto;

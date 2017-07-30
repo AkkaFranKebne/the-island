@@ -121,13 +121,10 @@ $titleBarWidthNondesktop: 25vmax;
 //descrption bar
 $desBarTop: -45px;
 $desBarPadding: 60px 70px 50px 50px;
-$desBarHeight: 150px;
-$desBarWidth: 80%;
+$desBarHeight: 200px;
 $desBarWidthMax: 90%;
 $desBarHeightMobile: 15vmax;
-$desBarWidthMobile: 100%;
 $desBarHeightNondesktop: 14vmax;
-$desBarWidthNondesktop: 100%;
 //gallery 
 $galleryFromTop: -30px;
 $galleryElementsBorderRadius: 5px;
@@ -149,13 +146,13 @@ $modalArrowHeightMobile: 12px;
 $modalArrowPadding: 7px;
 $modalArrowPaddingMobile: 6px;
 //modal images
-$modalImgHeight: 92vh;
+$modalImgHeight: 70vmin;
 $modalImgHeightMobile: auto;
 $modalImgWidth: auto;
 $modalImgWidthMobile: 100%;
 //modal iframe
 $modalIframeHeightMobile: 100vh !important;
-$modalIframeWidth: 70vw !important;
+$modalIframeWidth: 67vw ;
 $modalIframeWidthMobile: 100vw !important;
 //modal caption
 $modalCaptionWidth: 90%;

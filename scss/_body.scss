@@ -14,6 +14,12 @@ body {
     /* small and very small screens has a more colorful background as they do not contain the clickable island */
     position: relative;
     height: 100vh;
+        @include mobile {
+            overflow: auto;
+        }
+        @include non-desktop {
+            overflow: auto;
+        }
     width: 100vw;
     overflow: hidden;
     background-repeat: no-repeat;
@@ -96,7 +102,7 @@ body {
             top: 0;
         }
         @include non-desktop {
-            height: $desBarWidthNondesktop;
+            height: $desBarHeightNondesktop;
             width: auto;
             background-image: none;
             padding: 0;
@@ -201,7 +207,7 @@ body {
         overflow-x: hidden;
         padding-top: $menuPaddingTop;
         transition: $menuTransitionSec;
-        z-index: 3;
+        z-index: 4;
         /* class for menu expandiing, full screen width for small and very small screens */
         &.expanded {
             width: $expandedMenuWidth;
@@ -298,7 +304,7 @@ body {
     }
     /* Menu icon hamburger */
     #hamburger {
-        z-index: 4;
+        z-index: 5;
         position: fixed;
         height: $hamburgerHeight;
         width: $hamburgerWidth;
@@ -347,7 +353,7 @@ body {
             height: auto;
             width: 100%;
             margin-top: $logoTopMargin;
-            z-index: 5!important;
+            z-index: 3!important;
             position: relative;
         }
     }
