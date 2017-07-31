@@ -6,7 +6,7 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
 <!DOCTYPE html>
 <html  lang="pl-PL">
  <head>
-<title>SOCIAL MEDIA</title>
+<title>SOCIAL MEDIA - LemOnHills - Agencja Marketingowa</title>
      <?php include 'elements_meta.php';?>
 </head>
  <body id = "sm">

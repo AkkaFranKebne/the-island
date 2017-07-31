@@ -11,5 +11,7 @@
 <div class='pulse www hidden' title='www' href="www.php"></div>
 <div class='pin kreacja hidden' title='kreacja' href="kreacja.php"></div>
 <div class='pulse kreacja hidden' title='kreacja' href="kreacja.php"></div>
+<div class='pin about hidden' title='about' href="about.php"></div>
+<div class='pulse about hidden' title='about' href="about.php"></div>
 <div class='pin newbiz hidden' title='newbiz' href="newbiz.php"></div>
 <div class='pulse newbiz hidden' title='newbiz' href="newbiz.php"></div>

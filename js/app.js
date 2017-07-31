@@ -3,36 +3,27 @@ $(document).ready(function () {
       
 do ulepszenia:
 
-desktop:
-> niektore desktopy "widza" piny - dlaczego? zle medium rozpoznajace dotykowe?
-
-> zmienic wyliczanie subtytulow - subtytuly na wolnych tabletach nie dolicza wysokosci na czas
-
-> modal galeria, wielkosc iframe zalezna od wysokosci
-
->cache server - przyspieszy ladowanie animacji, co przyspieszy dzialania jquery?
-
-> hoover na tabletach android sprawdzic
-
-
 mobile: 
 >full screen dla galerii dla mobile - jak?
 > iframe na tablecie: nie dziala swipe, nie chowa sie 
+> w pionie ukrywa sie desc 
 
-
-> animacja  back to start gdy nie konczy - zostaje przy poczatkowym ustawieniu wyspy, nie koncowym
-> png optymalizacja - jakie narzedzie? - czemu imagemin nie dziala?
 
 --------------------------------------------------------------
 
  
 w przyszlym tygodniu
-> zmniejszenie galerii, tak, by miescila sie w 100vh 
 > nowy obszar - smok - galeria o nas
 > inny uklad kontaktu
 > etykiety zamiast pinow
+> galeria kontaktu
 > poprawienie mailer na mailgun
+> scroll story smok
 > estetyka mobile - klient
+> png optymalizacja
+>cache server - przyspieszy ladowanie animacji, co przyspieszy dzialania jquery?
+
+
 > na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
 
 
@@ -65,8 +56,6 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     */
 
     //----------------------VARIABLES-----------------------------------------------------------------------
-
-    
     
     //media queries
     var mobile = window.matchMedia("screen and  (max-width: 450px)");
@@ -74,6 +63,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var desktop = window.matchMedia("screen and (min-width: 801px) and (max-width: 960px)");
     var bigdesktop = window.matchMedia("screen and (min-width: 1401px)");
     var touch = window.matchMedia("screen and (pointer: coarse)");
+    var nohover = window.matchMedia("screen and (hover: none)");
     var portrait = window.matchMedia("(orientation: portrait)");
     
 
@@ -102,6 +92,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var hamburger = $('#hamburger');
     var menuOpacity = $('#menuOpacity');
     var close = $('#close');
+    var titleBar = $('.title-bar');
+    var descBar = $('.description-bar');
 
     //island//////////
     var island = $('#island'); //island used with map
@@ -155,7 +147,9 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var eventyLeft = -1000;
     var eventyTop = -500;
     var kreacjaLeft = -1800;
-    var kreacjaTop = 100;
+    var kreacjaTop = 100;    
+    var aboutLeft = -1800;
+    var aboutTop = 100;
     var wwwLeft = -350;
     var wwwTop = 250;
     var smLeft = 170;
@@ -195,10 +189,13 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var modalFadeInOutTimeMilisec = 150;
 
     //galleries element
+    var galleryBox  = $('.gallery');
     var galleryImages = $('.gallery').find('img');
     var modal = $('#modal');
     var modalCloseButton = $('span.close');
     var arrows = $('.arrow');
+
+    
     
     //variables for modal images
     var imageSource = "#";
@@ -236,6 +233,9 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         } else if (ele === "kreacja") {
             left = kreacjaLeft;
             top = kreacjaTop;
+        } else if (ele === "about") {
+            left = aboutLeft;
+            top = aboutTop;
         } else if (ele === "www") {
             left = wwwLeft;
             top = wwwTop;
@@ -557,7 +557,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     // introducing media queries for pins => touchscreens //////////
 
     function isTouch() {
-        if (touch.matches && !island.hasClass('hidden')) {
+        if ((touch.matches && nohover.matches) && !island.hasClass('hidden')) {
             pins.removeClass("hidden");
             pulses.removeClass("hidden");
         }
@@ -605,9 +605,9 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
          iframe.attr('src',dataSource);
          $('#video').html(iframe);
         modal.find('img.modal-content').fadeOut(modalFadeInOutTimeMilisec).addClass('hidden');
-
-        if (!mobile.matches && !nondesktop.matches){
             modalArrowPosition($('iframe.modal-content'));
+        if (!mobile.matches && !nondesktop.matches){
+            
             //setting element height
             modalElementHeight($('iframe.modal-content'));
             //setting the bars width
@@ -873,14 +873,14 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     
      //--------------------------the height of subtitle box//////////////////////// 
         function subtitleBoxHeight(){
-            var  subtitleBoxHeight = 150; //initial
-            var subtitleHeight = $('.description-bar').find('h4').height();
+            var  subtitleBoxHeight = 250; //initial
+            var subtitleHeight = descBar.find('h4').height();
             subtitleBoxHeight = subtitleHeight + boxHigherThenTextPx;  //background image is very irregular
             
         if (mobile.matches || nondesktop.matches) {
            subtitleBoxHeight = subtitleHeight;  //as there is no background image in mobile
         }
-        $('.description-bar').height(subtitleBoxHeight);
+        descBar.height(subtitleBoxHeight);
     }
     
     //--------------------------the length of modal image bar////////////////////
@@ -898,6 +898,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             $('.arrow').css('top', arrowFromTop);
     }
     
+    //--------------setting iframe or image height in modal 
+    
      function modalElementHeight(el) {
                 var bottomBarHeight = $('.bottom-bar').outerHeight();
                 var topBarHeight = $('.top-bar').outerHeight();
@@ -909,6 +911,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                     iframeWidthSameAsImageWidth(elementHeight, el);
                 }  
  }
+    
+    //---------------setting iframe width in modal 
     
     function iframeWidthSameAsImageWidth(imageHeight, el){
         console.log("modalImageRatio" +modalImageRatio);
@@ -927,22 +931,39 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 modal.find('.arrow-background').removeClass('hidden');
                 modal.find('#caption').removeClass('hidden');
                 modal.find('.bottom-bar').removeClass('hidden');
-                modal.find('.top-bar').removeClass('hidden');  
-                //setting element height
-                modalElementHeight($(el));
-                //setting iframe width 
-                modalBarLength($(el)); 
+                modal.find('.top-bar').removeClass('hidden');
+                if (!mobile.matches && !nondesktop.matches) {
+                    //setting element height
+                    modalElementHeight($(el));
+                    //setting iframe width 
+                    modalBarLength($(el));
+                }
 
         
     }
     
-    console.log($('.gallery').height());
-    console.log($(window).height());
-    vhRatio = $('.gallery').height()/ $(window).height();
-      console.log(vhRatio);  
+   //--------------fitting the gallery to window height
+    
+    function galleryHeightFittingToWindowsHeight(){
+        var offset = nav.outerHeight() + titleBar.outerHeight() + descBar.outerHeight();    
+        var expetedHeight = ($(window).height() - offset)/3;
+        galleryImages.css("height",expetedHeight);        
+    }
+
+
+    
+    
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
-  
+    //scroll to the contact form after sending the message
+    if   (window.location.href.indexOf("message") != -1 ){
+        scrollToContactForm();
+    }
+    
+   //--------------------------setting the height of subtitle box 
+    if (main.children().children().first().next().hasClass('description-bar')) {  //pages with description only
+        subtitleBoxHeight();
+    }
 
     // ---------preloader for main page//////////
 
@@ -965,16 +986,16 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             island.removeClass('hidden');  
     }
  
-    //------locating pins----------------
-    setPinsCoords();
-
-
+    //-----locating pins
     // ----resizing map image - once during pageview//////////
     // ---- fixing the sizes of images of the island - once during pageview ////////
-
-    if (main.children().first().hasClass('grpelem')) {  //main page
+    
+    
+    if (main.children().first().hasClass('grpelem')) {  //main page only
+        setPinsCoords();
         imageMapCalculate(island);
         fixedImgSize();
+        
     }
     
     //--------come back to index.php with specific area exposed and not in first session//////////
@@ -987,21 +1008,22 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
     //----------setting the size of the thumbnails for galleries /////////
 
-    setThumbnailsSize();
+    if (main.children().first().next().hasClass('gallery')) {  //gallery page only
+        setThumbnailsSize();
+            //--------------fitting the gallery to window height for desktop
+        if (!mobile.matches && !nondesktop.matches && !portrait.matches) {
+            galleryHeightFittingToWindowsHeight();
+        }
+    }
+
     
     //----------------setting the length for title bar - to discuss with client 
     
     //titleBarLength();
     
-   //--------------------------setting the height of subtitle box 
 
-     subtitleBoxHeight();
   
-    //scroll to the contact form after sending the message
-    
-    if   (window.location.href.indexOf("message") != -1 ){
-        scrollToContactForm();
-    }
+
      
 
     //----------------------EVENTS---------------------------------------------------------------------------------
@@ -1009,12 +1031,16 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     // ----hamburger menu mouseover//////////
 
     hamburger.on('mouseenter', function (event) {
+      if(!nohover.matches) {
         $(this).children().css('background-color', secondaryColor);
+      }
     });
 
     hamburger.on('mouseleave', function (event) {
+      if(!nohover.matches) {
         if ($(this).parent().find('.sidenav').css("width") === '0px') {
         $(this).children().css('background-color', primaryColor);
+        }
                     }
     });
 
@@ -1064,11 +1090,15 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     //----x close on subpagess mouseover//////////
 
     close.on('mouseenter', function (event) {
-        $(this).children().css('background-color', secondaryColor);
+      if(!nohover.matches) {
+          $(this).children().css('background-color', secondaryColor);
+      }  
     });
 
     close.on('mouseleave', function (event) {
+      if(!nohover.matches) {        
         $(this).children().css('background-color', primaryColor);
+      }
     });
 
     //---map areas clicks actions on main page: exposing specific area//////////
@@ -1162,7 +1192,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 
         //unabling with portait mode
       if (portrait.matches) {
-          alert("Aby powiększyć obrazek obróć urządzenie w tryb pejzażu i kliknij ponownie!");
+          alert("Aby powiększyć obrazek obróć urządzenie w tryb pejzażu!");
           return false;
       }
         else
@@ -1171,7 +1201,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         //fix body
         //body.css("height", "100vh").css("overflow", "hidden");
         if (mobile.matches || nondesktop.matches) {
-            body.css("position", "fixed");  
+            //body.css("position", "fixed");  
      }
            
         //hide hamburger
@@ -1202,18 +1232,11 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 //as the video
                 if ($(this).hasClass('video')) {
                     setIframe();
-                    modal.find('img.modal-content').addClass('hidden');
-                    //setting thr arrows
-                    if (!mobile.matches && !nondesktop.matches){
-                        modalArrowPosition($('iframe.modal-content'));
-                    }  
+                    modal.find('img.modal-content').addClass('hidden');  
                 }
                 //as an image
                 else {
-                    modal.find('img.modal-content').attr('src', dataSource);
-                    if (!mobile.matches && !nondesktop.matches){
-                        modalArrowPosition($('img.modal-content'));
-                    }  
+                    modal.find('img.modal-content').attr('src', dataSource); 
                 }
 
                 //prepare the previous image/video
@@ -1253,13 +1276,25 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         //hiding the preloader    
         if ($(this).hasClass('video')) {
                 showAfterPreloader('iframe.modal-content');
+                    //setting thr arrows
+                    //if (!mobile.matches && !nondesktop.matches){
+                        modalArrowPosition($('iframe.modal-content'));
+                    //}
         } 
         else {
             modal.find('img.modal-content').on("load", function () {
                 showAfterPreloader('img.modal-content');
+                    //setting thr arrows
+                    //if (!mobile.matches && !nondesktop.matches){
+                        modalArrowPosition($('img.modal-content'));
+                    //}
             });
             if ($(this).complete) {
                 showAfterPreloader('img.modal-content');
+                    //setting thr arrows
+                    //if (!mobile.matches && !nondesktop.matches){
+                        modalArrowPosition($('img.modal-content'));
+                    //}
             }
         }
     }
@@ -1381,6 +1416,19 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     $(window).on("orientationchange", function () {
         location.reload();
     });
+    
+    // hiding browser test
+    
+      if (navigator.userAgent.match(/Android/i)) {
+    window.scrollTo(0,0); // reset in case prev not scrolled  
+    var nPageH = $(document).height();
+    var nViewH = window.outerHeight;
+    if (nViewH > nPageH) {
+      nViewH -= 250;
+      $('BODY').css('height',nViewH + 'px');
+    }
+    window.scrollTo(0,1);
+  }
 
     //-------------------end----------------------------   
 });

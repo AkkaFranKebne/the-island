@@ -9,5 +9,6 @@
     <a href="kreacja.php">Kreacja</a>
     <a href="www.php">Strony www</a>
     <a href="eventy.php">Eventy</a>
+    <a href="about.php">O nas</a>
     <a href="newbiz.php">Kontakt</a>
 </div>

@@ -8,6 +8,13 @@
     }
 }
 
+@mixin nohover () {
+    @media screen and (hover: none) {
+        @content;
+    }
+}
+
+
 // devices where user's main input mechanism is a finger and in non mobile size 
 @mixin touch-big () {
     @media screen and (pointer: coarse) and (min-width: 800px) {
@@ -19,6 +26,12 @@
 // devices where user's main input mechanism is a mouse or other pointer
 @mixin pointer () {
     @media screen and (pointer: fine) {
+        @content;
+    }
+}
+
+@mixin withhover () {
+    @media screen and (hover: hover) {
         @content;
     }
 }
@@ -55,3 +68,22 @@
         @content;
     }
 }
+
+
+//-------------orientation-------------------------------------------------------
+@mixin portrait () {
+    @media  (orientation : portrait) {
+        @content;
+    }
+}
+
+
+@mixin landscape () {
+    @media (orientation : landscape) {
+        @content;
+    }
+}
+
+
+
+

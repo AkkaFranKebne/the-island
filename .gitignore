@@ -7,3 +7,4 @@ PHPMailerAutoload.php
 class.smtp.php
 class.phpmailer.php
 mailSender.php
+images

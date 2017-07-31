@@ -15,7 +15,7 @@ $PinPulseColorWithOpacity: rgba(0,0,0, 0.3);
 $PinPulseCenterShadowColor: #89849b;
 $menuColor: white;
 $menuColorWithOpacity: rgba(250, 250, 250, 0);
-$menuColorWithOpacityStrong: rgba(250, 250, 250, 0.3);
+$menuColorWithOpacityStrong: rgba(250, 250, 250, 0.7);
 //images sources
 $loadingImage: url('../images/loading_pigs.gif');
 $loadingSize: 314px 273px;
@@ -149,7 +149,7 @@ $modalArrowPaddingMobile: 6px;
 $modalImgHeight: 70vmin;
 $modalImgHeightMobile: auto;
 $modalImgWidth: auto;
-$modalImgWidthMobile: 100%;
+$modalImgWidthMobile: 100vw;
 //modal iframe
 $modalIframeHeightMobile: 100vh !important;
 $modalIframeWidth: 67vw ;
