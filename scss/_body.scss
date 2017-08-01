@@ -96,14 +96,14 @@ body {
         max-width: $desBarWidthMax;
         padding: $desBarPadding;
         @include mobile {
-            height: $desBarHeightMobile;
+            //height: $desBarHeightMobile;
             width: auto;
             background-image: none;
             padding: 0;
             top: 0;
         }
         @include non-desktop {
-            height: $desBarHeightNondesktop;
+            //height: $desBarHeightNondesktop;
             width: auto;
             background-image: none;
             padding: 0;

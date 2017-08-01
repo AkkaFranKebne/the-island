@@ -148,7 +148,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var eventyTop = -500;
     var kreacjaLeft = -1800;
     var kreacjaTop = 100;    
-    var aboutLeft = -1800;
+    var aboutLeft = -2300; //-1800
     var aboutTop = 100;
     var wwwLeft = -350;
     var wwwTop = 250;
