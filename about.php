@@ -24,7 +24,10 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
         <div class="row">
             <div class="col-12">
                     <div class='title-bar'><h2><span>O NAS</span></h2></div>
-                    <div class='description-bar'><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quam nisl, convallis ac mollis at, interdum id lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed suscipit, leo sed commodo ultricies, mauris sapien pharetra nisi, ac auctor tortor odio vitae elit. </h4></div>
+                    <div class='description-bar'><h4>Tworzymy kreacje, planujemy media, zajmujemy się wizerunkiem, organizujemy eventy.<br>
+Synergia wiedzy i doświadczenia pozwala nam projektować kampanie kompleksowo, w oparciu o najnowsze technologie i standardy.<br>
+Wiemy, jak ważna jest komunikacja, dlatego zawsze chętnie z Wami porozmawiamy.<br>
+Zapraszamy do współpracy.</h4></div>
                 <noscript>Strona wymaga uruchomionego Java Script. </noscript>
             <noscript> Zaktualizuj lub zmień przeglądarkę. </noscript>
             </div>

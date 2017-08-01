@@ -24,7 +24,9 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
         <div class="row">
             <div class="col-12">
                     <div class='title-bar'><h2><span>KREACJA</span></h2></div>
-                    <div class='description-bar'><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quam nisl, convallis ac mollis at, interdum id lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed suscipit, leo sed commodo ultricies, mauris sapien pharetra nisi, ac auctor tortor odio vitae elit. </h4></div>
+                    <div class='description-bar'><h4>Zderzenie kreatywności i doświadczenia z domieszką odrobiny magii.<br>
+Tak powstają projekty niesamowite, które opowiadają pasjonujące historie.<br>
+To obrazy, od których ciężko oderwać wzrok. </h4></div>
                 <noscript>Strona wymaga uruchomionego Java Script. </noscript>
             <noscript> Zaktualizuj lub zmień przeglądarkę. </noscript>
             </div>

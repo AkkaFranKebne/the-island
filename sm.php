@@ -24,7 +24,9 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
         <div class="row">
             <div class="col-12">
                     <div class='title-bar'><h2><span>SOCIAL MEDIA</span></h2></div>
-                    <div class='description-bar'><h4>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum quam nisl, convallis ac mollis at, interdum id lacus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed suscipit, leo sed commodo ultricies, mauris sapien pharetra nisi, ac auctor tortor odio vitae elit. </h4></div>
+                    <div class='description-bar'><h4>Social Media niczym skomplikowana machina wymagają doświadczonego operatora.<br>
+Bez jego doświadczenia i wiedzy ich potencjał i możliwości nie zostaną w pełni wykorzystane.<br>
+Suma ich potencjału jest większa niż składowe osobno.</h4></div>
                 <noscript>Strona wymaga uruchomionego Java Script. </noscript>
             <noscript> Zaktualizuj lub zmień przeglądarkę. </noscript>
             </div>

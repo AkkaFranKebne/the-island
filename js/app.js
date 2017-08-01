@@ -6,17 +6,13 @@ do ulepszenia:
 mobile: 
 >full screen dla galerii dla mobile - jak?
 > iframe na tablecie: nie dziala swipe, nie chowa sie 
-> w pionie ukrywa sie desc 
-
-
 --------------------------------------------------------------
 
  
 w przyszlym tygodniu
-> nowy obszar - smok - galeria o nas
+> galeria o nas - dodatkowe elementy
 > inny uklad kontaktu
-> etykiety zamiast pinow
-> galeria kontaktu
+> etykiety z nazwami zamiast pinow
 > poprawienie mailer na mailgun
 > scroll story smok
 > estetyka mobile - klient
@@ -24,7 +20,9 @@ w przyszlym tygodniu
 >cache server - przyspieszy ladowanie animacji, co przyspieszy dzialania jquery?
 
 
-> na ostatecznym ksztalcie strony - dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
+> na ostatecznym ksztalcie strony:
+> wydzielenie osobnych stron galerii 
+> dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
 
 
 --------------------------------------------------------------
