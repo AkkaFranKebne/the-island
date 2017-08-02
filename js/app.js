@@ -561,6 +561,38 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         }
     }
     
+    
+    //  showing / hiding pins on hoover/////////////////
+    
+    areas.on('mouseenter', function(){
+        var whichArea = $(this).attr('title');
+        pins.each(function(){
+            if ($(this).attr('title') == whichArea) {
+                $(this).removeClass("hidden");
+            }
+        });
+        pulses.each(function(){
+            if ($(this).attr('title') == whichArea) {
+                $(this).removeClass("hidden");
+            }
+        });
+    });
+    
+    areas.on('mouseleave', function(){
+         var whichArea = $(this).attr('title');
+        pins.each(function(){
+            if ($(this).attr('title') == whichArea) {
+                $(this).addClass("hidden");
+            }
+        });
+        pulses.each(function(){
+            if ($(this).attr('title') == whichArea) {
+                $(this).addClass("hidden");
+            }
+        });
+    });
+    
+    
 
     //funding current image  in modal //////////////////////////////// 
     function findCurrentImage(){
