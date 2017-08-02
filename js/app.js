@@ -291,9 +291,13 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         y = y * param;
         x = x + mainPaddingLeftPx   ; //icluding padding 
         y = y + grpelemPaddingTopPx;
-        //fix for unusuall shape of newbix
+        //fix for unusuall shape of newbiz
         if ($(this).attr('alt') == 'newbiz'){
-            y = y + 100;
+            y = y + 120;
+        }
+         //fix for unusuall shape of about
+        if ($(this).attr('alt') == 'about'){
+            y = y +50;
         }
         var yPluse = y + 10;  // y for pulse under pin
         x= x+'px';
@@ -561,37 +565,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         }
     }
     
-    
-    //  showing / hiding pins on hoover/////////////////
-    
-    areas.on('mouseenter', function(){
-        var whichArea = $(this).attr('title');
-        pins.each(function(){
-            if ($(this).attr('title') == whichArea) {
-                $(this).removeClass("hidden");
-            }
-        });
-        pulses.each(function(){
-            if ($(this).attr('title') == whichArea) {
-                $(this).removeClass("hidden");
-            }
-        });
-    });
-    
-    areas.on('mouseleave', function(){
-         var whichArea = $(this).attr('title');
-        pins.each(function(){
-            if ($(this).attr('title') == whichArea) {
-                $(this).addClass("hidden");
-            }
-        });
-        pulses.each(function(){
-            if ($(this).attr('title') == whichArea) {
-                $(this).addClass("hidden");
-            }
-        });
-    });
-    
+
     
 
     //funding current image  in modal //////////////////////////////// 
@@ -1057,6 +1031,51 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
      
 
     //----------------------EVENTS---------------------------------------------------------------------------------
+    
+        
+    //  showing / hiding pins on hoover/////////////////
+    
+    areas.on('mouseenter', function(){
+        pins.addClass('hidden');
+        var whichArea = $(this).attr('title');
+        pins.each(function(){
+            if ($(this).attr('title') == whichArea) {
+                $(this).removeClass("hidden");
+            }
+        });
+        pulses.each(function(){
+            if ($(this).attr('title') == whichArea) {
+                $(this).removeClass("hidden");
+            }
+        });
+    });
+    
+   body.on('mouseover', function(event){
+       event.stopImmediatePropagation();
+        console.log("body");
+        pins.addClass('hidden');   
+    }).children().mouseover(function() {
+  return false;
+});
+    
+    
+    /*
+    areas.add(pulses).on('mouseleave', function(){
+         var whichArea = $(this).attr('title');
+        pins.each(function(){
+            if ($(this).attr('title') == whichArea) {
+                $(this).addClass("hidden");
+            }
+        });
+        pulses.each(function(){
+            if ($(this).attr('title') == whichArea) {
+                $(this).addClass("hidden");
+            }
+        });
+    });
+    
+    */
+    
 
     // ----hamburger menu mouseover//////////
 

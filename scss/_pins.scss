@@ -1,12 +1,18 @@
+
+
+//pins as ribbons
+
+
 .pin {
     z-index: 2;
-    width: $pinsWidth;
-    height: $pinsHeight;
-    border-radius: 50% 50% 50% 0;
-    background-color: $PinBackgroundColor;
+    height: 30px;
+    width: 130px;
+    background-image: url('../images/title-bar.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     position: absolute;
-    @include right();
-    /* position of each pin */
+    //position of each pin x
     @each $pin in eventy,
     sm,
     www,
@@ -18,19 +24,16 @@
         }
     }
     margin: $pinsMargin;
-    animation-name: bounce;
-    animation-fill-mode: both;
-    animation-duration: $pinAnimationSec;
-    &:after {
-        content: '';
-        width: $pinsCenterWidth;
-        height: $pinsCenterHeight;
-        margin: $pinsCenterMargin;
-        background-color: $PinCenterBackgroundColor;
-        position: absolute;
-        border-radius: 50%;
+    cursor: pointer;
+    p {
+        font-size: 10px;
+        color: white;
+        text-align: center;
+        padding-top: 5px;
     }
 }
+
+
 
 .pulse {
     z-index: 3;
