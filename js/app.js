@@ -12,11 +12,10 @@ mobile:
 w przyszlym tygodniu
 > galeria o nas - dodatkowe elementy
 > inny uklad kontaktu
-> etykiety z nazwami zamiast pinow
-> poprawienie mailer na mailgun
+> poprawienie mailer na mailgun?
 > scroll story smok
 > estetyka mobile - klient
-> png optymalizacja
+> png optymalizacja?
 >cache server - przyspieszy ladowanie animacji, co przyspieszy dzialania jquery?
 
 

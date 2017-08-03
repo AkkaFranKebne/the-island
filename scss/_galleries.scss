@@ -45,6 +45,7 @@
             margin: $pictureMargin;
             text-align: center; //is it necesarry for mobile centering?
             /* look and feel of img inside a href link */
+            position: relative;
             img {
                 border-radius: $galleryElementsBorderRadius;
                 max-height: 100%;
@@ -70,6 +71,41 @@
                     opacity: $galleryHoverOpacity;
                 }
             }
+            
+            .image-description {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                padding: 12px;
+                @include mobile {
+                    padding: 50px
+                }
+                @include non-desktop {
+                    padding: 50px;
+                }
+                h3 {
+                    font-weight:  bold;
+                    color: $primaryColor;
+                    font-size: 2vh;
+                    text-align: left;
+                    @include mobile {
+                        font-size: 3vmax;
+                    }
+                    @include non-desktop {
+                       font-size: 3vmax;
+                    }
+                    &:first-of-type {
+                       font-size: 2.5vh;
+                        @include mobile {
+                            font-size: 3.5vmax;
+                        }
+                        @include non-desktop {
+                           font-size: 3.5vmax;
+                        }
+                    }
+                }
+            }
+            
         }
     }
 }
