@@ -1,27 +1,27 @@
 $(document).ready(function () {
     /* 
       
-do ulepszenia:
 
-mobile: 
->full screen dla galerii dla mobile - jak?
-> iframe na tablecie: nie dziala swipe, nie chowa sie 
---------------------------------------------------------------
+>full screen dla galerii dla mobile https://wiki.mozilla.org/Gecko:FullScreenAPI 
 
- 
-w przyszlym tygodniu
-> galeria o nas - dodatkowe elementy
+> galeria o nas - dodatkowe elementy i funkcja
+
 > inny uklad kontaktu
-> poprawienie mailer na mailgun?
+
+> poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
+
 > scroll story smok
+
 > estetyka mobile - klient
-> png optymalizacja?
+
 >cache server - przyspieszy ladowanie animacji, co przyspieszy dzialania jquery?
 
 
 > na ostatecznym ksztalcie strony:
 > wydzielenie osobnych stron galerii 
-> dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?)
+> dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?) - chyba lepszym rozwiązaniem byłoby dodanie prostego formularza wymagającego hasła aby podmienić galerie. 
+
+> iframe na tablecie: nie dziala swipe, nie chowa sie 
 
 
 --------------------------------------------------------------
