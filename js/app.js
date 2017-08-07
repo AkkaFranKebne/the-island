@@ -4,9 +4,9 @@ $(document).ready(function () {
 
 >full screen dla galerii dla mobile https://wiki.mozilla.org/Gecko:FullScreenAPI 
 
-> galeria o nas - dodatkowe elementy i funkcja
+> galeria o nas - dodatkowe elementy i funkcja - czekac na rysunki od klienta
 
-> inny uklad kontaktu
+> inny uklad kontaktu - poprawic mobile
 
 > poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
 
@@ -818,7 +818,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         if (filter.test(telephoneValue) && telephoneValue.length > 7) {
             errorOne.text("").hide();
         } else {
-            errorOne.text("Podaj poprawny numer").show();
+            errorOne.text("Podaj numer").show();
 
         }
     }

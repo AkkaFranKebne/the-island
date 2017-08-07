@@ -22,14 +22,26 @@
             
 
             <form action="mailSender.php" method="POST">
-                <label for="email">Wiadomość: </label>
-                <textarea name="message" value="message" id="message" placeholder=""></textarea>
-                <label for="name">Imię i nazwisko: </label>
-                <input type="text" name="name" value="" id="name" />
-                <label for="name">Telefon: <span class="error-one"></span></label>
-                <input type="text" name="tel" value="+" id="tel" />
-                <label for="email">Email: <span class="error-two"></span></label>
-                <input type="text" name="email" value="" id="email" />
+                <div class='row'>
+                    <div class='col-6'>
+                        <label for="name">Imię </label> 
+                        <input type="text" name="name" value="" id="name" />   
+                        <label for="tel">Numer telefonu <span class="error-one"></span></label>
+                        <input type="text" name="tel" value="+" id="tel" />
+                    </div>   
+                    <div class='col-6'>
+                        <label for="surname">Nazwisko </label> 
+                        <input type="text" name="surname" value="" id="surname" />
+                        <label for="email">e-mail <span class="error-two"></span></label>
+                        <input type="text" name="email" value="" id="email" />                      
+                    </div>  
+                </div>
+                <div class='row'>
+                     <div class='col-12'>
+                          <label for="message">Wiadomość </label>
+                        <textarea name="message" value="message" id="message" placeholder=""></textarea>                
+                    </div>                     
+                </div>
                 <input type="submit" name="submit" value="Wysyłam!" />
             </form>
         </div>
