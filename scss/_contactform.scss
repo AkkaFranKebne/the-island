@@ -132,6 +132,8 @@ input[type=text]:focus {
 
 #form_wrap input[type=submit] {
     position: relative;
+    top: 0;
+    left: -30px;
     font-size: 28px;
     font-family: $caveatFont;
     color: black;
@@ -146,7 +148,7 @@ input[type=text]:focus {
     background-position: center;
     background-position-x: 240px;
         @include mobile {
-            background-position-x: 0vw;
+            background-position-x: 60vw;
         }
         @include non-desktop {
             background-position-x: 60vw;
@@ -310,7 +312,7 @@ input[type=text]:focus {
         height: auto;
     }
     #form_wrap {
-        height: 500px;
+        height: 570px;
         top: 10px;
      .alert {
         top: 10px;
@@ -332,7 +334,7 @@ input[type=text]:focus {
     }
        #form_wrap:hover {
         top: 10px;
-        height: 500px;
+        height: 570px;
     }
     /* form styles for mobile*/
     form {
@@ -382,7 +384,7 @@ input[type=text]:focus {
         height: auto;
     }
     #form_wrap {
-        height: 540px; //////////////////////different than mobile!
+        height: 680px; //////////////////////different than mobile!
         top: 10px;
      .alert {
         top: 10px;
@@ -404,7 +406,7 @@ input[type=text]:focus {
     }
        #form_wrap:hover {
         top: 10px;
-        height: 540px;  //////////////////////different than mobile!
+        height: 680px;  //////////////////////different than mobile!
     }
     /* form styles for mobile*/
     form {

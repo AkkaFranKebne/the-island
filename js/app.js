@@ -51,6 +51,7 @@ Desktop: 1000x660
 Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         
     */
+    
 
     //----------------------VARIABLES-----------------------------------------------------------------------
     
@@ -217,7 +218,17 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
 
     //-------------FUNCTIONS--------------------------------------------------------------------------------------------------
-
+    
+    
+    //---------------moving html objects in DOM
+    function moveElement(elementToMove, elementAfterMovedElement){
+        var element = elementToMove;
+        var nextElement =  elementAfterMovedElement;
+        element.detach();
+        element.insertAfter(nextElement);        
+    }
+    
+    
     //choosing the proper position for every island part//////////
 
     function islandPartDisplayParameters(ele) {
@@ -954,10 +965,10 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     }
 
 
-    
-    
+
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
+    
     //scroll to the contact form after sending the message
     if   (window.location.href.indexOf("message") != -1 ){
         scrollToContactForm();
@@ -1025,7 +1036,15 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     //titleBarLength();
     
 
-  
+   //---------------moving surname in mobile form
+    
+    
+    if (main.children().first().next().children().first().children().first().children().first().children().first().hasClass('address') && (mobile.matches || nondesktop.matches) ) {  //only for contact page and mobile forms
+        
+        moveElement($('label[for="surname"]'), $('input[name="name"]'));
+        
+        moveElement($('input[name="surname"]'), $('label[for="surname"]'));
+    };
 
      
 
