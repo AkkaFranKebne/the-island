@@ -116,35 +116,44 @@
           var nondesktop = window.matchMedia("screen  and (max-width: 800px) and (min-width: 451px)");
           var portrait = window.matchMedia("(orientation: portrait)");
         
-          function toggleFullScreen() {
-            if (!document.mozFullScreen && !document.webkitFullScreen) {
-              if (modal.mozRequestFullScreen) {
-                modal.mozRequestFullScreen();
-              } else {
-                modal.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
-              }
-            } else {
-              if (modal.mozCancelFullScreen) {
-                modal.mozCancelFullScreen();
-              } else {
-                modal.webkitCancelFullScreen();
-              }
-            }
-          }
+          function requestFullscreen(ele) {
+                if (ele.requestFullscreen) {
+                    ele.requestFullscreen();
+                } else if (ele.webkitRequestFullscreen) {
+                    ele.webkitRequestFullscreen();
+                } else if (ele.mozRequestFullScreen) {
+                    ele.mozRequestFullScreen();
+                } else if (ele.msRequestFullscreen) {
+                    ele.msRequestFullscreen();
+                } else {
+                    console.log('Fullscreen API is not supported.');
+                }
+            };
+                
+            var exitFullscreen = function() {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                } else {
+                    console.log('Fullscreen API is not supported.');
+                }
+            };
           
                 
         if ((mobile.matches || nondesktop.matches) && !portrait.matches) {
             for (var  i = 0; i < pictures.length; i ++){
                   pictures[i].addEventListener("click", function(e) {
-                      console.log("klik");
-                      toggleFullScreen();
-                  }, false);
-                  close.addEventListener("click", function(e) {
-                      console.log("klik");
-                      toggleFullScreen();
-                  }, false);
-                            
+                      requestFullscreen(modal);
+                  }, false);              
             }
+            close.addEventListener("click", function(e) {
+                      exitFullscreen();
+                  }, false);
 
         }
     </script>
