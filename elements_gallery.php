@@ -77,7 +77,7 @@
 
             <!-- The Close Button -->
             <div class='top-bar hidden'>    
-                <span class="close"></span>
+                <span class="close" id="modal-close"></span>
                  <div class="arrow left hidden"></div>
                  <div class="arrow right hidden"></div>
             </div>
@@ -105,5 +105,49 @@
 
         </div>
         </div>
+        
+            <script type="text/javascript">
+        
+        //fulscreen tests ------///
+          var modal = document.getElementById("modal");
+          var close = document.getElementById("modal-close");
+          var pictures = document.getElementsByTagName('img');
+          var mobile = window.matchMedia("screen and  (max-width: 450px)");
+          var nondesktop = window.matchMedia("screen  and (max-width: 800px) and (min-width: 451px)");
+          var portrait = window.matchMedia("(orientation: portrait)");
+        
+          function toggleFullScreen() {
+            if (!document.mozFullScreen && !document.webkitFullScreen) {
+              if (modal.mozRequestFullScreen) {
+                modal.mozRequestFullScreen();
+              } else {
+                modal.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+              }
+            } else {
+              if (modal.mozCancelFullScreen) {
+                modal.mozCancelFullScreen();
+              } else {
+                modal.webkitCancelFullScreen();
+              }
+            }
+          }
+          
+                
+        if ((mobile.matches || nondesktop.matches) && !portrait.matches) {
+            for (var  i = 0; i < pictures.length; i ++){
+                  pictures[i].addEventListener("click", function(e) {
+                      console.log("klik");
+                      toggleFullScreen();
+                  }, false);
+                  close.addEventListener("click", function(e) {
+                      console.log("klik");
+                      toggleFullScreen();
+                  }, false);
+                            
+            }
+
+        }
+    </script>
+    
 
     </div>

@@ -6,8 +6,6 @@ $(document).ready(function () {
 
 > galeria o nas - dodatkowe elementy i funkcja - czekac na rysunki od klienta
 
-> inny uklad kontaktu - poprawic mobile
-
 > poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
 
 > scroll story smok
@@ -51,6 +49,7 @@ Desktop: 1000x660
 Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         
     */
+ 
     
 
     //----------------------VARIABLES-----------------------------------------------------------------------
@@ -219,6 +218,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
     //-------------FUNCTIONS--------------------------------------------------------------------------------------------------
     
+   
+
     
     //---------------moving html objects in DOM
     function moveElement(elementToMove, elementAfterMovedElement){

@@ -8,7 +8,7 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
     <head>
         <title>LemOnHills - Agencja Marketingowa</title>
         <?php include 'elements_meta.php';?>
-    </head>     
+    </head>      
     <body  id="main-page-body"  <?php   
        if ($_SESSION["seen_intro"]==0) {
            echo "class='loading'";
@@ -33,4 +33,34 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
         <noscript>Strona wymaga uruchomionego Java Script. Zaktualizuj lub zmień przeglądarkę.</noscript>    
         <?php include 'elements_footer.php';?>
     </body>
+    
+    <script type="text/javascript">
+        
+        //fulscreen tests ------///
+          var body = document.getElementById("main-page-body");
+        
+          function toggleFullScreen() {
+            if (!document.mozFullScreen && !document.webkitFullScreen) {
+              if (body.mozRequestFullScreen) {
+                body.mozRequestFullScreen();
+              } else {
+                body.webkitRequestFullScreen(Element.ALLOW_KEYBOARD_INPUT);
+              }
+            } else {
+              if (document.mozCancelFullScreen) {
+                document.mozCancelFullScreen();
+              } else {
+                document.webkitCancelFullScreen();
+              }
+            }
+          }
+
+          document.addEventListener("keydown", function(e) {
+            if (e.keyCode == 13) {
+              toggleFullScreen();
+            }
+          }, false);
+    </script>
+    
+    
 </html>
