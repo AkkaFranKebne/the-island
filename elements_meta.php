@@ -1,6 +1,8 @@
 <meta  content="text/html;charset=UTF-8"/>
 <!-- viewport -->
 <meta name="viewport" content="width=device-width initial-scale=1"> 
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <!-- keywords and description -->
 <meta name="keywords" content="agencja reklamowa wrocław, marketing, agencja marketingowa, planowanie mediów, strony www, prowadzeie facebooka, marketing szeptany,grafika, kreacja, kreacja reklamowa, reklama, szkolenia, badania, pozycjonowanie, kampanie RTB, pr, kampanie adwords">
 <meta name="description" content="LemonHills - agencja marketingowa. Kompleksowa obsługa marketingowa: kreacja, planowanie mediów, Public Relations, produkcja materiałów reklamowych, strony WWW, social media, badania i organizacja eventów.">

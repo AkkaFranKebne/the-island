@@ -2,8 +2,6 @@ $(document).ready(function () {
     /* 
       
 
->full screen dla galerii dla mobile https://wiki.mozilla.org/Gecko:FullScreenAPI 
-
 > galeria o nas - dodatkowe elementy i funkcja - czekac na rysunki od klienta
 
 > poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
