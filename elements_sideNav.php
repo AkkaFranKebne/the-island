@@ -5,10 +5,13 @@
 </div>
 <div class="sidenav">
     <a href="index.php">Strona Główna</a>
-    <a href="sm.php">Social Media</a>
-    <a href="kreacja.php">Kreacja</a>
-    <a href="www.php">Strony www</a>
-    <a href="eventy.php">Eventy</a>
-    <a href="about.php">O nas</a>
-    <a href="newbiz.php">Kontakt</a>
+    <?php $link = "sm.php"; $text = include 'elements_menu_names.php'; echo '<a href="'.$link.'">'.$text .'</a> '?>
+    <?php $link = "kreacja.php"; $text = include 'elements_menu_names.php'; echo '<a href="'.$link.'">'.$text .'</a> '?>
+    <?php $link = "www.php"; $text = include 'elements_menu_names.php'; echo '<a href="'.$link.'">'.$text .'</a> '?>
+    <?php $link = "eventy.php"; $text = include 'elements_menu_names.php'; echo '<a href="'.$link.'">'.$text .'</a> '?>
+    <?php $link = "about.php"; $text = include 'elements_menu_names.php'; echo '<a href="'.$link.'">'.$text .'</a> '?>
+    <?php $link = "newbiz.php"; $text = include 'elements_menu_names.php'; echo '<a href="'.$link.'">'.$text .'</a> '?>
+    
 </div>
+
+
