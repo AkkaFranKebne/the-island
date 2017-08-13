@@ -30,7 +30,7 @@ include 'elements_db_connection.php';?>
             </div>
         </div>           
         
-        <?php include 'elements_gallery.php';?>
+        <?php include 'elements_gallery_about.php';?>
     </main>  
      <?php include 'elements_footer.php';?>
 </body>

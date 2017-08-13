@@ -1,0 +1,28 @@
+    .team {
+        width: 100%;
+        padding-right: 50px;
+        height: auto;
+        margin-top: 12px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content:space-around;
+        align-items:center;
+        align-content: space-around;
+        .mate {
+            margin-bottom: 10px;
+            //width: 90px;
+            //height: 90px;
+            //-moz-border-radius: 50%;
+            //-webkit-border-radius: 50%;
+            //border-radius: 50%;
+            //background-color: #c0dfd9;  
+            //background-image: url(../images/person.jpg);
+            //background-repeat: no-repeat;
+            //background-size: cover;
+            //background-color: #c0dfd9;
+            &:hover{
+                //opacity: 0.7;
+            }
+        }
+}

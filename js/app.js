@@ -42,7 +42,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 800x440
 
 Modal: 
 Mobile: 450x300
-Tablet / Notebook: 800x530
+Tablet / Notebook (nondesktop): 800x530
 Desktop: 1000x660
 Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         
