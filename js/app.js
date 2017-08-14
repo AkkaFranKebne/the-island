@@ -957,12 +957,53 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     
    //--------------fitting the gallery to window height
     
+    
     function galleryHeightFittingToWindowsHeight(){
         var offset = nav.outerHeight() + titleBar.outerHeight() + descBar.outerHeight();    
         var expetedHeight = ($(window).height() - offset)/3;
         galleryImages.css("height",expetedHeight);        
     }
-
+    
+    //--------------fitting the  about gallery to window height
+    
+    
+    function galleryAboutHeightFittingToWindowsHeight(){
+       //how far is gallery from the top 
+        var offset = nav.outerHeight() + titleBar.outerHeight() + descBar.outerHeight(); 
+        /*
+    
+    unknown:
+    x - gallery thumbnail height
+    x = Math.sqrt(w*s/L*p)
+    
+    known:
+    s - gallery div width
+    w - gallery div height
+    p - y/x
+    L - number of thumbnails
+    */
+    var s = $('.gallery').innerWidth();
+    var w = $(window).height() - offset;
+    var p = 350/220;
+    if (bigdesktop.match) {
+        p = 800/440
+    }
+    var L = $('picture').length;
+    
+    console.log("s: "+s);
+    console.log("w: "+w);
+    console.log("p: "+p);
+    console.log("L: "+L);
+    
+    
+         
+           
+        var expetedHeight = 0.78* Math.floor(Math.sqrt((w * s)/ (L * p)));
+        galleryImages.css("height",expetedHeight);        
+    }
+    
+    
+    
 
 
 
@@ -1025,7 +1066,13 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         setThumbnailsSize();
             //--------------fitting the gallery to window height for desktop
         if (!mobile.matches && !nondesktop.matches && !portrait.matches) {
-            galleryHeightFittingToWindowsHeight();
+            if ( main.children().first().next().children().first().hasClass('team')){
+                galleryAboutHeightFittingToWindowsHeight();
+            }
+            else {
+                galleryHeightFittingToWindowsHeight();
+            }
+            
         }
     }
 
