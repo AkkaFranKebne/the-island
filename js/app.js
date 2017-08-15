@@ -2,7 +2,7 @@ $(document).ready(function () {
     /* 
       
 
-> galeria o nas - dodatkowe elementy i funkcja - czekac na rysunki od klienta
+> galeria o nas - dodatkowe elementy i funkcja - pokazac klientowi
 
 > poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
 
@@ -648,6 +648,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         
         //finding current image
         findCurrentImage(); 
+        
+        console.log(imageSource);
 
         //finding these three images
         galleryImages.each(function (index) {
@@ -660,10 +662,12 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 dataSourcePrevious = $(this).data('source');
                 //caption is taken from the actual image
                 caption = galleryImages.eq(index + 1).attr('alt');
+                
+                
 
                 //showing / hiding arrows, based on data-order in html
                 //if the actual image is the last one
-                if (galleryImages.eq(index + 1).data('order') < 9) {
+                if (galleryImages.eq(index + 1).data('order') < $('picture').length) {
                     modal.find('.right').fadeIn();
                 } else {
                     modal.find('.right').fadeOut();
@@ -681,6 +685,9 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 }
             }
         });
+        
+        
+        
 
         // resize difrent images sizes for different screens        
         mediaMatches(dataSource, dataSourcePrevious, dataSourceNext);
@@ -697,11 +704,11 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
                 else {
                     setImg();
                 }
-                //prepare the previous image/video
+                //prepare the previous image
                 if (!$(this).hasClass('video')) {
                     setImgPre();
                 } 
-                //prepare the next image/video
+                //prepare the next image
                 if (!galleryImages.eq(index + 2).hasClass('video')) {
                     setImgNxt();
                 } 
@@ -733,7 +740,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
                 //showing / hiding arrows, based on data-order in html
                 //if the actual image is the last one
-                if (galleryImages.eq(index - 1).data('order') < 9) {
+                if (galleryImages.eq(index - 1).data('order') < $('picture').length) {
                     modal.find('.right').fadeIn();
                 } else {
                     modal.find('.right').fadeOut();
@@ -1372,7 +1379,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
 
         //showing / hiding arrows, based on data-order in html
         //if the actual image is the last one
-        if ($(this).data('order') == 9) {
+        if ($(this).data('order') == $('picture').length) {
             modal.find('.right').hide();
         }
         //if the actual image is the first one

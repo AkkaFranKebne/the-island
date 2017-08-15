@@ -1,8 +1,8 @@
 <div class="row gallery">
-    <div class="col-12 photos team  ">
+    <div class="col-12 photos team">
             <picture class="mate">
                 <a href="#" title="MDM Mieszkania na Krzykach  - materiały reklamowe">
-                    <img id="gallery" src="images/thumbnail_nowy_produkt.jpg" alt="MDM Mieszkania na Krzykach  - materiały reklamowe" data-source="images/onas.jpg" data-order="1">
+                    <img  src="images/thumbnail_nowy_produkt.jpg" alt="MDM Mieszkania na Krzykach  - materiały reklamowe" data-source="images/onas.jpg" data-order="1">
                     <div class='image-description'><h3>Andrzej Smutny</h3>
                     <h3>PREZES</h3></div>
                 </a>
@@ -49,9 +49,10 @@
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
+                        <!--
             <picture class="mate">
                 <a href="#" title="QUTE product animation">
-                    <img class='video' src="images/thumbnail_QUTE-product-animation.jpg" alt="QUTE - product animation" data-source='https://player.vimeo.com/video/202009420' data-order="8">
+                    <img  src="images/thumbnail_QUTE-product-animation.jpg" alt="QUTE - product animation" data-source="images/piazza-di-moda.jpg" data-order="8">
                     <div class='image-description'><h3>Andrzej Smutny</h3>
                     <h3>PREZES</h3></div>
                 </a>
@@ -65,67 +66,68 @@
             </picture>
             <picture class="mate">
                 <a href="#" title="MDM Mieszkania na Krzykach  - materiały reklamowe">
-                    <img id="gallery" src="images/thumbnail_nowy_produkt.jpg" alt="MDM Mieszkania na Krzykach  - materiały reklamowe" data-source="images/onas.jpg" data-order="1">
+                    <img  src="images/thumbnail_nowy_produkt.jpg" alt="MDM Mieszkania na Krzykach  - materiały reklamowe" data-source="images/onas.jpg" data-order="10">
                     <div class='image-description'><h3>Andrzej Smutny</h3>
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
             <picture class="mate">
                 <a href="#" title="PIAZZA DI MODA - materiały promocyjne">
-                    <img src="images/thumbnail_piazza-di-moda.jpg" alt="PIAZZA DI MODA - materiały promocyjne" data-source="images/piazza-di-moda.jpg" data-order="2">
+                    <img src="images/thumbnail_piazza-di-moda.jpg" alt="PIAZZA DI MODA - materiały promocyjne" data-source="images/piazza-di-moda.jpg" data-order="11">
                     <div class='image-description'><h3>Andrzej Smutny</h3>
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
             <picture class="mate">
                 <a href="#" title="Konferencja PGN Wrocław Miasto Jutra - projekty i produkcja materiałów konferencyjnych">
-                    <img src="images/thumbnail_pgn-wroclaw.jpg" alt="Konferencja PGN Wrocław Miasto Jutra - projekty i produkcja materiałów konferencyjnych" data-source="images/pgn-wroclaw.jpg" data-order="3">
+                    <img src="images/thumbnail_pgn-wroclaw.jpg" alt="Konferencja PGN Wrocław Miasto Jutra - projekty i produkcja materiałów konferencyjnych" data-source="images/pgn-wroclaw.jpg" data-order="12">
                         <div class='image-description'><h3>Andrzej Smutny</h3>
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
             <picture class="mate">
                 <a href="#" title="OSIEDLE PRZYSTAŃ - folder sprzedażowy">
-                    <img src="images/thumbnail_osiedle-przystan.jpg" alt="OSIEDLE PRZYSTAŃ - folder sprzedażowy" data-source="images/osiedle-przystan.jpg" data-order="4">
+                    <img src="images/thumbnail_osiedle-przystan.jpg" alt="OSIEDLE PRZYSTAŃ - folder sprzedażowy" data-source="images/osiedle-przystan.jpg" data-order="13">
                     <div class='image-description'><h3>Andrzej Smutny</h3>
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
             <picture class="mate">
                 <a href="#" title="MEDICUS - MATERIAŁY BTL">
-                    <img src="images/thumbnail_medicus-materialy-btl.jpg" alt="MEDICUS - MATERIAŁY BTL" data-source="images/medicus-materialy-btl.jpg" data-order="5">
+                    <img src="images/thumbnail_medicus-materialy-btl.jpg" alt="MEDICUS - MATERIAŁY BTL" data-source="images/medicus-materialy-btl.jpg" data-order="14">
                     <div class='image-description'><h3>Andrzej Smutny</h3>
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
             <picture class="mate">
                 <a href="#" title="IBS DESIGN - materiały reklamowe">
-                    <img src="images/thumbnail_ibs-design.jpg" alt="IBS DESIGN - materiały reklamowe" data-source="images/ibs-design.jpg" data-order="6">
+                    <img src="images/thumbnail_ibs-design.jpg" alt="IBS DESIGN - materiały reklamowe" data-source="images/ibs-design.jpg" data-order="15">
                     <div class='image-description'><h3>Andrzej Smutny</h3>
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
             <picture class="mate">
                 <a href="#" title="Gala Oscarów MEDICUSA - oprawa graficzna, produkcja materiałów, scenografia, hostessy, wizaż">
-                    <img src="images/thumbnail_gala-oskarow-medicusa.jpg" alt="Gala Oscarów MEDICUSA - oprawa graficzna, produkcja materiałów, scenografia, hostessy, wizaż" data-source="images/gala-oskarow-medicusa.jpg" data-order="7">
+                    <img src="images/thumbnail_gala-oskarow-medicusa.jpg" alt="Gala Oscarów MEDICUSA - oprawa graficzna, produkcja materiałów, scenografia, hostessy, wizaż" data-source="images/gala-oskarow-medicusa.jpg" data-order="16">
                     <div class='image-description'><h3>Andrzej Smutny</h3>
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
             <picture class="mate">
                 <a href="#" title="QUTE product animation">
-                    <img class='video' src="images/thumbnail_QUTE-product-animation.jpg" alt="QUTE - product animation" data-source='https://player.vimeo.com/video/202009420' data-order="8">
+                    <img  src="images/thumbnail_QUTE-product-animation.jpg" alt="QUTE - product animation" data-source="images/piazza-di-moda.jpg" data-order="17">
                     <div class='image-description'><h3>Andrzej Smutny</h3>
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
             <picture class="mate">
                 <a href="#" title="PORT LOTNICZY WROCŁAW - sezonowy KeyVisual (jesień/zima 2016/17)">
-                    <img src="images/thumbnail_port-lotniczy-wroclaw.jpg" alt="PORT LOTNICZY WROCŁAW - sezonowy KeyVisual (jesień/zima 2016/17)" data-source="images/port-lotniczy-wroclaw.jpg" data-order="9">
+                    <img src="images/thumbnail_port-lotniczy-wroclaw.jpg" alt="PORT LOTNICZY WROCŁAW - sezonowy KeyVisual (jesień/zima 2016/17)" data-source="images/port-lotniczy-wroclaw.jpg" data-order="18">
                     <div class='image-description'><h3>Andrzej Smutny</h3>
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
+-->
         <!-- The Modal -->
         <div class="row" id="modal" class="modal">
         <div  class="col-12 modal-area">
