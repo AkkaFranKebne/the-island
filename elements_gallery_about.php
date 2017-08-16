@@ -49,7 +49,8 @@
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
-                        <!--
+        <!--
+                        
             <picture class="mate">
                 <a href="#" title="QUTE product animation">
                     <img  src="images/thumbnail_QUTE-product-animation.jpg" alt="QUTE - product animation" data-source="images/piazza-di-moda.jpg" data-order="8">
@@ -57,6 +58,7 @@
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
+        
             <picture class="mate">
                 <a href="#" title="PORT LOTNICZY WROCŁAW - sezonowy KeyVisual (jesień/zima 2016/17)">
                     <img src="images/thumbnail_port-lotniczy-wroclaw.jpg" alt="PORT LOTNICZY WROCŁAW - sezonowy KeyVisual (jesień/zima 2016/17)" data-source="images/port-lotniczy-wroclaw.jpg" data-order="9">
@@ -64,6 +66,7 @@
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
+        
             <picture class="mate">
                 <a href="#" title="MDM Mieszkania na Krzykach  - materiały reklamowe">
                     <img  src="images/thumbnail_nowy_produkt.jpg" alt="MDM Mieszkania na Krzykach  - materiały reklamowe" data-source="images/onas.jpg" data-order="10">
@@ -71,6 +74,7 @@
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
+        
             <picture class="mate">
                 <a href="#" title="PIAZZA DI MODA - materiały promocyjne">
                     <img src="images/thumbnail_piazza-di-moda.jpg" alt="PIAZZA DI MODA - materiały promocyjne" data-source="images/piazza-di-moda.jpg" data-order="11">

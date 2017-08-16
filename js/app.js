@@ -962,11 +962,15 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         
     }
     
-   //--------------fitting the gallery to window height
+ //--------------fitting the gallery to window height
     
     
     function galleryHeightFittingToWindowsHeight(){
-        var offset = nav.outerHeight() + titleBar.outerHeight() + descBar.outerHeight();    
+        var navHeight = 117 // logo height 87 + paddings height 30
+        var offset = navHeight + titleBar.outerHeight() + descBar.outerHeight();    
+        console.log("nav.outerHeight(): "+nav.outerHeight());
+        console.log("titleBar.outerHeight(): "+titleBar.outerHeight());
+        console.log("descBar.outerHeight(): "+descBar.outerHeight());
         var expetedHeight = ($(window).height() - offset)/3;
         galleryImages.css("height",expetedHeight);        
     }
@@ -975,8 +979,13 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     
     
     function galleryAboutHeightFittingToWindowsHeight(){
+        var navHeight = 117 // logo height 87 + paddings height 30
+        
        //how far is gallery from the top 
-        var offset = nav.outerHeight() + titleBar.outerHeight() + descBar.outerHeight(); 
+        var offset = navHeight + titleBar.outerHeight() + descBar.outerHeight(); 
+        console.log("nav.outerHeight(): "+nav.outerHeight());
+        console.log("titleBar.outerHeight(): "+titleBar.outerHeight());
+        console.log("descBar.outerHeight(): "+descBar.outerHeight());
         /*
     
     unknown:
@@ -989,7 +998,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     p - y/x
     L - number of thumbnails
     */
-    var s = $('.gallery').innerWidth();
+    var s = $('main').width();
     var w = $(window).height() - offset;
     var p = 350/220;
     if (bigdesktop.match) {
@@ -1001,18 +1010,14 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     console.log("w: "+w);
     console.log("p: "+p);
     console.log("L: "+L);
-    
-    
-         
-           
-        var expetedHeight = 0.78* Math.floor(Math.sqrt((w * s)/ (L * p)));
+   
+        var expetedHeight = 0.72 * Math.floor(Math.sqrt((w * s)/ (L * p)));
+        console.log("expetedHeight: "+expetedHeight);  
         galleryImages.css("height",expetedHeight);        
     }
     
     
     
-
-
 
     //----------------------WWW FLOW--------------------------------------------------------------------------------- 
     

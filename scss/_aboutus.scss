@@ -1,15 +1,21 @@
-    .team {
-        width: 100%;
-        padding-right: 50px;
-        height: auto;
-        margin-top: 12px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content:center; // space-between vs. space-around vs center
-        align-items:center;
-        align-content: space-around; // space-between vs. space-around 
-        picture.mate {
-            margin-bottom: 1px;
+#about{
+    .gallery{
+        top: -50px;
+         .team {
+            margin-top: 0;
+            width: 100%;
+            padding-right: 50px;
+            height: auto;
+            margin-top: 12px;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content:center; // space-between vs. space-around vs center
+            align-items:center;
+            align-content: space-around; // space-between vs. space-around 
+            picture.mate {
+                margin-bottom: 1px;
+            }
         }
-}
+    }      
+}    
