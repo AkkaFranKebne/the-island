@@ -1,5 +1,5 @@
-#about{
-    .gallery{
+main{
+    .gallery#flex-gallery{
         top: -50px;
         @include mobile {
             top: 0;
@@ -11,7 +11,7 @@
             display: inline-block;
             margin: 0;
         }
-         .team {
+         .flex {
             margin-top: 0;
             width: 100%;
             height: auto;
@@ -27,4 +27,4 @@
             }
         }
     }      
-}    
+  } 

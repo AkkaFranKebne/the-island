@@ -1,5 +1,5 @@
-<div class="row gallery">
-    <div class="col-12 photos team">
+<div class="row gallery" id='flex-gallery'>
+    <div class="col-12 photos flex">
             <picture class="mate">
                 <a href="#" title="MDM Mieszkania na Krzykach  - materiały reklamowe">
                     <img  src="images/thumbnail_nowy_produkt.jpg" alt="MDM Mieszkania na Krzykach  - materiały reklamowe" data-source="images/onas.jpg" data-order="1">

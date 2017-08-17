@@ -5,8 +5,8 @@
 
 .pin {
     z-index: 2;
-    height: 30px;
-    width: 130px;
+    height: 60px;
+    width: 260px;
     background-image: url('../images/title-bar.png');
     background-size: contain;
     background-repeat: no-repeat;
@@ -26,10 +26,10 @@
     margin: $pinsMargin;
     cursor: pointer;
     p {
-        font-size: 10px;
+        font-size: 20px;
         color: white;
         text-align: center;
-        padding-top: 5px;
+        padding-top: 10px;
     }
 }
 

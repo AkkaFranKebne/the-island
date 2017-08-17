@@ -1,36 +1,25 @@
 $(document).ready(function () {
     /* 
       
-
-> galeria o nas - dodatkowe elementy i funkcja - pokazac klientowi
+>rozmiar obrazka w tle potestowac
 
 > poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
 
-> scroll story smok
-
-> estetyka mobile - klient
 
 >cache server - przyspieszy ladowanie animacji, co przyspieszy dzialania jquery?
 
 
-> na ostatecznym ksztalcie strony:
-> wydzielenie osobnych stron galerii 
-> dodanie wordpressa do galerii (jak ogarnac wiele rozmiarow obrazkow? czy wordpress sam to ogarnie?) - chyba lepszym rozwiązaniem byłoby dodanie prostego formularza wymagającego hasła aby podmienić galerie. 
+> dodanie wordpressa/formularza do galerii 
+> dodanie do formularza mozliwosci zaczytywania z bazt
+> dodanie automatycznej zmiany wielkosci obrazka i nazwy
+> przeniesienie na serwery strony klienta
 
+zauwazone bugi:
 > iframe na tablecie: nie dziala swipe, nie chowa sie 
 
 
---------------------------------------------------------------
-        
-do poczytania:
-        > lazy load 
-        > blur load 
-        > creative cloud 
-        > gulp svg konwersja 
-        > awsomefonts
-        > cookie js 
-        > instalacja photoshop i ciecie
-        > scroll story
+vol2
+> scroll story smok?
 
 -------------------------------------------------------------------
         
@@ -300,12 +289,24 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         y = y * param;
         x = x + mainPaddingLeftPx   ; //icluding padding 
         y = y + grpelemPaddingTopPx;
-        //fix for unusuall shape of newbiz
+        //fix for  newbiz
         if ($(this).attr('alt') == 'newbiz'){
             y = y + 120;
         }
-         //fix for unusuall shape of about
+         //fix for  about
         if ($(this).attr('alt') == 'about'){
+            y = y +50;
+        }
+         //fix for  sm
+        if ($(this).attr('alt') == 'sm'){
+            x = x -250;
+        }
+         //fix for  www
+        if ($(this).attr('alt') == 'www'){
+            x = x -100;
+        }
+        if ($(this).attr('alt') == 'eventy'){
+            x = x -100;
             y = y +50;
         }
         var yPluse = y + 10;  // y for pulse under pin
@@ -357,7 +358,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
             island_img.removeClass('hidden');
             //showing the menu elements
             navLinks.removeClass('hidden');
-            //showing pins for touchscreens, with delay if there is back to start animation
+            //showing pins, with delay if there is back to start animation
             if (main.attr('data-source')) {
             setTimeout(function () {
                 isTouch();
@@ -565,12 +566,12 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         }
     }
 
-    // introducing media queries for pins => touchscreens //////////
+    // showingPins (errata: for all tools, not only for toucj) //////////
 
     function isTouch() {
-        if ((touch.matches && nohover.matches) && !island.hasClass('hidden')) {
+        if (/*(touch.matches && nohover.matches) &&*/ !island.hasClass('hidden')) {
             pins.removeClass("hidden");
-            pulses.removeClass("hidden");
+            //pulses.removeClass("hidden");
         }
     }
     
@@ -1109,8 +1110,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     //----------------------EVENTS---------------------------------------------------------------------------------
     
         
-    //  showing / hiding pins on hoover/////////////////
-    
+    //  showing / hiding pins on hoover - client dediced not to use it/////////////////
+    /*
     areas.on('mouseenter', function(){
         pins.addClass('hidden');
         var whichArea = $(this).attr('title');
@@ -1134,7 +1135,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
   return false;
 });
     
-    
+   */ 
     /*
     areas.add(pulses).on('mouseleave', function(){
          var whichArea = $(this).attr('title');
