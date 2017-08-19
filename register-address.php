@@ -8,29 +8,28 @@ $conn = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect".$c
 //echo "Connected to the database <br>";
     
 /*
-used table address:
+used table:
 
-address_address_element 
-address_content
+url
+name
+description
 */
 
 ?>
+
 
 <!DOCTYPE html>
 <html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Zmien address_element  adresu</title>
+    <title>Wybierz element strony, ktory chcesz edytowac</title>
     <link rel="stylesheet" href="css-minified/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body id ="register_form">
-    <header>
-        <div class="title"><h1>Zmień element  adresu na stronie <a href="newbiz.php">KONTAKT</a>:</h1></div>
-    </header>
     <form action='#' method = post>
-        <h1>Zmień element  adresu na stronie <a href="newbiz.php" target="_blank">KONTAKT</a>:</h1>
+        <h1>Zmień element  adresu na stronie <a href="newbiz.php" target="_blank">newbiz.php</a>:</h1>
         <p>Wybierz element  adresu: </p>
         <select name=address_element  method=post><br>
           <option value='company'>nazwa firmy</option>
@@ -41,7 +40,7 @@ address_content
         </select><br>
         <p>Wstaw nową treść: </p><input type=text name=name value=''><br>
         <input type=submit value='Zapisz'>
-
+        <button type="button"><a href ='register-directory.php'>Wróć do strony głównej</a></button>
     <div class = 'greetings'>
     <div class='message'>
            

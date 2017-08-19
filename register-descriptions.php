@@ -27,9 +27,6 @@ description
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 </head>
 <body id ="register_form">
-    <header>
-        <div class="title"><h1>Zmień opis na stronie:</h1></div>
-    </header>
     <form action='#' method = post>
         <h1>Zmień opisy na stronie:</h1>
         <p>Wybierz stronę: </p>
@@ -41,10 +38,10 @@ description
           <option value='sm.php'>sm.php</option>
           <option value='www.php'>www.php</option>
         </select><br>
-        <p>Wstawy nowy tytuł: </p><input type=text name=name value=''><br>
-        <p>Wstawy nowy opis. Do nowych linii używaj znacznika <code> &ltbr&gt </code> : </p> <textarea type=text name=desc></textarea><br>
+        <p>Wstaw nowy tytuł: </p><input type=text name=name value=''><br>
+        <p>Wstaw nowy opis. Do nowych linii używaj znacznika <code> &ltbr&gt </code> : </p> <textarea type=text name=desc></textarea><br>
         <input type=submit value='Zapisz'>
-
+        <button type="button"><a href ='register-directory.php'>Wróć do strony głównej</a></button>
     <div class = 'greetings'>
     <div class='message'>
         
