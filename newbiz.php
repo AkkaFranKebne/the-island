@@ -36,11 +36,11 @@ include 'elements_db_connection.php';?>
                     <div class="row">
                         <div class="col-12">
                             <div class="address">
-                                <h4>LemOnHills Sp. z o.o.</h4>
-                                <h4>ul. Wiosenna 5a</h4>
-                                <h4>55-040 Bielany Wrocławskie</h4>
-                                <a href="mailto:info@lemonhills.pl"><h4 >info@lemonhills.pl</h4></a>
-                                <a href="tel:+48509680400"><h4 >+48.509.680.400</h4></a>
+                                <h4><?php  $title = 'company'; include 'elements_address.php';?></h4>
+                                <h4><?php  $title = 'street'; include 'elements_address.php';?></h4>
+                                <h4><?php  $title = 'city'; include 'elements_address.php';?></h4>
+                                <a href="mailto:<?php  $title = 'email'; include 'elements_address.php';?>"><h4 ><?php  $title = 'email'; include 'elements_address.php';?></h4></a>
+                                <a href="<?php  $title = 'tel'; include 'elements_address.php';?>"><h4 ><?php  $title = 'tel'; include 'elements_address.php';?></h4></a>
                             </div>
                         </div>
                     </div>                    
