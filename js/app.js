@@ -1012,8 +1012,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     console.log("p: "+p);
     console.log("L: "+L);
    
-        var expetedHeight = 1 * Math.floor(Math.sqrt((w * s)/ (L * p)));
-        console.log("expetedHeight: "+expetedHeight);  
+        var expetedHeight =  0.75*Math.floor(Math.sqrt((w * s)/ (L * p)));
+        console.log("expetedHeight: "+expetedHeight);
         galleryImages.css("height",expetedHeight);        
     }
     
@@ -1079,7 +1079,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         setThumbnailsSize();
             //--------------fitting the gallery to window height for desktop
         if (!mobile.matches && !nondesktop.matches && !portrait.matches) {
-            if ( main.children().first().next().children().first().hasClass('team')){
+            if ( $('.gallery').children().first().hasClass('flex')){
                 galleryAboutHeightFittingToWindowsHeight();
             }
             else {
