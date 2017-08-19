@@ -1,0 +1,42 @@
+#register_form{
+    form {
+        transition: none;
+        width: 1000px;
+        height: 90vh;
+         h1 {
+            font-size: 30px;
+            color: black;
+        }
+        p, code {
+            color: black;
+            font-size: 18px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            &.error {
+                color: red;
+            }
+            &.info {
+                color: green;
+            }
+        }
+        code {
+            font-weight: bold;
+        }
+        select {
+            height: 36px;
+            width: 950px;
+            font-size: 14px;
+        }
+        input {
+            height: 36px;
+            width: 950px;
+            font-size: 14px;
+        }
+        textarea {
+            height: 200px;
+            width: 950px;
+            font-size: 14px;
+        }
+    }
+    
+}
