@@ -48,9 +48,47 @@ alt
     
 <?php
         $msg = '';
+        //$path_to_image_directory = 'images/';
+        //$path_to_thumbs_directory = 'images/';
+
+            
+        
+    function createThumbnail($filename) {
+        $final_width_of_image = 30;
+        
+            //check if img is jpg
+            if(preg_match('/[.](jpg)$/', $filename)) {
+                //create image from file
+                $im = imagecreatefromjpeg('images/'. $filename);
+                //save to variables orginal height and width of the image
+                $ox = imagesx($im);
+                $oy = imagesy($im);
+                //saves to variable a final width of a thumbnail
+                $nx = $final_width_of_image;
+                //calculates the final height of a thumbnail
+                $ny = floor($oy * ($final_width_of_image / $ox));
+                //creates new image with the given height and width
+                $nm = imagecreatetruecolor($nx, $ny);
+                //copy the downloaded image to the new created image, with the resize, you can add a possition here. The coordinates refer to the upper left corner.  http://php.net/manual/en/function.imagecopyresized.php
+                //bool imagecopyresized ( resource $dst_image , resource $src_image , int $dst_x , int $dst_y , int $src_x , int $src_y , int $dst_w , int $dst_h , int $src_w , int $src_h )
+                imagecopyresized($nm, $im, 0,0,0,0,$nx,$ny,$ox,$oy);
+                //creates a JPEG file from the given image.; Output image to browser or file
+                imagejpeg($nm, 'images/thumbnail_'. $filename);
+                //creates DOM element
+                $tn = '<img src="' . 'images/thumbnail_'. $filename . '" alt="image" />';
+            echo $tn;
+                }
+        else { echo "Obrazek musi byc w formacie jpg";}
+    }
+        
         
 
-      if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])){
+      if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])  ){
+          if (preg_match('/[.](jpg)$/', $_FILES['image']['name'])) {
+            $filename = $_FILES['image']['name'];
+            $source = $_FILES['image']['tmp_name'];
+            //$target = $path_to_image_directory . $filename;
+            
             //the path to store upload files
             $target = "images/".basename($_FILES['image']['name']);
           
@@ -68,7 +106,7 @@ alt
             }
           
           //move uploaded image into the folder
-          if (move_uploaded_file($_FILES['image']['tmp_name'], $target)) {
+          if (move_uploaded_file($source, $target)) {
               $msg = "obrazek uploadowany";
           }
           else {
@@ -76,6 +114,12 @@ alt
           }
           echo '<br>';
           echo $msg;
+          
+          
+          //create thumbnail
+          createThumbnail($filename); 
+          }
+          else {echo "Obrazek musi byc w formacie jpg";}
     };
    
 ?>
@@ -87,7 +131,7 @@ alt
 </div>  
     
     <?php
-    
+    //show the uploaded files
     $sql = "SELECT title, photo, alt FROM lemoniada_test.zdjecia" ;
             $result = $conn->query($sql);
                 if ($result->num_rows > 0) {

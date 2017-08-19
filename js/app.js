@@ -23,7 +23,7 @@ vol2
 
 -------------------------------------------------------------------
         
-Galeria:
+Galeria thumbnail:
 Mobile: 350x220
 Tablet / Notebook: 800x440
 Desktop: 350x220

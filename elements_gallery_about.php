@@ -1,8 +1,8 @@
 <div class="row gallery" id='flex-gallery'>
     <div class="col-12 photos flex">
             <picture class="mate">
-                <a href="#" title="MDM Mieszkania na Krzykach  - materiały reklamowe">
-                    <img  src="images/thumbnail_nowy_produkt.jpg" alt="MDM Mieszkania na Krzykach  - materiały reklamowe" data-source="images/onas.jpg" data-order="1">
+                <a href="#" title="Andrzej - nasz bardzo smutny prezes">
+                    <img  src="images/thumbnail_onas.jpg" alt="Andrzej - nasz bardzo smutny prezes" data-source="images/onas.jpg" data-order="1">
                     <div class='image-description'><h3>Andrzej Smutny</h3>
                     <h3>PREZES</h3></div>
                 </a>
