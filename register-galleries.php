@@ -1,11 +1,5 @@
 <?php
-
-//connect with database: https://www.w3schools.com/php/php_mysql_insert.asp
-$user = 'root';
-$pass ='';
-$db = 'lemoniada_test'; //zalozona w http://localhost/phpmyadmin/server_databases.php?db=
-$conn = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect".$conn->connect_error);
-//echo "Connected to the database <br>";
+include 'elements_db_connection.php';?> 
     
 /*
 used table galleries:
@@ -81,6 +75,8 @@ job_position
 
     
 <?php
+        
+    include 'functions.php'; 
 
    
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
@@ -106,14 +102,12 @@ job_position
                 //the path to store upload files
                 $target = "images/".basename($_FILES['image']['name']);
                 
-                if ($same_thumbnail_img == 'tak') {
+                if ($same_thumbnail_img == 'different_thumbnail') {
                     $thumbnail_filename = $_FILES['thumbnail']['name'];
                     $thumbnail_source = $_FILES['thumbnail']['tmp_name'];
-                    $thumbnail_target = "images/".basename($_FILES['thumbnail']['name']);
+                    $thumbnail_target = "images/".basename($_FILES['thumbnail']['name'])."_nondesktop";
                     
-                } else {
-                    $thumbnail_filename = '';
-                }
+                } 
             }
             
             //and same for vimeo
@@ -121,10 +115,10 @@ job_position
                 $target = $link;
                 $thumbnail_filename = $_FILES['thumbnail']['name'];
                 $thumbnail_source = $_FILES['thumbnail']['tmp_name'];
-                $thumbnail_target = "images/".basename($_FILES['thumbnail']['name']);
+                $thumbnail_target = "images/".basename($_FILES['thumbnail']['name'])."_nondesktop";
             };
                       
-            //sql
+            //send data to sql
             $sql = "SELECT * FROM lemoniada_test.galleries WHERE url ='".$url."'  AND data_order ='".$data_order."'  ";
             $result = $conn->query($sql);
             
@@ -160,6 +154,7 @@ job_position
                 }
             }
             
+            //or update sql
             else {
                  $sql = "UPDATE lemoniada_test.galleries 
                  SET 
@@ -181,7 +176,37 @@ job_position
                 }               
 
             }
-            
+          
+        //move uploaded image to the folder 
+         if ($content_type =='mate') {
+                       if (move_uploaded_file($source, $target) ) {
+                          echo "<p class='info'>Obrazek załadowany</p>";
+                          //create extra sizes
+                            createDesktopImg1000x660($filename);
+                            createNondesktopImg800x530($filename);
+                            createMobileImg450x300($filename);
+                           if ($same_thumbnail_img == 'same_thumbnail'){
+                               createBigThumbnail800x440($filename); createBasicThumbnailFROMBIGIMAGE350x220($filename);
+                           }
+                        
+                          }
+                          else {
+                              echo "<p class='error'>Nie załadowano obrazka</p>";
+                          }
+             
+         }
+
+        if ($same_thumbnail_img == 'different_thumbnail' | ($content_type =='mate video') ) {
+                     if (move_uploaded_file($thumbnail_source, $thumbnail_target) ) {
+                      echo "<p class='info'>Thumbnail załadowany</p>";
+                        //create extra sizes
+                         //createBasicThumbnailFROMBIGIMAGE350x220($filename);
+                          }
+                          else {
+                              echo "<p class='error'>Nie załadowano thumbnail</p>";
+                          }           
+        }
+
         }
 
         else {

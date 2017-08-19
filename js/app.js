@@ -24,16 +24,14 @@ vol2
 -------------------------------------------------------------------
         
 Galeria thumbnail:
-Mobile: 350x220
-Tablet / Notebook: 800x440
-Desktop: 350x220
-Duzy Desktop i Desktop wysokiej rozdzielczosci 800x440
+!Desktop: 350x220 (uzywana takze w mobike)
+!Duzy Desktop i Desktop wysokiej rozdzielczosci 800x440 - - (uzywany takze w Tablecie i Notebooku)
 
 Modal: 
-Mobile: 450x300
-Tablet / Notebook (nondesktop): 800x530
-Desktop: 1000x660
-Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
+!Mobile: 450x300
+!Tablet / Notebook (nondesktop): 800x530
+!Desktop: 1000x660
+!Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
         
     */
  
@@ -189,8 +187,8 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var dataSourceNext = '#';
     var caption = '';
     var barToModalProportion = 1.1;
-    var imgNaturalHeight = 660;
-    var imgNaturalWidth = 1000;
+    var imgNaturalHeight = 1320;
+    var imgNaturalWidth = 2000;
     var modalImageRatio = imgNaturalWidth/imgNaturalHeight;
 
     //contact form

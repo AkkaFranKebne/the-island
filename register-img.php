@@ -2,13 +2,7 @@
 
 require "simplehtmldom_1_5/simple_html_dom.php";
 
-
-//connect with database: https://www.w3schools.com/php/php_mysql_insert.asp
-$user = 'root';
-$pass ='';
-$db = 'lemoniada_test'; //zalozona w http://localhost/phpmyadmin/server_databases.php?db=
-$conn = new mysqli('localhost', $user, $pass, $db) or die("Unable to connect".$conn->connect_error);
-//echo "Connected to the database <br>";
+include 'elements_db_connection.php';?> 
     
 /*
 tabela zdjecia stworzona w phpmyadmin/sql
