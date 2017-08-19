@@ -1012,7 +1012,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     console.log("p: "+p);
     console.log("L: "+L);
    
-        var expetedHeight = 0.72 * Math.floor(Math.sqrt((w * s)/ (L * p)));
+        var expetedHeight = 1 * Math.floor(Math.sqrt((w * s)/ (L * p)));
         console.log("expetedHeight: "+expetedHeight);  
         galleryImages.css("height",expetedHeight);        
     }

@@ -56,8 +56,8 @@
                     <img  src="images/thumbnail_all-view.jpg" alt="ALL VIEW kampania outdoor" data-source="images/all-view.jpg" data-order="10">
    
                 </a>
-            </picture>
-        <!--  
+            </picture><!--
+          
             <picture class="mate">
                 <a href="#" title="PIAZZA DI MODA - materiały promocyjne">
                     <img src="images/thumbnail_piazza-di-moda.jpg" alt="PIAZZA DI MODA - materiały promocyjne" data-source="images/piazza-di-moda.jpg" data-order="11">
