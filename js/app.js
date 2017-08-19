@@ -194,7 +194,7 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     var modalImageRatio = imgNaturalWidth/imgNaturalHeight;
 
     //contact form
-    var form = $('form');
+    var form = $('#contact-form');
     var submitButton = form.find('input[type="submit"]');
     var emailField = form.find('#email');
     var telephoneField = form.find('#tel');
@@ -1555,6 +1555,62 @@ Duzy Desktop i Desktop wysokiej rozdzielczosci 2000x1320
     }
     window.scrollTo(0,1);
   }
+    
+    /////////////////////events for registrer page /////////////////
+    
+    //for about.php
+    
+    
+    $('#url').change(function(){ 
+        if($(this).val() == 'about.php'){
+            $('.for-about-gallery').removeClass('notDisplayed');
+        }
+        else {
+            $('.for-about-gallery').addClass('notDisplayed');
+        }
+});
+    
+   if( $("option#about:selected").length ){
+       $('.for-about-gallery').removeClass('notDisplayed');
+   }
+    
+    //for jpg/vimeo
+    
+     $('#content-type').change(function(){ 
+        if($(this).val() == 'mate'){
+            $('.for-jpg').removeClass('notDisplayed');
+            $('.for-vimeo').addClass('notDisplayed');
+        }
+        else {
+            $('.for-jpg').addClass('notDisplayed');
+            $('.for-vimeo').removeClass('notDisplayed');
+        }
+});
+    
+   if( $("option#jpg-content-type:selected").length ){
+            $('.for-jpg').removeClass('notDisplayed');
+            $('.for-vimeo').addClass('notDisplayed');
+   }  
+    
+    if( $("option#vimeo-content-type:selected").length ){
+            $('.for-jpg').addClass('notDisplayed');
+            $('.for-vimeo').removeClass('notDisplayed');
+   }
+    
+    //for separate thumbnail
+    
+        $('#thumbnail').change(function(){ 
+        if($(this).val() == 'different_thumbnail'){
+            $('.for-thumbnail').removeClass('notDisplayed');
+        }
+        else {
+            $('.for-thumbnail').addClass('notDisplayed');
+        }
+});
+    
+   if( $("option#different_thumbnail:selected").length ){
+       $('.for-thumbnail').removeClass('notDisplayed');
+   }
 
     //-------------------end----------------------------   
 });

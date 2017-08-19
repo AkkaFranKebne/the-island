@@ -80,8 +80,37 @@ alt
                 }
         else { echo "Obrazek musi byc w formacie jpg";}
     }
+
+        function createModal($filename) {
+        $final_width_of_image = 600;
+        $final_height_of_image = 300;
         
-        
+            //check if img is jpg
+            if(preg_match('/[.](jpg)$/', $filename)) {
+                //create image from file
+                $im = imagecreatefromjpeg('images/'. $filename);
+                //save to variables orginal height and width of the image
+                $ox = imagesx($im);
+                $oy = imagesy($im);
+                //saves to variable a final width of a thumbnail
+                $nx = $final_width_of_image;
+                $ny = $final_height_of_image;
+                //creates new image with the given height and width
+                $nm = imagecreatetruecolor($nx, $ny);
+                //copy the downloaded image to the new created image, with the resize, you can add a possition here. The coordinates refer to the upper left corner.  http://php.net/manual/en/function.imagecopyresized.php
+                //bool imagecopyresized ( resource $dst_image , resource $src_image , int $dst_x , int $dst_y , int $src_x , int $src_y , int $dst_w , int $dst_h , int $src_w , int $src_h )
+                imagecopyresized($nm, $im, 0,0,0,0,$nx,$ny,$ox,$oy);
+                //creates a JPEG file from the given image.; Output image to browser or file
+                //file path
+                $path_parts = pathinfo('images/'. $filename);
+                imagejpeg($nm, 'images/'.$path_parts['filename'].'_modal.'.$path_parts['extension']);
+                //creates DOM element
+                $tm = '<img src="' . 'images/'.$path_parts['filename'].'_modal.'.$path_parts['extension']. '" alt="image" />';
+            echo $tm;
+                }
+        else { echo "Obrazek musi byc w formacie jpg";}
+    }
+                
 
       if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['upload'])  ){
           if (preg_match('/[.](jpg)$/', $_FILES['image']['name'])) {
@@ -100,14 +129,14 @@ alt
             //send data to sql
             $sql = "INSERT INTO lemoniada_test.zdjecia (photo, title, alt) VALUES ('$image', '$title', '$alt')";          
             if ($conn->query($sql) === TRUE) {
-                    echo "Nowy wpis dodany";
+                    echo "Nowy wpis dodany<br>";
             } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
             }
           
           //move uploaded image into the folder
           if (move_uploaded_file($source, $target)) {
-              $msg = "obrazek uploadowany";
+              $msg = "<br>obrazek uploadowany<br>";
           }
           else {
               $msg = "problem z uploadowaniem obrazka";
@@ -118,6 +147,7 @@ alt
           
           //create thumbnail
           createThumbnail($filename); 
+          createModal($filename); 
           }
           else {echo "Obrazek musi byc w formacie jpg";}
     };

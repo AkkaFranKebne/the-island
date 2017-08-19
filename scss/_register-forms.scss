@@ -29,38 +29,40 @@
         select {
             height: 36px;
             width: 950px;
-            font-size: 14px;
+            font-size: 19px;
         }
-        input, button {
+        input{
+            color: black;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            height: 36px;
+            width: 950px;
+            font-size: 17px;
+        }
+        input[type=submit], button {
             color: white;
             margin-top: 20px;
             margin-bottom: 20px;
             height: 36px;
             width: 950px;
-            font-size: 14px;
+            font-size: 19px;
             cursor:pointer;
             &:hover {
-                    color: red;
+                    color: black;
                 }
             a {
-               font-size: 14px;
+               font-size: 19px;
                 color: white;
                 text-decoration: none;
                 &:hover {
                     color: black;
-                }
-                span {
-                    font-size: 16px;
-                     &:hover {
-                        color: black;
-                    }
                 }
             }
         }
         textarea {
             height: 20vh;
             width: 950px;
-            font-size: 14px;
+            font-size: 19px;
         }
     }
     

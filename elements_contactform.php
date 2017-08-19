@@ -21,7 +21,7 @@
             ?>
             
 
-            <form action="mailSender.php" method="POST">
+            <form id='contact-form' action="mailSender.php" method="POST">
                 <div class='row'>
                     <div class='col-6'>
                         <label for="name">Imię </label> 
