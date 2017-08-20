@@ -81,7 +81,7 @@ job_position
    
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         //check if required fields were submitted
-        if(strlen(trim($_POST["url"])) >0 && strlen(trim($_POST["data_order"])) >0) {
+        if(strlen(trim($_POST["url"])) >0 && strlen(trim($_POST["data_order"])) >0 && strlen(trim($_POST["name"])) >0 && strlen(trim($_POST["content_type"])) >0) {
             
             //creating variables from these fields
             $url = mysqli_real_escape_string($conn, $_POST["url"]);
@@ -222,6 +222,44 @@ job_position
                           }           
         }
 
+        }
+        
+        else if(strlen(trim($_POST["url"])) >0 && strlen(trim($_POST["data_order"])) ){
+            //creating variables from these fields
+            $url = mysqli_real_escape_string($conn, $_POST["url"]);
+            $data_order = mysqli_real_escape_string($conn, $_POST["data_order"]);
+            
+            $sql = "SELECT * FROM lemoniada_test.galleries WHERE url ='".$url."'  AND data_order ='".$data_order."'  ";
+            $result = $conn->query($sql);
+            
+            if ($result->num_rows  >= 1) { 
+                while($row = $result->fetch_assoc()) {
+                    //remove images from folder
+                    if (!empty($row['image'])) {
+                         unlink('images/' . $row['image']);
+
+                        unlink('images/'.basename($row["image"],'.jpg').'_nondesktop.jpg');
+                        unlink('images/'.basename($row["image"],'.jpg').'_desktop.jpg');
+                        unlink('images/'.basename($row["image"],'.jpg').'_mobile.jpg');
+
+
+                        unlink('images/thumbnail_' . $row['image']);
+                        unlink('images/thumbnail_'.basename($row["image"],'.jpg').'_nondesktop.jpg');                       
+                    }
+                    if (!empty($row['thumbnail'])){
+                         unlink('images/' . $row['thumbnail']);
+                        unlink('images/thumbnail_'.basename($row["thumbnail"],'.jpg').'_nondesktop.jpg');                       
+                    }
+                       
+                    //remove rows from sql
+                    $sql = "DELETE FROM lemoniada_test.galleries WHERE url ='".$url."'  AND data_order ='".$data_order."'  ";
+                    $result = $conn->query($sql);
+                }
+                echo "<p class='info'>Element usunięty.</p>";
+            }
+            else {
+                echo "<p class='error'>Jeszcze ma tego elementu w bazie, nie można go usunąć.</p>";
+            }  
         }
 
         else {

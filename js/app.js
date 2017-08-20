@@ -1,18 +1,11 @@
 $(document).ready(function () {
     /* 
-      
+>404 i thumbnail    
 >rozmiar obrazka w tle potestowac
-
 > poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
-
-
 >cache server - przyspieszy ladowanie animacji, co przyspieszy dzialania jquery?
-
-
-> dodanie wordpressa/formularza do galerii 
-> dodanie do formularza mozliwosci zaczytywania z bazt
-> dodanie automatycznej zmiany wielkosci obrazka i nazwy
-> przeniesienie na serwery strony klienta
+> usuwanie elementow przez formularz
+> przeniesienie na serwery bazy i strony klienta
 
 zauwazone bugi:
 > iframe na tablecie: nie dziala swipe, nie chowa sie 
