@@ -1,5 +1,7 @@
 <div class="row gallery" id='flex-gallery'>
     <div class="col-12 photos flex">
+           <?php include 'elements_gallery_fetch.php';?>
+        <!--
             <picture class="mate">
                 <a href="#" title="Andrzej - nasz bardzo smutny prezes">
                     <img  src="images/thumbnail_onas.jpg" alt="Andrzej - nasz bardzo smutny prezes" data-source="images/onas.jpg" data-order="1">
@@ -49,7 +51,7 @@
                     <h3>PREZES</h3></div>
                 </a>
             </picture>
-        <!--
+        
                         
             <picture class="mate">
                 <a href="#" title="QUTE product animation">

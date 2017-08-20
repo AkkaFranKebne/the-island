@@ -31,7 +31,7 @@ job_position
 <body id ="register_form">
     <form action='#' method=post enctype="multipart/form-data">
         <h1>Zmień galerię na stronie:</h1>
-        
+        <p>Jeżeli chcesz usunąć daną pozycję ze strony bez zastępowania inną, wybierz tylko stronę i pozycję elementu i zatwierdź "Zapisz" </p>
         <p>Wybierz stronę: </p>
         <select id='url' name=url ><br>
           <option id ='about' value='about.php'>about.php</option>
@@ -81,7 +81,7 @@ job_position
    
     if ($_SERVER['REQUEST_METHOD'] === 'POST'){
         //check if required fields were submitted
-        if(strlen(trim($_POST["url"])) >0 && strlen(trim($_POST["data_order"])) >0 && strlen(trim($_POST["content_type"])) >0 && strlen(trim($_POST["name"])) >0 ) {
+        if(strlen(trim($_POST["url"])) >0 && strlen(trim($_POST["data_order"])) >0) {
             
             //creating variables from these fields
             $url = mysqli_real_escape_string($conn, $_POST["url"]);

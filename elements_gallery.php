@@ -1,5 +1,7 @@
 <div class="row gallery" id='flex-gallery'>
     <div class="col-12 photos flex">
+        <?php include 'elements_gallery_fetch.php';?>
+        <!--
             <picture class="mate">
                 <a href="#" title="MDM Mieszkania na Krzykach  - materiały reklamowe">
                     <img  src="images/thumbnail_nowy_produkt.jpg" alt="MDM Mieszkania na Krzykach  - materiały reklamowe" data-source="images/nowy_produkt.jpg" data-order="1">
@@ -56,7 +58,7 @@
                     <img  src="images/thumbnail_all-view.jpg" alt="ALL VIEW kampania outdoor" data-source="images/all-view.jpg" data-order="10">
    
                 </a>
-            </picture><!--
+            </picture>
           
             <picture class="mate">
                 <a href="#" title="PIAZZA DI MODA - materiały promocyjne">
