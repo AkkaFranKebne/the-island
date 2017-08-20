@@ -1573,17 +1573,23 @@ Modal:
    }
     
     //for jpg/vimeo
-    
+
      $('#content-type').change(function(){ 
         if($(this).val() == 'mate'){
             $('.for-jpg').removeClass('notDisplayed');
             $('.for-vimeo').addClass('notDisplayed');
+            $('option#different_thumbnail').attr("selected", "selected");
+            $('option#same_thumbnail').removeAttr("selected");
         }
         else {
             $('.for-jpg').addClass('notDisplayed');
             $('.for-vimeo').removeClass('notDisplayed');
+            $('option#same_thumbnail').removeAttr("selected");
+            $('option#different_thumbnail').attr("selected", "selected");
         }
 });
+    
+    
     
    if( $("option#jpg-content-type:selected").length ){
             $('.for-jpg').removeClass('notDisplayed');

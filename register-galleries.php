@@ -1,5 +1,5 @@
 <?php
-include 'elements_db_connection.php';?> 
+include 'elements_db_connection.php';
     
 /*
 used table galleries:
@@ -51,15 +51,15 @@ job_position
         
         <p  class='for-jpg' >Thumbnail z tego samego zdjęcia? </p>
         <select  id='thumbnail' class='for-jpg' name=same_thumbnail_img ><br>
-          <option value='same_thumbnail'>tak</option>
+          <option id='same_thumbnail' value='same_thumbnail'>tak</option>
           <option id='different_thumbnail' value='different_thumbnail'>nie</option>
         </select><br>
         
-        <p class='for-thumbnail for-vimeo notDisplayed'>Thumbnail w formacie JPG, z tytułem pliku zaczynającym się od "thumbnail_", wymiary 800px X 440px :</p> <input class='for-thumbnail for-vimeo notDisplayed' type=file name=thumbnail ><br>
+        <p class='for-thumbnail for-vimeo notDisplayed'>Obrazek dla thumbnail w formacie JPG, wymiary 800px X 440px :</p> <input class='for-thumbnail for-vimeo notDisplayed' type=file name=thumbnail ><br>
         
         <p class='for-vimeo'>Link do VIMEO (np https://player.vimeo.com/video/202009420): </p><input class='for-vimeo' type=text name=link value=''><br>
         
-        <p>Nowy tytuł: </p><input type=text name=name value=''><br>
+        <p>Nowy opis (alt): </p><input type=text name=name value=''><br>
         
         <p>Pozycja elementu (od 1, liczona od lewego górnego rogu galerii): </p><input type=text name=data_order value=''><br>
         
@@ -93,7 +93,7 @@ job_position
             $surname = mysqli_real_escape_string($conn, $_POST["surname"]);  
             $job_position = mysqli_real_escape_string($conn, $_POST["job_position"]);  
             
-            echo $content_type;
+            //echo $content_type;
             
             //and same for image
             if ($content_type =='mate'){
@@ -105,17 +105,26 @@ job_position
                 if ($same_thumbnail_img == 'different_thumbnail') {
                     $thumbnail_filename = $_FILES['thumbnail']['name'];
                     $thumbnail_source = $_FILES['thumbnail']['tmp_name'];
-                    $thumbnail_target = "images/".basename($_FILES['thumbnail']['name'])."_nondesktop";
+                    //changing the final name of the thumbnail
+                    $fileData = pathinfo(basename($_FILES["image"]["name"]));
+                    $fileName = 'thumbnail_' .$fileData['filename']. '_nondesktop.' . $fileData['extension'];
+                    $thumbnail_target = "images/".$fileName;
                     
                 } 
             }
             
             //and same for vimeo
             else if ($content_type =='mate video'){
+                $filename = $_FILES['thumbnail']['name'];
                 $target = $link;
                 $thumbnail_filename = $_FILES['thumbnail']['name'];
                 $thumbnail_source = $_FILES['thumbnail']['tmp_name'];
-                $thumbnail_target = "images/".basename($_FILES['thumbnail']['name'])."_nondesktop";
+                $thumbnail_target_oryginal = "images/".basename($_FILES['thumbnail']['name']);
+                echo $thumbnail_target_oryginal;
+                //changing the final name of the thumbnail
+                    $fileData = pathinfo(basename($_FILES["thumbnail"]["name"]));
+                    $fileName = 'thumbnail_' .$fileData['filename']. '_nondesktop.' . $fileData['extension'];
+                    $thumbnail_target = "images/".$fileName;
             };
                       
             //send data to sql
@@ -200,8 +209,14 @@ job_position
                      if (move_uploaded_file($thumbnail_source, $thumbnail_target) ) {
                       echo "<p class='info'>Thumbnail załadowany</p>";
                         //create extra sizes
-                         //createBasicThumbnailFROMBIGIMAGE350x220($filename);
-                          }
+                        
+                                    //if ($content_type =='mate'){
+                                        createBasicThumbnailFROMDOWNLOADEDTHUMBNAIL350x220($filename, $fileName);
+                                    //}
+                                    //else if ($content_type =='mate video') {
+                                       //createBasicThumbnailFROMDOWNLOADEDTHUMBNAIL350x220($thumbnail_filename, $thumbnail_filename);
+                                    //}
+                            }  
                           else {
                               echo "<p class='error'>Nie załadowano thumbnail</p>";
                           }           

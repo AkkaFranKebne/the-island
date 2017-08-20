@@ -10,7 +10,9 @@ function createBasicThumbnailFROMBIGIMAGE350x220($filename) {
                 $im = imagecreatefromjpeg('images/'. $filename);
                 //save to variables orginal height and width of the image
                 $ox = imagesx($im);
-                $oy = imagesy($im);
+                //$oy = imagesy($im);
+                //scalling for different ratio
+                $oy = 1257;
                 //saves to variable a final width and height of a thumbnail
                 $nx = $final_width_of_image;
                 $ny = $final_height_of_image;
@@ -25,7 +27,7 @@ function createBasicThumbnailFROMBIGIMAGE350x220($filename) {
         else { echo "Obrazek musi byc w formacie jpg";}
     }
 
-function createBasicThumbnailFROMDOWNLOADEDTHUMBNAIL350x220($filename) {
+function createBasicThumbnailFROMDOWNLOADEDTHUMBNAIL350x220($filename, $thumbnail_filename) {
         $final_width_of_image = 350;
         $final_height_of_image = 220;
         
@@ -34,7 +36,9 @@ function createBasicThumbnailFROMDOWNLOADEDTHUMBNAIL350x220($filename) {
                 //create image from file
                 $im = imagecreatefromjpeg('images/'. $thumbnail_filename);
                 //save to variables orginal height and width of the image
-                $ox = imagesx($im);
+                //scalling for different ratio
+                //$ox = imagesx($im);
+                $ox = 700;
                 $oy = imagesy($im);
                 //saves to variable a final width and height of a thumbnail
                 $nx = $final_width_of_image;
@@ -45,7 +49,9 @@ function createBasicThumbnailFROMDOWNLOADEDTHUMBNAIL350x220($filename) {
                 //bool imagecopyresized ( resource $dst_image , resource $src_image , int $dst_x , int $dst_y , int $src_x , int $src_y , int $dst_w , int $dst_h , int $src_w , int $src_h )
                 imagecopyresampled($nm, $im, 0,0,0,0,$nx,$ny,$ox,$oy);
                 //creates a JPEG file from the given image.; Output image to browser or file
-                imagejpeg($nm, 'images/'. $filename, 100);
+                $path_parts = pathinfo('images/'. $filename);
+                header("Content-Type: image/jpeg");
+                imagejpeg($nm, 'images/thumbnail_'.$path_parts['filename'].'.'.$path_parts['extension'], 100);
                 }
         else { echo "Obrazek musi byc w formacie jpg";}
     }
@@ -57,13 +63,16 @@ function createBasicThumbnailFROMDOWNLOADEDTHUMBNAIL350x220($filename) {
             if(preg_match('/[.](jpg)$/', $filename)) {
                 $im = imagecreatefromjpeg('images/'. $filename);
                 $ox = imagesx($im);
-                $oy = imagesy($im);
+                //$oy = imagesy($im);
+                //scalling for different ratio
+                $oy = 1100;
                 $nx = $final_width_of_image;
                 $ny = $final_height_of_image;
                 $nm = imagecreatetruecolor($nx, $ny);
                 imagecopyresampled($nm, $im, 0,0,0,0,$nx,$ny,$ox,$oy);
                 //file path - to add the suffix
                 $path_parts = pathinfo('images/'. $filename);
+                header("Content-Type: image/jpeg");
                 imagejpeg($nm, 'images/thumbnail_'.$path_parts['filename'].'_nondesktop.'.$path_parts['extension'], 100);
                 }
         else { echo "Obrazek musi byc w formacie jpg";}
@@ -82,6 +91,7 @@ function createBasicThumbnailFROMDOWNLOADEDTHUMBNAIL350x220($filename) {
                 imagecopyresampled($nm, $im, 0,0,0,0,$nx,$ny,$ox,$oy);
                 //file path - to add the suffix
                 $path_parts = pathinfo('images/'. $filename);
+                header("Content-Type: image/jpeg");
                 imagejpeg($nm, 'images/'.$path_parts['filename'].'_desktop.'.$path_parts['extension'], 100);
                 }
         else { echo "Obrazek musi byc w formacie jpg";}
@@ -100,6 +110,7 @@ function createBasicThumbnailFROMDOWNLOADEDTHUMBNAIL350x220($filename) {
                 imagecopyresampled($nm, $im, 0,0,0,0,$nx,$ny,$ox,$oy);
                 //file path - to add the suffix
                 $path_parts = pathinfo('images/'. $filename);
+                header("Content-Type: image/jpeg");
                 imagejpeg($nm, 'images/'.$path_parts['filename'].'_nondesktop.'.$path_parts['extension'], 100);
                 }
         else { echo "Obrazek musi byc w formacie jpg";}
@@ -118,6 +129,7 @@ function createBasicThumbnailFROMDOWNLOADEDTHUMBNAIL350x220($filename) {
                 imagecopyresampled($nm, $im, 0,0,0,0,$nx,$ny,$ox,$oy);
                 //file path - to add the suffix
                 $path_parts = pathinfo('images/'. $filename);
+                header("Content-Type: image/jpeg");
                 imagejpeg($nm, 'images/'.$path_parts['filename'].'_mobile.'.$path_parts['extension'], 100);
                 }
         else { echo "Obrazek musi byc w formacie jpg";}
