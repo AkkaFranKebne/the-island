@@ -32,7 +32,8 @@ description
           <option value='www.php'>www.php</option>
         </select><br>
         <p>Wstaw nowy tytuł: </p><input type=text name=name value=''><br>
-        <p>Wstaw nowy opis. Do nowych linii używaj znacznika <code> &ltbr&gt </code> : </p> <textarea type=text name=desc></textarea><br>
+        <p>Wstaw nowy opis, maksymalna długość  454 znaki. Do nowych linii używaj znacznika <code> &ltbr&gt </code> : </p> <textarea type=text name=desc maxlength="454"></textarea><br>
+        <p></p>
         <input type=submit value='Zapisz'>
         <button type="button"><a href ='register-directory.php'>Wróć do strony głównej</a></button>
     <div class = 'greetings'>

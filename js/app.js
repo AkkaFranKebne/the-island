@@ -1,14 +1,17 @@
 $(document).ready(function () {
     /* 
->404 i thumbnail    
->rozmiar obrazka w tle potestowac
+>nazwy podstron
+>404 i favicon    
+>koordynaty
 > poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
->cache server - przyspieszy ladowanie animacji, co przyspieszy dzialania jquery?
-> usuwanie elementow przez formularz
+
+
+>na serwerze klienta: cache server - przyspieszy ladowanie animacji, co przyspieszy dzialania jquery?
 > przeniesienie na serwery bazy i strony klienta
 
 zauwazone bugi:
 > iframe na tablecie: nie dziala swipe, nie chowa sie 
+> zobaczyc jak dzialaja nowe galerie na tabletach
 
 
 vol2
@@ -85,7 +88,7 @@ Modal:
     
     //subtitels size
     var barWiderThanTitlePx = 100; 
-    var boxHigherThenTextPx = 0;
+    var boxHigherThenTextPx = 10;
 
     //map image
     //maplight library setup //////////
@@ -887,7 +890,10 @@ Modal:
         function subtitleBoxHeight(){
             var  subtitleBoxHeight = 250; //initial
             var subtitleHeight = descBar.find('h4').height();
-            subtitleBoxHeight = subtitleHeight + boxHigherThenTextPx;  //background image is very irregular
+            if (subtitleHeight > 0 ){
+                subtitleBoxHeight = subtitleHeight + boxHigherThenTextPx;  //background image is very irregular
+            }
+            
             
         if (mobile.matches || nondesktop.matches) {
            subtitleBoxHeight = subtitleHeight;  //as there is no background image in mobile
@@ -1019,9 +1025,8 @@ Modal:
     }
     
    //--------------------------setting the height of subtitle box 
-    if (main.children().children().first().next().hasClass('description-bar')) {  //pages with description only
         subtitleBoxHeight();
-    }
+    
 
     // ---------preloader for main page//////////
 
@@ -1217,6 +1222,32 @@ Modal:
         $(this).children().css('background-color', primaryColor);
       }
     });
+    
+    //on pins mouseenter mapa areas are selected
+    
+    
+    pins.on('mouseenter', function(event){
+        var pinName = $(this).attr('title');
+        areas.each(function(){
+            if ($(this).attr('title') == pinName) {
+                $(this).data('maphilight', {
+                alwaysOn: true
+            }).trigger('alwaysOn.maphilight')
+            }
+        });
+    });
+    
+    pins.on('mouseleave', function(event){
+        var pinName = $(this).attr('title');
+        areas.each(function(){
+            if ($(this).attr('title') == pinName) {
+                $(this).data('maphilight', {
+                alwaysOn: false
+            }).trigger('alwaysOn.maphilight')
+            }
+        });
+    });
+    
 
     //---map areas clicks actions on main page: exposing specific area//////////
     // rewriting in on function does not work (changed all this to function param) - test

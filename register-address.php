@@ -30,8 +30,12 @@ description
           <option value='city'>miasto</option>
           <option value='email'>e-mail</option>
           <option value='tel'>telefon</option>
+          <option value='coord'>współrzędne</option>
         </select><br>
-        <p>Wstaw nową treść: </p><input type=text name=name value=''><br>
+        <p>Wstaw nową treść: </p><input type=text name=name value='' maxlength="100"><br>
+        <p>Współrzędne wstaw w postaci: lat, lng  </p> 
+        <p>Np: lat: 51.031836, lng: 16.97143989999995  </p> 
+        <a href="https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en" target="_blank"><p>Więcej na ich temat.</p></a>
         <input type=submit value='Zapisz'>
         <button type="button"><a href ='register-directory.php'>Wróć do strony głównej</a></button>
     <div class = 'greetings'>

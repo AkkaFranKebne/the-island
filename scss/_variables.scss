@@ -20,7 +20,9 @@ $menuColorWithOpacityStrong: rgba(0,0,0, 0.9);
 //images sources
 $loadingImage: url('../images/loading_pigs.gif');
 $loadingSize: 314px 273px;
-$islandImage:url(../images/wyspa%20www.png), url('../images/background.jpg');
+//$islandImage:url(../images/wyspa%20www.png), url('../images/background.jpg'); //test na prosbe klienta
+//$islandImage:url(../images/wyspaww_background.png), url('../images/background.jpg');
+$islandImage:url(../images/wyspaww_big.png), url('../images/background.jpg');
 $islandImageNondesktop: url('../images/background.jpg');
 $islandImageMobile: url('../images/background.jpg');
 $mobileMenuBackground: url('../images/lemonhills.png');

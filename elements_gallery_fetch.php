@@ -2,9 +2,9 @@
 include 'elements_db_connection.php';
 
 
-                        //$title = $_SERVER['SCRIPT_NAME'];
-                        //$title = str_replace('/the-island/','', $title);
-                        $title = 'eventy.php';
+                        $title = $_SERVER['SCRIPT_NAME'];
+                        $title = str_replace('/the-island/','', $title);
+                        //$title = 'eventy.php';
                         $sql = "SELECT * FROM lemoniada_test.galleries WHERE  url ='".$title."'  ORDER BY data_order ASC";
                         $result = $conn->query($sql);
                         if ($result->num_rows > 0) {

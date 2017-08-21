@@ -59,13 +59,13 @@ job_position
         
         <p class='for-vimeo'>Link do VIMEO (np https://player.vimeo.com/video/202009420): </p><input class='for-vimeo' type=text name=link value=''><br>
         
-        <p>Nowy opis (alt): </p><input type=text name=name value=''><br>
+        <p>Nowy opis (alt), limit 170 znaków: </p><input type=text name=name value='' maxlength="170"><br>
         
-        <p>Pozycja elementu (od 1, liczona od lewego górnego rogu galerii): </p><input type=text name=data_order value=''><br>
+        <p>Pozycja elementu (od 1, liczona od lewego górnego rogu galerii): </p><input type=number name=data_order value='' min=1 max=18><br>
         
-        <p class='for-about-gallery'>Imię i nazwisko: </p><input class='for-about-gallery' type=text name=surname value=''><br>
+        <p class='for-about-gallery'>Imię i nazwisko, limit 70 znaków: </p><input class='for-about-gallery' type=text name=surname value='' maxlength="70"><br>
         
-        <p class='for-about-gallery'>Stanowisko: </p><input class='for-about-gallery' type=text name=job_position value=''><br>
+        <p class='for-about-gallery'>Stanowisko, limit 70 znaków: </p><input class='for-about-gallery' type=text name=job_position value='' maxlength="70"><br>
         
         <input type=submit value='Zapisz'>
         <button type="button"><a href ='register-directory.php'>Wróć do strony głównej</a></button>
