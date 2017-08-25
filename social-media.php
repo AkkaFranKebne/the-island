@@ -9,7 +9,7 @@ include 'elements_db_connection.php';?>
 <title>SOCIAL MEDIA - LemOnHills - Agencja Marketingowa</title>
      <?php include 'elements_meta.php';?>
 </head>
- <body id = "sm">
+ <body id = "social-media">
     <div id="menuOpacity"> </div> 
      
     <div class="grid-container">

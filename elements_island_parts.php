@@ -7,9 +7,9 @@
 <!--
 <div class='pulse eventy hidden' title='eventy' href="eventy.php"></div>
 -->
-<div class='pin sm hidden' title='sm' href="sm.php"><p>SOCIAL MEDIA</p></div>
+<div class='pin social-media hidden' title='social-media' href="social-media.php"><p>SOCIAL MEDIA</p></div>
 <!--
-<div class='pulse sm hidden' title='sm' href="sm.php"></div>
+<div class='pulse social-media hidden' title='social-media' href="social-media.php"></div>
 -->
 <div class='pin www hidden' title='www' href="www.php"><p>STRONY WWW</p></div>
 <!--
@@ -19,11 +19,11 @@
 <!--
 <div class='pulse kreacja hidden' title='kreacja' href="kreacja.php"></div>
 -->
-<div class='pin about hidden' title='about' href="about.php"><p>O NAS</p></div>
+<div class='pin o-nas hidden' title='o-nas' href="o-nas.php"><p>O NAS</p></div>
 <!--
-<div class='pulse about hidden' title='about' href="about.php"></div>
+<div class='pulse o-nas hidden' title='o-nas' href="o-nas.php"></div>
 -->
-<div class='pin newbiz hidden' title='newbiz' href="newbiz.php"><p>KONTAKT</p></div>
+<div class='pin kontakt hidden' title='kontakt' href="kontakt.php"><p>KONTAKT</p></div>
 <!--
-<div class='pulse newbiz hidden' title='newbiz' href="newbiz.php"></div>
+<div class='pulse kontakt hidden' title='kontakt' href="kontakt.php"></div>
 -->

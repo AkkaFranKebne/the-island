@@ -9,7 +9,7 @@ include 'elements_db_connection.php';?>
 <title>O NAS - LemOnHills - Agencja Marketingowa</title>
      <?php include 'elements_meta.php';?>
 </head>
- <body id = "about">
+ <body id = "o-nas">
     <div id="menuOpacity"> </div> 
      
     <div class="grid-container">
@@ -30,7 +30,7 @@ include 'elements_db_connection.php';?>
             </div>
         </div>           
         
-        <?php include 'elements_gallery_about.php';?>
+        <?php include 'elements_gallery_o-nas.php';?>
     </main>  
      <?php include 'elements_footer.php';?>
 </body>

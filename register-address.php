@@ -22,7 +22,7 @@ description
 </head>
 <body id ="register_form">
     <form action='#' method = post>
-        <h1>Zmień element  adresu na stronie <a href="newbiz.php" target="_blank">newbiz.php</a>:</h1>
+        <h1>Zmień element  adresu na stronie <a href="kontakt.php" target="_blank">kontakt.php</a>:</h1>
         <p>Wybierz element  adresu: </p>
         <select name=address_element  method=post><br>
           <option value='company'>nazwa firmy</option>

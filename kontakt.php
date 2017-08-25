@@ -9,7 +9,7 @@ include 'elements_db_connection.php';?>
 <title>KONTAKT - LemOnHills - Agencja Marketingowa</title>
      <?php include 'elements_meta.php';?>
 </head>
- <body id = "newbiz">
+ <body id = "kontakt">
     <div id="menuOpacity"> </div> 
      
     <div class="grid-container">

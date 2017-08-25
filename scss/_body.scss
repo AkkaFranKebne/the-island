@@ -32,12 +32,12 @@ body {
     }
     /* Backgrounds of subpages */
     @each $subpage in eventy,
-    sm,
+    social-media,
     www,
     www,
     kreacja,
-    about,
-    newbiz {
+    o-nas,
+    kontakt {
         &##{$subpage} {
             background-image: $islandImage;
             background-size: $backgroundSize, cover;

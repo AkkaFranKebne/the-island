@@ -14,10 +14,10 @@
     position: absolute;
     //position of each pin x
     @each $pin in eventy,
-    sm,
+    social-media,
     www,
     kreacja,
-    newbiz {
+    kontakt {
         &.#{$pin} {
             top: map-get($islandPinsTop, $pin);
             left: map-get($islandPinsLeft, $pin);
@@ -44,10 +44,10 @@
     position: absolute;
     /* position of each pulse */
     @each $pulse in eventy,
-    sm,
+    social-media,
     www,
     kreacja,
-    newbiz {
+    kontakt {
         &.#{$pulse} {
             top: map-get($islandPulseTop, $pulse);
             left: map-get($islandPinsLeft, $pulse);

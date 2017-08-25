@@ -11,7 +11,7 @@ if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
      <?php include 'elements_meta.php';?>
 </head>
    </head>
- <body id = "sm">
+ <body id = "social-media">
     <div id="menuOpacity"> </div> 
      
     <div class="grid-container">

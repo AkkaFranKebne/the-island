@@ -1,8 +1,14 @@
 $(document).ready(function () {
     /* 
 >nazwy podstron
+
+
+sm na social-media
+
+
+
 >404 i favicon    
->koordynaty
+>tytuly na sg z sql  i dodac JPG
 > poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
 
 
@@ -120,14 +126,14 @@ Modal:
     //position for every island part//////////
     var left = 0;
     var top = 0;
-    var newbizLeft = 700;
-    var newbizTop = -600;
+    var kontaktLeft = 700;
+    var kontaktTop = -600;
     var eventyLeft = -1000;
     var eventyTop = -500;
     var kreacjaLeft = -1800;
     var kreacjaTop = 100;    
-    var aboutLeft = -2300; //-1800
-    var aboutTop = 100;
+    var onasLeft = -2300; //-1800
+    var onasTop = 100;
     var wwwLeft = -350;
     var wwwTop = 250;
     var smLeft = 170;
@@ -214,22 +220,22 @@ Modal:
     //choosing the proper position for every island part//////////
 
     function islandPartDisplayParameters(ele) {
-        if (ele === "newbiz") {
-            left = newbizLeft;
-            top = newbizTop;
+        if (ele === "kontakt") {
+            left = kontaktLeft;
+            top = kontaktTop;
         } else if (ele === "eventy") {
             left = eventyLeft;
             top = eventyTop;
         } else if (ele === "kreacja") {
             left = kreacjaLeft;
             top = kreacjaTop;
-        } else if (ele === "about") {
-            left = aboutLeft;
-            top = aboutTop;
+        } else if (ele === "o-nas") {
+            left = onasLeft;
+            top = onasTop;
         } else if (ele === "www") {
             left = wwwLeft;
             top = wwwTop;
-        } else if (ele === "sm") {
+        } else if (ele === "social-media") {
             left = smLeft;
             top = smTop;
         }
@@ -283,16 +289,16 @@ Modal:
         y = y * param;
         x = x + mainPaddingLeftPx   ; //icluding padding 
         y = y + grpelemPaddingTopPx;
-        //fix for  newbiz
-        if ($(this).attr('alt') == 'newbiz'){
+        //fix for  kontakt
+        if ($(this).attr('alt') == 'kontakt'){
             y = y + 120;
         }
-         //fix for  about
-        if ($(this).attr('alt') == 'about'){
+         //fix for  o-nas
+        if ($(this).attr('alt') == 'o-nas'){
             y = y +50;
         }
          //fix for  sm
-        if ($(this).attr('alt') == 'sm'){
+        if ($(this).attr('alt') == 'social-media'){
             x = x -250;
         }
          //fix for  www
@@ -973,7 +979,7 @@ Modal:
         galleryImages.css("height",expetedHeight);        
     }
     
-    //--------------fitting the  about gallery to window height
+    //--------------fitting the  o-nas gallery to window height
     
     
     function galleryAboutHeightFittingToWindowsHeight(){
@@ -1580,20 +1586,20 @@ Modal:
     
     /////////////////////events for registrer page /////////////////
     
-    //for about.php
+    //for o-nas.php
     
     
     $('#url').change(function(){ 
-        if($(this).val() == 'about.php'){
-            $('.for-about-gallery').removeClass('notDisplayed');
+        if($(this).val() == 'o-nas.php'){
+            $('.for-o-nas-gallery').removeClass('notDisplayed');
         }
         else {
-            $('.for-about-gallery').addClass('notDisplayed');
+            $('.for-o-nas-gallery').addClass('notDisplayed');
         }
 });
     
-   if( $("option#about:selected").length ){
-       $('.for-about-gallery').removeClass('notDisplayed');
+   if( $("option#o-nas:selected").length ){
+       $('.for-o-nas-gallery').removeClass('notDisplayed');
    }
     
     //for jpg/vimeo

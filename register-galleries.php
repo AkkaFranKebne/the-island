@@ -34,10 +34,10 @@ job_position
         <p>Jeżeli chcesz usunąć daną pozycję ze strony bez zastępowania inną, wybierz tylko stronę i pozycję elementu i zatwierdź "Zapisz" </p>
         <p>Wybierz stronę: </p>
         <select id='url' name=url ><br>
-          <option id ='about' value='about.php'>about.php</option>
+          <option id ='o-nas' value='o-nas.php'>o-nas.php</option>
           <option value='eventy.php'>eventy.php</option>
           <option value='kreacja.php'>kreacja.php</option>
-          <option value='sm.php'>sm.php</option>
+          <option value='social-media.php'>social-media.php</option>
           <option value='www.php'>www.php</option>
         </select><br>
         
@@ -63,9 +63,9 @@ job_position
         
         <p>Pozycja elementu (od 1, liczona od lewego górnego rogu galerii): </p><input type=number name=data_order value='' min=1 max=18><br>
         
-        <p class='for-about-gallery'>Imię i nazwisko, limit 70 znaków: </p><input class='for-about-gallery' type=text name=surname value='' maxlength="70"><br>
+        <p class='for-o-nas-gallery'>Imię i nazwisko, limit 70 znaków: </p><input class='for-o-nas-gallery' type=text name=surname value='' maxlength="70"><br>
         
-        <p class='for-about-gallery'>Stanowisko, limit 70 znaków: </p><input class='for-about-gallery' type=text name=job_position value='' maxlength="70"><br>
+        <p class='for-o-nas-gallery'>Stanowisko, limit 70 znaków: </p><input class='for-o-nas-gallery' type=text name=job_position value='' maxlength="70"><br>
         
         <input type=submit value='Zapisz'>
         <button type="button"><a href ='register-directory.php'>Wróć do strony głównej</a></button>

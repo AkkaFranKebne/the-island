@@ -24,11 +24,11 @@ description
         <h1>Zmień opisy na stronie:</h1>
         <p>Wybierz stronę: </p>
         <select name=url method=post><br>
-          <option value='about.php'>about.php</option>
+          <option value='o-nas.php'>o-nas.php</option>
           <option value='eventy.php'>eventy.php</option>
           <option value='kreacja.php'>kreacja.php</option>
-          <option value='newbiz.php'>newbiz.php</option>
-          <option value='sm.php'>sm.php</option>
+          <option value='kontakt.php'>kontakt.php</option>
+          <option value='social-media.php'>social-media.php</option>
           <option value='www.php'>www.php</option>
         </select><br>
         <p>Wstaw nowy tytuł: </p><input type=text name=name value=''><br>
