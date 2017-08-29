@@ -1,7 +1,7 @@
 <!--the whole island that used for picking up island parts and enlarge them-->
 </div>
 <div class="grpelem hidden" id="wholeisland">
-    <img class="block" id="wholeisland_img" src="images/wyspa%20www.png" alt="" />
+    <img class="block" id="wholeisland_img" src="images/wyspaww_big.png" alt="" />
 </div>
 <div class='pin eventy hidden' title='eventy' <?php $link = "eventy.php"; $text = include 'elements_pin_names.php'; echo ' href="'.$link.'"><p>'.$text .'</p> '?></div>
 <!--

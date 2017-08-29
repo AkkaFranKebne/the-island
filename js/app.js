@@ -1,27 +1,37 @@
 $(document).ready(function () {
     /* 
->nazwy podstron
+>404
+>favicon    
 
-
-sm na social-media
-
-
-
->404 i favicon    
->tytuly na sg z sql  i dodac JPG
 > poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
+> google map api secure https://support.google.com/googleapi/answer/6310037
 
 
 >na serwerze klienta: cache server - przyspieszy ladowanie animacji, co przyspieszy dzialania jquery?
-> przeniesienie na serwery bazy i strony klienta
+
+> przeniesienie na serwery bazy i strony klienta:
+bugi:
+-animacja - zle linki  
+-mobile - po zmianie zacienienia zly kolor napisow w full screen?
+-nie pokazuje thumbnail dla galerii wideo
+-kodowanie strony
+
+
+> dodanie kontentu
+> google analytics?
 
 zauwazone bugi:
 > iframe na tablecie: nie dziala swipe, nie chowa sie 
 > zobaczyc jak dzialaja nowe galerie na tabletach
 
+vol 2
+https://webdesign.tutsplus.com/articles/tips-for-designing-and-building-a-multilingual-website--cms-24708
 
-vol2
-> scroll story smok?
+dodanie elementu zmiany jezyka na stonie 
+podmiana elementow statycznych w html  http://jsfiddle.net/Gw4eQ/9/
+rozszerzenie tabeli sql, dodanie dynamicznej podmiany zaciaganych danych change elements from sql php : krainy: dodatkowe kolumny w bazie (mozna zrobic od razu, tylko sie do nich nie odwolywac)  http://phppot.com/php/multi-language-support-to-website-using-php/
+automatyczne rozpoznanie jezyka przegladarki i dopasowanie do niej strony  https://help.localizejs.com/docs/detecting-language-of-a-visitor
+
 
 -------------------------------------------------------------------
         
