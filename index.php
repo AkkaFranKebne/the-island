@@ -24,6 +24,7 @@ include 'elements_db_connection.php';?>
           if ($_SERVER['REQUEST_METHOD'] ==='GET') {
             if (isset($_GET['source'])===true) {
             $source = $_GET['source'];
+            $source = str_replace('/lemoni/','', $source);
             echo "data-source ='$source'";
                 }
           };

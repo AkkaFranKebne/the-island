@@ -321,7 +321,7 @@
                 padding: 0;
                 position: relative;
                 bottom: 110vh;
-                background-color: $menuColorWithOpacityStrong;
+                background-color: white;
                 width: 100%;
             }
             @include non-desktop {
@@ -329,7 +329,7 @@
                 padding: 0;
                 position: relative;
                 bottom: 110vh;
-                background-color: $menuColorWithOpacityStrong;
+                background-color: white;
                 width: 100%;
             }
     }

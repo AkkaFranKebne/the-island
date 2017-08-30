@@ -11,10 +11,10 @@ $(document).ready(function () {
 
 > przeniesienie na serwery bazy i strony klienta:
 bugi:
--animacja - zle linki  
--mobile - po zmianie zacienienia zly kolor napisow w full screen?
--nie pokazuje thumbnail dla galerii wideo
--kodowanie strony
+- mobile : rozciagniete thumbnails mobile
+
+>wyczyscic kod
+
 
 
 > dodanie kontentu
