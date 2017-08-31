@@ -8,7 +8,8 @@ include 'elements_db_connection.php';?>
 <html  lang="pl-PL">
     <head>
         <title>LemOnHills - Agencja Marketingowa</title>
-        <?php include 'elements_meta.php';?>
+        <?php //include 'elements_meta.php';?>
+        <?php readfile('elements_meta.php');?>
     </head>      
     <body  id="main-page-body"  <?php   
        if ($_SESSION["seen_intro"]==0) {

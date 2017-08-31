@@ -299,12 +299,16 @@
             top: 0;
             margin: 0;
             height: $descriptionFontSize;
+            position: absolute;
+            top: 370px;
         }
         @include non-desktop {
             background-image: none;
             top: 0;
             margin: 0;
             height: $descriptionFontSize;
+            position: absolute;
+            top: 370px;
         }
         #caption {
             margin: auto;
@@ -317,7 +321,7 @@
             height: $modalCaptionHeight;
             font-size: $descriptionFontSize;
             @include mobile {
-                height: ($descriptionFontSize* 1.6);
+                height: auto;
                 padding: 0;
                 position: relative;
                 bottom: 110vh;
@@ -325,7 +329,7 @@
                 width: 100%;
             }
             @include non-desktop {
-                height: ($descriptionFontSize* 1.6);
+                height: auto;
                 padding: 0;
                 position: relative;
                 bottom: 110vh;

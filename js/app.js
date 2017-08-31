@@ -1,30 +1,40 @@
 $(document).ready(function () {
     /* 
+    
+od klienta czekam:    
 >404
 >favicon    
 
+security:
 > poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
 > google map api secure https://support.google.com/googleapi/answer/6310037
 
 
->na serwerze klienta: cache server - przyspieszy ladowanie animacji, co przyspieszy dzialania jquery?
-
 > przeniesienie na serwery bazy i strony klienta:
 bugi:
-- mobile : rozciagniete thumbnails mobile
 
->wyczyscic kod
-
-
-
-> dodanie kontentu
-> google analytics?
-
-zauwazone bugi:
+ ios
+ breaki miedzy elementami menu - przez to nie widac wszystkich
+ orientacja pozioma: text menu wchodzi na logo
+ pasek przestrzeni nad logo - co to?
+ 
+ safari: 
+ drugie ogladanie galerii: nie usuwa sie downloader
+ 
+tablety do testowania jeszcze:
 > iframe na tablecie: nie dziala swipe, nie chowa sie 
 > zobaczyc jak dzialaja nowe galerie na tabletach
 
-vol 2
+
+>wyczyscic kod
+> dodanie kontentu
+> google analytics ten sam, co na starej stronie?
+> meta ok?
+
+
+
+
+vol 2 jezyki
 https://webdesign.tutsplus.com/articles/tips-for-designing-and-building-a-multilingual-website--cms-24708
 
 dodanie elementu zmiany jezyka na stonie 
@@ -614,8 +624,6 @@ Modal:
             modalArrowPosition($('img.modal-content'));
             //setting element height
             modalElementHeight($('img.modal-content'));
-            //setting the bars width
-            modalBarLength($('img.modal-content')); 
         }
 
     }
@@ -631,7 +639,6 @@ Modal:
         modal.find('img.modal-content').fadeOut(modalFadeInOutTimeMilisec).addClass('hidden');
             modalArrowPosition($('iframe.modal-content'));
         if (!mobile.matches && !nondesktop.matches){
-            
             //setting element height
             modalElementHeight($('iframe.modal-content'));
             //setting the bars width
@@ -902,12 +909,18 @@ Modal:
         $('.title-bar').width(titleBarWidth);
     }
     
-     //--------------------------the height of subtitle box//////////////////////// 
+     //--------------------------the height of subtitle box - not used in the end //////////////////////// 
+    
+    /*
         function subtitleBoxHeight(){
-            var  subtitleBoxHeight = 250; //initial
+            var  subtitleBoxHeight = 150; //initial
             var subtitleHeight = descBar.find('h4').height();
             if (subtitleHeight > 0 ){
+                console.log(subtitleBoxHeight);
+                console.log(subtitleHeight);
+                console.log(boxHigherThenTextPx);
                 subtitleBoxHeight = subtitleHeight + boxHigherThenTextPx;  //background image is very irregular
+                console.log(subtitleBoxHeight);
             }
             
             
@@ -916,20 +929,25 @@ Modal:
         }
         descBar.height(subtitleBoxHeight);
     }
+    */
     
     //--------------------------the length of modal image bar////////////////////
     
     function  modalBarLength(currentImage){
-            var width = currentImage.width() * barToModalProportion;
+        if (currentImage.width() > 0){
+              var width = currentImage.width() * barToModalProportion;
             $('.top-bar').css('width', width);
-            $('.bottom-bar').css('width', width);
+            $('.bottom-bar').css('width', width);         
+        }
     }
 
      //---------------------modal arrows position in the middle ----
     
     function  modalArrowPosition(currentImage){
+            if (currentImage.height() > 0){
              var arrowFromTop = currentImage.height() / 2; 
             $('.arrow').css('top', arrowFromTop);
+            }
     }
     
     //--------------setting iframe or image height in modal 
@@ -960,7 +978,8 @@ Modal:
        //----show element after preloader in modal --//////////
     
     function showAfterPreloader(el){
-              modal.find('#preloader').hide(); modal.find(el).removeClass('hidden').fadeIn(modalFadeInOutTimeMilisec);
+              modal.find('#preloader').hide(); 
+              modal.find(el).removeClass('hidden').fadeIn(modalFadeInOutTimeMilisec);
                 modal.find('.arrow').removeClass('hidden');
                 modal.find('.arrow-background').removeClass('hidden');
                 modal.find('#caption').removeClass('hidden');
@@ -1020,13 +1039,13 @@ Modal:
     }
     var L = $('picture').length;
     
-    console.log("s: "+s);
-    console.log("w: "+w);
-    console.log("p: "+p);
-    console.log("L: "+L);
+    //console.log("s: "+s);
+    //console.log("w: "+w);
+    //console.log("p: "+p);
+    //console.log("L: "+L);
    
         var expetedHeight =  0.75*Math.floor(Math.sqrt((w * s)/ (L * p)));
-        console.log("expetedHeight: "+expetedHeight);
+        //console.log("expetedHeight: "+expetedHeight);
         galleryImages.css("height",expetedHeight);        
     }
     
@@ -1040,8 +1059,8 @@ Modal:
         scrollToContactForm();
     }
     
-   //--------------------------setting the height of subtitle box 
-        subtitleBoxHeight();
+   //--------------------------setting the height of subtitle box --not used;
+        //subtitleBoxHeight();
     
 
     // ---------preloader for main page//////////
@@ -1446,13 +1465,6 @@ Modal:
                     //}
         } 
         else {
-            modal.find('img.modal-content').on("load", function () {
-                showAfterPreloader('img.modal-content');
-                    //setting thr arrows
-                    //if (!mobile.matches && !nondesktop.matches){
-                        modalArrowPosition($('img.modal-content'));
-                    //}
-            });
             if ($(this).complete) {
                 showAfterPreloader('img.modal-content');
                     //setting thr arrows
@@ -1460,6 +1472,18 @@ Modal:
                         modalArrowPosition($('img.modal-content'));
                     //}
             }
+            else {
+                
+                modal.find('img.modal-content').on("load", function () {
+                showAfterPreloader('img.modal-content');
+                    //setting thr arrows
+                    //if (!mobile.matches && !nondesktop.matches){
+                modalArrowPosition($('img.modal-content'));
+                    //}              
+                
+            }
+
+            });
         }
     }
 
