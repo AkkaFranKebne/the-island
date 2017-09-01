@@ -1,37 +1,38 @@
 $(document).ready(function () {
     /* 
     
-od klienta czekam:    
->404
->favicon    
+ bugi:
+ 
+  safari: 
+ drugie ogladanie galerii: nie usuwa sie downloader, nie pokazuje pierwszy obrazek (add class szwankuje?)
 
-security:
-> poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
-> google map api secure https://support.google.com/googleapi/answer/6310037
+mobile:
+ nie scrolluje do potwierdzenia po wyslaniu wiadomosci
 
-
-> przeniesienie na serwery bazy i strony klienta:
-bugi:
-
- ios
+ ios:
  breaki miedzy elementami menu - przez to nie widac wszystkich
  orientacja pozioma: text menu wchodzi na logo
  pasek przestrzeni nad logo - co to?
- 
- safari: 
- drugie ogladanie galerii: nie usuwa sie downloader
- 
+
 tablety do testowania jeszcze:
 > iframe na tablecie: nie dziala swipe, nie chowa sie 
 > zobaczyc jak dzialaja nowe galerie na tabletach
 
 
+security:
+> poczytac o security php mailer: albo poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?, koniecznie zmiana hasla, aby nie bylo takie, jak na github poszlo
+> google map  zabezpieczenie tokena dla domeny konkretnej api secure https://support.google.com/googleapi/answer/6310037
+> config za haslem (httc?) - poczytac, skontaktowac sie z adminem, spytac Tadeusza jakby co
 >wyczyscic kod
-> dodanie kontentu
+    
+    
+od klienta czekam:    
+>404
+>favicon    
+>na jaki MAIL wiadomosci
+>materialy na strone
 > google analytics ten sam, co na starej stronie?
 > meta ok?
-
-
 
 
 vol 2 jezyki
@@ -870,12 +871,24 @@ Modal:
     }
     
     //scroll to contactform  //////////////////////////////////////////
-    
+/*
     function scrollToContactForm(){
         var hash = $("#wrap").offset().top;
-        $('html, body').animate({ scrollTop: hash });
+        console.log(hash);
+        $('html, body').animate({ 
+            scrollTop: hash 
+        });
+    }
+    */
+    
+    function scrollToContactForm(){
+        document.querySelector("#frame").scrollIntoView({ 
+          behavior: 'smooth' 
+        });
     }
     
+    
+
     
     //--------------removing specific item from the side menu on the specific page ----------//
     function removeFromMenu() {
@@ -1056,6 +1069,7 @@ Modal:
     
     //scroll to the contact form after sending the message
     if   (window.location.href.indexOf("message") != -1 ){
+        console.log("tak!");
         scrollToContactForm();
     }
     
@@ -1479,15 +1493,14 @@ Modal:
                     //setting thr arrows
                     //if (!mobile.matches && !nondesktop.matches){
                 modalArrowPosition($('img.modal-content'));
-                    //}              
+                    });              
                 
             }
+                                                   }
+                                                   }
 
             });
-        }
-    }
-
-    });
+    
     
     //--------------------closing gallery using X  -------------------
 
