@@ -2,17 +2,6 @@ $(document).ready(function () {
     /* 
     
  bugi:
- 
-  safari: 
- drugie ogladanie galerii: nie usuwa sie downloader, nie pokazuje pierwszy obrazek (add class szwankuje?)
-
-mobile:
- nie scrolluje do potwierdzenia po wyslaniu wiadomosci
-
- ios:
- breaki miedzy elementami menu - przez to nie widac wszystkich
- orientacja pozioma: text menu wchodzi na logo
- pasek przestrzeni nad logo - co to?
 
 tablety do testowania jeszcze:
 > iframe na tablecie: nie dziala swipe, nie chowa sie 
@@ -20,8 +9,8 @@ tablety do testowania jeszcze:
 
 
 security:
-> poczytac o security php mailer: albo poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?, koniecznie zmiana hasla, aby nie bylo takie, jak na github poszlo
-> google map  zabezpieczenie tokena dla domeny konkretnej api secure https://support.google.com/googleapi/answer/6310037
+> poczytac/popytac o security php mailer: albo poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?, koniecznie zmiana hasla, aby nie bylo takie, jak na github poszlo
+
 > config za haslem (httc?) - poczytac, skontaktowac sie z adminem, spytac Tadeusza jakby co
 >wyczyscic kod
     
@@ -34,6 +23,9 @@ od klienta czekam:
 > google analytics ten sam, co na starej stronie?
 > meta ok?
 
+
+> google map  po wstawieniu domeny zmienic restrykcje   https://console.developers.google.com/apis/credentials?project=blissful-canto-173006
+>htaccess po ustaienou domeny zmienic sciezke
 
 vol 2 jezyki
 https://webdesign.tutsplus.com/articles/tips-for-designing-and-building-a-multilingual-website--cms-24708

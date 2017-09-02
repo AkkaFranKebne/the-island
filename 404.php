@@ -1,7 +1,7 @@
 ﻿<?php
 session_start();
 if(empty($_SESSION["seen_intro"]))$_SESSION["seen_intro"]=0;
-?>
+include 'elements_db_connection.php';?>
     
 
 <!DOCTYPE html>
