@@ -11,7 +11,7 @@ tablety do testowania jeszcze:
 security:
 > poczytac/popytac o security php mailer: albo poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?, koniecznie zmiana hasla, aby nie bylo takie, jak na github poszlo
 
-> config za haslem (httc?) - poczytac, skontaktowac sie z adminem, spytac Tadeusza jakby co
+> config za haslem  - musza mi dac dostep do panelu home, wyslana prosba do Asi
 >wyczyscic kod
     
     
