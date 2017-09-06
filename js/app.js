@@ -1,32 +1,23 @@
 $(document).ready(function () {
     /* 
     
- bugi:
-
-tablety do testowania jeszcze:
-> iframe na tablecie: nie dziala swipe, nie chowa sie 
-> zobaczyc jak dzialaja nowe galerie na tabletach
-
-
-security:
-> poczytac/popytac o security php mailer: albo poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?, koniecznie zmiana hasla, aby nie bylo takie, jak na github poszlo
-
-> config za haslem  - musza mi dac dostep do panelu home, wyslana prosba do Asi
->wyczyscic kod
-    
-    
-od klienta czekam:    
->404
->favicon    
+to do:
+> poczytac/popytac o security php mailer: albo poprawienie mailer na mailgun albo https://swiftmailer.symfony.com/docs/introduction.html?
+> http://www.nfriedly.com/techblog/2009/11/how-to-build-a-spam-free-contact-forms-without-captchas/
+  
+od klienta czekam:  
+> config za haslem  - musza mi dac dostep do panelu home, wyslana prosba do Asi 
 >na jaki MAIL wiadomosci
 >materialy na strone
-> google analytics ten sam, co na starej stronie?
 > meta ok?
 
 
 > google map  po wstawieniu domeny zmienic restrykcje   https://console.developers.google.com/apis/credentials?project=blissful-canto-173006
 >htaccess po ustaienou domeny zmienic sciezke
+> google analytics - sprawdzic, czy zbiera,  po wstawieniu domeny zmienic kod tag manager i ga - dogadac z asia jaki
 
+
+---------------------------------------------------------------------------------------------------------------------------------------
 vol 2 jezyki
 https://webdesign.tutsplus.com/articles/tips-for-designing-and-building-a-multilingual-website--cms-24708
 
@@ -1684,6 +1675,13 @@ Modal:
    if( $("option#different_thumbnail:selected").length ){
        $('.for-thumbnail').removeClass('notDisplayed');
    }
+    
+    //404 handling
+    
+    $('#page-404').on('click', function(){
+        console.log('click');
+        window.location.href='index.php';
+    });
 
     //-------------------end----------------------------   
 });

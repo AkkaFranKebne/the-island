@@ -8,6 +8,16 @@
 /* General set of css rules for all pages and the main page */
 
 body {
+    &#page-404{
+        background-color: transparent;
+        background-image: url(../images/404.jpg);
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        &:hover{
+            cursor: pointer;
+        }
+    }
     background-color: $backgroundColor;
     background-image: $backgroundImage;
     background-size: cover;
